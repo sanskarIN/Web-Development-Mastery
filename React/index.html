@@ -209,6 +209,9 @@
         <button type="button" id="zenBtn" onclick="toggleZenMode()" title="Toggle Focus Mode"
           style="background:transparent; color:var(--text); border:1px solid var(--border); padding:8px 16px; border-radius:8px; font-weight:bold; cursor:pointer; font-family:inherit; transition:0.2s; position:relative; z-index:1000; box-shadow:0 4px 10px rgba(0,0,0,0.05);">👁️
           Zen Mode</button>
+        <button type="button" onclick="openTranslateModal()" title="Translate to any language"
+          style="background:transparent; color:var(--text); border:1px solid var(--border); padding:8px 16px; border-radius:8px; font-weight:bold; cursor:pointer; font-family:inherit; transition:0.2s; position:relative; z-index:1000; box-shadow:0 4px 10px rgba(0,0,0,0.05);">🌍
+          Translate</button>
         <button type="button" onclick="document.getElementById('historyModal').showModal()"
           title="React Evolution History"
           style="background:transparent; color:var(--text); border:none; padding:8px; cursor:pointer; font-size:1.2rem; opacity:0.7; transition:0.2s;"
@@ -331,6 +334,17 @@
             </svg>
             Browse E-Books on Gumroad →
           </a>
+        </div>
+
+        <!-- Column 3.5: Other Modules -->
+        <div>
+          <div style="font-size:0.95rem; font-weight:700; color:var(--text); margin-bottom:16px;">🚀 Other Modules</div>
+          <div style="display:flex; flex-direction:column; gap:8px;">
+            <a href="../HTML/index.html" style="color:var(--text2); text-decoration:none; font-size:0.85rem; padding:6px 0; transition:all 0.2s; display:flex; align-items:center; gap:8px;" onmouseover="this.style.color='var(--accent)';this.style.paddingLeft='8px'" onmouseout="this.style.color='var(--text2)';this.style.paddingLeft='0'"><span style="opacity:0.6;">→</span> 🌐 HTML Mastery</a>
+            <a href="../CSS/index.html" style="color:var(--text2); text-decoration:none; font-size:0.85rem; padding:6px 0; transition:all 0.2s; display:flex; align-items:center; gap:8px;" onmouseover="this.style.color='var(--accent)';this.style.paddingLeft='8px'" onmouseout="this.style.color='var(--text2)';this.style.paddingLeft='0'"><span style="opacity:0.6;">→</span> 🎨 CSS Mastery</a>
+            <a href="../JavaScript/index.html" style="color:var(--text2); text-decoration:none; font-size:0.85rem; padding:6px 0; transition:all 0.2s; display:flex; align-items:center; gap:8px;" onmouseover="this.style.color='var(--accent)';this.style.paddingLeft='8px'" onmouseout="this.style.color='var(--text2)';this.style.paddingLeft='0'"><span style="opacity:0.6;">→</span> ⚡ JavaScript Mastery</a>
+            <a href="../index.html" style="color:var(--text2); text-decoration:none; font-size:0.85rem; padding:6px 0; transition:all 0.2s; display:flex; align-items:center; gap:8px;" onmouseover="this.style.color='var(--accent)';this.style.paddingLeft='8px'" onmouseout="this.style.color='var(--text2)';this.style.paddingLeft='0'"><span style="opacity:0.6;">→</span> 🏠 Hub Home</a>
+          </div>
         </div>
 
         <!-- Column 4: Quick Links -->
@@ -924,6 +938,7 @@
       switch (e.key.toLowerCase()) {
         case 'q': openQuiz(); break;
         case 'z': toggleZenMode(); break;
+        case 't': openTranslateModal(); break;
         case 's': setTimeout(() => window.print(), 100); break;
         case 'h': document.getElementById('historyModal').showModal(); break;
         case 'm': document.getElementById('sbOpen').click(); break;
@@ -973,6 +988,410 @@
       }
     }
   </script>
+
+  <!-- Translate Modal -->
+  <dialog id="translateModal"
+    style="padding:0; border:none; border-radius:24px; background:var(--bg); color:var(--text); width:95%; max-width:600px; box-shadow:0 30px 100px rgba(0,0,0,0.7); overflow:hidden; border:1px solid rgba(255,255,255,0.1);">
+    <div
+      style="padding:30px; background:linear-gradient(135deg, var(--bg2), var(--bg3)); border-bottom:1px solid var(--border);">
+      <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:20px;">
+        <div>
+          <h2 style="margin:0; font-family:'Plus Jakarta Sans', sans-serif; font-size:1.5rem; letter-spacing:-0.5px;">🌍
+            Global Translation</h2>
+          <p style="margin:4px 0 0; opacity:0.6; font-size:0.9rem;">Instantly translate into 130+ languages from around
+            the world.</p>
+        </div>
+        <button onclick="document.getElementById('translateModal').close()"
+          style="background:var(--bg4); color:var(--text); border:none; width:40px; height:40px; border-radius:50%; cursor:pointer; font-size:1.2rem; display:flex; align-items:center; justify-content:center; transition:0.3s;"
+          onmouseover="this.style.transform='rotate(90deg)'" onmouseout="this.style.transform='rotate(0deg)'">✖</button>
+      </div>
+      <div style="position:relative;">
+        <span style="position:absolute; left:16px; top:50%; transform:translateY(-50%); opacity:0.5;">🔍</span>
+        <input type="text" id="langSearch" list="googleLangs" oninput="handleLangInput(this)"
+          placeholder="Search any language (e.g. Hindi, Sanskrit, French...)" autocomplete="off"
+          style="width:100%; padding:16px 16px 16px 45px; border-radius:16px; border:2px solid var(--accent); background:var(--bg); color:var(--text); font-family:inherit; outline:none; font-size:1rem; box-shadow:0 10px 30px rgba(0,0,0,0.2);">
+        <datalist id="googleLangs"></datalist>
+      </div>
+    </div>
+
+    <div
+      style="padding:20px 30px 10px; background:var(--bg); font-weight:700; font-size:0.8rem; text-transform:uppercase; letter-spacing:1px; opacity:0.5;">
+      Quick Select</div>
+
+    <div id="quickLangs"
+      style="max-height: 180px; overflow-y: auto; padding: 0 30px 20px; display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 10px; border-bottom: 1px solid var(--border);">
+      <!-- Populated by JS -->
+    </div>
+
+    <div
+      style="padding:20px 30px 10px; font-weight:700; font-size:0.8rem; text-transform:uppercase; letter-spacing:1px; opacity:0.5;">
+      All Languages</div>
+
+    <div id="langList"
+      style="max-height:350px; overflow-y:auto; padding:0 30px 30px; display:grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap:10px;">
+      <div style="grid-column: 1 / -1; padding:60px; text-align:center; opacity:0.7;">
+        <div class="loader"
+          style="width:40px; height:40px; border:4px solid var(--accent); border-top-color:transparent; border-radius:50%; margin:0 auto 15px; animation:spin 1s linear infinite;">
+        </div>
+        <p style="margin:0; font-weight:600;">Powering up Google Translate...</p>
+      </div>
+    </div>
+
+    <style>
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      .lang-opt {
+        position: relative;
+        overflow: hidden;
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .lang-opt:hover {
+        background: var(--accent);
+        color: #000;
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        border-color: transparent;
+      }
+      .lang-opt::after {
+        content: '✓';
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        font-size: 0.7rem;
+        opacity: 0;
+        transition: 0.3s;
+      }
+      .lang-opt:hover::after {
+        opacity: 1;
+      }
+      #quickLangs::-webkit-scrollbar,
+      #langList::-webkit-scrollbar {
+        width: 8px;
+      }
+      #quickLangs::-webkit-scrollbar-track,
+      #langList::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      #quickLangs::-webkit-scrollbar-thumb,
+      #langList::-webkit-scrollbar-thumb {
+        background: var(--border);
+        border-radius: 10px;
+        border: 2px solid var(--bg);
+      }
+      #quickLangs::-webkit-scrollbar-thumb:hover,
+      #langList::-webkit-scrollbar-thumb:hover {
+        background: var(--accent);
+      }
+    </style>
+  </dialog>
+
+  <script>
+    // --- CUSTOM TRANSLATE MODAL ---
+    function openTranslateModal() {
+      const modal = document.getElementById('translateModal');
+      const langList = document.getElementById('langList');
+      const quickLangs = document.getElementById('quickLangs');
+      const dataList = document.getElementById('googleLangs');
+      const googleSelect = document.querySelector('.goog-te-combo');
+
+      const QUICK_TARGETS = [
+        { n: 'Hindi', c: 'hi', f: '🇮🇳' }, { n: 'English', c: 'en', f: '🇺🇸' },
+        { n: 'Sanskrit', c: 'sa', f: '🇮🇳' }, { n: 'Bhojpuri', c: 'bho', f: '🇮🇳' },
+        { n: 'Marathi', c: 'mr', f: '🇮🇳' }, { n: 'Bengali', c: 'bn', f: '🇮🇳' },
+        { n: 'Gujarati', c: 'gu', f: '🇮🇳' }, { n: 'Tamil', c: 'ta', f: '🇮🇳' },
+        { n: 'Telugu', c: 'te', f: '🇮🇳' }, { n: 'Urdu', c: 'ur', f: '🇵🇰' },
+        { n: 'Kannada', c: 'kn', f: '🇮🇳' }, { n: 'Malayalam', c: 'ml', f: '🇮🇳' },
+        { n: 'Punjabi', c: 'pa', f: '🇮🇳' }, { n: 'Dogri', c: 'doi', f: '🇮🇳' },
+        { n: 'Maithili', c: 'mai', f: '🇮🇳' }, { n: 'Sindhi', c: 'sd', f: '🇮🇳' },
+        { n: 'Spanish', c: 'es', f: '🇪🇸' }, { n: 'French', c: 'fr', f: '🇫🇷' },
+        { n: 'German', c: 'de', f: '🇩🇪' }, { n: 'Chinese', c: 'zh-CN', f: '🇨🇳' },
+        { n: 'Japanese', c: 'ja', f: '🇯🇵' }, { n: 'Korean', c: 'ko', f: '🇰🇷' },
+        { n: 'Russian', c: 'ru', f: '🇷🇺' }, { n: 'Arabic', c: 'ar', f: '🇸🇦' },
+        { n: 'Portuguese', c: 'pt', f: '🇵🇹' }, { n: 'Italian', c: 'it', f: '🇮🇹' },
+        { n: 'Turkish', c: 'tr', f: '🇹🇷' }, { n: 'Thai', c: 'th', f: '🇹🇭' },
+        { n: 'Vietnamese', c: 'vi', f: '🇻🇳' }, { n: 'Indonesian', c: 'id', f: '🇮🇩' },
+        { n: 'Dutch', c: 'nl', f: '🇳🇱' }, { n: 'Polish', c: 'pl', f: '🇵🇱' },
+        { n: 'Ukrainian', c: 'uk', f: '🇺🇦' }, { n: 'Swedish', c: 'sv', f: '🇸🇪' },
+        { n: 'Greek', c: 'el', f: '🇬🇷' }, { n: 'Hebrew', c: 'iw', f: '🇮🇱' },
+        { n: 'Nepali', c: 'ne', f: '🇳🇵' }, { n: 'Sinhala', c: 'si', f: '🇱🇰' },
+        { n: 'Assamese', c: 'as', f: '🇮🇳' }, { n: 'Odia', c: 'or', f: '🇮🇳' },
+        { n: 'Finnish', c: 'fi', f: '🇫🇮' }, { n: 'Danish', c: 'da', f: '🇩🇰' },
+        { n: 'Norwegian', c: 'no', f: '🇳🇴' }, { n: 'Czech', c: 'cs', f: '🇨🇿' },
+        { n: 'Romanian', c: 'ro', f: '🇷🇴' }, { n: 'Hungarian', c: 'hu', f: '🇭🇺' },
+        { n: 'Persian', c: 'fa', f: '🇮🇷' }, { n: 'Swahili', c: 'sw', f: '🇰🇪' },
+        { n: 'Malay', c: 'ms', f: '🇲🇾' }, { n: 'Filipino', c: 'tl', f: '🇵🇭' },
+        { n: 'Burmese', c: 'my', f: '🇲🇲' }, { n: 'Khmer', c: 'km', f: '🇰🇭' },
+        { n: 'Georgian', c: 'ka', f: '🇬🇪' }, { n: 'Armenian', c: 'hy', f: '🇦🇲' },
+        { n: 'Amharic', c: 'am', f: '🇪🇹' }, { n: 'Zulu', c: 'zu', f: '🇿🇦' },
+        { n: 'Haitian', c: 'ht', f: '🇭🇹' }, { n: 'Serbian', c: 'sr', f: '🇷🇸' },
+        { n: 'Croatian', c: 'hr', f: '🇭🇷' }, { n: 'Bulgarian', c: 'bg', f: '🇧🇬' },
+        { n: 'Slovak', c: 'sk', f: '🇸🇰' }, { n: 'Lithuanian', c: 'lt', f: '🇱🇹' },
+        { n: 'Latvian', c: 'lv', f: '🇱🇻' }, { n: 'Estonian', c: 'et', f: '🇪🇪' },
+        { n: 'Slovenian', c: 'sl', f: '🇸🇮' }, { n: 'Icelandic', c: 'is', f: '🇮🇸' },
+        { n: 'Catalan', c: 'ca', f: '🇪🇸' }, { n: 'Galician', c: 'gl', f: '🇪🇸' },
+        { n: 'Basque', c: 'eu', f: '🇪🇸' }, { n: 'Welsh', c: 'cy', f: '🏴󠁧󠁢󠁷󠁬󠁳󠁿' },
+        { n: 'Irish', c: 'ga', f: '🇮🇪' }, { n: 'Kazakh', c: 'kk', f: '🇰🇿' },
+        { n: 'Uzbek', c: 'uz', f: '🇺🇿' }, { n: 'Azerbaijani', c: 'az', f: '🇦🇿' },
+        { n: 'Yoruba', c: 'yo', f: '🇳🇬' }, { n: 'Somali', c: 'so', f: '🇸🇴' },
+        { n: 'Malagasy', c: 'mg', f: '🇲🇬' }, { n: 'Samoan', c: 'sm', f: '🇼🇸' },
+        { n: 'Hawaiian', c: 'haw', f: '🇺🇸' }, { n: 'Lao', c: 'lo', f: '🇱🇦' }
+      ];
+
+      quickLangs.innerHTML = QUICK_TARGETS.map(l => `
+        <div class="lang-opt" onclick="selectLanguage('${l.c}', '${l.n}')" style="padding:14px 8px; border-radius:12px; cursor:pointer; text-align:center; display:flex; flex-direction:column; align-items:center; gap:4px; transition:0.3s;">
+          <span style="font-size:1.4rem;">${l.f}</span>
+          <span style="font-weight:700; font-size:0.75rem; letter-spacing:0.3px;">${l.n}</span>
+        </div>
+      `).join('');
+
+      if (!googleSelect) {
+        langList.innerHTML = `
+          <div style="grid-column: 1 / -1; padding:24px; text-align:center; background:rgba(97, 218, 251, 0.1); border-radius:16px; border:1px solid rgba(97, 218, 251, 0.2);">
+            <p style="color:var(--accent); font-weight:bold; margin-bottom:8px;">🚀 Direct Translation Mode</p>
+            <p style="font-size:0.85rem; opacity:0.8; margin:0;">Click any language above to translate the page directly — <b>no server required!</b> A progress bar will show the translation status. You can reset to English anytime.</p>
+          </div>`;
+      } else {
+        const options = Array.from(googleSelect.options).filter(opt => opt.value !== "");
+        if (options.length === 0) {
+          langList.innerHTML = '<div style="grid-column: 1 / -1; padding:40px; text-align:center; opacity:0.6;">⏳ Syncing with Google... Please wait a moment.</div>';
+        } else {
+          dataList.innerHTML = options.map(opt => `<option value="${opt.text}">`).join('');
+          langList.innerHTML = options.map(opt => `
+            <div class="lang-opt" onclick="selectLanguage('${opt.value}')" style="padding:12px 14px; border-radius:12px; cursor:pointer; display:flex; flex-direction:column; gap:2px; min-height:55px; justify-content:center;">
+              <span class="l-name" style="font-weight:600; font-size:0.85rem; line-height:1.2;">${opt.text}</span>
+              <span style="opacity:0.4; font-size:0.65rem; font-family:monospace; text-transform:uppercase; letter-spacing:0.5px;">${opt.value}</span>
+            </div>
+          `).join('');
+        }
+      }
+      modal.showModal();
+    }
+
+    function handleLangInput(input) {
+      const val = input.value.toLowerCase().trim();
+      const options = document.querySelectorAll('.lang-opt');
+
+      options.forEach(opt => {
+        const name = opt.querySelector('.l-name') ? opt.querySelector('.l-name').textContent.toLowerCase() : opt.textContent.toLowerCase();
+        opt.style.display = name.includes(val) ? 'flex' : 'none';
+        if (opt.style.display === 'flex' && opt.parentElement.id === 'quickLangs') opt.style.display = 'block';
+      });
+
+      const googleSelect = document.querySelector('.goog-te-combo');
+      if (googleSelect) {
+        const match = Array.from(googleSelect.options).find(opt => opt.text.toLowerCase() === val);
+        if (match) {
+          selectLanguage(match.value);
+          input.value = "";
+        }
+      }
+    }
+
+    function translateViaXHR(text, tl) {
+      return new Promise(function (resolve, reject) {
+        var url = 'https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl='
+          + encodeURIComponent(tl) + '&dt=t&q=' + encodeURIComponent(text);
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', url, true);
+        xhr.onload = function () {
+          try {
+            var data = JSON.parse(xhr.responseText);
+            var out = data[0].map(function (s) { return s[0]; }).join('');
+            resolve(out);
+          } catch (e) { reject(e); }
+        };
+        xhr.onerror = function () { reject(new Error('XHR failed')); };
+        xhr.send();
+      });
+    }
+
+    function translateViaFetch(text, tl) {
+      var url = 'https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl='
+        + encodeURIComponent(tl) + '&dt=t&q=' + encodeURIComponent(text);
+      return fetch(url).then(function (r) { return r.json(); }).then(function (data) {
+        return data[0].map(function (s) { return s[0]; }).join('');
+      });
+    }
+
+    var _jsonpId = 0;
+    function translateViaJSONP(text, tl) {
+      return new Promise(function (resolve, reject) {
+        var cbName = '_trCb' + (++_jsonpId);
+        var url = 'https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl='
+          + encodeURIComponent(tl) + '&dt=t&q=' + encodeURIComponent(text)
+          + '&callback=' + cbName;
+        window[cbName] = function (data) {
+          try {
+            var out = data[0].map(function (s) { return s[0]; }).join('');
+            resolve(out);
+          } catch (e) { reject(e); }
+          delete window[cbName];
+          script.remove();
+        };
+        var script = document.createElement('script');
+        script.src = url;
+        script.onerror = function () {
+          delete window[cbName];
+          script.remove();
+          reject(new Error('JSONP failed'));
+        };
+        document.head.appendChild(script);
+      });
+    }
+
+    async function fetchGTrans(text, tl) {
+      if (!text || text.trim().length < 3) return text;
+      var ck = 'tr_' + tl + '_' + text.length + '_' + text.slice(0, 30);
+      try { var c = sessionStorage.getItem(ck); if (c) return c; } catch (e) { }
+
+      var out = null;
+      try { out = await translateViaXHR(text, tl); } catch (e) { }
+      if (!out) { try { out = await translateViaFetch(text, tl); } catch (e) { } }
+      if (!out) { try { out = await translateViaJSONP(text, tl); } catch (e) { } }
+
+      if (out) {
+        try { sessionStorage.setItem(ck, out); } catch (e) { }
+        return out;
+      }
+      return text;
+    }
+
+    async function directTranslatePage(targetLang, langName) {
+      document.getElementById('translateModal').close();
+      var testResult = null;
+      try { testResult = await fetchGTrans('hello', targetLang); } catch (e) { }
+
+      if (!testResult || testResult === 'hello') {
+        alert('⚠️ Translation requires an internet connection. Please check your network and try again.');
+        return;
+      }
+
+      var ov = document.createElement('div');
+      ov.id = 'dtOverlay';
+      ov.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.85);backdrop-filter:blur(12px);z-index:999999;display:flex;align-items:center;justify-content:center;';
+      ov.innerHTML = '<div style="background:var(--bg2,#1a1a2e);border:1px solid var(--border,#333);border-radius:20px;padding:40px;text-align:center;max-width:400px;width:90%;box-shadow:0 20px 60px rgba(0,0,0,0.5);">'
+        + '<div style="font-size:3rem;margin-bottom:16px;">🌍</div>'
+        + '<h3 style="margin:0 0 8px;font-size:1.3rem;color:var(--text,#fff);">Translating to ' + (langName || targetLang) + '</h3>'
+        + '<p id="dtStat" style="opacity:0.6;font-size:0.9rem;margin:0 0 20px;">Preparing...</p>'
+        + '<div style="background:var(--bg,#111);border-radius:10px;height:8px;overflow:hidden;margin-bottom:12px;">'
+        + '<div id="dtBar" style="height:100%;width:0%;background:linear-gradient(90deg,var(--accent,#61dafb),#a277ff);border-radius:10px;transition:width 0.3s;"></div></div>'
+        + '<p id="dtPct" style="font-size:0.8rem;opacity:0.4;margin:0;">0%</p></div>';
+      document.body.appendChild(ov);
+
+      var els = [];
+      document.querySelectorAll('#content p, #content h3, #content li, #content .tip, #content .warn, #content .info').forEach(function (el) {
+        if (el.closest('pre') || el.closest('code') || el.closest('script') || el.closest('textarea')) return;
+        if (el.innerText.trim().length < 5) return;
+        els.push(el);
+      });
+
+      if (!window._trOrig) window._trOrig = new Map();
+      els.forEach(function (el) { if (!window._trOrig.has(el)) window._trOrig.set(el, el.innerText); });
+
+      var total = els.length, done = 0;
+      for (var i = 0; i < total; i += 2) {
+        var batch = els.slice(i, i + 2);
+        await Promise.all(batch.map(async function (el) {
+          try {
+            var txt = el.innerText;
+            var tr = await fetchGTrans(txt, targetLang);
+            if (tr && tr !== txt) el.innerText = tr;
+          } catch (e) { console.warn('Translation error:', e); }
+          done++;
+          var pct = Math.round((done / total) * 100);
+          var bar = document.getElementById('dtBar');
+          var stat = document.getElementById('dtStat');
+          var pctEl = document.getElementById('dtPct');
+          if (bar) bar.style.width = pct + '%';
+          if (stat) stat.textContent = 'Translating ' + done + ' of ' + total + '...';
+          if (pctEl) pctEl.textContent = pct + '%';
+        }));
+        await new Promise(function (r) { setTimeout(r, 100); });
+      }
+
+      setTimeout(function () { ov.remove(); showResetBtn(); }, 400);
+    }
+
+    function showResetBtn() {
+      if (document.getElementById('resetLangBtn')) return;
+      var btn = document.createElement('button');
+      btn.id = 'resetLangBtn';
+      btn.innerHTML = '🔄 Back to English';
+      btn.style.cssText = 'position:fixed;top:20px;right:20px;z-index:99999;background:var(--accent,#61dafb);color:#000;border:none;padding:12px 24px;border-radius:12px;font-weight:700;cursor:pointer;font-size:0.9rem;box-shadow:0 5px 20px rgba(0,0,0,0.3);transition:0.3s;';
+      btn.onclick = function () {
+        if (window._trOrig) {
+          window._trOrig.forEach(function (orig, el) { el.innerText = orig; });
+          window._trOrig = null;
+        }
+        btn.remove();
+      };
+      document.body.appendChild(btn);
+    }
+
+    function selectLanguage(val, langName) {
+      if (location.protocol === 'file:') {
+        directTranslatePage(val, langName);
+        return;
+      }
+      var googleSelect = document.querySelector('.goog-te-combo');
+      if (googleSelect && googleSelect.options.length > 1) {
+        var options = Array.from(googleSelect.options);
+        var match = options.find(function (o) { return o.value === val; });
+        if (!match) match = options.find(function (o) { return o.value.startsWith(val) || val.startsWith(o.value); });
+        if (!match) {
+          var NAME_MAP = {
+            'bho': 'bhojpuri', 'doi': 'dogri', 'mai': 'maithili',
+            'sa': 'sanskrit', 'sd': 'sindhi', 'as': 'assamese',
+            'or': 'odia', 'si': 'sinhala', 'my': 'burmese',
+            'km': 'khmer', 'ka': 'georgian', 'hy': 'armenian',
+            'am': 'amharic', 'zu': 'zulu', 'sw': 'swahili',
+            'ht': 'haitian', 'tl': 'filipino', 'iw': 'hebrew',
+            'no': 'norwegian', 'fa': 'persian'
+          };
+          var nm = (NAME_MAP[val] || val).toLowerCase();
+          match = options.find(function (o) { return o.text.toLowerCase().includes(nm); });
+        }
+        googleSelect.value = match ? match.value : val;
+        googleSelect.dispatchEvent(new Event('change'));
+        document.getElementById('translateModal').close();
+        return;
+      }
+      directTranslatePage(val, langName);
+    }
+  </script>
+
+  <!-- Google Translate Initialization -->
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'hi,sa,mr,bn,gu,ta,te,ur,kn,ml,pa,sd,ne,si,as,or,bho,doi,mai,en,es,fr,de,zh-CN,ja,ko,ru,ar,pt,it,tr,th,vi,id,nl,pl,uk,sv,el,iw,fi,da,no,cs,ro,hu,fa,sw,ms,tl,my,km,ka,hy,am,zu,ht,sr,hr,bg,sk,lt,lv,et,sl,is,ca,gl,eu,cy,ga,kk,uz,az,yo,so,mg,sm,haw,lo',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+      }, 'google_translate_element');
+    }
+  </script>
+  <script type="text/javascript"
+    src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+  <style>
+    .mobile-nav { display:none; position:fixed; bottom:0; left:0; right:0; z-index:9999; background:var(--bg2,#12121a); border-top:1px solid rgba(255,255,255,0.08); padding:8px 0 env(safe-area-inset-bottom, 8px); justify-content:space-around; }
+    .mobile-nav .nav-item { display:flex; flex-direction:column; align-items:center; gap:2px; font-size:20px; text-decoration:none; color:#a0a0b8; transition:color 0.2s; }
+    .mobile-nav .nav-item span { font-size:10px; font-weight:500; }
+    .mobile-nav .nav-item:hover, .mobile-nav .nav-item:active { color:var(--accent,#61dafb); }
+    @media (max-width: 768px) { .mobile-nav { display:flex; } }
+  </style>
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="javascript:void(0)" onclick="window.scrollTo({top:0, behavior:'smooth'})" class="nav-item">🏠<span>Home</span></a>
+    <a href="javascript:void(0)" onclick="openCmdK()" class="nav-item">🔍<span>Search</span></a>
+    <a href="javascript:void(0)" onclick="openQuiz()" class="nav-item">🎯<span>Quiz</span></a>
+    <a href="javascript:void(0)" onclick="openTranslateModal()" class="nav-item">🌍<span>Translate</span></a>
+    <a href="javascript:void(0)" onclick="document.getElementById('sbOpen').click()" class="nav-item">☰<span>Menu</span></a>
+  </nav>
 
   <!-- Donate QR Modal -->
   <div class="donate-overlay" id="donate-overlay" onclick="closeDonate(event)">
