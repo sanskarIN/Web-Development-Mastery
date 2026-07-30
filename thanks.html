@@ -1,39 +1,83 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Thank you for supporting Web Development Mastery by Sanskar Yadav. Your contribution makes a difference!">
-    <meta name="author" content="Sanskar Yadav">
-    <meta name="keywords" content="Thank You, Donation, Support, Web Development Mastery, Sanskar Yadav">
-    <meta property="og:title" content="Thank You | Web Development Mastery">
-    <meta property="og:description" content="Thank you for your generous support of Web Development Mastery!">
-    <meta property="og:type" content="website">
     <title>Thank You | Web Development Mastery</title>
+    <meta name="description" content="Thank you for supporting Web Development Mastery. Your contribution helps us keep learning free for everyone.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        *, *::before, *::after {
+        /* ==========================================================================
+           1. CSS VARIABLES & THEMING
+           ========================================================================== */
+        :root {
+            /* Hub Accent Colors */
+            --accent: #6c63ff;
+            --accent-light: #8b84ff;
+            --accent-dark: #5149e6;
+            --accent-glow: rgba(108, 99, 255, 0.25);
+            
+            /* Additional accents for Thank You page */
+            --accent-pink: #bf5af2;
+            --accent-teal: #3ecfcf;
+            
+            /* Typography */
+            --font-heading: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+            --font-body: 'Plus Jakarta Sans', 'Inter', sans-serif;
+            
+            /* Structure */
+            --max-width: 1200px;
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 20px;
+            --radius-full: 9999px;
+            
+            /* Transitions */
+            --transition-fast: 0.2s ease;
+            --transition-normal: 0.3s ease;
+            --transition-slow: 0.5s ease;
+            --transition-bounce: 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        [data-theme='dark'] {
+            --bg-main: #0b0f19;
+            --bg-secondary: #151a28;
+            --bg-glass: rgba(11, 15, 25, 0.7);
+            --bg-card: rgba(255, 255, 255, 0.04);
+            --bg-card-hover: rgba(255, 255, 255, 0.08);
+            --text-main: #f8fafc;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --border-highlight: rgba(255, 255, 255, 0.15);
+            --shadow-md: 0 10px 20px rgba(0, 0, 0, 0.3);
+            --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        [data-theme='light'] {
+            --bg-main: #f8fafc;
+            --bg-secondary: #ffffff;
+            --bg-glass: rgba(255, 255, 255, 0.85);
+            --bg-card: rgba(0, 0, 0, 0.03);
+            --bg-card-hover: rgba(0, 0, 0, 0.06);
+            --text-main: #0f172a;
+            --text-secondary: #475569;
+            --text-muted: #94a3b8;
+            --border-color: rgba(0, 0, 0, 0.08);
+            --border-highlight: rgba(0, 0, 0, 0.15);
+            --shadow-md: 0 10px 20px rgba(0, 0, 0, 0.05);
+            --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        /* ==========================================================================
+           2. RESET & BASE
+           ========================================================================== */
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-        }
-
-        :root {
-            --bg: #0b0f19;
-            --surface: rgba(255, 255, 255, 0.04);
-            --surface-hover: rgba(255, 255, 255, 0.08);
-            --border: rgba(255, 255, 255, 0.08);
-            --text: #f8fafc;
-            --text-secondary: #94a3b8;
-            --accent: #6c63ff;
-            --accent2: #3ecfcf;
-            --accent3: #bf5af2;
-            --glass: rgba(255, 255, 255, 0.05);
-            --glass-border: rgba(255, 255, 255, 0.1);
-            --radius: 16px;
-            --radius-sm: 10px;
         }
 
         html {
@@ -41,68 +85,82 @@
         }
 
         body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            min-height: 100vh;
-            overflow-x: hidden;
+            font-family: var(--font-body);
+            background-color: var(--bg-main);
+            color: var(--text-main);
             line-height: 1.7;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+            transition: background-color var(--transition-slow), color var(--transition-slow);
+            position: relative;
         }
 
-        /* ── Animated Gradient Shapes ── */
-        .bg-shapes {
+        h1, h2, h3, h4 {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: color var(--transition-fast);
+        }
+
+        a:hover {
+            color: var(--accent-light);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* ==========================================================================
+           3. BACKGROUND & CONFETTI
+           ========================================================================== */
+        .bg-gradient-shapes {
             position: fixed;
             inset: 0;
-            z-index: 0;
-            pointer-events: none;
+            z-index: -2;
             overflow: hidden;
+            pointer-events: none;
         }
 
-        .shape {
+        .bg-shape {
             position: absolute;
             border-radius: 50%;
-            filter: blur(100px);
+            filter: blur(120px);
             opacity: 0.35;
-            animation: drift 18s ease-in-out infinite alternate;
+            animation: float 20s infinite alternate ease-in-out;
         }
 
-        .shape-1 {
-            width: 420px;
-            height: 420px;
-            background: #6c63ff;
-            top: -80px;
-            left: -100px;
-            animation-delay: 0s;
+        [data-theme='light'] .bg-shape {
+            opacity: 0.2;
+            filter: blur(100px);
         }
 
-        .shape-2 {
-            width: 380px;
-            height: 380px;
-            background: #3ecfcf;
-            top: 40%;
-            right: -120px;
-            animation-delay: -6s;
-        }
+        .shape-a { width: 50vw; height: 50vw; background: var(--accent); top: -10%; left: -10%; }
+        .shape-b { width: 40vw; height: 40vw; background: var(--accent-pink); bottom: -10%; right: -10%; animation-delay: -5s; }
+        .shape-c { width: 30vw; height: 30vw; background: var(--accent-teal); top: 30%; left: 40%; animation-delay: -10s; }
 
-        .shape-3 {
-            width: 340px;
-            height: 340px;
-            background: #bf5af2;
-            bottom: -60px;
-            left: 30%;
-            animation-delay: -12s;
-        }
-
-        @keyframes drift {
+        @keyframes float {
             0% { transform: translate(0, 0) scale(1); }
-            25% { transform: translate(40px, -30px) scale(1.08); }
-            50% { transform: translate(-20px, 50px) scale(0.95); }
-            75% { transform: translate(30px, 20px) scale(1.05); }
-            100% { transform: translate(-40px, -40px) scale(1); }
+            50% { transform: translate(5%, 5%) scale(1.1); }
+            100% { transform: translate(-5%, -5%) scale(0.9); }
         }
 
-        /* ── Confetti Animation ── */
-        .confetti-container {
+        .noise-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            opacity: 0.03;
+            pointer-events: none;
+            background-image: url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)"/%3E%3C/svg%3E');
+        }
+
+        #confetti-container {
             position: fixed;
             inset: 0;
             z-index: 0;
@@ -110,674 +168,764 @@
             overflow: hidden;
         }
 
-        .confetti {
+        .confetti-piece {
             position: absolute;
             top: -20px;
-            width: 10px;
-            height: 10px;
+            opacity: 0;
             border-radius: 2px;
             animation: confettiFall linear infinite;
         }
 
-        .confetti:nth-child(1)  { left: 5%;  width: 8px;  height: 14px; background: #6c63ff; animation-duration: 3.2s; animation-delay: 0.1s; }
-        .confetti:nth-child(2)  { left: 12%; width: 12px; height: 8px;  background: #3ecfcf; animation-duration: 4.1s; animation-delay: 0.5s; }
-        .confetti:nth-child(3)  { left: 20%; width: 6px;  height: 12px; background: #bf5af2; animation-duration: 3.6s; animation-delay: 0.0s; }
-        .confetti:nth-child(4)  { left: 28%; width: 10px; height: 6px;  background: #f472b6; animation-duration: 4.5s; animation-delay: 1.2s; }
-        .confetti:nth-child(5)  { left: 35%; width: 8px;  height: 10px; background: #fbbf24; animation-duration: 3.0s; animation-delay: 0.8s; }
-        .confetti:nth-child(6)  { left: 42%; width: 14px; height: 8px;  background: #34d399; animation-duration: 3.8s; animation-delay: 1.5s; }
-        .confetti:nth-child(7)  { left: 50%; width: 6px;  height: 14px; background: #6c63ff; animation-duration: 4.3s; animation-delay: 0.3s; }
-        .confetti:nth-child(8)  { left: 58%; width: 10px; height: 10px; background: #f87171; animation-duration: 3.4s; animation-delay: 0.9s; }
-        .confetti:nth-child(9)  { left: 65%; width: 12px; height: 6px;  background: #3ecfcf; animation-duration: 4.0s; animation-delay: 1.8s; }
-        .confetti:nth-child(10) { left: 72%; width: 8px;  height: 12px; background: #bf5af2; animation-duration: 3.3s; animation-delay: 0.6s; }
-        .confetti:nth-child(11) { left: 78%; width: 6px;  height: 8px;  background: #fbbf24; animation-duration: 4.6s; animation-delay: 1.0s; }
-        .confetti:nth-child(12) { left: 84%; width: 14px; height: 10px; background: #34d399; animation-duration: 3.7s; animation-delay: 2.0s; }
-        .confetti:nth-child(13) { left: 90%; width: 10px; height: 14px; background: #f472b6; animation-duration: 4.2s; animation-delay: 0.4s; }
-        .confetti:nth-child(14) { left: 95%; width: 8px;  height: 6px;  background: #6c63ff; animation-duration: 3.5s; animation-delay: 1.3s; }
-        .confetti:nth-child(15) { left: 8%;  width: 12px; height: 12px; background: #f87171; animation-duration: 4.8s; animation-delay: 1.7s; border-radius: 50%; }
-
         @keyframes confettiFall {
-            0% {
-                transform: translateY(-20px) rotate(0deg);
-                opacity: 1;
-            }
-            70% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(100vh) rotate(720deg);
-                opacity: 0;
-            }
+            0% { transform: translateY(0) rotate(0deg) scale(1); opacity: 1; }
+            50% { transform: translateY(50vh) rotate(180deg) scale(1.1); opacity: 1; }
+            100% { transform: translateY(105vh) rotate(360deg) scale(0.9); opacity: 0; }
         }
 
-        /* ── Navigation ── */
+        /* ==========================================================================
+           4. NAVIGATION
+           ========================================================================== */
         .navbar {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            background: rgba(11, 15, 25, 0.7);
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            height: 72px;
+            background: var(--bg-glass);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--glass-border);
-            padding: 0.85rem 2rem;
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
         }
 
-        .nav-inner {
-            max-width: 1200px;
+        .nav-container {
+            max-width: var(--max-width);
             margin: 0 auto;
+            height: 100%;
+            padding: 0 24px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 1rem;
         }
 
-        .nav-logo {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.35rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, var(--accent), var(--accent2));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-decoration: none;
-        }
-
-        .nav-links {
-            display: flex;
+        .nav-back {
+            display: inline-flex;
             align-items: center;
-            gap: 0.35rem;
-            flex-wrap: wrap;
-            list-style: none;
+            gap: 8px;
+            color: var(--text-main);
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-size: 1rem;
+            padding: 8px 16px;
+            border-radius: var(--radius-full);
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            transition: all var(--transition-normal);
         }
 
-        .nav-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            padding: 0.45rem 0.9rem;
-            border-radius: var(--radius-sm);
-            font-size: 0.88rem;
-            font-weight: 500;
-            transition: all 0.25s ease;
+        .nav-back:hover {
+            background: var(--accent);
+            color: #ffffff;
+            border-color: var(--accent);
+            transform: translateX(-4px);
         }
 
-        .nav-links a:hover {
-            color: var(--text);
-            background: var(--surface-hover);
+        .nav-back svg {
+            width: 18px; height: 18px; fill: currentColor;
+            transition: transform var(--transition-normal);
+        }
+        .nav-back:hover svg { transform: translateX(-4px); }
+
+        .theme-toggle {
+            width: 44px; height: 44px;
+            border-radius: 50%;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; font-size: 1.2rem;
+            transition: all var(--transition-normal);
+        }
+        .theme-toggle:hover {
+            background: var(--bg-card-hover);
+            transform: scale(1.1);
         }
 
-        /* ── Main Content ── */
-        .content {
+        /* ==========================================================================
+           5. HERO SECTION
+           ========================================================================== */
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            padding-top: 100px;
             position: relative;
-            z-index: 1;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 2rem 1.5rem 4rem;
+            z-index: 10;
+            align-items: center;
         }
 
-        /* ── Thank You Hero ── */
-        .thankyou-hero {
+        .hero-section {
             text-align: center;
-            padding: 5rem 0 3rem;
+            padding: 60px 20px 40px;
+            max-width: 800px;
+            width: 100%;
         }
 
         .emoji-pulse {
+            font-size: clamp(4rem, 10vw, 6rem);
             display: inline-block;
-            font-size: 5rem;
-            animation: pulse 2s ease-in-out infinite;
-            margin-bottom: 1.5rem;
+            margin-bottom: 24px;
+            animation: pulseEmoji 2s infinite ease-in-out alternate;
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.2));
         }
 
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.15); }
+        @keyframes pulseEmoji {
+            0% { transform: scale(1) translateY(0); }
+            100% { transform: scale(1.15) translateY(-10px); }
         }
 
-        .thankyou-hero h1 {
-            font-family: 'Outfit', sans-serif;
-            font-size: clamp(2.5rem, 6vw, 4rem);
+        .thank-you-title {
+            font-size: clamp(3rem, 8vw, 5rem);
             font-weight: 800;
-            background: linear-gradient(135deg, #6c63ff, #3ecfcf);
+            letter-spacing: -0.02em;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-pink) 50%, var(--accent-teal) 100%);
             -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
             background-clip: text;
-            line-height: 1.2;
-            margin-bottom: 1.2rem;
+            color: transparent;
+            background-size: 200% auto;
+            animation: gradientShift 5s ease infinite;
         }
 
-        .thankyou-hero p {
-            font-size: 1.15rem;
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .thank-you-desc {
+            font-size: 1.2rem;
             color: var(--text-secondary);
-            max-width: 620px;
-            margin: 0 auto;
-            line-height: 1.85;
+            line-height: 1.8;
+            margin-bottom: 40px;
         }
 
-        /* ── Section Styles ── */
-        .section {
-            margin-top: 4rem;
+        .thank-you-desc strong {
+            color: var(--text-main);
+        }
+
+        /* CTA Buttons */
+        .cta-row {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 60px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px 28px;
+            border-radius: var(--radius-md);
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-size: 1.05rem;
+            cursor: pointer;
+            transition: all var(--transition-bounce);
+            text-decoration: none;
+            border: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent), var(--accent-pink));
+            color: #ffffff;
+            box-shadow: 0 4px 15px var(--accent-glow);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(191, 90, 242, 0.4);
+            color: #ffffff;
+        }
+
+        .btn-secondary {
+            background: var(--bg-card);
+            color: var(--text-main);
+            border: 1px solid var(--border-highlight);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-5px);
+            background: var(--bg-card-hover);
+            border-color: var(--accent);
+            color: var(--text-main);
+        }
+
+        /* ==========================================================================
+           6. WHAT HAPPENS NEXT SECTION
+           ========================================================================== */
+        .next-section {
+            width: 100%;
+            max-width: var(--max-width);
+            padding: 0 24px 80px;
         }
 
         .section-title {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.8rem;
-            font-weight: 700;
             text-align: center;
-            margin-bottom: 0.6rem;
+            font-size: 2.2rem;
+            margin-bottom: 12px;
         }
-
+        
         .section-subtitle {
             text-align: center;
             color: var(--text-secondary);
-            font-size: 0.95rem;
-            margin-bottom: 2.5rem;
+            font-size: 1.1rem;
+            margin-bottom: 40px;
         }
 
-        /* ── What Happens Next Cards ── */
-        .steps-grid {
+        .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
         }
 
         .step-card {
-            background: var(--glass);
-            border: 1px solid var(--glass-border);
-            border-radius: var(--radius);
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-            padding: 2rem 1.5rem;
+            background: var(--bg-glass);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 40px 30px;
             text-align: center;
-            transition: all 0.3s ease;
+            transition: all var(--transition-bounce);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             position: relative;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .step-card::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--accent), var(--accent2));
+            top: 0; left: 0; right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-pink));
             opacity: 0;
-            transition: opacity 0.3s ease;
+            transition: opacity var(--transition-normal);
+        }
+
+        .step-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent);
+            box-shadow: var(--shadow-lg);
         }
 
         .step-card:hover::before {
             opacity: 1;
         }
 
-        .step-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(108, 99, 255, 0.3);
-        }
-
         .step-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
+            font-size: 3rem;
+            margin-bottom: 20px;
         }
 
         .step-card h3 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.15rem;
-            font-weight: 700;
-            margin-bottom: 0.6rem;
+            font-size: 1.5rem;
+            margin-bottom: 16px;
         }
 
         .step-card p {
+            font-size: 1rem;
             color: var(--text-secondary);
-            font-size: 0.9rem;
-            line-height: 1.7;
+            margin-bottom: 24px;
+            flex-grow: 1;
         }
 
-        .step-number {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--accent), var(--accent2));
-            color: #fff;
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.8rem;
-            font-weight: 700;
-            margin-bottom: 0.8rem;
-        }
-
-        /* ── Back to Dashboard Button ── */
-        .cta-center {
-            text-align: center;
-            margin-top: 3rem;
-        }
-
-        .btn-dashboard {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.6rem;
-            padding: 0.95rem 2.5rem;
-            background: linear-gradient(135deg, var(--accent), var(--accent2));
-            color: #fff;
-            border: none;
+        .step-link {
+            display: inline-block;
+            font-weight: 600;
+            color: var(--accent);
+            padding: 8px 16px;
             border-radius: var(--radius-sm);
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: 1.05rem;
-            font-weight: 700;
-            cursor: pointer;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(108, 99, 255, 0.25);
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            transition: all var(--transition-normal);
+        }
+        
+        .step-link:hover {
+            background: var(--accent);
+            color: #fff;
+            border-color: var(--accent);
         }
 
-        .btn-dashboard:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 30px rgba(108, 99, 255, 0.4);
+        /* ==========================================================================
+           7. SOCIAL LINKS ROW
+           ========================================================================== */
+        .social-row-container {
+            width: 100%;
+            background: linear-gradient(180deg, transparent, var(--bg-secondary));
+            padding: 60px 24px;
+            border-top: 1px solid var(--border-color);
         }
 
-        /* ── Social Buttons ── */
-        .social-grid {
+        .social-row {
+            max-width: var(--max-width);
+            margin: 0 auto;
             display: flex;
             flex-wrap: wrap;
-            gap: 1rem;
             justify-content: center;
+            gap: 16px;
         }
 
-        .social-btn {
-            display: inline-flex;
+        .social-pill {
+            display: flex;
             align-items: center;
-            gap: 0.5rem;
-            padding: 0.75rem 1.5rem;
-            background: var(--glass);
-            border: 1px solid var(--glass-border);
-            border-radius: var(--radius-sm);
-            color: var(--text);
-            text-decoration: none;
+            gap: 10px;
+            padding: 12px 24px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-full);
+            color: var(--text-main);
+            font-family: var(--font-heading);
             font-weight: 600;
-            font-size: 0.92rem;
-            transition: all 0.3s ease;
-        }
-
-        .social-btn:hover {
-            transform: translateY(-3px);
-            border-color: var(--accent);
-            background: rgba(108, 99, 255, 0.1);
-        }
-
-        /* ── Donate CTA ── */
-        .donate-cta {
-            text-align: center;
-            margin-top: 4rem;
-        }
-
-        .donate-cta h2 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.6rem;
-            font-weight: 700;
-            margin-bottom: 0.7rem;
-        }
-
-        .donate-cta p {
-            color: var(--text-secondary);
-            margin-bottom: 1.5rem;
-            font-size: 0.95rem;
-        }
-
-        .btn-donate {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.85rem 2rem;
-            background: linear-gradient(135deg, var(--accent), var(--accent3));
-            color: #fff;
-            border: none;
-            border-radius: var(--radius-sm);
-            font-family: 'Plus Jakarta Sans', sans-serif;
             font-size: 1rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s ease;
             text-decoration: none;
+            transition: all var(--transition-bounce);
         }
 
-        .btn-donate:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 30px rgba(108, 99, 255, 0.35);
+        .social-pill:hover {
+            background: var(--bg-card-hover);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
         }
 
-        .gumroad-link {
-            color: var(--accent2);
-            text-decoration: none;
-            font-weight: 600;
+        .social-pill.youtube:hover { border-color: #ff0000; color: #ff0000; }
+        .social-pill.github:hover { border-color: var(--text-main); }
+        .social-pill.linkedin:hover { border-color: #0077b5; color: #0077b5; }
+        .social-pill.donate:hover { border-color: #ec4899; color: #ec4899; }
+
+        /* ==========================================================================
+           8. FOOTER (Shared with 404)
+           ========================================================================== */
+        footer {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border-color);
+            padding: 80px 24px 30px;
+            position: relative;
+            z-index: 10;
+            width: 100%;
         }
 
-        .gumroad-link:hover {
-            text-decoration: underline;
+        .footer-container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 40px;
+            margin-bottom: 60px;
         }
 
-        /* ── Donate Overlay ── */
+        .footer-col h4 {
+            font-size: 1.2rem;
+            margin-bottom: 24px;
+            color: var(--text-main);
+            position: relative;
+            padding-bottom: 12px;
+        }
+
+        .footer-col h4::after {
+            content: '';
+            position: absolute; left: 0; bottom: 0;
+            width: 40px; height: 3px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+
+        .brand-col .brand-name {
+            font-family: var(--font-heading);
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--text-main);
+            margin-bottom: 16px;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .brand-col .brand-name span { color: var(--accent); }
+
+        .brand-col p {
+            color: var(--text-muted);
+            margin-bottom: 24px; max-width: 300px;
+        }
+
+        .social-icons { display: flex; gap: 16px; }
+
+        .social-icon {
+            display: flex; align-items: center; justify-content: center;
+            width: 40px; height: 40px;
+            border-radius: 50%;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            transition: all var(--transition-normal);
+        }
+
+        .social-icon:hover {
+            background: var(--accent); color: #ffffff;
+            border-color: var(--accent); transform: translateY(-3px);
+        }
+        .social-icon svg { width: 20px; height: 20px; fill: currentColor; }
+
+        .footer-links { display: flex; flex-direction: column; gap: 12px; }
+        .footer-links a {
+            color: var(--text-secondary);
+            font-weight: 500;
+            transition: all var(--transition-fast);
+            display: inline-flex; align-items: center;
+        }
+        .footer-links a::before {
+            content: '›'; color: var(--accent);
+            margin-right: 8px; font-size: 1.2rem; font-weight: 700;
+            transition: transform var(--transition-fast);
+        }
+        .footer-links a:hover { color: var(--accent); transform: translateX(4px); }
+
+        .contact-links a {
+            word-break: break-all; margin-bottom: 12px; display: block;
+            color: var(--text-secondary);
+        }
+        .contact-links a:hover { color: var(--accent); }
+
+        .footer-bottom {
+            max-width: var(--max-width);
+            margin: 0 auto; text-align: center;
+            padding-top: 30px; border-top: 1px solid var(--border-color);
+            color: var(--text-muted); font-size: 0.95rem;
+            display: flex; flex-direction: column; gap: 8px;
+        }
+        .footer-bottom strong { color: var(--text-main); }
+
+        /* ==========================================================================
+           9. DONATE OVERLAY
+           ========================================================================== */
         .donate-overlay {
-            display: none;
             position: fixed;
-            inset: 0;
-            z-index: 9999;
-            background: rgba(0, 0, 0, 0.75);
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
-            align-items: center;
-            justify-content: center;
+            z-index: 10000;
+            display: flex; align-items: center; justify-content: center;
+            opacity: 0; visibility: hidden;
+            transition: all var(--transition-normal);
+            padding: 20px;
         }
 
-        .donate-overlay.active {
-            display: flex;
-        }
+        .donate-overlay.active { opacity: 1; visibility: visible; }
 
         .donate-modal {
-            background: rgba(20, 25, 40, 0.95);
-            border: 1px solid var(--glass-border);
-            border-radius: var(--radius);
-            padding: 2.5rem;
-            max-width: 420px;
-            width: 90%;
-            text-align: center;
-            position: relative;
-            animation: fadeScale 0.3s ease;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 40px; max-width: 450px; width: 100%;
+            text-align: center; position: relative;
+            transform: scale(0.9); transition: all var(--transition-bounce);
+            box-shadow: var(--shadow-lg);
         }
 
-        @keyframes fadeScale {
-            from { opacity: 0; transform: scale(0.9); }
-            to { opacity: 1; transform: scale(1); }
-        }
+        .donate-overlay.active .donate-modal { transform: scale(1); }
 
-        .donate-modal h3 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.4rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, var(--accent), var(--accent2));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
+        .donate-modal h2 { font-size: 1.8rem; margin-bottom: 12px; color: var(--text-main); }
+        .donate-modal p { color: var(--text-secondary); margin-bottom: 24px; font-size: 0.95rem; }
         .donate-modal img {
-            max-width: 220px;
-            border-radius: 12px;
-            margin: 1rem auto;
-            display: block;
-            border: 2px solid var(--glass-border);
+            width: 220px; height: 220px; border-radius: var(--radius-md);
+            margin: 0 auto 24px; display: block;
+            border: 4px solid var(--bg-card); object-fit: cover;
         }
 
-        .donate-modal p {
-            color: var(--text-secondary);
-            font-size: 0.88rem;
-            margin-bottom: 1.2rem;
+        .rzp-btn {
+            display: inline-block; width: 100%;
+            background: linear-gradient(135deg, var(--accent), #3ecfcf);
+            color: #ffffff; padding: 16px; border-radius: var(--radius-md);
+            font-family: var(--font-heading); font-weight: 700; font-size: 1.1rem;
+            transition: all var(--transition-normal);
+            box-shadow: 0 4px 15px rgba(108, 99, 255, 0.3);
+            border: none; cursor: pointer;
         }
 
-        .btn-razorpay {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.7rem 1.6rem;
-            background: linear-gradient(135deg, #6c63ff, #3ecfcf);
-            color: #fff;
-            border: none;
-            border-radius: var(--radius-sm);
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: 0.92rem;
-            font-weight: 700;
-            cursor: pointer;
-            text-decoration: none;
-            transition: all 0.3s ease;
+        .rzp-btn:hover {
+            transform: translateY(-3px); box-shadow: 0 8px 25px rgba(108, 99, 255, 0.5);
         }
 
-        .btn-razorpay:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(62, 207, 207, 0.3);
+        .close-donate {
+            position: absolute; top: 20px; right: 20px;
+            background: transparent; border: none;
+            color: var(--text-muted); font-size: 1.5rem;
+            cursor: pointer; transition: color var(--transition-fast);
+        }
+        .close-donate:hover { color: var(--text-main); }
+
+        /* ==========================================================================
+           10. RESPONSIVE DESIGN
+           ========================================================================== */
+        @media (max-width: 992px) {
+            .footer-container { grid-template-columns: 1fr 1fr; }
         }
 
-        .btn-close-modal {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: none;
-            border: none;
-            color: var(--text-secondary);
-            font-size: 1.3rem;
-            cursor: pointer;
-            transition: color 0.2s;
-            line-height: 1;
-        }
-
-        .btn-close-modal:hover {
-            color: var(--text);
-        }
-
-        /* ── Footer ── */
-        .footer {
-            margin-top: 5rem;
-            border-top: 1px solid var(--border);
-            padding: 2.5rem 1.5rem;
-            text-align: center;
-        }
-
-        .footer p {
-            color: var(--text-secondary);
-            font-size: 0.85rem;
-            margin-bottom: 0.3rem;
-        }
-
-        .footer a {
-            color: var(--accent);
-            text-decoration: none;
-        }
-
-        .footer a:hover {
-            text-decoration: underline;
-        }
-
-        .footer .heart {
-            color: #ef4444;
-        }
-
-        /* ── Responsive ── */
         @media (max-width: 768px) {
-            .navbar {
-                padding: 0.7rem 1rem;
-            }
-
-            .nav-links {
-                gap: 0.15rem;
-            }
-
-            .nav-links a {
-                padding: 0.35rem 0.6rem;
-                font-size: 0.8rem;
-            }
-
-            .content {
-                padding: 1.5rem 1rem 3rem;
-            }
-
-            .thankyou-hero {
-                padding: 3rem 0 2rem;
-            }
-
-            .emoji-pulse {
-                font-size: 3.5rem;
-            }
-
-            .steps-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .section-title {
-                font-size: 1.4rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .social-grid {
-                flex-direction: column;
-                align-items: center;
-            }
+            .thank-you-title { font-size: 3.5rem; }
+            .hero-section { padding: 40px 20px 20px; }
+            .footer-container { grid-template-columns: 1fr; gap: 30px; }
+            .cta-row { flex-direction: column; width: 100%; max-width: 350px; margin: 0 auto 40px; }
+            .btn { width: 100%; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Animated Background Shapes -->
-    <div class="bg-shapes">
-        <div class="shape shape-1"></div>
-        <div class="shape shape-2"></div>
-        <div class="shape shape-3"></div>
+    <!-- Background Elements -->
+    <div class="bg-gradient-shapes">
+        <div class="bg-shape shape-a"></div>
+        <div class="bg-shape shape-b"></div>
+        <div class="bg-shape shape-c"></div>
     </div>
-
-    <!-- Confetti Pieces -->
-    <div class="confetti-container">
-        <div class="confetti"></div>
-        <div class="confetti"></div>
-        <div class="confetti"></div>
-        <div class="confetti"></div>
-        <div class="confetti"></div>
-        <div class="confetti"></div>
-        <div class="confetti"></div>
-        <div class="confetti"></div>
-        <div class="confetti"></div>
-        <div class="confetti"></div>
-        <div class="confetti"></div>
-        <div class="confetti"></div>
-        <div class="confetti"></div>
-        <div class="confetti"></div>
-        <div class="confetti"></div>
-    </div>
+    <div class="noise-overlay"></div>
+    <div id="confetti-container"></div>
 
     <!-- Navigation -->
     <nav class="navbar">
-        <div class="nav-inner">
-            <a href="index.html" class="nav-logo">{ } Web Dev Mastery</a>
-            <ul class="nav-links">
-                <li><a href="HTML/index.html">HTML</a></li>
-                <li><a href="CSS/index.html">CSS</a></li>
-                <li><a href="JavaScript/index.html">JavaScript</a></li>
-                <li><a href="React/index.html">React</a></li>
-                <li><a href="Follow-Sanskar.html">Follow</a></li>
-                <li><a href="about.html">About</a></li>
-            </ul>
+        <div class="nav-container">
+            <a href="index.html" class="nav-back">
+                <svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+                Hub Home
+            </a>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeBtn" aria-label="Toggle Theme" onclick="toggleTheme()">🌙</button>
+            </div>
         </div>
     </nav>
 
     <!-- Main Content -->
-    <main class="content">
-
-        <!-- Thank You Hero -->
-        <section class="thankyou-hero">
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-section">
             <div class="emoji-pulse">🎉</div>
-            <h1>Thank You!</h1>
-            <p>
-                Your generous support means the world to us! Thanks to people like you,
-                <strong>Web Development Mastery</strong> remains a free, open-source learning hub
-                that empowers developers around the globe. Every contribution — no matter how small —
-                helps us create better content, maintain the platform, and keep pushing the boundaries
-                of what free education can look like. You're not just a supporter; you're a part of
-                our story. 🙏
+            <h1 class="thank-you-title">Thank You!</h1>
+            <p class="thank-you-desc">
+                Your support means the world to us! Thanks to people like you, 
+                <strong>Web Development Mastery</strong> remains a free, open-source learning hub 
+                that empowers developers around the globe. Every contribution helps us create better content. 🙏
             </p>
+
+            <div class="cta-row">
+                <a href="index.html" class="btn btn-primary">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                    Return to Hub
+                </a>
+                <a href="#next-steps" class="btn btn-secondary">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                    Explore Modules
+                </a>
+            </div>
         </section>
 
         <!-- What Happens Next -->
-        <section class="section">
-            <h2 class="section-title">🗺️ What Happens Next</h2>
-            <p class="section-subtitle">Here's what you can expect after your contribution</p>
-            <div class="steps-grid">
+        <section class="next-section" id="next-steps">
+            <h2 class="section-title">What Happens Next?</h2>
+            <p class="section-subtitle">The journey doesn't end here. Let's keep the momentum going!</p>
+            
+            <div class="cards-grid">
+                <!-- Keep Learning -->
                 <div class="step-card">
-                    <div class="step-number">1</div>
-                    <div class="step-icon">✅</div>
-                    <h3>Confirmation Received</h3>
-                    <p>
-                        Your payment has been processed successfully. You'll receive a confirmation
-                        from the payment provider. If you have any issues, feel free to reach out
-                        to us via email.
-                    </p>
+                    <div class="step-icon">📖</div>
+                    <h3>Keep Learning</h3>
+                    <p>Dive back into the modules and continue mastering modern web development at your own pace.</p>
+                    <div style="display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin-top:auto;">
+                        <a href="HTML/index.html" class="step-link">HTML</a>
+                        <a href="CSS/index.html" class="step-link">CSS</a>
+                        <a href="JavaScript/index.html" class="step-link">JS</a>
+                        <a href="React/index.html" class="step-link">React</a>
+                    </div>
                 </div>
+
+                <!-- Share the Love -->
                 <div class="step-card">
-                    <div class="step-number">2</div>
+                    <div class="step-icon">⭐</div>
+                    <h3>Share the Love</h3>
+                    <p>Help others discover these resources. Star our GitHub repository and share it with your network.</p>
+                    <a href="https://github.com/Sanskar-in" target="_blank" class="step-link" style="margin-top:auto;">Star Repo</a>
+                </div>
+
+                <!-- Stay Updated -->
+                <div class="step-card">
                     <div class="step-icon">🚀</div>
-                    <h3>Fueling Development</h3>
-                    <p>
-                        Your contribution goes directly into building new modules, improving existing
-                        lessons, hosting costs, and creating more interactive learning experiences
-                        for the entire community.
-                    </p>
-                </div>
-                <div class="step-card">
-                    <div class="step-number">3</div>
-                    <div class="step-icon">🌟</div>
-                    <h3>Keep Learning!</h3>
-                    <p>
-                        Head back to the dashboard and continue your web development journey. New
-                        content is being added regularly — there's always something new to learn
-                        and explore across all our modules.
-                    </p>
+                    <h3>Stay Updated</h3>
+                    <p>Follow along on social media for new updates, upcoming courses, and behind-the-scenes content.</p>
+                    <a href="Follow-Sanskar.html" class="step-link" style="margin-top:auto;">Follow Me</a>
                 </div>
             </div>
         </section>
-
-        <!-- Back to Dashboard -->
-        <div class="cta-center">
-            <a href="index.html" class="btn-dashboard">🏠 Back to Dashboard</a>
+        
+        <!-- Social Row -->
+        <div class="social-row-container">
+            <div class="social-row">
+                <a href="https://youtube.com/@Sanskar-in" target="_blank" class="social-pill youtube">
+                    ▶️ YouTube
+                </a>
+                <a href="https://github.com/Sanskar-in" target="_blank" class="social-pill github">
+                    🐙 GitHub
+                </a>
+                <a href="https://linkedin.com/in/sanskar-in" target="_blank" class="social-pill linkedin">
+                    💼 LinkedIn
+                </a>
+                <button onclick="openDonate()" class="social-pill donate">
+                    💖 Support Again
+                </button>
+            </div>
         </div>
-
-        <!-- Social Links Section -->
-        <section class="section">
-            <h2 class="section-title">🌍 Stay Connected</h2>
-            <p class="section-subtitle">Follow along for updates, tutorials, and more</p>
-            <div class="social-grid">
-                <a href="https://youtube.com/@Sanskar-in" target="_blank" rel="noopener noreferrer" class="social-btn">▶️ YouTube — @Sanskar-in</a>
-                <a href="https://github.com/Sanskar-in" target="_blank" rel="noopener noreferrer" class="social-btn">🐙 GitHub — Sanskar-in</a>
-                <a href="https://linkedin.com/in/sanskar-in" target="_blank" rel="noopener noreferrer" class="social-btn">💼 LinkedIn — sanskar-in</a>
-                <a href="https://x.com/Sanskar_in" target="_blank" rel="noopener noreferrer" class="social-btn">✖️ X (Twitter) — @Sanskar_in</a>
-            </div>
-        </section>
-
-        <!-- Donate Again CTA -->
-        <section class="donate-cta">
-            <h2>💖 Want to Support Again?</h2>
-            <p>
-                Your generosity knows no bounds! If you'd like to make another contribution or share
-                this project with friends who might benefit, we'd be incredibly grateful.
-            </p>
-            <button class="btn-donate" onclick="openDonate()">💝 Donate Again</button>
-            <br><br>
-            <a href="https://ramsandesh.gumroad.com" target="_blank" rel="noopener noreferrer" class="gumroad-link">🛒 Visit our Gumroad Store →</a>
-        </section>
     </main>
 
-    <!-- Donate Overlay -->
-    <div class="donate-overlay" id="donateOverlay">
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col brand-col">
+                <div class="brand-name"><span>{ }</span> Web Dev Mastery</div>
+                <p>Your ultimate destination for mastering modern web technologies, completely free and open-source.</p>
+                <div class="social-icons">
+                    <a href="https://youtube.com/@Sanskar-in" target="_blank" class="social-icon" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M21.582,6.186c-0.23-0.86-0.908-1.538-1.768-1.768C18.254,4,12,4,12,4s-6.254,0-7.814,0.418 c-0.86,0.23-1.538,0.908-1.768,1.768C2,7.746,2,12,2,12s0,4.254,0.418,5.814c0.23,0.86,0.908,1.538,1.768,1.768 C5.746,20,12,20,12,20s6.254,0,7.814-0.418c0.86-0.23,1.538-0.908,1.768-1.768C22,16.254,22,12,22,12S22,7.746,21.582,6.186z M9.996,15.559l0-7.118l6.732,3.559L9.996,15.559z"/></svg></a>
+                    <a href="https://github.com/Sanskar-in" target="_blank" class="social-icon" aria-label="GitHub"><svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
+                    <a href="https://linkedin.com/in/sanskar-in" target="_blank" class="social-icon" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+                </div>
+            </div>
+            
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">Dashboard</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="Follow-Sanskar.html">Follow Sanskar</a></li>
+                    <li><a href="developer.html">Developer</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms of Service</a></li>
+                    <li><a href="support.html">Support</a></li>
+                    <li><a href="thanks.html">Thank You</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col">
+                <h4>Modules</h4>
+                <ul class="footer-links">
+                    <li><a href="HTML/index.html">HTML</a></li>
+                    <li><a href="CSS/index.html">CSS</a></li>
+                    <li><a href="JavaScript/index.html">JavaScript</a></li>
+                    <li><a href="React/index.html">React</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col">
+                <h4>Contact & Support</h4>
+                <div class="contact-links">
+                    <a href="mailto:sanskaryadavfrom2012to2026@gmail.com">sanskaryadavfrom2012to2026@gmail.com</a>
+                    <a href="mailto:supportramsandesh@gmail.com">supportramsandesh@gmail.com</a>
+                    <a href="mailto:sanskaryadavfromghosimau2026-27@outlook.com">sanskaryadavfromghosimau2026-27@outlook.com</a>
+                    <a href="https://rzp.io/l/Sanskar" target="_blank" style="margin-top:12px; font-weight:700; color:var(--accent);">Donate via Razorpay</a>
+                    <a href="https://ramsandesh.gumroad.com" target="_blank" style="font-weight:700; color:#ff90e8;">Visit Gumroad Store</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2026 <strong>Web Development Mastery</strong> by <strong>Sanskar Yadav</strong>. All Rights Reserved.</p>
+            <p>Open Source &bull; Made with <span style="color:#ef4444;">❤️</span> in India</p>
+        </div>
+    </footer>
+
+    <!-- Donate Overlay Modal -->
+    <div class="donate-overlay" id="donateOverlay" onclick="if(event.target===this) closeDonate()">
         <div class="donate-modal">
-            <button class="btn-close-modal" onclick="closeDonate()" aria-label="Close donate modal">✕</button>
-            <h3>Support Web Dev Mastery</h3>
-            <p>Scan the QR code below to donate via UPI, or use the Razorpay button for other payment methods.</p>
-            <img src="Payment-Ramsandesh.jpeg" alt="Donate QR Code — Payment Ramsandesh">
-            <p>Every contribution, no matter how small, makes a difference. Thank you for your generosity! 🙏</p>
-            <a href="https://rzp.io/l/Sanskar" target="_blank" rel="noopener noreferrer" class="btn-razorpay">💳 Pay via Razorpay</a>
+            <button class="close-donate" onclick="closeDonate()" aria-label="Close">&times;</button>
+            <h2>Support Web Dev Mastery</h2>
+            <p>Your contribution keeps this project free, ad-free, and continuously improving for everyone.</p>
+            <img src="Payment-Ramsandesh.jpeg" alt="Donate QR Code">
+            <a href="https://rzp.io/l/Sanskar" target="_blank" class="rzp-btn">💳 Donate securely via Razorpay</a>
+            <p style="margin-top:16px; font-size:0.85rem; color:var(--text-muted);">Thank you for your generosity! 🙏</p>
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <p>© 2026 <strong>Sanskar Yadav</strong>. All rights reserved.</p>
-        <p>Made with <span class="heart">❤️</span> in India</p>
-        <p style="margin-top: 0.5rem;">
-            <a href="index.html">Home</a> &nbsp;·&nbsp;
-            <a href="about.html">About</a> &nbsp;·&nbsp;
-            <a href="Follow-Sanskar.html">Follow</a> &nbsp;·&nbsp;
-            <a href="https://ramsandesh.gumroad.com" target="_blank" rel="noopener noreferrer">Gumroad</a>
-        </p>
-    </footer>
-
+    <!-- Scripts -->
     <script>
-        /* ── Donate Overlay ── */
+        // ---------------------------------------------------------
+        // Theme Management (localStorage key: 'hubMasteryTheme')
+        // ---------------------------------------------------------
+        const THEME_KEY = 'hubMasteryTheme';
+        
+        function initTheme() {
+            const savedTheme = localStorage.getItem(THEME_KEY);
+            if (savedTheme) {
+                document.documentElement.setAttribute('data-theme', savedTheme);
+            } else {
+                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                document.documentElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+            }
+            updateThemeIcon();
+        }
+
+        function toggleTheme() {
+            const current = document.documentElement.getAttribute('data-theme');
+            const next = current === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', next);
+            localStorage.setItem(THEME_KEY, next);
+            updateThemeIcon();
+        }
+
+        function updateThemeIcon() {
+            const current = document.documentElement.getAttribute('data-theme');
+            document.getElementById('themeBtn').textContent = current === 'dark' ? '☀️' : '🌙';
+        }
+
+        initTheme();
+
+        // ---------------------------------------------------------
+        // Confetti Generator (60 pieces)
+        // ---------------------------------------------------------
+        function createConfetti() {
+            const container = document.getElementById('confetti-container');
+            const colors = ['#6c63ff', '#3ecfcf', '#bf5af2', '#f472b6', '#fbbf24', '#34d399', '#f87171'];
+            
+            for (let i = 0; i < 60; i++) {
+                const conf = document.createElement('div');
+                conf.classList.add('confetti-piece');
+                
+                // Random properties
+                const width = Math.random() * 8 + 6;
+                const height = Math.random() * 12 + 6;
+                const left = Math.random() * 100;
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                const duration = Math.random() * 4 + 3;
+                const delay = Math.random() * 5;
+                
+                conf.style.width = `${width}px`;
+                conf.style.height = `${height}px`;
+                conf.style.left = `${left}vw`;
+                conf.style.backgroundColor = color;
+                conf.style.animationDuration = `${duration}s`;
+                conf.style.animationDelay = `${delay}s`;
+                
+                // Randomly make some circular
+                if (Math.random() > 0.7) {
+                    conf.style.borderRadius = '50%';
+                }
+                
+                container.appendChild(conf);
+            }
+        }
+        createConfetti();
+
+        // ---------------------------------------------------------
+        // Donate Modal
+        // ---------------------------------------------------------
         function openDonate() {
             document.getElementById('donateOverlay').classList.add('active');
             document.body.style.overflow = 'hidden';
@@ -788,41 +936,11 @@
             document.body.style.overflow = '';
         }
 
-        document.addEventListener('keydown', function(e) {
+        document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
                 closeDonate();
             }
         });
-
-        document.getElementById('donateOverlay').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeDonate();
-            }
-        });
-
-        /* ── Scroll Reveal Animation ── */
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(function(entry) {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.section, .step-card, .social-btn').forEach(function(el) {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(30px)';
-            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(el);
-        });
     </script>
-
 </body>
 </html>

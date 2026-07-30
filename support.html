@@ -1,639 +1,1398 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Support & Help Center for Web Development Mastery — FAQs, contact info, bug reports, and community links.">
+    <meta name="description" content="Get support and help for Web Development Mastery. Browse FAQs, contact our team, report bugs, request features, and join our developer community.">
+    <meta name="keywords" content="Web Development Mastery, Support, Help, FAQ, Web Development, Sanskar Yadav">
     <meta name="author" content="Sanskar Yadav">
-    <meta name="keywords" content="support, help, FAQ, web development, contact, bug report, feature request">
+    <meta name="robots" content="index, follow">
     <meta property="og:title" content="Support & Help | Web Development Mastery">
-    <meta property="og:description" content="Get help, find answers, and connect with the Web Development Mastery community.">
+    <meta property="og:description" content="Get support and help for Web Development Mastery. Browse FAQs, contact our team, and join our developer community.">
     <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Support & Help | Web Development Mastery">
     <title>Support & Help | Web Development Mastery</title>
+    
+    <!-- Preconnect & Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
     <style>
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        /* ===== CSS Variables & Theme System ===== */
         :root {
-            --bg: #0b0f19;
-            --text: #f8fafc;
+            /* Hub Purple Theme */
             --accent: #6c63ff;
-            --accent2: #3ecfcf;
-            --accent3: #bf5af2;
-            --glass: rgba(255,255,255,0.06);
-            --glass-border: rgba(255,255,255,0.10);
-            --radius: 18px;
+            --accent-hover: #5b52e0;
+            --accent-dark: #4a41d0;
+            --accent-glow: rgba(108, 99, 255, 0.25);
+            --accent-subtle: rgba(108, 99, 255, 0.08);
+            --gradient-accent: linear-gradient(135deg, #6c63ff, #8b5cf6, #a855f7);
+            
+            --font-primary: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-secondary: 'Inter', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+            --radius-full: 9999px;
+            
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.1);
+            --shadow-md: 0 4px 20px rgba(0,0,0,0.15);
+            --shadow-lg: 0 8px 40px rgba(0,0,0,0.2);
+            --shadow-glow: 0 0 30px var(--accent-glow);
+            
+            --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-smooth: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        html { scroll-behavior: smooth; }
+
+        [data-theme="dark"] {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #12121a;
+            --bg-tertiary: #1a1a24;
+            --bg-card: rgba(18, 18, 26, 0.7);
+            --bg-card-hover: rgba(26, 26, 36, 0.9);
+            --bg-glass: rgba(10, 10, 15, 0.7);
+            --text-primary: #ffffff;
+            --text-secondary: #a1a1aa;
+            --text-tertiary: #71717a;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --border-hover: rgba(255, 255, 255, 0.15);
+            --nav-bg: rgba(10, 10, 15, 0.85);
+            --overlay-bg: rgba(0, 0, 0, 0.8);
+            --gradient-header: linear-gradient(135deg, #0a0a0f 0%, #11111c 50%, #151525 100%);
+        }
+
+        [data-theme="light"] {
+            --bg-primary: #fafafa;
+            --bg-secondary: #ffffff;
+            --bg-tertiary: #f4f4f5;
+            --bg-card: rgba(255, 255, 255, 0.8);
+            --bg-card-hover: rgba(255, 255, 255, 1);
+            --bg-glass: rgba(255, 255, 255, 0.8);
+            --text-primary: #09090b;
+            --text-secondary: #52525b;
+            --text-tertiary: #a1a1aa;
+            --border-color: rgba(0, 0, 0, 0.08);
+            --border-hover: rgba(0, 0, 0, 0.15);
+            --nav-bg: rgba(250, 250, 250, 0.85);
+            --overlay-bg: rgba(0, 0, 0, 0.5);
+            --gradient-header: linear-gradient(135deg, #f4f4f5 0%, #ffffff 50%, #fafafa 100%);
+        }
+
+        /* ===== Base Reset ===== */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
         body {
-            font-family: 'Plus Jakarta Sans', 'Outfit', sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            min-height: 100vh;
+            font-family: var(--font-primary);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
             overflow-x: hidden;
-            line-height: 1.7;
+            min-height: 100vh;
+            transition: background var(--transition-normal), color var(--transition-normal);
         }
-        /* Animated Gradient Shapes */
-        .gradient-shape {
+
+        body::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        body::-webkit-scrollbar-track {
+            background: var(--bg-primary);
+        }
+
+        body::-webkit-scrollbar-thumb {
+            background: var(--bg-tertiary);
+            border-radius: 5px;
+        }
+
+        body::-webkit-scrollbar-thumb:hover {
+            background: var(--accent);
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: color var(--transition-fast);
+        }
+
+        a:hover {
+            color: var(--accent-hover);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img, svg {
+            display: block;
+            max-width: 100%;
+        }
+
+        button {
+            border: none;
+            background: none;
+            font-family: inherit;
+            cursor: pointer;
+        }
+
+        /* ===== Floating Orbs ===== */
+        .floating-orbs {
             position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .orb {
+            position: absolute;
             border-radius: 50%;
             filter: blur(100px);
-            opacity: 0.45;
-            z-index: 0;
-            pointer-events: none;
+            opacity: 0.2;
+            animation: floatOrb 25s infinite alternate ease-in-out;
         }
-        .shape1 {
-            width: 520px; height: 520px;
-            background: radial-gradient(circle, var(--accent), transparent 70%);
-            top: -120px; left: -120px;
-            animation: floatShape1 18s ease-in-out infinite alternate;
+
+        .orb-1 {
+            width: 450px;
+            height: 450px;
+            background: var(--accent);
+            top: -100px;
+            right: -100px;
+            animation-duration: 30s;
         }
-        .shape2 {
-            width: 440px; height: 440px;
-            background: radial-gradient(circle, var(--accent2), transparent 70%);
-            bottom: -100px; right: -100px;
-            animation: floatShape2 22s ease-in-out infinite alternate;
+
+        .orb-2 {
+            width: 350px;
+            height: 350px;
+            background: #8b5cf6;
+            bottom: 10%;
+            left: -50px;
+            animation-duration: 25s;
+            animation-delay: -5s;
         }
-        .shape3 {
-            width: 380px; height: 380px;
-            background: radial-gradient(circle, var(--accent3), transparent 70%);
-            top: 50%; left: 55%;
-            animation: floatShape3 20s ease-in-out infinite alternate;
+
+        .orb-3 {
+            width: 400px;
+            height: 400px;
+            background: #a855f7;
+            top: 40%;
+            right: 20%;
+            animation-duration: 35s;
+            animation-delay: -10s;
+            opacity: 0.15;
         }
-        @keyframes floatShape1 {
+
+        @keyframes floatOrb {
             0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(80px, 60px) scale(1.15); }
+            33% { transform: translate(50px, -50px) scale(1.1); }
+            66% { transform: translate(-30px, 30px) scale(0.95); }
+            100% { transform: translate(20px, 60px) scale(1.05); }
         }
-        @keyframes floatShape2 {
-            0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(-70px, -50px) scale(1.1); }
-        }
-        @keyframes floatShape3 {
-            0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(-60px, 40px) scale(1.2); }
-        }
-        /* Navigation */
-        nav {
-            position: sticky; top: 0; z-index: 100;
-            background: rgba(11,15,25,0.72);
-            backdrop-filter: blur(18px);
-            -webkit-backdrop-filter: blur(18px);
-            border-bottom: 1px solid var(--glass-border);
+
+        /* ===== Navigation ===== */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 70px;
+            background: var(--nav-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
             padding: 0 2rem;
+            transition: all var(--transition-normal);
         }
-        .nav-inner {
-            max-width: 1240px; margin: 0 auto;
-            display: flex; align-items: center; justify-content: space-between;
-            height: 64px;
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
         }
-        .nav-logo {
-            font-family: 'Outfit', sans-serif;
-            font-weight: 800; font-size: 1.35rem;
-            background: linear-gradient(135deg, var(--accent), var(--accent2));
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            text-decoration: none;
+
+        .nav-back {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius-full);
+            border: 1px solid var(--border-color);
+            transition: all var(--transition-fast);
         }
-        .nav-links { display: flex; gap: 0.4rem; align-items: center; flex-wrap: wrap; }
-        .nav-links a {
-            color: var(--text); text-decoration: none;
-            font-size: 0.88rem; font-weight: 500;
-            padding: 0.4rem 0.85rem; border-radius: 10px;
-            transition: background 0.25s, color 0.25s;
+
+        .nav-back svg {
+            width: 18px;
+            height: 18px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
         }
-        .nav-links a:hover, .nav-links a.active {
-            background: var(--glass);
-            color: var(--accent2);
+
+        .nav-back:hover {
+            color: var(--accent);
+            border-color: var(--accent);
+            background: var(--accent-subtle);
+            transform: translateX(-2px);
         }
-        .hamburger {
-            display: none; background: none; border: none;
-            color: var(--text); font-size: 1.6rem; cursor: pointer;
-        }
-        /* Header */
-        .hero {
-            position: relative; z-index: 1;
-            text-align: center;
-            padding: 5rem 1.5rem 3rem;
-        }
-        .hero-emoji { font-size: 3.5rem; margin-bottom: 0.8rem; display: block; }
-        .hero h1 {
-            font-family: 'Outfit', sans-serif;
-            font-size: clamp(2rem, 5vw, 3.4rem);
+
+        .nav-brand {
+            font-size: 1.25rem;
             font-weight: 800;
-            background: linear-gradient(135deg, var(--accent), var(--accent2), var(--accent3));
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            margin-bottom: 0.7rem;
+            letter-spacing: -0.02em;
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
-        .hero p {
-            max-width: 600px; margin: 0 auto;
-            color: rgba(248,250,252,0.7);
-            font-size: 1.08rem;
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
         }
-        /* Sections */
-        .section {
-            position: relative; z-index: 1;
-            max-width: 1100px; margin: 0 auto;
-            padding: 2.5rem 1.5rem;
+
+        .theme-toggle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-primary);
+            transition: all var(--transition-fast);
         }
-        .section-title {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.7rem; font-weight: 700;
-            margin-bottom: 1.8rem;
-            text-align: center;
-            background: linear-gradient(135deg, var(--accent2), var(--accent));
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+
+        .theme-toggle svg {
+            width: 20px;
+            height: 20px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
         }
-        /* Glass Card */
-        .glass-card {
-            background: var(--glass);
-            border: 1px solid var(--glass-border);
-            border-radius: var(--radius);
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-            padding: 1.8rem;
-            transition: transform 0.3s, box-shadow 0.3s;
+
+        .theme-toggle:hover {
+            color: var(--accent);
+            border-color: var(--accent);
+            background: var(--accent-subtle);
+            transform: rotate(15deg);
         }
-        .glass-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 32px rgba(108,99,255,0.13);
-        }
-        /* FAQ Accordion */
-        .faq-list { display: flex; flex-direction: column; gap: 0.8rem; }
-        .faq-item {
-            background: var(--glass);
-            border: 1px solid var(--glass-border);
-            border-radius: 14px;
-            overflow: hidden;
-            transition: box-shadow 0.3s;
-        }
-        .faq-item:hover { box-shadow: 0 4px 20px rgba(108,99,255,0.10); }
-        .faq-question {
-            width: 100%; background: none; border: none;
-            color: var(--text); font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: 1.04rem; font-weight: 600;
-            padding: 1.2rem 1.5rem;
-            display: flex; align-items: center; justify-content: space-between;
-            cursor: pointer; text-align: left;
-            transition: color 0.25s;
-        }
-        .faq-question:hover { color: var(--accent2); }
-        .faq-icon {
-            font-size: 1.3rem; transition: transform 0.35s;
-            flex-shrink: 0; margin-left: 1rem;
-        }
-        .faq-item.open .faq-icon { transform: rotate(45deg); }
-        .faq-answer {
-            max-height: 0; overflow: hidden;
-            transition: max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1), padding 0.35s;
-            padding: 0 1.5rem;
-            color: rgba(248,250,252,0.72);
-            font-size: 0.97rem; line-height: 1.75;
-        }
-        .faq-item.open .faq-answer {
-            max-height: 300px;
-            padding: 0 1.5rem 1.3rem;
-        }
-        /* Help Cards Grid */
-        .help-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 1.3rem;
-        }
-        .help-card {
-            text-align: center;
-            padding: 2rem 1.5rem;
-        }
-        .help-card .card-emoji { font-size: 2.4rem; margin-bottom: 0.8rem; display: block; }
-        .help-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; }
-        .help-card p { color: rgba(248,250,252,0.65); font-size: 0.92rem; }
-        .help-card a {
-            display: inline-block; margin-top: 0.9rem;
-            color: var(--accent2); font-weight: 600; font-size: 0.9rem;
-            text-decoration: none; transition: color 0.25s;
-        }
-        .help-card a:hover { color: var(--accent); }
-        /* Community Social */
-        .social-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.2rem;
-        }
-        .social-card {
-            text-align: center;
-            padding: 1.5rem 1rem;
-        }
-        .social-card .card-emoji { font-size: 2rem; margin-bottom: 0.6rem; display: block; }
-        .social-card h4 { font-size: 1rem; font-weight: 700; margin-bottom: 0.3rem; }
-        .social-card a {
-            color: var(--accent2); text-decoration: none;
-            font-size: 0.9rem; font-weight: 500;
-            transition: color 0.25s;
-        }
-        .social-card a:hover { color: var(--accent3); }
-        /* Donate Section */
-        .donate-section { text-align: center; padding-top: 2rem; }
-        .donate-section p { color: rgba(248,250,252,0.65); margin-bottom: 1.2rem; }
-        .btn-donate {
-            display: inline-block;
-            padding: 0.85rem 2.4rem;
-            background: linear-gradient(135deg, var(--accent), var(--accent3));
-            color: #fff; font-weight: 700; font-size: 1rem;
-            border: none; border-radius: 12px;
-            cursor: pointer; text-decoration: none;
-            transition: transform 0.25s, box-shadow 0.25s;
-        }
-        .btn-donate:hover {
-            transform: translateY(-2px) scale(1.04);
-            box-shadow: 0 6px 24px rgba(108,99,255,0.3);
-        }
-        /* Donate Overlay */
-        .donate-overlay {
-            display: none; position: fixed; inset: 0;
-            z-index: 9999;
-            background: rgba(0,0,0,0.75);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            align-items: center; justify-content: center;
-        }
-        .donate-overlay.active { display: flex; }
-        .donate-modal {
-            background: linear-gradient(145deg, rgba(30,30,50,0.97), rgba(11,15,25,0.98));
-            border: 1px solid var(--glass-border);
-            border-radius: 22px;
-            padding: 2.5rem;
-            max-width: 420px; width: 90%;
+
+        [data-theme="dark"] .icon-moon { display: none; }
+        [data-theme="light"] .icon-sun { display: none; }
+
+        /* ===== Header Section ===== */
+        .header {
+            padding: 9rem 2rem 5rem;
             text-align: center;
             position: relative;
-            animation: modalIn 0.35s ease;
+            background: var(--gradient-header);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1;
         }
-        @keyframes modalIn {
-            from { opacity: 0; transform: scale(0.92) translateY(20px); }
-            to { opacity: 1; transform: scale(1) translateY(0); }
+
+        .header-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            animation: bounce 2s infinite ease-in-out;
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.2));
         }
-        .donate-modal h3 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.4rem; font-weight: 700;
-            background: linear-gradient(135deg, var(--accent), var(--accent2));
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .header h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 900;
+            letter-spacing: -0.03em;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+
+        .header h1 span {
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header p {
+            font-family: var(--font-secondary);
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* ===== Main Container ===== */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ===== Section Shared Styles ===== */
+        .section-title {
+            font-size: 2rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .section-title svg {
+            width: 28px;
+            height: 28px;
+            color: var(--accent);
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            margin-bottom: 3rem;
+            max-width: 600px;
+        }
+
+        /* ===== FAQ Accordion ===== */
+        .faq-section {
+            margin-bottom: 6rem;
+        }
+
+        .faq-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            backdrop-filter: blur(10px);
+            overflow: hidden;
+            transition: all var(--transition-normal);
+        }
+
+        .faq-item:hover {
+            border-color: var(--border-hover);
+        }
+
+        .faq-item.active {
+            border-color: var(--accent);
+            box-shadow: 0 0 20px var(--accent-subtle);
+        }
+
+        .faq-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.25rem 1.5rem;
+            cursor: pointer;
+            user-select: none;
+            transition: background var(--transition-fast);
+        }
+
+        .faq-header:hover {
+            background: var(--bg-card-hover);
+        }
+
+        .faq-question {
+            font-weight: 600;
+            font-size: 1.05rem;
+            color: var(--text-primary);
+        }
+
+        .faq-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--accent-subtle);
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform var(--transition-normal);
+            flex-shrink: 0;
+        }
+
+        .faq-icon svg {
+            width: 14px;
+            height: 14px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+            background: var(--accent);
+            color: #fff;
+        }
+
+        .faq-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .faq-body {
+            padding: 0 1.5rem 1.25rem;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .faq-body a {
+            font-weight: 500;
+            text-decoration: underline;
+            text-decoration-color: var(--accent-subtle);
+            text-underline-offset: 4px;
+        }
+
+        .faq-body a:hover {
+            text-decoration-color: var(--accent);
+        }
+
+        /* ===== Contact Methods Grid ===== */
+        .contact-section {
+            margin-bottom: 6rem;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .contact-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            transition: all var(--transition-normal);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient-accent);
+            opacity: 0;
+            transition: opacity var(--transition-normal);
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .contact-card:hover::before {
+            opacity: 1;
+        }
+
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.25rem;
+            transition: transform var(--transition-fast);
+        }
+
+        .contact-card:hover .contact-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .contact-icon svg {
+            width: 32px;
+            height: 32px;
+        }
+
+        /* Specific Icon Colors */
+        .icon-email { background: rgba(234, 67, 53, 0.1); color: #ea4335; fill: currentColor; }
+        .icon-github { background: rgba(255, 255, 255, 0.1); color: var(--text-primary); fill: currentColor; }
+        .icon-youtube { background: rgba(255, 0, 0, 0.1); color: #ff0000; fill: currentColor; }
+        .icon-linkedin { background: rgba(10, 102, 194, 0.1); color: #0a66c2; fill: currentColor; }
+        .icon-x { background: rgba(255, 255, 255, 0.1); color: var(--text-primary); fill: currentColor; }
+        .icon-donate { background: rgba(255, 107, 107, 0.1); color: #ff6b6b; fill: currentColor; }
+
+        .contact-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .contact-desc {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .contact-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 0.75rem;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            color: var(--text-primary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all var(--transition-fast);
+            cursor: pointer;
+        }
+
+        .contact-link:hover {
+            background: var(--accent);
+            color: #fff;
+            border-color: var(--accent);
+        }
+
+        /* ===== Common Issues & Bug Report Section ===== */
+        .issues-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 6rem;
+        }
+
+        @media (max-width: 900px) {
+            .issues-wrapper {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .issue-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .issue-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .issue-card h3 svg {
+            width: 24px;
+            height: 24px;
+            color: var(--accent);
+        }
+
+        .issue-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .issue-item {
+            padding: 1rem;
+            background: var(--bg-tertiary);
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-color);
+        }
+
+        .issue-item h4 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+            color: var(--text-primary);
+        }
+
+        .issue-item p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .bug-steps {
+            list-style: decimal inside;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .bug-steps li {
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .bug-steps li span {
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .btn-bug {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: rgba(234, 67, 53, 0.1);
+            color: #ea4335;
+            border: 1px solid rgba(234, 67, 53, 0.3);
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            transition: all var(--transition-fast);
+        }
+
+        .btn-bug:hover {
+            background: #ea4335;
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        .btn-bug svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+
+        /* ===== Premium Footer ===== */
+        .footer {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border-color);
+            padding: 4rem 2rem 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        @media (max-width: 900px) {
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .footer-brand h2 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             margin-bottom: 1rem;
         }
-        .donate-modal img {
-            width: 200px; height: 200px;
-            border-radius: 14px; margin: 1rem 0;
-            border: 2px solid var(--glass-border);
+
+        .footer-brand p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            max-width: 300px;
         }
-        .donate-modal .razorpay-link {
-            display: inline-block; margin-top: 1rem;
-            padding: 0.7rem 2rem;
-            background: linear-gradient(135deg, var(--accent2), var(--accent));
-            color: #fff; font-weight: 700;
-            border-radius: 10px; text-decoration: none;
-            transition: transform 0.25s;
+
+        .footer-col h3 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 1.25rem;
+            color: var(--text-primary);
         }
-        .donate-modal .razorpay-link:hover { transform: scale(1.05); }
-        .close-modal {
-            position: absolute; top: 1rem; right: 1.2rem;
-            background: none; border: none; color: var(--text);
-            font-size: 1.5rem; cursor: pointer;
-            opacity: 0.6; transition: opacity 0.25s;
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
         }
-        .close-modal:hover { opacity: 1; }
-        /* Footer */
-        footer {
-            position: relative; z-index: 1;
-            text-align: center;
-            padding: 3rem 1.5rem 2rem;
-            margin-top: 2rem;
-            border-top: 1px solid var(--glass-border);
-        }
-        .footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.2rem; margin-bottom: 1rem; }
+
         .footer-links a {
-            color: rgba(248,250,252,0.55);
-            text-decoration: none; font-size: 0.88rem;
-            transition: color 0.25s;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
         }
-        .footer-links a:hover { color: var(--accent2); }
-        .footer-copy {
-            color: rgba(248,250,252,0.35);
-            font-size: 0.82rem;
+
+        .footer-links a::before {
+            content: '→';
+            color: var(--accent);
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: all var(--transition-fast);
         }
-        .footer-gumroad {
-            margin-top: 0.6rem;
+
+        .footer-links a:hover {
+            color: var(--accent);
         }
-        .footer-gumroad a {
-            color: var(--accent); text-decoration: none;
-            font-size: 0.85rem; font-weight: 600;
+
+        .footer-links a:hover::before {
+            opacity: 1;
+            transform: translateX(0);
         }
-        .footer-gumroad a:hover { color: var(--accent2); }
-        /* Responsive */
-        @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .nav-links.open {
-                display: flex; flex-direction: column;
-                position: absolute; top: 64px; left: 0; right: 0;
-                background: rgba(11,15,25,0.96);
-                backdrop-filter: blur(18px);
-                padding: 1rem; gap: 0.3rem;
-                border-bottom: 1px solid var(--glass-border);
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: var(--text-tertiary);
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 600px) {
+            .footer-bottom {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
             }
-            .hamburger { display: block; }
-            .hero h1 { font-size: 1.8rem; }
-            .help-grid { grid-template-columns: 1fr 1fr; }
         }
-        @media (max-width: 480px) {
-            .help-grid, .social-grid { grid-template-columns: 1fr; }
+
+        /* ===== Donate Modal ===== */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--overlay-bg);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
         }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .modal-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-xl);
+            width: 90%;
+            max-width: 450px;
+            padding: 2.5rem;
+            position: relative;
+            transform: translateY(30px) scale(0.95);
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: var(--shadow-lg);
+            text-align: center;
+        }
+
+        .modal-overlay.active .modal-card {
+            transform: translateY(0) scale(1);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1.25rem;
+            right: 1.25rem;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            transition: all var(--transition-fast);
+        }
+
+        .modal-close:hover {
+            color: #ff6b6b;
+            border-color: #ff6b6b;
+            background: rgba(255, 107, 107, 0.1);
+            transform: rotate(90deg);
+        }
+
+        .modal-close svg {
+            width: 16px;
+            height: 16px;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+        }
+
+        .modal-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .modal-desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+        }
+
+        .qr-code {
+            width: 200px;
+            height: 200px;
+            background: #fff;
+            border-radius: var(--radius-md);
+            margin: 0 auto 1.5rem;
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid var(--accent);
+        }
+        
+        .qr-code img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .upi-id {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-full);
+            font-family: var(--font-mono);
+            font-weight: 600;
+            color: var(--text-primary);
+            user-select: all;
+        }
+
     </style>
 </head>
 <body>
 
-<!-- Animated Gradient Shapes -->
-<div class="gradient-shape shape1"></div>
-<div class="gradient-shape shape2"></div>
-<div class="gradient-shape shape3"></div>
-
-<!-- Navigation -->
-<nav>
-    <div class="nav-inner">
-        <a href="index.html" class="nav-logo">🚀 Web Dev Mastery</a>
-        <button class="hamburger" id="hamburger" aria-label="Toggle navigation">☰</button>
-        <div class="nav-links" id="navLinks">
-            <a href="index.html">Home</a>
-            <a href="html.html">HTML</a>
-            <a href="css.html">CSS</a>
-            <a href="javascript.html">JavaScript</a>
-            <a href="react.html">React</a>
-            <a href="developer.html">Developer</a>
-            <a href="support.html" class="active">Support</a>
-        </div>
+    <!-- Floating Background Elements -->
+    <div class="floating-orbs">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
     </div>
-</nav>
 
-<!-- Hero Header -->
-<section class="hero">
-    <span class="hero-emoji">🛟</span>
-    <h1>Support & Help Center</h1>
-    <p>Find answers to common questions, get in touch with us, report bugs, or request new features. We're here to help you on your web development journey.</p>
-</section>
-
-<!-- FAQ Section -->
-<section class="section">
-    <h2 class="section-title">❓ Frequently Asked Questions</h2>
-    <div class="faq-list" id="faqList">
-        <div class="faq-item">
-            <button class="faq-question">
-                <span>How do I get started?</span>
-                <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-                <p>Getting started is easy! Simply head to the <strong>Home</strong> page and pick a module — HTML, CSS, JavaScript, or React. Each module is structured from beginner to advanced concepts with interactive examples, code snippets, and visual explanations. No prior setup or installation is needed; everything runs directly in your browser.</p>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-left">
+            <a href="index.html" class="nav-back">
+                <svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                Hub Home
+            </a>
+            <div class="nav-brand">
+                Web Dev Mastery
             </div>
         </div>
-        <div class="faq-item">
-            <button class="faq-question">
-                <span>Is this platform free?</span>
-                <span class="faq-icon">+</span>
+        <div class="nav-right">
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                <svg class="icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                <svg class="icon-moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
             </button>
-            <div class="faq-answer">
-                <p>Yes! Web Development Mastery is completely free and open source. All modules, code examples, and learning materials are available at no cost. If you find the platform valuable, you can support the project through donations or by sharing it with others.</p>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <header class="header">
+        <span class="header-icon">🆘</span>
+        <h1>Support & <span>Help</span></h1>
+        <p>Need assistance with your Web Development Mastery journey? We've got you covered. Browse FAQs, report issues, or get in touch with our community.</p>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        
+        <!-- FAQs Section -->
+        <section class="faq-section">
+            <h2 class="section-title">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                Frequently Asked Questions
+            </h2>
+            <p class="section-subtitle">Find quick answers to the most common questions about the Web Development Mastery platform and modules.</p>
+            
+            <div class="faq-grid" id="faqContainer">
+                <!-- FAQs will be injected via JS to maintain clean structure, or written directly below -->
+                
+                <div class="faq-item">
+                    <div class="faq-header">
+                        <span class="faq-question">What is Web Development Mastery?</span>
+                        <div class="faq-icon"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></div>
+                    </div>
+                    <div class="faq-content">
+                        <div class="faq-body">
+                            Web Development Mastery is a comprehensive, interactive learning platform designed by Sanskar Yadav. It covers fundamental and advanced topics across multiple modules including HTML, CSS, JavaScript, and React, aiming to provide a seamless, premium learning experience.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-header">
+                        <span class="faq-question">Is this platform free to use?</span>
+                        <div class="faq-icon"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></div>
+                    </div>
+                    <div class="faq-content">
+                        <div class="faq-body">
+                            Yes! The core platform and all of its educational modules are completely free to use. We believe in accessible education for everyone. If you find the project helpful, you can optionally support it via the Donate section.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-header">
+                        <span class="faq-question">How do I navigate between modules?</span>
+                        <div class="faq-icon"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></div>
+                    </div>
+                    <div class="faq-content">
+                        <div class="faq-body">
+                            You can navigate via the <a href="index.html">Hub Home</a>. Simply click the "Hub Home" button in the navigation bar to return to the root dashboard, where you can select any available module (HTML, CSS, JS, etc.).
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-header">
+                        <span class="faq-question">How does the theme system work?</span>
+                        <div class="faq-icon"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></div>
+                    </div>
+                    <div class="faq-content">
+                        <div class="faq-body">
+                            The platform features a global Light/Dark mode toggle located in the top-right corner of the navigation bar. Your theme preference is saved in your browser's local storage and automatically applies across all modules.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-header">
+                        <span class="faq-question">How do I track my progress?</span>
+                        <div class="faq-icon"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></div>
+                    </div>
+                    <div class="faq-content">
+                        <div class="faq-body">
+                            Progress tracking is built into specific modules. When you complete lessons, quizzes, or interactive exercises, your progress is automatically saved to your browser's local storage. This ensures you can pick up exactly where you left off.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-header">
+                        <span class="faq-question">Can I use this platform offline?</span>
+                        <div class="faq-icon"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></div>
+                    </div>
+                    <div class="faq-content">
+                        <div class="faq-body">
+                            Once the pages and assets are loaded in your browser, many interactive components will continue to work offline. However, for the initial load, external resources like Google Fonts, and embedded videos, an active internet connection is required.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-header">
+                        <span class="faq-question">How do I report bugs?</span>
+                        <div class="faq-icon"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></div>
+                    </div>
+                    <div class="faq-content">
+                        <div class="faq-body">
+                            You can report bugs by opening an issue on our GitHub repository. Please include clear steps to reproduce the issue, your browser version, and any relevant screenshots. Scroll down to the "Report a Bug" section for a direct link.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-header">
+                        <span class="faq-question">Is this open source?</span>
+                        <div class="faq-icon"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></div>
+                    </div>
+                    <div class="faq-content">
+                        <div class="faq-body">
+                            Yes! The entire project is open-source and hosted on GitHub. We welcome contributions, feedback, and forks from the developer community. Check out our GitHub repository to view the source code.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-header">
+                        <span class="faq-question">How can I support the project?</span>
+                        <div class="faq-icon"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></div>
+                    </div>
+                    <div class="faq-content">
+                        <div class="faq-body">
+                            You can support the project in several ways: star the repository on GitHub, share it with your friends and colleagues, report bugs, contribute code, or make a donation via the 'Support Project' button below.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-header">
+                        <span class="faq-question">Which browsers are supported?</span>
+                        <div class="faq-icon"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></div>
+                    </div>
+                    <div class="faq-content">
+                        <div class="faq-body">
+                            The platform is optimized for modern web browsers. We officially support the latest versions of Google Chrome, Mozilla Firefox, Apple Safari, and Microsoft Edge. Internet Explorer is not supported.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-header">
+                        <span class="faq-question">How do I reset my progress?</span>
+                        <div class="faq-icon"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></div>
+                    </div>
+                    <div class="faq-content">
+                        <div class="faq-body">
+                            To reset your progress, you need to clear your browser's Local Storage for this site. In most browsers, you can do this by opening Developer Tools (F12) > Application tab > Local Storage, and clearing the data.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-header">
+                        <span class="faq-question">Can I contribute to the project?</span>
+                        <div class="faq-icon"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></div>
+                    </div>
+                    <div class="faq-content">
+                        <div class="faq-body">
+                            Absolutely! We welcome pull requests for bug fixes, new features, and content improvements. Please check our GitHub repository for the contribution guidelines and open issues you can tackle.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Methods Grid -->
+        <section class="contact-section">
+            <h2 class="section-title">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                Connect With Us
+            </h2>
+            <p class="section-subtitle">Reach out through any of these platforms for direct support, collaborations, or just to say hi.</p>
+            
+            <div class="contact-grid">
+                <!-- Email -->
+                <div class="contact-card">
+                    <div class="contact-icon icon-email">
+                        <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    </div>
+                    <h3 class="contact-title">Email Support</h3>
+                    <p class="contact-desc">Drop an email for direct inquiries and detailed support.</p>
+                    <a href="mailto:sanskaryadavfrom2012to2026@gmail.com" class="contact-link">Send Email</a>
+                </div>
+
+                <!-- GitHub -->
+                <div class="contact-card">
+                    <div class="contact-icon icon-github">
+                        <svg viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+                    </div>
+                    <h3 class="contact-title">GitHub Issues</h3>
+                    <p class="contact-desc">Report bugs, request features, and contribute to the code.</p>
+                    <a href="https://github.com/Sanskar-in/Web-Development-Mastery/issues" target="_blank" rel="noopener noreferrer" class="contact-link">Open Issue</a>
+                </div>
+
+                <!-- YouTube -->
+                <div class="contact-card">
+                    <div class="contact-icon icon-youtube">
+                        <svg viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="var(--bg-card)"/></svg>
+                    </div>
+                    <h3 class="contact-title">YouTube Channel</h3>
+                    <p class="contact-desc">Watch video tutorials, project walkthroughs, and guides.</p>
+                    <a href="https://youtube.com/@Sanskar-in" target="_blank" rel="noopener noreferrer" class="contact-link">Subscribe</a>
+                </div>
+
+                <!-- LinkedIn -->
+                <div class="contact-card">
+                    <div class="contact-icon icon-linkedin">
+                        <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                    </div>
+                    <h3 class="contact-title">LinkedIn</h3>
+                    <p class="contact-desc">Connect professionally and follow career updates.</p>
+                    <a href="https://linkedin.com/in/sanskar-in" target="_blank" rel="noopener noreferrer" class="contact-link">Connect</a>
+                </div>
+
+                <!-- X / Twitter -->
+                <div class="contact-card">
+                    <div class="contact-icon icon-x">
+                        <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                    </div>
+                    <h3 class="contact-title">X (Twitter)</h3>
+                    <p class="contact-desc">Follow for quick updates, tips, and community interactions.</p>
+                    <a href="https://x.com/Sanskar_in" target="_blank" rel="noopener noreferrer" class="contact-link">Follow</a>
+                </div>
+
+                <!-- Donate -->
+                <div class="contact-card">
+                    <div class="contact-icon icon-donate">
+                        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                    </div>
+                    <h3 class="contact-title">Support Project</h3>
+                    <p class="contact-desc">Help keep the platform free and fuel future updates.</p>
+                    <button onclick="openDonate()" class="contact-link" style="border:1px solid #ff6b6b; color:#ff6b6b; background: rgba(255,107,107,0.1);">Donate Now</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technical Support Section -->
+        <div class="issues-wrapper">
+            
+            <!-- Bug Report Card -->
+            <div class="issue-card">
+                <h3>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><path d="m9 15 2 2 4-4"/></svg>
+                    How to Report a Bug
+                </h3>
+                <ol class="bug-steps">
+                    <li><span>Check existing issues:</span> Ensure the bug hasn't already been reported in the GitHub repository.</li>
+                    <li><span>Gather info:</span> Note your browser version, OS, and exact steps to reproduce the error.</li>
+                    <li><span>Take screenshots:</span> If it's a visual glitch, capture the screen or open Developer Tools (F12) to capture console errors.</li>
+                    <li><span>Open an issue:</span> Click the button below to submit a detailed bug report on GitHub.</li>
+                </ol>
+                <a href="https://github.com/Sanskar-in/Web-Development-Mastery/issues/new" target="_blank" rel="noopener noreferrer" class="btn-bug">
+                    <svg viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+                    Report Bug on GitHub
+                </a>
+            </div>
+
+            <!-- Common Issues Card -->
+            <div class="issue-card">
+                <h3>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                    Common Issues
+                </h3>
+                <div class="issue-list">
+                    <div class="issue-item">
+                        <h4>Platform looks broken / CSS not loading</h4>
+                        <p>Perform a hard refresh (Ctrl + F5 or Cmd + Shift + R) to clear the browser cache and load the latest stylesheets.</p>
+                    </div>
+                    <div class="issue-item">
+                        <h4>Progress not saving</h4>
+                        <p>Ensure your browser is not in Incognito/Private mode, and that you haven't disabled Local Storage or Cookies for this site.</p>
+                    </div>
+                    <div class="issue-item">
+                        <h4>Videos or External Links blocked</h4>
+                        <p>Check if you have an aggressive adblocker or tracking prevention enabled. Whitelist the domain to ensure full functionality.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <h2>Web Dev Mastery</h2>
+                <p>An interactive, premium learning platform designed to take you from beginner to advanced in modern web technologies.</p>
+            </div>
+            
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <div class="footer-links">
+                    <a href="index.html">Hub Home</a>
+                    <a href="support.html">Support & FAQ</a>
+                    <a href="https://github.com/Sanskar-in/Web-Development-Mastery" target="_blank">Source Code</a>
+                    <a href="#" onclick="openDonate(); return false;">Donate</a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h3>Modules</h3>
+                <div class="footer-links">
+                    <a href="HTML/index.html">HTML Mastery</a>
+                    <a href="CSS/index.html">CSS Mastery</a>
+                    <a href="JS/index.html">JavaScript Mastery</a>
+                    <a href="React/index.html">React Mastery</a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h3>Connect</h3>
+                <div class="footer-links">
+                    <a href="https://youtube.com/@Sanskar-in" target="_blank">YouTube</a>
+                    <a href="https://github.com/Sanskar-in" target="_blank">GitHub</a>
+                    <a href="https://linkedin.com/in/sanskar-in" target="_blank">LinkedIn</a>
+                    <a href="https://x.com/Sanskar_in" target="_blank">Twitter (X)</a>
+                </div>
             </div>
         </div>
-        <div class="faq-item">
-            <button class="faq-question">
-                <span>How does progress tracking work?</span>
-                <span class="faq-icon">+</span>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2026 Web Development Mastery. Built by Sanskar Yadav.</p>
+            <p>Designed with passion and modern web standards.</p>
+        </div>
+    </footer>
+
+    <!-- Donate Modal Overlay -->
+    <div class="modal-overlay" id="donateModal">
+        <div class="modal-card">
+            <button class="modal-close" onclick="closeDonate()" aria-label="Close modal">
+                <svg viewBox="0 0 24 24" fill="none"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
             </button>
-            <div class="faq-answer">
-                <p>Progress is tracked locally in your browser using localStorage. As you complete concepts and sections within each module, your progress is saved automatically. You can view your overall completion percentage on each module page. Clearing your browser data will reset your progress.</p>
+            
+            <div class="modal-icon">❤️</div>
+            <h3 class="modal-title">Support the Project</h3>
+            <p class="modal-desc">If this platform helped you learn, consider supporting its continuous development. Your contribution keeps this open-source and free for everyone.</p>
+            
+            <div class="qr-code">
+                <!-- Placeholder for UPI QR Code -->
+                <svg viewBox="0 0 24 24" fill="var(--text-tertiary)" opacity="0.5"><path d="M3 3h8v8H3zM5 5v4h4V5zM13 3h8v8h-8zM15 5v4h4V5zM3 13h8v8H3zM5 15v4h4v-4zM13 13h2v2h-2zM15 13h2v2h-2zM17 13h2v2h-2zM19 13h2v2h-2zM13 15h2v2h-2zM17 15h2v2h-2zM19 15h2v2h-2zM13 17h2v2h-2zM15 17h2v2h-2zM17 17h2v2h-2zM19 17h2v2h-2zM13 19h2v2h-2zM15 19h2v2h-2zM17 19h2v2h-2zM19 19h2v2h-2z"/></svg>
             </div>
-        </div>
-        <div class="faq-item">
-            <button class="faq-question">
-                <span>Can I use code examples in my projects?</span>
-                <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-                <p>Absolutely! All code examples provided on this platform are free to use in your personal and commercial projects. We encourage you to learn from them, modify them, and build something amazing. Attribution is appreciated but not required.</p>
-            </div>
-        </div>
-        <div class="faq-item">
-            <button class="faq-question">
-                <span>How do I change themes?</span>
-                <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-                <p>Each module page features a built-in theme switcher with 25+ unique themes. Look for the theme button (usually a palette icon) on any module page. Themes are saved to your browser so your preferred look persists across sessions. Explore different color palettes and find the one that suits your vibe!</p>
-            </div>
-        </div>
-        <div class="faq-item">
-            <button class="faq-question">
-                <span>How do I report bugs?</span>
-                <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-                <p>If you encounter a bug or issue, you can report it by opening an issue on our <a href="https://github.com/Sanskar-in" target="_blank" style="color:var(--accent2);">GitHub repository</a>. Please include a description of the bug, steps to reproduce it, your browser and OS information, and any screenshots if possible. You can also email us at <strong>supportramsandesh@gmail.com</strong>.</p>
-            </div>
-        </div>
-        <div class="faq-item">
-            <button class="faq-question">
-                <span>What modules are available?</span>
-                <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-                <p>We currently offer four comprehensive modules: <strong>HTML</strong> (structure & semantics), <strong>CSS</strong> (styling & layout), <strong>JavaScript</strong> (logic & interactivity), and <strong>React</strong> (component-based UI). Each module covers 100+ concepts ranging from fundamentals to advanced topics with real-world examples and practice exercises.</p>
-            </div>
-        </div>
-        <div class="faq-item">
-            <button class="faq-question">
-                <span>How can I support this project?</span>
-                <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-                <p>There are many ways to support Web Development Mastery! You can: ⭐ Star our GitHub repo, 💰 make a donation via UPI/Razorpay, 📢 share it on social media, 🐛 report bugs or contribute code, and 📝 provide feedback and suggestions. Every bit of support helps keep this project alive and growing!</p>
-            </div>
+            
+            <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 0.5rem;">UPI ID:</p>
+            <div class="upi-id">sanskar@upi</div>
         </div>
     </div>
-</section>
 
-<!-- Quick Help Cards -->
-<section class="section">
-    <h2 class="section-title">⚡ Quick Help</h2>
-    <div class="help-grid">
-        <div class="glass-card help-card">
-            <span class="card-emoji">📧</span>
-            <h3>Email Support</h3>
-            <p>Reach out to us directly via email for personalized help, questions, or collaborations.</p>
-            <a href="mailto:supportramsandesh@gmail.com">supportramsandesh@gmail.com</a>
-        </div>
-        <div class="glass-card help-card">
-            <span class="card-emoji">🐛</span>
-            <h3>Report a Bug</h3>
-            <p>Found something broken? Open a GitHub issue and help us improve the platform for everyone.</p>
-            <a href="https://github.com/Sanskar-in" target="_blank">Open GitHub Issues →</a>
-        </div>
-        <div class="glass-card help-card">
-            <span class="card-emoji">💡</span>
-            <h3>Feature Request</h3>
-            <p>Have an idea for a new feature or improvement? We'd love to hear your suggestions and feedback.</p>
-            <a href="mailto:sanskaryadavfrom2012to2026@gmail.com">Submit a Request →</a>
-        </div>
-        <div class="glass-card help-card">
-            <span class="card-emoji">📚</span>
-            <h3>Documentation</h3>
-            <p>Browse our comprehensive module documentation covering HTML, CSS, JavaScript, and React.</p>
-            <a href="index.html">Browse Modules →</a>
-        </div>
-    </div>
-</section>
+    <!-- Interactive Scripts -->
+    <script>
+        // --- Theme System ---
+        const themeToggle = document.getElementById('themeToggle');
+        const html = document.documentElement;
 
-<!-- Community Section -->
-<section class="section">
-    <h2 class="section-title">🌐 Join Our Community</h2>
-    <p style="text-align:center;color:rgba(248,250,252,0.6);margin-bottom:1.8rem;max-width:600px;margin-left:auto;margin-right:auto;">Connect with fellow developers, get updates, watch tutorials, and be part of a growing community passionate about web development.</p>
-    <div class="social-grid">
-        <div class="glass-card social-card">
-            <span class="card-emoji">🎬</span>
-            <h4>YouTube</h4>
-            <a href="https://youtube.com/@Sanskar-in" target="_blank">@Sanskar-in</a>
-        </div>
-        <div class="glass-card social-card">
-            <span class="card-emoji">💻</span>
-            <h4>GitHub</h4>
-            <a href="https://github.com/Sanskar-in" target="_blank">Sanskar-in</a>
-        </div>
-        <div class="glass-card social-card">
-            <span class="card-emoji">💼</span>
-            <h4>LinkedIn</h4>
-            <a href="https://linkedin.com/in/sanskar-in" target="_blank">sanskar-in</a>
-        </div>
-        <div class="glass-card social-card">
-            <span class="card-emoji">🐦</span>
-            <h4>X (Twitter)</h4>
-            <a href="https://x.com/Sanskar_in" target="_blank">@Sanskar_in</a>
-        </div>
-    </div>
-</section>
+        // Check for saved theme preference or use system preference
+        const savedTheme = localStorage.getItem('hub-theme');
+        const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        
+        if (savedTheme) {
+            html.setAttribute('data-theme', savedTheme);
+        } else if (!systemDark) {
+            html.setAttribute('data-theme', 'light');
+        }
 
-<!-- Contact Emails -->
-<section class="section">
-    <h2 class="section-title">✉️ Contact Emails</h2>
-    <div class="help-grid" style="max-width:750px;margin:0 auto;">
-        <div class="glass-card help-card">
-            <span class="card-emoji">📨</span>
-            <h3>Primary Email</h3>
-            <a href="mailto:sanskaryadavfrom2012to2026@gmail.com" style="font-size:0.82rem;">sanskaryadavfrom2012to2026@gmail.com</a>
-        </div>
-        <div class="glass-card help-card">
-            <span class="card-emoji">🛠️</span>
-            <h3>Support Email</h3>
-            <a href="mailto:supportramsandesh@gmail.com">supportramsandesh@gmail.com</a>
-        </div>
-        <div class="glass-card help-card">
-            <span class="card-emoji">📬</span>
-            <h3>Outlook Email</h3>
-            <a href="mailto:sanskaryadavfromghosimau2026-27@outlook.com" style="font-size:0.78rem;">sanskaryadavfromghosimau2026-27@outlook.com</a>
-        </div>
-    </div>
-</section>
+        // Toggle theme on button click
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('hub-theme', newTheme);
+        });
 
-<!-- Donate Section -->
-<section class="section donate-section">
-    <h2 class="section-title">💖 Support the Project</h2>
-    <p>If you find Web Development Mastery helpful, consider making a small donation to keep the project alive, free, and growing. Every contribution means the world to us!</p>
-    <button class="btn-donate" id="openDonate">💝 Donate Now</button>
-</section>
+        // --- FAQ Accordion ---
+        const faqItems = document.querySelectorAll('.faq-item');
+        
+        faqItems.forEach(item => {
+            const header = item.querySelector('.faq-header');
+            const content = item.querySelector('.faq-content');
+            
+            header.addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+                
+                // Close all other items
+                faqItems.forEach(otherItem => {
+                    otherItem.classList.remove('active');
+                    otherItem.querySelector('.faq-content').style.maxHeight = null;
+                });
+                
+                // Toggle current item
+                if (!isActive) {
+                    item.classList.add('active');
+                    content.style.maxHeight = content.scrollHeight + "px";
+                }
+            });
+        });
 
-<!-- Donate Overlay -->
-<div class="donate-overlay" id="donateOverlay">
-    <div class="donate-modal">
-        <button class="close-modal" id="closeDonate" aria-label="Close donate modal">✕</button>
-        <h3>Support Web Dev Mastery</h3>
-        <p style="color:rgba(248,250,252,0.65);font-size:0.93rem;">Scan the QR code below to donate via UPI, or use the Razorpay link for other payment methods.</p>
-        <img src="Payment-Ramsandesh.jpeg" alt="Payment QR Code" loading="lazy">
-        <br>
-        <a href="https://rzp.io/l/Sanskar" target="_blank" class="razorpay-link">💳 Pay via Razorpay</a>
-        <p style="color:rgba(248,250,252,0.4);font-size:0.8rem;margin-top:1rem;">Thank you for your generous support! 🙏</p>
-    </div>
-</div>
-
-<!-- Footer -->
-<footer>
-    <div class="footer-links">
-        <a href="index.html">Home</a>
-        <a href="html.html">HTML</a>
-        <a href="css.html">CSS</a>
-        <a href="javascript.html">JavaScript</a>
-        <a href="react.html">React</a>
-        <a href="developer.html">Developer</a>
-        <a href="support.html">Support</a>
-    </div>
-    <div class="footer-links">
-        <a href="https://youtube.com/@Sanskar-in" target="_blank">YouTube</a>
-        <a href="https://github.com/Sanskar-in" target="_blank">GitHub</a>
-        <a href="https://linkedin.com/in/sanskar-in" target="_blank">LinkedIn</a>
-        <a href="https://x.com/Sanskar_in" target="_blank">X</a>
-    </div>
-    <div class="footer-gumroad">
-        <a href="https://ramsandesh.gumroad.com" target="_blank">🛒 Visit Gumroad Store</a>
-    </div>
-    <p class="footer-copy">© 2026 Sanskar Yadav. All rights reserved. Built with ❤️ for the web dev community.</p>
-</footer>
-
-<!-- Scripts -->
-<script>
-    // Hamburger toggle
-    const hamburger = document.getElementById('hamburger');
-    const navLinks = document.getElementById('navLinks');
-    hamburger.addEventListener('click', () => {
-        navLinks.classList.toggle('open');
-        hamburger.textContent = navLinks.classList.contains('open') ? '✕' : '☰';
-    });
-
-    // FAQ Accordion
-    const faqItems = document.querySelectorAll('.faq-item');
-    faqItems.forEach(item => {
-        const btn = item.querySelector('.faq-question');
-        btn.addEventListener('click', () => {
-            const isOpen = item.classList.contains('open');
-            // Close all
-            faqItems.forEach(i => i.classList.remove('open'));
-            // Toggle current
-            if (!isOpen) {
-                item.classList.add('open');
+        // --- Donate Modal Logic ---
+        const donateModal = document.getElementById('donateModal');
+        
+        function openDonate() {
+            donateModal.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+        
+        function closeDonate() {
+            donateModal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        
+        // Close modal when clicking outside the card
+        donateModal.addEventListener('click', (e) => {
+            if (e.target === donateModal) {
+                closeDonate();
             }
         });
-    });
-
-    // Donate overlay
-    const openDonate = document.getElementById('openDonate');
-    const closeDonate = document.getElementById('closeDonate');
-    const donateOverlay = document.getElementById('donateOverlay');
-
-    openDonate.addEventListener('click', () => {
-        donateOverlay.classList.add('active');
-    });
-    closeDonate.addEventListener('click', () => {
-        donateOverlay.classList.remove('active');
-    });
-    donateOverlay.addEventListener('click', (e) => {
-        if (e.target === donateOverlay) {
-            donateOverlay.classList.remove('active');
-        }
-    });
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-            donateOverlay.classList.remove('active');
-        }
-    });
-
-    // Close mobile nav on link click
-    navLinks.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-            navLinks.classList.remove('open');
-            hamburger.textContent = '☰';
+        
+        // Close modal on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && donateModal.classList.contains('active')) {
+                closeDonate();
+            }
         });
-    });
-</script>
-
+    </script>
 </body>
 </html>

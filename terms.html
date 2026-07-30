@@ -1,768 +1,1488 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Terms of Service for Web Development Mastery – Understand your rights and responsibilities when using our platform.">
-    <meta name="keywords" content="Terms of Service, Web Development Mastery, Sanskar Yadav, Legal, MIT License">
+    <meta name="description" content="Terms of Service for Web Development Mastery — understand the rules, rights, and responsibilities when using our free open-source learning platform by Sanskar Yadav.">
+    <meta name="keywords" content="Web Development Mastery, Terms of Service, Terms and Conditions, Sanskar Yadav, Web Development, MIT License">
     <meta name="author" content="Sanskar Yadav">
     <meta name="robots" content="index, follow">
     <meta property="og:title" content="Terms of Service | Web Development Mastery">
-    <meta property="og:description" content="Terms of Service for Web Development Mastery – your rights and responsibilities.">
+    <meta property="og:description" content="Terms of Service governing the use of Web Development Mastery's free educational platform.">
     <meta property="og:type" content="website">
-    <meta name="theme-color" content="#0b0f19">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Terms of Service | Web Development Mastery">
+    <meta name="twitter:description" content="Terms of Service for Web Development Mastery by Sanskar Yadav.">
     <title>Terms of Service | Web Development Mastery</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        /* ===== CSS RESET & VARIABLES ===== */
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        /* ==================== CSS VARIABLES & THEME ==================== */
         :root {
-            --bg: #0b0f19;
-            --bg2: #111827;
-            --text: #f8fafc;
-            --text-muted: #94a3b8;
             --accent: #6c63ff;
-            --accent2: #3ecfcf;
-            --accent3: #bf5af2;
-            --glass: rgba(255, 255, 255, 0.04);
-            --glass-border: rgba(255, 255, 255, 0.08);
-            --glass-hover: rgba(255, 255, 255, 0.07);
-            --radius: 16px;
-            --radius-sm: 10px;
-            --shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-            --font-primary: 'Plus Jakarta Sans', sans-serif;
+            --accent-hover: #5a52e6;
+            --accent-glow: rgba(108, 99, 255, 0.3);
+            --accent-soft: rgba(108, 99, 255, 0.1);
+            --gradient-primary: linear-gradient(135deg, #6c63ff 0%, #5a52e6 50%, #4a43d1 100%);
+            --gradient-header: linear-gradient(135deg, #0a0a1a 0%, #0f0f2a 40%, #15153a 70%, #0a0a1a 100%);
+            --font-primary: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             --font-heading: 'Outfit', sans-serif;
+            --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 20px;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.1);
+            --shadow-md: 0 4px 16px rgba(0,0,0,0.15);
+            --shadow-lg: 0 8px 32px rgba(0,0,0,0.2);
+            --shadow-xl: 0 12px 48px rgba(0,0,0,0.25);
+            --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-base: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        html { scroll-behavior: smooth; }
+
+        [data-theme="dark"] {
+            --bg-primary: #0a0f1a;
+            --bg-secondary: #111827;
+            --bg-card: rgba(17, 24, 39, 0.85);
+            --bg-card-hover: rgba(25, 35, 55, 0.95);
+            --bg-surface: #1a2332;
+            --bg-overlay: rgba(0, 0, 0, 0.7);
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --border-color: rgba(108, 99, 255, 0.25);
+            --border-subtle: rgba(255, 255, 255, 0.06);
+            --nav-bg: rgba(10, 15, 26, 0.92);
+            --toc-bg: rgba(17, 24, 39, 0.6);
+            --footer-bg: #060a12;
+            --orb-opacity: 0.12;
+        }
+
+        [data-theme="light"] {
+            --bg-primary: #f8fafc;
+            --bg-secondary: #ffffff;
+            --bg-card: rgba(255, 255, 255, 0.9);
+            --bg-card-hover: rgba(255, 255, 255, 1);
+            --bg-surface: #f1f5f9;
+            --bg-overlay: rgba(0, 0, 0, 0.5);
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --text-muted: #94a3b8;
+            --border-color: rgba(108, 99, 255, 0.25);
+            --border-subtle: rgba(0, 0, 0, 0.08);
+            --nav-bg: rgba(248, 250, 252, 0.92);
+            --toc-bg: rgba(241, 245, 249, 0.8);
+            --footer-bg: #0f172a;
+            --orb-opacity: 0.06;
+        }
+
+        /* ==================== RESET & BASE ==================== */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 90px;
+        }
+
         body {
             font-family: var(--font-primary);
-            background: var(--bg);
-            color: var(--text);
-            min-height: 100vh;
-            overflow-x: hidden;
+            background: var(--bg-primary);
+            color: var(--text-primary);
             line-height: 1.7;
+            overflow-x: hidden;
+            min-height: 100vh;
+            transition: background var(--transition-base), color var(--transition-base);
         }
 
-        /* ===== ANIMATED GRADIENT SHAPES ===== */
-        .gradient-shapes { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; overflow: hidden; }
-        .shape {
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-heading);
+        }
+
+        ::selection {
+            background: var(--accent);
+            color: #ffffff;
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: color var(--transition-fast);
+        }
+
+        a:hover {
+            color: var(--accent-hover);
+        }
+
+        /* ==================== FLOATING ORBS ==================== */
+        .orb-container {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .orb {
             position: absolute;
             border-radius: 50%;
-            filter: blur(100px);
-            opacity: 0.35;
-            animation: floatShape 18s ease-in-out infinite alternate;
+            filter: blur(80px);
+            opacity: var(--orb-opacity);
+            animation: orbFloat 20s ease-in-out infinite;
         }
-        .shape-1 {
-            width: 520px; height: 520px;
-            background: radial-gradient(circle, var(--accent3), transparent 70%);
-            top: -12%; right: -5%;
-            animation-duration: 21s;
+
+        .orb-1 {
+            width: 420px;
+            height: 420px;
+            background: radial-gradient(circle, #6c63ff, transparent 70%);
+            top: 5%;
+            right: -8%;
+            animation-delay: 0s;
+            animation-duration: 24s;
         }
-        .shape-2 {
-            width: 460px; height: 460px;
-            background: radial-gradient(circle, var(--accent), transparent 70%);
-            top: 50%; left: -8%;
-            animation-duration: 25s;
+
+        .orb-2 {
+            width: 360px;
+            height: 360px;
+            background: radial-gradient(circle, #5a52e6, transparent 70%);
+            top: 45%;
+            left: -10%;
             animation-delay: -6s;
+            animation-duration: 22s;
         }
-        .shape-3 {
-            width: 380px; height: 380px;
-            background: radial-gradient(circle, var(--accent2), transparent 70%);
-            bottom: -8%; right: 25%;
-            animation-duration: 23s;
+
+        .orb-3 {
+            width: 280px;
+            height: 280px;
+            background: radial-gradient(circle, #4a43d1, transparent 70%);
+            bottom: 15%;
+            right: 20%;
             animation-delay: -12s;
-        }
-        @keyframes floatShape {
-            0%   { transform: translate(0, 0) scale(1); }
-            33%  { transform: translate(-35px, 25px) scale(1.06); }
-            66%  { transform: translate(30px, -20px) scale(0.94); }
-            100% { transform: translate(-20px, 35px) scale(1.04); }
+            animation-duration: 26s;
         }
 
-        /* ===== NAVIGATION ===== */
+        .orb-4 {
+            width: 220px;
+            height: 220px;
+            background: radial-gradient(circle, #8a82ff, transparent 70%);
+            top: 25%;
+            left: 50%;
+            animation-delay: -18s;
+            animation-duration: 20s;
+        }
+
+        @keyframes orbFloat {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(50px, -50px) scale(1.08); }
+            50% { transform: translate(-40px, 40px) scale(0.92); }
+            75% { transform: translate(30px, 30px) scale(1.04); }
+        }
+
+        /* ==================== NAVIGATION ==================== */
         .navbar {
-            position: sticky; top: 0; z-index: 100;
-            background: rgba(11, 15, 25, 0.75);
-            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--glass-border);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: var(--nav-bg);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border-bottom: 1px solid var(--border-subtle);
             padding: 0 2rem;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: background var(--transition-base);
         }
-        .nav-inner {
-            max-width: 1200px; margin: 0 auto;
-            display: flex; align-items: center; justify-content: space-between;
-            height: 64px;
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
         }
+
+        .nav-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1.2rem;
+            border-radius: var(--radius-md);
+            background: var(--accent-soft);
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 0.9rem;
+            border: 1px solid var(--border-color);
+            transition: all var(--transition-fast);
+        }
+
+        .nav-back:hover {
+            background: var(--accent);
+            color: #ffffff;
+            transform: translateX(-3px);
+            box-shadow: 0 0 20px var(--accent-glow);
+        }
+
         .nav-brand {
-            font-family: var(--font-heading);
-            font-size: 1.3rem; font-weight: 700;
-            background: linear-gradient(135deg, var(--accent), var(--accent2));
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            background-clip: text; text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
-        .nav-links { display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap; }
-        .nav-links a {
-            color: var(--text-muted); text-decoration: none; font-size: 0.88rem;
-            padding: 0.4rem 0.85rem; border-radius: 8px; transition: all 0.3s ease;
-            font-weight: 500;
+
+        .nav-brand span.icon {
+            font-size: 1.5rem;
+            animation: spin 8s linear infinite;
         }
-        .nav-links a:hover { color: var(--text); background: var(--glass-hover); }
-        .nav-links a.active { color: var(--accent2); background: rgba(62, 207, 207, 0.1); }
-        .donate-btn {
-            background: linear-gradient(135deg, var(--accent), var(--accent3)) !important;
-            color: #fff !important; font-weight: 600 !important;
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .theme-toggle {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: 1px solid var(--border-color);
+            background: var(--bg-card);
+            color: var(--text-primary);
             cursor: pointer;
-        }
-        .donate-btn:hover { opacity: 0.9; transform: translateY(-1px); }
-
-        /* ===== MAIN CONTAINER ===== */
-        .main-container {
-            position: relative; z-index: 1;
-            max-width: 900px; margin: 0 auto;
-            padding: 2rem 1.5rem 4rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: all var(--transition-fast);
         }
 
-        /* ===== HEADER ===== */
+        .theme-toggle:hover {
+            background: var(--accent);
+            color: #ffffff;
+            border-color: var(--accent);
+            transform: rotate(20deg);
+            box-shadow: 0 0 20px var(--accent-glow);
+        }
+
+        .donate-btn-nav {
+            padding: 0.5rem 1.2rem;
+            border-radius: var(--radius-md);
+            background: var(--gradient-primary);
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 0.85rem;
+            border: none;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .donate-btn-nav:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px var(--accent-glow);
+        }
+
+        /* ==================== HEADER ==================== */
         .page-header {
+            margin-top: 70px;
+            padding: 5rem 2rem 4rem;
+            background: var(--gradient-header);
+            position: relative;
+            overflow: hidden;
             text-align: center;
-            padding: 3rem 0 2rem;
         }
-        .page-header .icon {
+
+        .page-header::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 50% 0%, rgba(108, 99, 255, 0.12) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .page-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: linear-gradient(to top, var(--bg-primary), transparent);
+            pointer-events: none;
+        }
+
+        .header-icon {
             font-size: 3.5rem;
             margin-bottom: 1rem;
             display: block;
-            animation: pulse 2s ease-in-out infinite;
+            animation: pulse 3s ease-in-out infinite;
         }
+
         @keyframes pulse {
             0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.08); }
+            50% { transform: scale(1.1); }
         }
-        .page-header h1 {
-            font-family: var(--font-heading);
-            font-size: 2.8rem; font-weight: 800;
-            background: linear-gradient(135deg, var(--accent), var(--accent2), var(--accent3));
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 0.5rem;
-        }
-        .page-header .effective-date {
-            color: var(--text-muted); font-size: 0.95rem;
-        }
-        .page-header .effective-date strong { color: var(--accent2); }
 
-        /* ===== TABLE OF CONTENTS ===== */
-        .toc-card {
-            background: var(--glass);
-            border: 1px solid var(--glass-border);
-            border-radius: var(--radius);
-            padding: 1.8rem 2rem;
-            margin-bottom: 2.5rem;
-            backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+        .header-title {
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            font-weight: 800;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.8rem;
+            letter-spacing: -0.5px;
         }
-        .toc-card h2 {
-            font-family: var(--font-heading);
-            font-size: 1.25rem; font-weight: 700;
-            margin-bottom: 1rem;
+
+        .header-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            font-weight: 400;
+            max-width: 620px;
+            margin: 0 auto;
+        }
+
+        .effective-date {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+            padding: 0.5rem 1.5rem;
+            background: var(--accent-soft);
+            border: 1px solid var(--border-color);
+            border-radius: 50px;
             color: var(--accent);
+            font-size: 0.9rem;
+            font-weight: 600;
         }
-        .toc-list {
-            list-style: none; display: grid;
-            grid-template-columns: 1fr 1fr; gap: 0.5rem;
-        }
-        .toc-list li a {
-            color: var(--text-muted); text-decoration: none;
-            font-size: 0.92rem; padding: 0.4rem 0.6rem;
-            border-radius: 6px; display: flex; align-items: center; gap: 0.5rem;
-            transition: all 0.3s ease;
-        }
-        .toc-list li a::before {
-            content: '→'; color: var(--accent2);
-            font-weight: 700; transition: transform 0.3s ease;
-        }
-        .toc-list li a:hover {
-            color: var(--text); background: var(--glass-hover);
-        }
-        .toc-list li a:hover::before { transform: translateX(4px); }
 
-        /* ===== SECTION CARD ===== */
-        .section-card {
-            background: var(--glass);
-            border: 1px solid var(--glass-border);
-            border-radius: var(--radius);
-            padding: 2rem 2.2rem;
-            margin-bottom: 2rem;
-            backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        /* ==================== MAIN CONTENT ==================== */
+        .content-wrapper {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem 2rem 4rem;
         }
-        .section-card:hover {
-            border-color: rgba(191, 90, 242, 0.25);
-            box-shadow: 0 4px 24px rgba(191, 90, 242, 0.08);
+
+        /* ==================== TABLE OF CONTENTS ==================== */
+        .toc {
+            background: var(--toc-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            margin-bottom: 3rem;
+            transition: all var(--transition-base);
         }
-        .section-card h2 {
-            font-family: var(--font-heading);
-            font-size: 1.45rem; font-weight: 700;
+
+        .toc:hover {
+            border-color: var(--accent);
+            box-shadow: 0 0 30px var(--accent-glow);
+        }
+
+        .toc-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--accent);
             margin-bottom: 1rem;
-            background: linear-gradient(135deg, var(--accent), var(--accent2));
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            background-clip: text;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
-        .section-card h3 {
-            font-family: var(--font-heading);
-            font-size: 1.1rem; font-weight: 600;
-            color: var(--accent3);
-            margin: 1.2rem 0 0.5rem;
+
+        .toc-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 0.5rem;
         }
-        .section-card p, .section-card li {
-            color: var(--text-muted);
+
+        .toc-list li a {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1rem;
+            border-radius: var(--radius-sm);
+            color: var(--text-secondary);
+            font-size: 0.92rem;
+            font-weight: 500;
+            transition: all var(--transition-fast);
+        }
+
+        .toc-list li a::before {
+            content: '→';
+            color: var(--accent);
+            font-weight: 700;
+            transition: transform var(--transition-fast);
+        }
+
+        .toc-list li a:hover {
+            background: var(--accent-soft);
+            color: var(--accent);
+            transform: translateX(4px);
+        }
+
+        .toc-list li a:hover::before {
+            transform: translateX(3px);
+        }
+
+        /* ==================== SECTION CARDS ==================== */
+        .terms-section {
+            background: var(--bg-card);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            transition: all var(--transition-base);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .terms-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-primary);
+            opacity: 0;
+            transition: opacity var(--transition-base);
+        }
+
+        .terms-section:hover {
+            border-color: var(--border-color);
+            background: var(--bg-card-hover);
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-2px);
+        }
+
+        .terms-section:hover::before {
+            opacity: 1;
+        }
+
+        .section-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            color: #ffffff;
+            font-weight: 800;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .section-title .emoji {
+            font-size: 1.3rem;
+        }
+
+        .terms-section p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
             font-size: 0.95rem;
             line-height: 1.8;
         }
-        .section-card p { margin-bottom: 0.8rem; }
-        .section-card ul, .section-card ol {
-            list-style: none; padding-left: 0; margin-bottom: 0.8rem;
+
+        .terms-section p:last-child {
+            margin-bottom: 0;
         }
-        .section-card ul li, .section-card ol li {
-            padding: 0.3rem 0 0.3rem 1.5rem;
+
+        .terms-section ul, .terms-section ol {
+            list-style: none;
+            margin: 1rem 0;
+            padding: 0;
+        }
+
+        .terms-section ul li, .terms-section ol li {
             position: relative;
+            padding: 0.5rem 0 0.5rem 1.5rem;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
         }
-        .section-card ul li::before {
-            content: '•'; color: var(--accent2);
-            position: absolute; left: 0.3rem; font-weight: 700;
+
+        .terms-section ul li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: 700;
         }
-        .section-card ol li::before {
-            content: '▸'; color: var(--accent3);
-            position: absolute; left: 0.3rem; font-weight: 700;
+
+        .terms-section ol {
+            counter-reset: terms-counter;
         }
-        .section-card a {
-            color: var(--accent2); text-decoration: none;
-            border-bottom: 1px solid transparent;
-            transition: border-color 0.3s ease;
+
+        .terms-section ol li {
+            counter-increment: terms-counter;
         }
-        .section-card a:hover { border-bottom-color: var(--accent2); }
+
+        .terms-section ol li::before {
+            content: counter(terms-counter, lower-alpha) ')';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: 700;
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+        }
 
         .highlight-box {
-            background: rgba(108, 99, 255, 0.08);
-            border: 1px solid rgba(108, 99, 255, 0.2);
-            border-radius: var(--radius-sm);
-            padding: 1rem 1.4rem;
+            background: var(--accent-soft);
+            border-left: 3px solid var(--accent);
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            padding: 1rem 1.2rem;
             margin: 1rem 0;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
         }
-        .highlight-box p { margin-bottom: 0; }
+
+        .highlight-box strong {
+            color: var(--accent);
+        }
+
+        .warning-box {
+            background: rgba(251, 191, 36, 0.08);
+            border-left: 3px solid #fbbf24;
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .warning-box strong {
+            color: #fbbf24;
+        }
+
+        .license-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.4rem 1rem;
+            background: var(--accent-soft);
+            border: 1px solid var(--border-color);
+            border-radius: 50px;
+            color: var(--accent);
+            font-size: 0.85rem;
+            font-weight: 600;
+            font-family: var(--font-mono);
+            margin: 0.5rem 0;
+        }
 
         .contact-grid {
-            display: grid; grid-template-columns: 1fr 1fr;
-            gap: 0.8rem; margin-top: 1rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
         }
-        .contact-item {
-            background: var(--glass-hover);
-            border: 1px solid var(--glass-border);
-            border-radius: var(--radius-sm);
-            padding: 1rem 1.2rem;
+
+        .contact-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 1.2rem;
+            transition: all var(--transition-fast);
         }
-        .contact-item .label {
-            font-size: 0.78rem; color: var(--accent);
-            text-transform: uppercase; letter-spacing: 0.05em;
-            font-weight: 600; margin-bottom: 0.3rem;
+
+        .contact-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
         }
-        .contact-item .value {
-            color: var(--text); font-size: 0.88rem;
+
+        .contact-card .label {
+            font-size: 0.8rem;
+            color: var(--accent);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.3rem;
+        }
+
+        .contact-card .value {
+            color: var(--text-primary);
+            font-size: 0.9rem;
             word-break: break-all;
         }
-        .contact-item .value a { color: var(--accent2); }
 
-        /* ===== DONATE OVERLAY ===== */
+        /* ==================== DONATE OVERLAY ==================== */
         .donate-overlay {
-            display: none; position: fixed; inset: 0;
-            z-index: 9999;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-            align-items: center; justify-content: center;
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 2000;
+            background: var(--bg-overlay);
+            backdrop-filter: blur(10px);
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            animation: fadeIn 0.3s ease;
         }
-        .donate-overlay.active { display: flex; }
+
+        .donate-overlay.active {
+            display: flex;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
         .donate-modal {
-            background: var(--bg2);
-            border: 1px solid var(--glass-border);
-            border-radius: var(--radius);
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-xl);
             padding: 2.5rem;
-            max-width: 420px; width: 90%;
+            max-width: 480px;
+            width: 100%;
             text-align: center;
             position: relative;
-            box-shadow: var(--shadow);
+            box-shadow: var(--shadow-xl), 0 0 60px var(--accent-glow);
+            animation: modalSlide 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
-        .donate-modal .close-btn {
-            position: absolute; top: 1rem; right: 1rem;
-            background: none; border: none;
-            color: var(--text-muted); font-size: 1.5rem;
-            cursor: pointer; transition: color 0.3s ease;
-            line-height: 1;
+
+        @keyframes modalSlide {
+            from { transform: translateY(30px) scale(0.95); opacity: 0; }
+            to { transform: translateY(0) scale(1); opacity: 1; }
         }
-        .donate-modal .close-btn:hover { color: var(--text); }
-        .donate-modal h2 {
-            font-family: var(--font-heading);
-            font-size: 1.5rem; font-weight: 700;
+
+        .donate-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 1px solid var(--border-subtle);
+            background: var(--bg-surface);
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all var(--transition-fast);
+        }
+
+        .donate-close:hover {
+            background: #ef4444;
+            color: white;
+            border-color: #ef4444;
+        }
+
+        .donate-modal h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
             margin-bottom: 0.5rem;
-            background: linear-gradient(135deg, var(--accent), var(--accent2));
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: var(--text-primary);
         }
+
         .donate-modal p {
-            color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.2rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
         }
-        .donate-modal .qr-img {
-            width: 200px; height: 200px;
-            border-radius: 12px; border: 2px solid var(--glass-border);
-            margin: 0 auto 1.2rem; display: block;
-            object-fit: cover;
-        }
-        .donate-modal .razorpay-link {
-            display: inline-block;
-            padding: 0.75rem 2rem;
-            background: linear-gradient(135deg, var(--accent), var(--accent3));
-            color: #fff; border-radius: 10px;
-            text-decoration: none; font-weight: 600;
-            font-size: 0.95rem;
-            transition: opacity 0.3s ease, transform 0.3s ease;
-        }
-        .donate-modal .razorpay-link:hover { opacity: 0.9; transform: translateY(-2px); }
 
-        /* ===== FOOTER ===== */
-        .premium-footer {
-            position: relative; z-index: 1;
-            border-top: 1px solid var(--glass-border);
-            padding: 3rem 2rem 2rem;
-            margin-top: 2rem;
+        .donate-qr {
+            width: 100%;
+            max-width: 280px;
+            border-radius: var(--radius-md);
+            border: 2px solid var(--border-color);
+            margin-bottom: 1.5rem;
         }
-        .footer-inner {
-            max-width: 1200px; margin: 0 auto;
-            display: grid; grid-template-columns: 1.5fr 1fr 1fr;
-            gap: 2rem;
+
+        .donate-buttons {
+            display: flex;
+            gap: 0.8rem;
+            justify-content: center;
+            flex-wrap: wrap;
         }
-        .footer-brand h3 {
-            font-family: var(--font-heading);
-            font-size: 1.2rem; font-weight: 700;
-            background: linear-gradient(135deg, var(--accent), var(--accent2));
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            background-clip: text; margin-bottom: 0.5rem;
+
+        .donate-action-btn {
+            padding: 0.7rem 1.5rem;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            font-size: 0.9rem;
+            border: none;
+            cursor: pointer;
+            transition: all var(--transition-fast);
         }
-        .footer-brand p { color: var(--text-muted); font-size: 0.85rem; line-height: 1.6; }
+
+        .donate-action-btn.primary {
+            background: var(--gradient-primary);
+            color: #ffffff;
+        }
+
+        .donate-action-btn.primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px var(--accent-glow);
+        }
+
+        .donate-action-btn.secondary {
+            background: var(--bg-surface);
+            color: var(--text-primary);
+            border: 1px solid var(--border-subtle);
+        }
+
+        .donate-action-btn.secondary:hover {
+            border-color: var(--accent);
+        }
+
+        /* ==================== FOOTER ==================== */
+        .site-footer {
+            background: var(--footer-bg);
+            border-top: 1px solid var(--border-subtle);
+            padding: 4rem 2rem 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2.5rem;
+        }
+
         .footer-col h4 {
-            font-family: var(--font-heading);
-            font-size: 0.9rem; font-weight: 600;
-            color: var(--text); margin-bottom: 0.8rem;
-            text-transform: uppercase; letter-spacing: 0.06em;
+            font-size: 1rem;
+            font-weight: 700;
+            color: #f1f5f9;
+            margin-bottom: 1.2rem;
+            position: relative;
+            padding-bottom: 0.6rem;
         }
-        .footer-col a {
-            display: block; color: var(--text-muted);
-            text-decoration: none; font-size: 0.88rem;
-            padding: 0.25rem 0; transition: color 0.3s ease;
+
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 30px;
+            height: 2px;
+            background: var(--accent);
+            border-radius: 2px;
         }
-        .footer-col a:hover { color: var(--accent2); }
+
+        .footer-brand-text {
+            color: #94a3b8;
+            font-size: 0.85rem;
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 0.6rem;
+        }
+
+        .footer-social a {
+            width: 38px;
+            height: 38px;
+            border-radius: var(--radius-sm);
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-size: 0.85rem;
+            font-weight: 700;
+            transition: all var(--transition-fast);
+        }
+
+        .footer-social a:hover {
+            background: var(--accent);
+            color: #ffffff;
+            border-color: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 15px var(--accent-glow);
+        }
+        
+        .footer-social a svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.6rem;
+        }
+
+        .footer-col ul li a {
+            color: #94a3b8;
+            font-size: 0.85rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            transition: all var(--transition-fast);
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--accent);
+            transform: translateX(3px);
+        }
+
         .footer-bottom {
-            max-width: 1200px; margin: 2rem auto 0;
-            border-top: 1px solid var(--glass-border);
+            max-width: 1200px;
+            margin: 2.5rem auto 0;
             padding-top: 1.5rem;
-            display: flex; align-items: center; justify-content: space-between;
-            flex-wrap: wrap; gap: 1rem;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
         }
-        .footer-bottom p { color: var(--text-muted); font-size: 0.82rem; }
-        .footer-bottom .social-links { display: flex; gap: 1rem; }
-        .footer-bottom .social-links a {
-            color: var(--text-muted); text-decoration: none;
-            font-size: 0.82rem; transition: color 0.3s ease;
+
+        .footer-bottom p {
+            color: #64748b;
+            font-size: 0.8rem;
         }
-        .footer-bottom .social-links a:hover { color: var(--accent2); }
 
-        /* ===== SCROLLBAR ===== */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: var(--bg); }
-        ::-webkit-scrollbar-thumb { background: var(--glass-border); border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+        .footer-bottom-links {
+            display: flex;
+            gap: 1.5rem;
+        }
 
-        /* ===== RESPONSIVE ===== */
-        @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .navbar.menu-open .nav-links {
-                display: flex; flex-direction: column;
-                position: absolute; top: 64px; left: 0; right: 0;
-                background: rgba(11, 15, 25, 0.95);
-                backdrop-filter: blur(20px);
-                padding: 1rem;
-                border-bottom: 1px solid var(--glass-border);
+        .footer-bottom-links a {
+            color: #64748b;
+            font-size: 0.8rem;
+        }
+
+        .footer-bottom-links a:hover {
+            color: var(--accent);
+        }
+
+        /* ==================== RESPONSIVE ==================== */
+        @media (max-width: 900px) {
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
-            .mobile-toggle { display: block !important; }
-            .page-header h1 { font-size: 2rem; }
-            .toc-list { grid-template-columns: 1fr; }
-            .section-card { padding: 1.5rem; }
-            .contact-grid { grid-template-columns: 1fr; }
-            .footer-inner { grid-template-columns: 1fr; }
-            .footer-bottom { flex-direction: column; text-align: center; }
         }
-        .mobile-toggle {
-            display: none; background: none; border: none;
-            color: var(--text); font-size: 1.4rem; cursor: pointer;
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 0 1rem;
+                height: 60px;
+            }
+
+            .nav-brand span.text {
+                display: none;
+            }
+
+            .page-header {
+                padding: 4rem 1.5rem 3rem;
+            }
+
+            .content-wrapper {
+                padding: 2rem 1rem 3rem;
+            }
+
+            .toc-list {
+                grid-template-columns: 1fr;
+            }
+
+            .terms-section {
+                padding: 1.5rem;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 560px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .donate-modal {
+                padding: 1.5rem;
+            }
+
+            .nav-back span.text {
+                display: none;
+            }
+        }
+
+        /* ==================== SCROLLBAR ==================== */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-primary);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-hover);
+        }
+
+        /* ==================== ANIMATIONS ==================== */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
 <body>
-    <!-- Animated Gradient Shapes -->
-    <div class="gradient-shapes">
-        <div class="shape shape-1"></div>
-        <div class="shape shape-2"></div>
-        <div class="shape shape-3"></div>
+    <!-- Floating Orbs -->
+    <div class="orb-container" aria-hidden="true">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+        <div class="orb orb-4"></div>
     </div>
 
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
-        <div class="nav-inner">
-            <a href="index.html" class="nav-brand">🚀 Web Dev Mastery</a>
-            <button class="mobile-toggle" onclick="document.getElementById('navbar').classList.toggle('menu-open')">☰</button>
-            <div class="nav-links">
-                <a href="index.html">Home</a>
-                <a href="html/index.html">HTML</a>
-                <a href="css/index.html">CSS</a>
-                <a href="js/index.html">JavaScript</a>
-                <a href="react/index.html">React</a>
-                <a href="privacy.html">Privacy</a>
-                <a href="terms.html" class="active">Terms</a>
-                <a href="#" class="donate-btn" onclick="event.preventDefault(); openDonate()">♥ Donate</a>
+        <div class="nav-left">
+            <a href="index.html" class="nav-back" id="nav-back-btn" aria-label="Back to Hub Home">
+                <span>←</span>
+                <span class="text">Hub Home</span>
+            </a>
+            <div class="nav-brand">
+                <span class="icon">🌐</span>
+                <span class="text">Web Development Mastery</span>
             </div>
+        </div>
+        <div class="nav-right">
+            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme" title="Toggle Dark/Light Mode">
+                🌙
+            </button>
+            <button class="donate-btn-nav" id="donate-nav-btn" aria-label="Support us with a donation">
+                ❤️ Donate
+            </button>
         </div>
     </nav>
 
-    <!-- Main Content -->
-    <main class="main-container">
-        <!-- Page Header -->
-        <header class="page-header">
-            <span class="icon">⚖️</span>
-            <h1>Terms of Service</h1>
-            <p class="effective-date">Effective Date: <strong>July 2026</strong></p>
-        </header>
-
-        <!-- Table of Contents -->
-        <div class="toc-card">
-            <h2>📑 Table of Contents</h2>
-            <ol class="toc-list">
-                <li><a href="#acceptance-of-terms">Acceptance of Terms</a></li>
-                <li><a href="#use-of-service">Use of Service</a></li>
-                <li><a href="#intellectual-property">Intellectual Property</a></li>
-                <li><a href="#user-conduct">User Conduct</a></li>
-                <li><a href="#disclaimer-of-warranties">Disclaimer of Warranties</a></li>
-                <li><a href="#limitation-of-liability">Limitation of Liability</a></li>
-                <li><a href="#donations">Donations</a></li>
-                <li><a href="#third-party-links">Third-Party Links</a></li>
-                <li><a href="#modifications">Modifications</a></li>
-                <li><a href="#governing-law">Governing Law</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ol>
+    <!-- Page Header -->
+    <header class="page-header">
+        <span class="header-icon">📋</span>
+        <h1 class="header-title">Terms of Service</h1>
+        <p class="header-subtitle">
+            Please read these terms carefully before using Web Development Mastery. By accessing our platform, you agree to be bound by these terms.
+        </p>
+        <div class="effective-date">
+            📅 Effective Date: July 2026
         </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="content-wrapper">
+        <!-- Table of Contents -->
+        <nav class="toc fade-up" aria-label="Table of Contents">
+            <div class="toc-title">📑 Table of Contents</div>
+            <ol class="toc-list">
+                <li><a href="#acceptance">Acceptance of Terms</a></li>
+                <li><a href="#use-of-service">Description of Service</a></li>
+                <li><a href="#intellectual-property">Intellectual Property Rights</a></li>
+                <li><a href="#user-conduct">User Responsibilities</a></li>
+                <li><a href="#code-execution">Code Execution Disclaimer</a></li>
+                <li><a href="#privacy">Privacy & Data</a></li>
+                <li><a href="#third-party-links">Third-Party Links</a></li>
+                <li><a href="#disclaimer">Disclaimer of Warranties</a></li>
+                <li><a href="#limitation-liability">Limitation of Liability</a></li>
+                <li><a href="#modifications">Changes to Terms</a></li>
+                <li><a href="#governing-law">Governing Law</a></li>
+                <li><a href="#contact-terms">Contact Information</a></li>
+            </ol>
+        </nav>
 
         <!-- Section 1: Acceptance of Terms -->
-        <section class="section-card" id="acceptance-of-terms">
-            <h2>1. Acceptance of Terms</h2>
-            <p>By accessing, browsing, or using the <strong>Web Development Mastery</strong> platform (the "Service"), you acknowledge that you have read, understood, and agree to be bound by these Terms of Service ("Terms").</p>
-            <p>If you do not agree with any part of these Terms, you must discontinue use of the Service immediately. Your continued use of the platform constitutes your acceptance of these Terms and any future modifications.</p>
+        <section class="terms-section fade-up" id="acceptance">
+            <div class="section-number">1</div>
+            <h2 class="section-title"><span class="emoji">✅</span> Acceptance of Terms</h2>
+            <p>
+                By accessing, browsing, or using Web Development Mastery (the "Platform"), you acknowledge that you have read, understood, and agree to be bound by these Terms of Service ("Terms"). If you do not agree with any part of these Terms, you must discontinue use of the Platform immediately.
+            </p>
+            <p>
+                These Terms constitute a legally binding agreement between you ("User," "you," or "your") and Sanskar Yadav ("we," "us," or "our"), the creator and maintainer of Web Development Mastery. This agreement governs your access to and use of the Platform, including all content, features, tutorials, code examples, and services offered through the Platform.
+            </p>
+            <ul>
+                <li>You must be at least 13 years of age to use this Platform, or have parental/guardian consent.</li>
+                <li>By using the Platform, you represent that you have the legal capacity to enter into these Terms.</li>
+                <li>These Terms apply to all visitors, users, and contributors to the Platform.</li>
+            </ul>
             <div class="highlight-box">
-                <p><strong>📌 Note:</strong> These Terms apply to all visitors, users, and contributors of the Web Development Mastery platform, including all associated subpages, resources, and downloadable content.</p>
+                <strong>Summary:</strong> By using Web Development Mastery, you agree to these terms. If you disagree, please do not use the platform.
             </div>
         </section>
 
-        <!-- Section 2: Use of Service -->
-        <section class="section-card" id="use-of-service">
-            <h2>2. Use of Service</h2>
-            <p>Web Development Mastery is a <strong>free, open-source educational platform</strong> designed to teach modern web development skills. The Service is provided to you at no cost, and you may use it subject to the following conditions:</p>
+        <!-- Section 2: Description of Service -->
+        <section class="terms-section fade-up" id="use-of-service">
+            <div class="section-number">2</div>
+            <h2 class="section-title"><span class="emoji">🚀</span> Description of Service</h2>
+            <p>
+                Web Development Mastery is a free, open-source educational platform designed to help developers learn HTML, CSS, JavaScript, and modern web development technologies. The Platform provides tutorials, code examples, interactive exercises, and reference materials.
+            </p>
             <ul>
-                <li>You may use the platform for personal learning, educational purposes, and self-improvement.</li>
-                <li>You may reference, share, and link to our content freely with proper attribution.</li>
-                <li>You may use code examples and snippets from the platform in your own projects, subject to the MIT License terms (see Intellectual Property section).</li>
-                <li>You may access the platform from any device and any location worldwide.</li>
+                <li><strong>Free Access:</strong> All core educational content on Web Development Mastery is provided free of charge. We believe in democratizing access to quality education.</li>
+                <li><strong>No Account Required:</strong> You can access all tutorials and learning materials without creating an account or providing personal information.</li>
+                <li><strong>Code Usage:</strong> Code examples and snippets provided in tutorials are intended for educational purposes and can be used in your own projects, subject to the license terms outlined in the Intellectual Property section.</li>
+                <li><strong>Availability:</strong> While we strive to maintain the Platform's availability, we do not guarantee uninterrupted access. The Platform may be temporarily unavailable due to maintenance, updates, or circumstances beyond our control.</li>
+                <li><strong>Modifications:</strong> We reserve the right to modify, suspend, or discontinue any aspect of the Platform at any time without prior notice. This includes adding, changing, or removing content, features, or services.</li>
             </ul>
-
-            <h3>Prohibited Uses</h3>
-            <p>You agree NOT to:</p>
-            <ul>
-                <li>Reproduce the entire platform or substantial portions of it and present it as your own work.</li>
-                <li>Use the Service for any illegal or unauthorized purpose.</li>
-                <li>Attempt to disrupt, overload, or interfere with the proper functioning of the platform.</li>
-                <li>Scrape or bulk-download content for commercial redistribution without permission.</li>
-                <li>Remove or alter any copyright notices, attributions, or license information.</li>
-            </ul>
+            <p>
+                We are committed to continuously improving the learning experience and welcome feedback from our community.
+            </p>
         </section>
 
-        <!-- Section 3: Intellectual Property -->
-        <section class="section-card" id="intellectual-property">
-            <h2>3. Intellectual Property</h2>
-            <p>The Web Development Mastery platform, including all content, design, code, tutorials, graphics, and documentation, is created and maintained by <strong>Sanskar Yadav</strong>.</p>
-
-            <h3>MIT License</h3>
-            <p>The source code of this project is released under the <strong>MIT License</strong>, which grants you the following permissions:</p>
+        <!-- Section 3: Intellectual Property Rights -->
+        <section class="terms-section fade-up" id="intellectual-property">
+            <div class="section-number">3</div>
+            <h2 class="section-title"><span class="emoji">©️</span> Intellectual Property Rights</h2>
+            <p>
+                Web Development Mastery is created and maintained by <strong>Sanskar Yadav</strong>. The intellectual property rights associated with the Platform are governed as follows:
+            </p>
+            <div class="license-badge">📜 MIT License</div>
             <ul>
-                <li><strong>Use:</strong> You may use the code for any purpose, including commercial projects.</li>
-                <li><strong>Copy:</strong> You may copy and distribute the code.</li>
-                <li><strong>Modify:</strong> You may modify the code to suit your needs.</li>
-                <li><strong>Merge:</strong> You may merge the code into your own projects.</li>
-                <li><strong>Publish:</strong> You may publish and sublicense the code.</li>
+                <li><strong>Source Code:</strong> The Platform's source code is released under the <strong>MIT License</strong>, which permits free use, modification, distribution, and private/commercial use, provided the original copyright notice and license text are included in all copies or substantial portions of the software.</li>
+                <li><strong>Content & Tutorials:</strong> Written content, tutorials, explanations, and educational materials are the original work of Sanskar Yadav and contributors. While freely accessible, attribution is appreciated when referencing or republishing significant portions.</li>
+                <li><strong>Branding:</strong> The "Web Development Mastery" name, logo, and visual identity are the property of Sanskar Yadav. Use of our branding for endorsement or to imply affiliation requires prior written consent.</li>
+                <li><strong>User Contributions:</strong> If you contribute to the Platform (e.g., via pull requests on GitHub), you grant us a non-exclusive, royalty-free, perpetual license to use, modify, and distribute your contributions under the MIT License.</li>
             </ul>
             <div class="highlight-box">
-                <p><strong>📄 MIT License Condition:</strong> The above permissions are granted provided that the original copyright notice and permission notice are included in all copies or substantial portions of the Software. The software is provided "AS IS", without warranty of any kind.</p>
-            </div>
-
-            <h3>Content Rights</h3>
-            <p>While the code is MIT-licensed, the original written educational content (tutorials, explanations, guides) remains the intellectual property of Sanskar Yadav. You may quote and reference this content with proper attribution but may not republish it in its entirety without permission.</p>
-        </section>
-
-        <!-- Section 4: User Conduct -->
-        <section class="section-card" id="user-conduct">
-            <h2>4. User Conduct</h2>
-            <p>When using the Web Development Mastery platform, including any community features, issue trackers, or discussion forums, you agree to:</p>
-            <ul>
-                <li>Be respectful and constructive in all interactions with other community members.</li>
-                <li>Provide accurate information when contributing to discussions or reporting issues.</li>
-                <li>Respect the intellectual property rights of others.</li>
-                <li>Follow the project's contribution guidelines when submitting pull requests or issues on GitHub.</li>
-                <li>Not engage in harassment, spam, or any form of abusive behavior.</li>
-                <li>Not impersonate others or misrepresent your affiliation with any person or entity.</li>
-            </ul>
-            <p>We reserve the right to restrict access to users who violate these conduct guidelines, including blocking contributions to our GitHub repositories.</p>
-        </section>
-
-        <!-- Section 5: Disclaimer of Warranties -->
-        <section class="section-card" id="disclaimer-of-warranties">
-            <h2>5. Disclaimer of Warranties</h2>
-            <p>The Web Development Mastery platform is provided on an <strong>"AS IS"</strong> and <strong>"AS AVAILABLE"</strong> basis, without warranties of any kind, either express or implied.</p>
-            <p>Specifically, we do not warrant that:</p>
-            <ul>
-                <li>The Service will be uninterrupted, timely, secure, or error-free.</li>
-                <li>The content will be accurate, complete, reliable, or current at all times.</li>
-                <li>Code examples will work in all environments, browsers, or configurations.</li>
-                <li>Any errors or defects in the Service will be corrected immediately.</li>
-                <li>The platform will be free of viruses or other harmful components.</li>
-            </ul>
-            <p>While we strive to provide high-quality, accurate educational content, technology evolves rapidly. We encourage you to verify information and test code in your own environment before deploying to production.</p>
-        </section>
-
-        <!-- Section 6: Limitation of Liability -->
-        <section class="section-card" id="limitation-of-liability">
-            <h2>6. Limitation of Liability</h2>
-            <p>To the maximum extent permitted by applicable law, <strong>Sanskar Yadav</strong> and any contributors to Web Development Mastery shall not be held liable for any:</p>
-            <ul>
-                <li>Direct, indirect, incidental, special, consequential, or punitive damages arising from your use of the Service.</li>
-                <li>Loss of data, revenue, profits, or business opportunities resulting from the use or inability to use the platform.</li>
-                <li>Damages resulting from errors, omissions, or inaccuracies in the content.</li>
-                <li>Issues arising from third-party services, links, or integrations referenced on the platform.</li>
-                <li>Personal injury or property damage related to your use of the Service.</li>
-            </ul>
-            <p>This limitation of liability applies regardless of the legal theory under which the claim is brought (contract, tort, negligence, strict liability, or otherwise), even if we have been advised of the possibility of such damages.</p>
-        </section>
-
-        <!-- Section 7: Donations -->
-        <section class="section-card" id="donations">
-            <h2>7. Donations</h2>
-            <p>Web Development Mastery is a <strong>free platform</strong>. We accept voluntary donations to help sustain and improve the project. By making a donation, you acknowledge the following:</p>
-            <ul>
-                <li><strong>Voluntary:</strong> All donations are entirely voluntary. No content, features, or access is gated behind a paywall.</li>
-                <li><strong>Non-Refundable:</strong> Donations are generally non-refundable unless required by law. If you have concerns, please contact us.</li>
-                <li><strong>Payment Processing:</strong> Donations are processed through <a href="https://rzp.io/l/Sanskar" target="_blank" rel="noopener noreferrer">Razorpay</a> and/or UPI. Your payment information is handled exclusively by these third-party payment processors.</li>
-                <li><strong>No Obligation:</strong> Making a donation does not entitle you to any specific feature, content, or service beyond what is freely available.</li>
-                <li><strong>Purpose:</strong> Donations are used to cover hosting costs, development tools, and to support the creator's ability to continue producing free educational content.</li>
-            </ul>
-            <div class="highlight-box">
-                <p><strong>💝 Thank you!</strong> Every donation, no matter how small, helps keep this project alive and accessible to learners worldwide.</p>
+                <strong>MIT License Summary:</strong> You are free to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the software, subject to including the original copyright and license notice.
             </div>
         </section>
 
-        <!-- Section 8: Third-Party Links -->
-        <section class="section-card" id="third-party-links">
-            <h2>8. Third-Party Links</h2>
-            <p>The Web Development Mastery platform may contain links to external websites and services, including but not limited to:</p>
+        <!-- Section 4: User Responsibilities -->
+        <section class="terms-section fade-up" id="user-conduct">
+            <div class="section-number">4</div>
+            <h2 class="section-title"><span class="emoji">🤝</span> User Responsibilities</h2>
+            <p>
+                As a user of Web Development Mastery, you agree to engage with the Platform in a responsible and respectful manner. The following conduct is prohibited:
+            </p>
             <ul>
-                <li><strong>Documentation:</strong> MDN Web Docs, W3C specifications, and official library documentation.</li>
-                <li><strong>Tools:</strong> Code editors, browser developer tools, and online playgrounds.</li>
-                <li><strong>Services:</strong> GitHub, Gumroad (<a href="https://ramsandesh.gumroad.com" target="_blank" rel="noopener noreferrer">ramsandesh.gumroad.com</a>), Razorpay, and social media platforms.</li>
-                <li><strong>Resources:</strong> External tutorials, blog posts, and educational videos.</li>
+                <li><strong>Malicious Activity:</strong> Attempting to exploit, hack, or disrupt the Platform's infrastructure, including DDoS attacks, code injection, or unauthorized access to systems or data.</li>
+                <li><strong>Content Scraping:</strong> Using automated bots, scrapers, or tools to bulk-download or reproduce the Platform's content for commercial redistribution without permission.</li>
+                <li><strong>Misrepresentation:</strong> Impersonating Sanskar Yadav, Web Development Mastery, or any contributor; or falsely claiming affiliation, endorsement, or association with the Platform.</li>
+                <li><strong>Harassment:</strong> Engaging in abusive, threatening, discriminatory, or harassing behavior towards the Platform's creators, contributors, or community members through any channel.</li>
+                <li><strong>Illegal Use:</strong> Using the Platform or its content for any purpose that violates applicable local, national, or international laws and regulations.</li>
+                <li><strong>Interference:</strong> Introducing malware, viruses, or any harmful code; or taking actions that could impair the Platform's performance, security, or accessibility for others.</li>
             </ul>
-            <p>These third-party links are provided for convenience and educational purposes only. We do not endorse, control, or assume responsibility for the content, privacy policies, or practices of any third-party websites. You access these external sites at your own risk.</p>
+            <div class="warning-box">
+                <strong>Warning:</strong> Violation of these conduct guidelines may result in restricted access to the Platform and, where applicable, legal action.
+            </div>
         </section>
 
-        <!-- Section 9: Modifications -->
-        <section class="section-card" id="modifications">
-            <h2>9. Modifications</h2>
-            <p>We reserve the right to modify, update, or replace any part of these Terms of Service at any time. When changes are made:</p>
+        <!-- Section 5: Code Execution Disclaimer -->
+        <section class="terms-section fade-up" id="code-execution">
+            <div class="section-number">5</div>
+            <h2 class="section-title"><span class="emoji">💻</span> Code Execution Disclaimer</h2>
+            <p>
+                The Platform provides code examples and may feature interactive environments. You acknowledge and agree that:
+            </p>
             <ul>
-                <li>The "Effective Date" at the top of this page will be updated.</li>
-                <li>Material changes will be announced through a notice on the homepage or via our GitHub repository.</li>
-                <li>Continued use of the Service after any modifications constitutes acceptance of the revised Terms.</li>
+                <li><strong>Educational Purpose:</strong> All code examples are strictly for educational and demonstration purposes. They may not be suitable for production environments without proper security and performance testing.</li>
+                <li><strong>No Guarantees:</strong> We do not guarantee that the code examples are free from errors, bugs, or security vulnerabilities.</li>
+                <li><strong>Execution Risk:</strong> Executing code snippets provided on the Platform, either locally or within our integrated tools, is entirely at your own risk.</li>
             </ul>
-            <p>We encourage you to review these Terms periodically. The complete history of changes can be tracked through our <a href="https://github.com/Sanskar-in/Web-Development-Mastery" target="_blank" rel="noopener noreferrer">GitHub repository</a>.</p>
-            <p>If you disagree with any modifications, your sole remedy is to discontinue use of the Service.</p>
+        </section>
+        
+        <!-- Section 6: Privacy & Data -->
+        <section class="terms-section fade-up" id="privacy">
+            <div class="section-number">6</div>
+            <h2 class="section-title"><span class="emoji">🔒</span> Privacy & Data</h2>
+            <p>
+                We are committed to protecting your privacy and transparently handling your data.
+            </p>
+            <ul>
+                <li><strong>Local Storage:</strong> We use browser localStorage solely to save your preferences, such as your theme selection (light/dark mode).</li>
+                <li><strong>No Tracking:</strong> We do not use intrusive tracking cookies, analytics that personally identify you, or sell your data to third parties.</li>
+                <li><strong>Platform Usage:</strong> By using the platform, you acknowledge our Privacy Policy which outlines our minimal data collection practices.</li>
+            </ul>
         </section>
 
-        <!-- Section 10: Governing Law -->
-        <section class="section-card" id="governing-law">
-            <h2>10. Governing Law</h2>
-            <p>These Terms of Service shall be governed by and construed in accordance with the laws of <strong>India</strong>, without regard to its conflict of law provisions.</p>
-            <p>Any disputes arising out of or relating to these Terms or your use of the Service shall be subject to the exclusive jurisdiction of the courts located in India.</p>
-            <p>If any provision of these Terms is found to be unenforceable or invalid by a court of competent jurisdiction, the remaining provisions shall remain in full force and effect. The unenforceable provision will be replaced with an enforceable provision that most closely reflects the intent of the original.</p>
+        <!-- Section 7: Third-Party Links -->
+        <section class="terms-section fade-up" id="third-party-links">
+            <div class="section-number">7</div>
+            <h2 class="section-title"><span class="emoji">🔗</span> Third-Party Links</h2>
+            <p>
+                Web Development Mastery may contain links to external websites, services, and resources that are not owned or controlled by us. These links are provided for your convenience and reference:
+            </p>
+            <ul>
+                <li><strong>No Endorsement:</strong> The inclusion of any third-party link does not imply endorsement, approval, or recommendation by Web Development Mastery or Sanskar Yadav. Each linked resource is independent.</li>
+                <li><strong>No Control:</strong> We have no control over, and assume no responsibility for, the content, privacy policies, practices, or availability of any third-party websites or services.</li>
+                <li><strong>Your Responsibility:</strong> Accessing third-party links is at your own risk. We strongly encourage you to review the terms and privacy policies of any third-party websites you visit.</li>
+                <li><strong>Link Integrity:</strong> External links may become broken or outdated over time. While we periodically review our links, we cannot guarantee that all external resources will remain available or accurate.</li>
+            </ul>
         </section>
 
-        <!-- Section 11: Contact -->
-        <section class="section-card" id="contact">
-            <h2>11. Contact</h2>
-            <p>If you have any questions, concerns, or feedback about these Terms of Service, please reach out through any of the following channels:</p>
+        <!-- Section 8: Disclaimer of Warranties -->
+        <section class="terms-section fade-up" id="disclaimer">
+            <div class="section-number">8</div>
+            <h2 class="section-title"><span class="emoji">⚠️</span> Disclaimer of Warranties</h2>
+            <p>
+                Web Development Mastery is provided on an <strong>"AS IS"</strong> and <strong>"AS AVAILABLE"</strong> basis without warranties of any kind, either express or implied. To the fullest extent permitted by applicable law, we disclaim all warranties, including but not limited to:
+            </p>
+            <ul>
+                <li><strong>Accuracy:</strong> While we strive for accuracy in our tutorials and code examples, we do not guarantee that all content is error-free, up-to-date, or complete. Technologies evolve rapidly, and some information may become outdated.</li>
+                <li><strong>Fitness for Purpose:</strong> We do not warrant that the Platform or its content will meet your specific requirements, expectations, or be suitable for any particular purpose.</li>
+                <li><strong>Uninterrupted Service:</strong> We do not guarantee that the Platform will be available at all times, free of errors, bugs, or security vulnerabilities, or that defects will be corrected in a timely manner.</li>
+                <li><strong>Results:</strong> Your learning outcomes, career advancement, or project success based on our content are not guaranteed. Individual results depend on many factors beyond our control.</li>
+            </ul>
+            <p>
+                You use Web Development Mastery at your own risk and discretion. Always verify code examples and best practices against the latest official documentation before using them in production environments.
+            </p>
+        </section>
 
+        <!-- Section 9: Limitation of Liability -->
+        <section class="terms-section fade-up" id="limitation-liability">
+            <div class="section-number">9</div>
+            <h2 class="section-title"><span class="emoji">🛡️</span> Limitation of Liability</h2>
+            <p>
+                To the maximum extent permitted by applicable law, Sanskar Yadav, Web Development Mastery, and its contributors shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from or related to:
+            </p>
+            <ol>
+                <li>Your access to, use of, or inability to use the Platform or its content</li>
+                <li>Any errors, mistakes, or inaccuracies in the Platform's content, tutorials, or code examples</li>
+                <li>Any unauthorized access to or alteration of your data or transmissions</li>
+                <li>Any bugs, viruses, or other harmful components transmitted through the Platform</li>
+                <li>Any loss of profits, revenue, data, or business opportunities, whether direct or indirect</li>
+                <li>Any damage to your computer system, software, or data resulting from use of the Platform</li>
+            </ol>
+            <p>
+                This limitation applies regardless of the legal theory under which liability is asserted, including negligence, breach of contract, strict liability, or any other basis, even if we have been advised of the possibility of such damages.
+            </p>
+            <div class="highlight-box">
+                <strong>Note:</strong> Some jurisdictions do not allow the exclusion or limitation of certain damages. In such cases, our liability shall be limited to the greatest extent permitted by law.
+            </div>
+        </section>
+
+        <!-- Section 10: Changes to Terms -->
+        <section class="terms-section fade-up" id="modifications">
+            <div class="section-number">10</div>
+            <h2 class="section-title"><span class="emoji">🔄</span> Changes to Terms</h2>
+            <p>
+                We reserve the right to modify, update, or replace these Terms of Service at any time at our sole discretion. When changes are made:
+            </p>
+            <ul>
+                <li><strong>Effective Date Update:</strong> The "Effective Date" at the top of this page will be revised to reflect the date of the latest update.</li>
+                <li><strong>Notification:</strong> For material changes that significantly affect your rights or obligations, we will provide prominent notice on the Platform (such as a header banner or dedicated announcement).</li>
+                <li><strong>Version Control:</strong> All changes to these Terms are tracked in our public GitHub repository, allowing complete transparency and the ability to review the history of changes via commit logs.</li>
+                <li><strong>Continued Use:</strong> Your continued use of the Platform following the posting of revised Terms constitutes your acceptance of such changes. If you disagree with the revised Terms, you should discontinue use of the Platform.</li>
+            </ul>
+            <p>
+                We encourage you to periodically review these Terms to stay informed about any updates. Our commitment is to maintain fair, transparent, and community-friendly terms.
+            </p>
+        </section>
+
+        <!-- Section 11: Governing Law -->
+        <section class="terms-section fade-up" id="governing-law">
+            <div class="section-number">11</div>
+            <h2 class="section-title"><span class="emoji">🏛️</span> Governing Law</h2>
+            <p>
+                These Terms of Service shall be governed by and construed in accordance with the laws of <strong>India</strong>, without regard to its conflict of law provisions.
+            </p>
+            <ul>
+                <li><strong>Jurisdiction:</strong> Any disputes arising out of or relating to these Terms or the use of the Platform shall be subject to the exclusive jurisdiction of the courts located in India.</li>
+                <li><strong>Dispute Resolution:</strong> Before initiating formal legal proceedings, we encourage parties to attempt to resolve disputes amicably through direct communication via the contact channels provided below.</li>
+                <li><strong>Severability:</strong> If any provision of these Terms is found to be unenforceable or invalid by a court of competent jurisdiction, the remaining provisions shall continue in full force and effect.</li>
+                <li><strong>Waiver:</strong> Our failure to enforce any right or provision of these Terms shall not constitute a waiver of such right or provision. Any waiver must be in writing and signed by an authorized representative.</li>
+                <li><strong>Entire Agreement:</strong> These Terms, together with our Privacy Policy, constitute the entire agreement between you and Web Development Mastery regarding the use of the Platform, superseding any prior agreements.</li>
+            </ul>
+            <div class="highlight-box">
+                <strong>Applicable Law:</strong> These terms are governed under the laws of India. We aim to resolve all matters collaboratively before pursuing formal proceedings.
+            </div>
+        </section>
+
+        <!-- Section 12: Contact Information -->
+        <section class="terms-section fade-up" id="contact-terms">
+            <div class="section-number">12</div>
+            <h2 class="section-title"><span class="emoji">📬</span> Contact Information</h2>
+            <p>
+                If you have questions, concerns, or feedback regarding these Terms of Service, or if you need to report a violation, please reach out through any of the following channels:
+            </p>
             <div class="contact-grid">
-                <div class="contact-item">
+                <div class="contact-card">
                     <div class="label">Primary Email</div>
-                    <div class="value"><a href="mailto:sanskaryadavfrom2012to2026@gmail.com">sanskaryadavfrom2012to2026@gmail.com</a></div>
+                    <div class="value">
+                        <a href="mailto:sanskaryadavfrom2012to2026@gmail.com">sanskaryadavfrom2012to2026@gmail.com</a>
+                    </div>
                 </div>
-                <div class="contact-item">
+                <div class="contact-card">
                     <div class="label">Support Email</div>
-                    <div class="value"><a href="mailto:supportramsandesh@gmail.com">supportramsandesh@gmail.com</a></div>
+                    <div class="value">
+                        <a href="mailto:supportramsandesh@gmail.com">supportramsandesh@gmail.com</a>
+                    </div>
                 </div>
-                <div class="contact-item">
-                    <div class="label">Outlook</div>
-                    <div class="value"><a href="mailto:sanskaryadavfromghosimau2026-27@outlook.com">sanskaryadavfromghosimau2026-27@outlook.com</a></div>
+                <div class="contact-card">
+                    <div class="label">Outlook Email</div>
+                    <div class="value">
+                        <a href="mailto:sanskaryadavfromghosimau2026-27@outlook.com">sanskaryadavfromghosimau2026-27@outlook.com</a>
+                    </div>
                 </div>
-                <div class="contact-item">
+                <div class="contact-card">
                     <div class="label">GitHub</div>
-                    <div class="value"><a href="https://github.com/Sanskar-in" target="_blank" rel="noopener noreferrer">github.com/Sanskar-in</a></div>
-                </div>
-                <div class="contact-item">
-                    <div class="label">YouTube</div>
-                    <div class="value"><a href="https://youtube.com/@Sanskar-in" target="_blank" rel="noopener noreferrer">@Sanskar-in</a></div>
-                </div>
-                <div class="contact-item">
-                    <div class="label">LinkedIn</div>
-                    <div class="value"><a href="https://linkedin.com/in/sanskar-in" target="_blank" rel="noopener noreferrer">sanskar-in</a></div>
-                </div>
-                <div class="contact-item">
-                    <div class="label">X (Twitter)</div>
-                    <div class="value"><a href="https://x.com/Sanskar_in" target="_blank" rel="noopener noreferrer">@Sanskar_in</a></div>
-                </div>
-                <div class="contact-item">
-                    <div class="label">Gumroad</div>
-                    <div class="value"><a href="https://ramsandesh.gumroad.com" target="_blank" rel="noopener noreferrer">ramsandesh.gumroad.com</a></div>
+                    <div class="value">
+                        <a href="https://github.com/Sanskar-in" target="_blank" rel="noopener noreferrer">github.com/Sanskar-in</a>
+                    </div>
                 </div>
             </div>
+            <p style="margin-top: 1.5rem;">
+                We take all inquiries seriously and aim to respond within 48 hours. For legal matters, please use the primary email address and include "Legal Inquiry" in the subject line.
+            </p>
         </section>
     </main>
 
     <!-- Donate Overlay -->
-    <div class="donate-overlay" id="donateOverlay">
+    <div class="donate-overlay" id="donate-overlay">
         <div class="donate-modal">
-            <button class="close-btn" onclick="closeDonate()">&times;</button>
-            <h2>♥ Support This Project</h2>
-            <p>Your donations keep Web Development Mastery free and accessible for everyone. Every contribution makes a difference!</p>
-            <img src="Payment-Ramsandesh.jpeg" alt="UPI QR Code for Donation" class="qr-img" onerror="this.style.display='none'">
-            <a href="https://rzp.io/l/Sanskar" target="_blank" rel="noopener noreferrer" class="razorpay-link">💳 Donate via Razorpay</a>
+            <button class="donate-close" id="donate-close" aria-label="Close donate modal">✕</button>
+            <h3>❤️ Support Web Development Mastery</h3>
+            <p>
+                Your donation helps us create free, high-quality Web Development tutorials for everyone. Every contribution fuels our mission!
+            </p>
+            <img src="Payment-Ramsandesh.jpeg" alt="Scan to Donate via UPI" class="donate-qr">
+            <div class="donate-buttons">
+                <a href="https://ramsandesh.gumroad.com" target="_blank" rel="noopener noreferrer" class="donate-action-btn primary">
+                    🛒 Support on Gumroad
+                </a>
+                <button class="donate-action-btn secondary" id="donate-close-btn">Maybe Later</button>
+            </div>
         </div>
     </div>
 
-    <!-- Premium Footer -->
-    <footer class="premium-footer">
-        <div class="footer-inner">
-            <div class="footer-brand">
-                <h3>🚀 Web Development Mastery</h3>
-                <p>A free, open-source educational platform by Sanskar Yadav. Master modern web development from HTML fundamentals to advanced React patterns.</p>
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <!-- Brand & Social -->
+            <div class="footer-col">
+                <h4>Web Development Mastery</h4>
+                <p class="footer-brand-text">
+                    A free, open-source learning platform by Sanskar Yadav. Master Web Development from fundamentals to advanced patterns with hands-on projects.
+                </p>
+                <div class="footer-social">
+                    <a href="https://youtube.com/@Sanskar-in" target="_blank" rel="noopener noreferrer" title="YouTube" aria-label="YouTube">
+                        <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                    </a>
+                    <a href="https://github.com/Sanskar-in" target="_blank" rel="noopener noreferrer" title="GitHub" aria-label="GitHub">
+                        <svg viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+                    </a>
+                    <a href="https://linkedin.com/in/sanskar-in" target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn">
+                        <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    </a>
+                    <a href="https://x.com/Sanskar_in" target="_blank" rel="noopener noreferrer" title="X (Twitter)" aria-label="X">
+                        <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                    </a>
+                </div>
             </div>
+
+            <!-- Quick Links -->
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">🏠 Home</a></li>
+                    <li><a href="about.html">👤 About</a></li>
+                    <li><a href="Follow-Sanskar.html">✨ Follow Sanskar</a></li>
+                    <li><a href="developer.html">👨‍💻 Developer</a></li>
+                    <li><a href="privacy.html">🔒 Privacy Policy</a></li>
+                    <li><a href="support.html">🤝 Support</a></li>
+                    <li><a href="thanks.html">🙏 Thanks</a></li>
+                </ul>
+            </div>
+            
+            <!-- Modules -->
             <div class="footer-col">
                 <h4>Modules</h4>
-                <a href="html/index.html">HTML</a>
-                <a href="css/index.html">CSS</a>
-                <a href="js/index.html">JavaScript</a>
-                <a href="react/index.html">React</a>
+                <ul>
+                    <li><a href="HTML/index.html">🌐 HTML</a></li>
+                    <li><a href="CSS/index.html">🎨 CSS</a></li>
+                    <li><a href="JavaScript/index.html">⚡ JavaScript</a></li>
+                    <li><a href="React/index.html">⚛️ React</a></li>
+                </ul>
             </div>
+            
+            <!-- Contact -->
             <div class="footer-col">
-                <h4>Legal</h4>
-                <a href="privacy.html">Privacy Policy</a>
-                <a href="terms.html">Terms of Service</a>
-                <a href="https://ramsandesh.gumroad.com" target="_blank" rel="noopener noreferrer">Gumroad Store</a>
-                <a href="https://rzp.io/l/Sanskar" target="_blank" rel="noopener noreferrer">Donate</a>
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="mailto:sanskaryadavfrom2012to2026@gmail.com">📧 Primary Email</a></li>
+                    <li><a href="mailto:supportramsandesh@gmail.com">📧 Support Email</a></li>
+                    <li><a href="mailto:sanskaryadavfromghosimau2026-27@outlook.com">📧 Outlook</a></li>
+                    <li><a href="https://rzp.io/l/Sanskar" target="_blank" rel="noopener noreferrer">💸 Razorpay</a></li>
+                    <li><a href="https://ramsandesh.gumroad.com" target="_blank" rel="noopener noreferrer">🛒 Gumroad</a></li>
+                </ul>
             </div>
         </div>
+
         <div class="footer-bottom">
-            <p>&copy; 2026 Sanskar Yadav. All rights reserved. Built with ♥ for the developer community.</p>
-            <div class="social-links">
-                <a href="https://youtube.com/@Sanskar-in" target="_blank" rel="noopener noreferrer">YouTube</a>
-                <a href="https://github.com/Sanskar-in" target="_blank" rel="noopener noreferrer">GitHub</a>
-                <a href="https://linkedin.com/in/sanskar-in" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                <a href="https://x.com/Sanskar_in" target="_blank" rel="noopener noreferrer">X</a>
+            <p>© 2026 Web Development Mastery by Sanskar Yadav. Open-source under MIT License.</p>
+            <div class="footer-bottom-links">
+                <a href="privacy.html">Privacy</a>
+                <a href="terms.html">Terms</a>
+                <a href="https://github.com/Sanskar-in/Web-Development-Mastery" target="_blank" rel="noopener noreferrer">GitHub</a>
             </div>
         </div>
     </footer>
 
-    <!-- Inline JavaScript -->
+    <!-- JavaScript -->
     <script>
-        /* ===== Donate Overlay ===== */
-        function openDonate() {
-            document.getElementById('donateOverlay').classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-        function closeDonate() {
-            document.getElementById('donateOverlay').classList.remove('active');
-            document.body.style.overflow = '';
-        }
-        document.getElementById('donateOverlay').addEventListener('click', function(e) {
-            if (e.target === this) closeDonate();
-        });
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') closeDonate();
-        });
+        /* ==================== THEME TOGGLE ==================== */
+        (function() {
+            const THEME_KEY = 'hubMasteryTheme';
+            const html = document.documentElement;
+            const toggle = document.getElementById('theme-toggle');
 
-        /* ===== Smooth Scroll for TOC ===== */
-        document.querySelectorAll('.toc-list a').forEach(function(link) {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                var target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    history.pushState(null, '', this.getAttribute('href'));
-                }
+            /* Load saved theme or default to dark */
+            const savedTheme = localStorage.getItem(THEME_KEY) || 'dark';
+            html.setAttribute('data-theme', savedTheme);
+            updateToggleIcon(savedTheme);
+
+            toggle.addEventListener('click', function() {
+                const current = html.getAttribute('data-theme');
+                const next = current === 'dark' ? 'light' : 'dark';
+                html.setAttribute('data-theme', next);
+                localStorage.setItem(THEME_KEY, next);
+                updateToggleIcon(next);
             });
-        });
 
-        /* ===== Active Section Highlight on Scroll ===== */
-        var sectionCards = document.querySelectorAll('.section-card');
-        var tocLinks = document.querySelectorAll('.toc-list a');
-        window.addEventListener('scroll', function() {
-            var scrollPos = window.scrollY + 120;
-            sectionCards.forEach(function(section, index) {
-                if (section.offsetTop <= scrollPos && section.offsetTop + section.offsetHeight > scrollPos) {
-                    tocLinks.forEach(function(l) { l.style.color = ''; });
-                    if (tocLinks[index]) {
-                        tocLinks[index].style.color = 'var(--accent2)';
-                    }
-                }
-            });
-        });
-
-        /* ===== Scroll-in Animation ===== */
-        var observer = new IntersectionObserver(function(entries) {
-            entries.forEach(function(entry) {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, { threshold: 0.1 });
-        document.querySelectorAll('.section-card, .toc-card').forEach(function(el) {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(30px)';
-            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(el);
-        });
-
-        /* ===== Navbar Scroll Effect ===== */
-        window.addEventListener('scroll', function() {
-            var navbar = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                navbar.style.background = 'rgba(11, 15, 25, 0.92)';
-            } else {
-                navbar.style.background = 'rgba(11, 15, 25, 0.75)';
+            function updateToggleIcon(theme) {
+                toggle.textContent = theme === 'dark' ? '☀️' : '🌙';
+                toggle.title = theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode';
             }
-        });
+        })();
 
-        console.log('⚖️ Terms of Service | Web Development Mastery — Loaded');
+        /* ==================== DONATE OVERLAY ==================== */
+        (function() {
+            const overlay = document.getElementById('donate-overlay');
+            const navBtn = document.getElementById('donate-nav-btn');
+            const closeBtn = document.getElementById('donate-close');
+            const closeBtnAlt = document.getElementById('donate-close-btn');
+
+            function openDonate() {
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeDonate() {
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+
+            navBtn.addEventListener('click', openDonate);
+            closeBtn.addEventListener('click', closeDonate);
+            closeBtnAlt.addEventListener('click', closeDonate);
+
+            overlay.addEventListener('click', function(e) {
+                if (e.target === overlay) closeDonate();
+            });
+
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && overlay.classList.contains('active')) {
+                    closeDonate();
+                }
+            });
+        })();
+
+        /* ==================== SCROLL ANIMATIONS ==================== */
+        (function() {
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            document.querySelectorAll('.fade-up').forEach(function(el) {
+                observer.observe(el);
+            });
+        })();
+
+        /* ==================== NAVBAR SCROLL EFFECT ==================== */
+        (function() {
+            const navbar = document.getElementById('navbar');
+            let lastScroll = 0;
+
+            window.addEventListener('scroll', function() {
+                const currentScroll = window.pageYOffset;
+                if (currentScroll > 100) {
+                    navbar.style.boxShadow = '0 4px 20px rgba(0,0,0,0.3)';
+                } else {
+                    navbar.style.boxShadow = 'none';
+                }
+                lastScroll = currentScroll;
+            }, { passive: true });
+        })();
+
+        /* ==================== SMOOTH SCROLL FOR TOC ==================== */
+        (function() {
+            document.querySelectorAll('.toc-list a').forEach(function(link) {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        /* Add a brief highlight effect */
+                        targetElement.style.borderColor = 'var(--accent)';
+                        targetElement.style.boxShadow = '0 0 30px var(--accent-glow)';
+                        setTimeout(function() {
+                            targetElement.style.borderColor = '';
+                            targetElement.style.boxShadow = '';
+                        }, 2000);
+                    }
+                });
+            });
+        })();
     </script>
 </body>
 </html>

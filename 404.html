@@ -1,370 +1,1267 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>404 Not Found | Web Development Mastery</title>
-    <meta name="description" content="Page not found — Web Development Mastery by Sanskar Developer">
-    <meta name="robots" content="noindex, follow">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <title>Page Not Found | Web Development Mastery</title>
+    <meta name="description" content="The page you were looking for doesn't exist. Discover Web Development Mastery modules.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        /* ==========================================================================
+           1. CSS VARIABLES & THEMING
+           ========================================================================== */
+        :root {
+            /* Hub Accent Colors */
+            --accent: #6c63ff;
+            --accent-light: #8b84ff;
+            --accent-dark: #5149e6;
+            --accent-glow: rgba(108, 99, 255, 0.25);
+            --accent-transparent: rgba(108, 99, 255, 0.1);
+            
+            /* Typography */
+            --font-heading: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+            --font-body: 'Plus Jakarta Sans', 'Inter', sans-serif;
+            --font-mono: 'Inter', monospace;
+            
+            /* Structure */
+            --max-width: 1200px;
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 20px;
+            --radius-full: 9999px;
+            
+            /* Transitions */
+            --transition-fast: 0.2s ease;
+            --transition-normal: 0.3s ease;
+            --transition-slow: 0.5s ease;
+            --transition-bounce: 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        [data-theme='dark'] {
+            --bg-main: #0b0f19;
+            --bg-secondary: #151a28;
+            --bg-glass: rgba(11, 15, 25, 0.7);
+            --bg-card: rgba(255, 255, 255, 0.03);
+            --bg-card-hover: rgba(255, 255, 255, 0.05);
+            --text-main: #f8fafc;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --border-highlight: rgba(255, 255, 255, 0.15);
+            --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.2);
+            --shadow-md: 0 10px 20px rgba(0, 0, 0, 0.3);
+            --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.4);
+            --shadow-glow: 0 0 20px var(--accent-glow);
+        }
+
+        [data-theme='light'] {
+            --bg-main: #f8fafc;
+            --bg-secondary: #ffffff;
+            --bg-glass: rgba(255, 255, 255, 0.8);
+            --bg-card: rgba(0, 0, 0, 0.02);
+            --bg-card-hover: rgba(0, 0, 0, 0.04);
+            --text-main: #0f172a;
+            --text-secondary: #475569;
+            --text-muted: #94a3b8;
+            --border-color: rgba(0, 0, 0, 0.08);
+            --border-highlight: rgba(0, 0, 0, 0.15);
+            --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 10px 20px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.12);
+            --shadow-glow: 0 0 20px rgba(108, 99, 255, 0.15);
+        }
+
+        /* ==========================================================================
+           2. RESET & BASE STYLES
+           ========================================================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
 
         body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: #0b0f19;
-            color: #f8fafc;
+            font-family: var(--font-body);
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            line-height: 1.6;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            justify-content: center;
             overflow-x: hidden;
+            transition: background-color var(--transition-slow), color var(--transition-slow);
             position: relative;
         }
 
-        /* Animated Background */
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            line-height: 1.2;
+            color: var(--text-main);
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: color var(--transition-fast);
+        }
+
+        a:hover {
+            color: var(--accent-light);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* ==========================================================================
+           3. BACKGROUND EFFECTS
+           ========================================================================== */
         .bg-shapes {
-            position: fixed; top: 0; left: 0;
-            width: 100vw; height: 100vh;
-            z-index: 0; overflow: hidden; pointer-events: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -2;
+            overflow: hidden;
+            pointer-events: none;
         }
+
         .shape {
-            position: absolute; border-radius: 50%;
-            filter: blur(100px); opacity: 0.5;
-            animation: drift 15s infinite alternate ease-in-out;
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.4;
+            animation: drift 20s infinite alternate ease-in-out;
         }
-        .shape-1 { width: 600px; height: 600px; background: #6c63ff; top: -200px; left: -150px; }
-        .shape-2 { width: 500px; height: 500px; background: #3ecfcf; bottom: -100px; right: -100px; animation-delay: -5s; }
-        .shape-3 { width: 400px; height: 400px; background: #bf5af2; top: 40%; left: 60%; animation-delay: -3s; }
+
+        [data-theme='light'] .shape {
+            opacity: 0.25;
+            filter: blur(100px);
+        }
+
+        .shape-1 {
+            width: 600px;
+            height: 600px;
+            background: var(--accent);
+            top: -200px;
+            left: -150px;
+        }
+
+        .shape-2 {
+            width: 500px;
+            height: 500px;
+            background: #3ecfcf;
+            bottom: -100px;
+            right: -100px;
+            animation-delay: -5s;
+        }
+
+        .shape-3 {
+            width: 400px;
+            height: 400px;
+            background: #bf5af2;
+            top: 40%;
+            left: 60%;
+            animation-delay: -10s;
+        }
 
         @keyframes drift {
-            0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(40px, 40px) scale(1.15); }
+            0% { transform: translate(0, 0) scale(1) rotate(0deg); }
+            33% { transform: translate(50px, -50px) scale(1.1) rotate(45deg); }
+            66% { transform: translate(-30px, 40px) scale(0.9) rotate(-15deg); }
+            100% { transform: translate(40px, 40px) scale(1.15) rotate(10deg); }
+        }
+
+        /* Grid Pattern Overlay */
+        .grid-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(var(--border-color) 1px, transparent 1px),
+                linear-gradient(90deg, var(--border-color) 1px, transparent 1px);
+            background-size: 40px 40px;
+            opacity: 0.2;
+            z-index: -1;
+            pointer-events: none;
+            mask-image: radial-gradient(ellipse at center, black 0%, transparent 80%);
+            -webkit-mask-image: radial-gradient(ellipse at center, black 0%, transparent 80%);
         }
 
         /* Particles */
+        #particles-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
         .particle {
-            position: fixed; border-radius: 50%;
-            pointer-events: none; opacity: 0;
+            position: absolute;
+            background-color: var(--accent);
+            border-radius: 50%;
+            opacity: 0;
             animation: floatUp linear infinite;
         }
 
         @keyframes floatUp {
-            0% { transform: translateY(100vh) scale(0); opacity: 0; }
-            10% { opacity: 0.8; }
-            90% { opacity: 0.6; }
-            100% { transform: translateY(-20vh) scale(1); opacity: 0; }
+            0% {
+                transform: translateY(100vh) scale(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.8;
+                transform: translateY(90vh) scale(1) rotate(45deg);
+            }
+            90% {
+                opacity: 0.5;
+                transform: translateY(10vh) scale(1) rotate(315deg);
+            }
+            100% {
+                transform: translateY(-20vh) scale(0) rotate(360deg);
+                opacity: 0;
+            }
         }
 
-        /* Glassmorphic Nav */
-        nav {
-            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-            display: flex; align-items: center; justify-content: space-between;
-            padding: 16px 32px;
-            background: rgba(11, 15, 25, 0.7);
+        /* ==========================================================================
+           4. NAVIGATION BAR
+           ========================================================================== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 72px;
+            background: var(--bg-glass);
             backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255,255,255,0.06);
-        }
-        nav a {
-            color: #f8fafc; text-decoration: none; font-weight: 600;
-            font-size: 0.9rem; transition: color 0.2s;
-        }
-        nav a:hover { color: #6c63ff; }
-        .logo span { color: #6c63ff; font-weight: 800; font-size: 1.2rem; }
-        .nav-links { display: flex; gap: 24px; }
-        .nav-links a { font-size: 0.85rem; font-weight: 500; }
-
-        /* 404 Container */
-        .container-404 {
-            position: relative; z-index: 2;
-            text-align: center; padding: 40px 20px;
-            max-width: 700px; width: 90%;
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+            transition: all var(--transition-normal);
         }
 
-        /* Glitch 404 */
-        .glitch-text {
-            font-family: 'Outfit', sans-serif;
-            font-size: clamp(8rem, 20vw, 14rem);
-            font-weight: 800;
-            background: linear-gradient(135deg, #6c63ff, #3ecfcf, #bf5af2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .nav-container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            height: 100%;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-main);
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-size: 1rem;
+            padding: 8px 16px;
+            border-radius: var(--radius-full);
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            transition: all var(--transition-normal);
+        }
+
+        .nav-back:hover {
+            background: var(--accent);
+            color: #ffffff;
+            border-color: var(--accent);
+            transform: translateX(-4px);
+        }
+
+        .nav-back svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+            transition: transform var(--transition-normal);
+        }
+
+        .nav-back:hover svg {
+            transform: translateX(-4px);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .theme-toggle {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all var(--transition-normal);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .theme-toggle:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--text-muted);
+            transform: scale(1.1) rotate(15deg);
+        }
+
+        /* ==========================================================================
+           5. MAIN CONTENT - 404 HERO
+           ========================================================================== */
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            padding-top: 100px;
             position: relative;
-            line-height: 1;
-            animation: glitch 4s ease-in-out infinite;
+            z-index: 10;
+        }
+
+        .hero-section {
+            min-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .glitch-wrapper {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 20px;
             cursor: pointer;
             user-select: none;
         }
 
-        @keyframes glitch {
-            0%, 95%, 100% { transform: translate(0); }
-            96% { transform: translate(-3px, 2px); }
-            97% { transform: translate(3px, -2px); }
-            98% { transform: translate(-2px, -3px); }
-            99% { transform: translate(2px, 3px); }
+        .glitch-heading {
+            font-family: var(--font-heading);
+            font-size: clamp(8rem, 20vw, 15rem);
+            font-weight: 800;
+            line-height: 1;
+            letter-spacing: -0.05em;
+            color: var(--text-main);
+            position: relative;
+            z-index: 1;
+            text-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            /* Static text shadow for base */
+            text-shadow: 
+                4px 4px 0px rgba(108, 99, 255, 0.4),
+                -4px -4px 0px rgba(62, 207, 207, 0.4);
+            animation: glitchMain 4s infinite alternate-reverse;
         }
 
-        .glitch-text::before,
-        .glitch-text::after {
+        @keyframes glitchMain {
+            0% { transform: skew(0deg); }
+            5% { transform: skew(-5deg); text-shadow: 4px 4px 0px rgba(108,99,255,0.8), -4px -4px 0px rgba(191,90,242,0.8); }
+            10% { transform: skew(0deg); }
+            15% { transform: skew(4deg); text-shadow: -4px 4px 0px rgba(62,207,207,0.8), 4px -4px 0px rgba(108,99,255,0.8); }
+            20% { transform: skew(0deg); }
+            100% { transform: skew(0deg); }
+        }
+
+        .glitch-heading::before,
+        .glitch-heading::after {
             content: '404';
-            position: absolute; left: 0; top: 0;
-            width: 100%; height: 100%;
-            background: linear-gradient(135deg, #6c63ff, #3ecfcf, #bf5af2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .glitch-text::before {
-            animation: glitchBefore 3s infinite;
-            clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%);
-        }
-        .glitch-text::after {
-            animation: glitchAfter 3s infinite;
-            clip-path: polygon(0 65%, 100% 65%, 100% 100%, 0 100%);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.8;
         }
 
-        @keyframes glitchBefore {
-            0%, 92%, 100% { transform: translate(0); }
-            93% { transform: translate(-5px, -2px); }
-            95% { transform: translate(5px, 2px); }
-            97% { transform: translate(-3px, 1px); }
-        }
-        @keyframes glitchAfter {
-            0%, 90%, 100% { transform: translate(0); }
-            91% { transform: translate(5px, 2px); }
-            93% { transform: translate(-5px, -2px); }
-            96% { transform: translate(3px, -1px); }
+        .glitch-heading::before {
+            color: #6c63ff;
+            z-index: -1;
+            animation: glitchAnim1 2.5s infinite linear alternate-reverse;
         }
 
-        .oops-heading {
-            font-size: 1.8rem; font-weight: 700; margin: 20px 0 12px;
-            color: #f8fafc;
+        .glitch-heading::after {
+            color: #3ecfcf;
+            z-index: -2;
+            animation: glitchAnim2 3s infinite linear alternate-reverse;
         }
 
-        /* Typing effect */
-        .typing-subtitle {
-            font-size: 1rem; color: #94a3b8; margin-bottom: 30px;
-            min-height: 24px; font-family: 'Outfit', monospace;
+        @keyframes glitchAnim1 {
+            0% { clip-path: inset(20% 0 80% 0); transform: translate(-4px, 2px); }
+            20% { clip-path: inset(60% 0 10% 0); transform: translate(4px, -2px); }
+            40% { clip-path: inset(40% 0 50% 0); transform: translate(-4px, 2px); }
+            60% { clip-path: inset(80% 0 5% 0); transform: translate(4px, -2px); }
+            80% { clip-path: inset(10% 0 70% 0); transform: translate(-4px, 2px); }
+            100% { clip-path: inset(30% 0 50% 0); transform: translate(4px, -2px); }
         }
+
+        @keyframes glitchAnim2 {
+            0% { clip-path: inset(10% 0 60% 0); transform: translate(4px, -2px); }
+            20% { clip-path: inset(30% 0 20% 0); transform: translate(-4px, 2px); }
+            40% { clip-path: inset(70% 0 10% 0); transform: translate(4px, -2px); }
+            60% { clip-path: inset(20% 0 50% 0); transform: translate(-4px, 2px); }
+            80% { clip-path: inset(50% 0 30% 0); transform: translate(4px, -2px); }
+            100% { clip-path: inset(5% 0 80% 0); transform: translate(-4px, 2px); }
+        }
+
+        .title-sub {
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--text-main);
+        }
+
+        .typing-wrapper {
+            height: 30px;
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .typing-text {
+            font-family: var(--font-mono);
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            color: var(--text-secondary);
+        }
+
         .typing-cursor {
-            display: inline-block; width: 2px; height: 1em;
-            background: #6c63ff; margin-left: 2px;
-            animation: blink 0.8s ease-in-out infinite;
-            vertical-align: text-bottom;
+            display: inline-block;
+            width: 3px;
+            height: 1.2em;
+            background-color: var(--accent);
+            margin-left: 4px;
+            animation: blink 1s step-end infinite;
+            vertical-align: middle;
         }
-        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 
-        /* Buttons */
-        .btn-group { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 30px; }
-        .btn-primary {
-            display: inline-flex; align-items: center; gap: 8px;
-            padding: 14px 28px; border: none; border-radius: 12px;
-            font-weight: 700; font-size: 1rem; cursor: pointer;
-            background: linear-gradient(135deg, #6c63ff, #bf5af2);
-            color: #fff; text-decoration: none;
-            box-shadow: 0 4px 20px rgba(108,99,255,0.3);
-            transition: all 0.3s; font-family: inherit;
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
         }
-        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(108,99,255,0.4); }
+
+        .countdown-text {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 30px;
+            background: var(--bg-card);
+            padding: 8px 16px;
+            border-radius: var(--radius-full);
+            border: 1px solid var(--border-color);
+        }
+
+        .countdown-text span {
+            color: var(--accent);
+            font-weight: 700;
+            font-family: var(--font-mono);
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 60px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px 28px;
+            border-radius: var(--radius-md);
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-size: 1.05rem;
+            cursor: pointer;
+            transition: all var(--transition-bounce);
+            text-decoration: none;
+            border: none;
+            outline: none;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: #ffffff;
+            box-shadow: 0 4px 15px var(--accent-glow);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+            z-index: -1;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px var(--accent-glow);
+            background: var(--accent-light);
+            color: #ffffff;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
         .btn-secondary {
-            display: inline-flex; align-items: center; gap: 8px;
-            padding: 14px 28px; border: 1px solid rgba(255,255,255,0.15);
-            border-radius: 12px; font-weight: 600; font-size: 1rem;
-            cursor: pointer; background: rgba(255,255,255,0.05);
-            color: #f8fafc; text-decoration: none;
-            transition: all 0.3s; font-family: inherit;
+            background: var(--bg-card);
+            color: var(--text-main);
+            border: 1px solid var(--border-highlight);
             backdrop-filter: blur(10px);
         }
-        .btn-secondary:hover { background: rgba(255,255,255,0.1); transform: translateY(-3px); }
 
-        /* Redirect countdown */
-        .redirect-info {
-            font-size: 0.85rem; color: #64748b; margin-bottom: 30px;
+        .btn-secondary:hover {
+            transform: translateY(-5px);
+            background: var(--bg-card-hover);
+            border-color: var(--accent);
+            color: var(--accent);
         }
-        .redirect-info span { color: #6c63ff; font-weight: 700; }
 
-        /* Easter Egg */
-        .easter-egg {
-            display: none;
-            background: rgba(108,99,255,0.1);
-            border: 1px solid rgba(108,99,255,0.3);
-            border-radius: 12px; padding: 20px; margin: 20px auto;
-            max-width: 500px; text-align: left;
+        /* ==========================================================================
+           6. MODULE SUGGESTIONS SECTION
+           ========================================================================== */
+        .modules-section {
+            max-width: var(--max-width);
+            margin: 0 auto 100px;
+            padding: 0 24px;
+            width: 100%;
         }
-        .easter-egg h3 { color: #6c63ff; margin-bottom: 8px; font-size: 0.95rem; }
-        .easter-egg p { color: #94a3b8; font-size: 0.85rem; line-height: 1.6; }
 
-        /* Donate */
-        .donate-btn-fixed {
-            position: fixed; bottom: 30px; left: 30px; z-index: 100;
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-header h2 {
+            font-size: 2rem;
+            margin-bottom: 12px;
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+        }
+
+        .module-card {
+            background: var(--bg-glass);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 30px 24px;
+            text-align: center;
+            transition: all var(--transition-bounce);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: var(--text-main);
+            z-index: 1;
+        }
+
+        .module-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at top right, var(--accent-transparent), transparent 70%);
+            z-index: -1;
+            opacity: 0;
+            transition: opacity var(--transition-normal);
+        }
+
+        .module-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .module-card:hover::before {
+            opacity: 1;
+        }
+
+        .module-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: var(--radius-md);
+            background: var(--bg-card);
+            border: 1px solid var(--border-highlight);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            transition: all var(--transition-normal);
+        }
+
+        .module-card:hover .module-icon {
+            background: var(--accent);
+            color: #fff;
+            transform: scale(1.1) rotate(5deg);
+            border-color: var(--accent);
+        }
+
+        .module-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+        }
+
+        .module-card p {
+            font-size: 0.95rem;
+            margin-bottom: 0;
+            flex-grow: 1;
+        }
+
+        /* ==========================================================================
+           7. SUPPORT & EASTER EGG
+           ========================================================================== */
+        .easter-egg-modal {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.8);
+            background: var(--bg-secondary);
+            border: 2px solid var(--accent);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+            z-index: 10000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all var(--transition-bounce);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5), 0 0 40px var(--accent-glow);
+        }
+
+        .easter-egg-modal.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .easter-egg-modal h3 {
+            color: var(--accent);
+            font-size: 1.8rem;
+            margin-bottom: 16px;
+        }
+
+        .easter-egg-modal p {
+            font-size: 1.1rem;
+            color: var(--text-main);
+            margin-bottom: 24px;
+        }
+
+        .close-egg {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 10px 24px;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            font-family: var(--font-heading);
+            font-weight: 600;
+            transition: all var(--transition-normal);
+        }
+
+        .close-egg:hover {
+            background: var(--bg-card-hover);
+        }
+
+        /* Confetti Canvas for Easter Egg */
+        #confetti-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        /* ==========================================================================
+           8. FOOTER
+           ========================================================================== */
+        footer {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border-color);
+            padding: 80px 24px 30px;
+            margin-top: auto;
+            position: relative;
+            z-index: 10;
+        }
+
+        .footer-container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .footer-col h4 {
+            font-size: 1.2rem;
+            margin-bottom: 24px;
+            color: var(--text-main);
+            position: relative;
+            padding-bottom: 12px;
+        }
+
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+
+        .brand-col .brand-name {
+            font-family: var(--font-heading);
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--text-main);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .brand-col .brand-name span {
+            color: var(--accent);
+        }
+
+        .brand-col p {
+            color: var(--text-muted);
+            margin-bottom: 24px;
+            max-width: 300px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 16px;
+        }
+
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            transition: all var(--transition-normal);
+        }
+
+        .social-icon:hover {
+            background: var(--accent);
+            color: #ffffff;
+            border-color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .social-icon svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            font-weight: 500;
+            transition: all var(--transition-fast);
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .footer-links a::before {
+            content: '›';
+            color: var(--accent);
+            margin-right: 8px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            transition: transform var(--transition-fast);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+            transform: translateX(4px);
+        }
+
+        .contact-links a {
+            word-break: break-all;
+            margin-bottom: 12px;
+            display: block;
+            color: var(--text-secondary);
+        }
+
+        .contact-links a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .footer-bottom strong {
+            color: var(--text-main);
+        }
+
+        /* ==========================================================================
+           9. DONATE OVERLAY & BUTTON
+           ========================================================================== */
+        .donate-float-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
             background: linear-gradient(135deg, #ec4899, #f43f5e);
-            color: #fff; border: none; padding: 12px 20px;
-            border-radius: 12px; font-weight: 700; cursor: pointer;
-            font-size: 0.85rem; font-family: inherit;
-            box-shadow: 0 4px 15px rgba(244,63,94,0.3);
-            transition: all 0.3s;
+            color: #ffffff;
+            border: none;
+            border-radius: var(--radius-full);
+            padding: 14px 24px;
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 15px rgba(244, 63, 94, 0.4);
+            z-index: 900;
+            transition: all var(--transition-bounce);
         }
-        .donate-btn-fixed:hover { transform: translateY(-3px) scale(1.05); }
+
+        .donate-float-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(244, 63, 94, 0.6);
+        }
 
         .donate-overlay {
-            display: none; position: fixed; inset: 0;
-            background: rgba(0,0,0,0.7); backdrop-filter: blur(8px);
-            z-index: 10000; align-items: center; justify-content: center;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all var(--transition-normal);
+            padding: 20px;
         }
-        .donate-overlay.active { display: flex; }
+
+        .donate-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
         .donate-modal {
-            background: #1e293b; border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 20px; padding: 40px; text-align: center;
-            max-width: 420px; width: 90%; position: relative;
-        }
-        .donate-modal img { width: 200px; height: 200px; border-radius: 12px; margin: 16px 0; }
-        .donate-close {
-            position: absolute; top: 12px; right: 16px;
-            background: none; border: none; color: #94a3b8;
-            font-size: 1.5rem; cursor: pointer;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            max-width: 450px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            transform: scale(0.9);
+            transition: all var(--transition-bounce);
+            box-shadow: var(--shadow-lg);
         }
 
-        /* Support box */
-        .support-box {
-            border: 2px dashed rgba(108,99,255,0.3);
-            border-radius: 16px; padding: 24px; margin: 20px auto;
-            max-width: 500px;
+        .donate-overlay.active .donate-modal {
+            transform: scale(1);
         }
-        .support-box h3 { color: #6c63ff; font-size: 0.95rem; margin-bottom: 8px; }
-        .support-box p { color: #94a3b8; font-size: 0.85rem; line-height: 1.6; }
 
-        /* Footer */
-        footer {
-            position: relative; z-index: 2;
-            width: 100%; text-align: center;
-            padding: 24px 20px; margin-top: auto;
-            border-top: 1px solid rgba(255,255,255,0.06);
+        .donate-modal h2 {
+            font-size: 1.8rem;
+            margin-bottom: 12px;
+            color: var(--text-main);
         }
-        footer p { color: #64748b; font-size: 0.82rem; }
-        footer a { color: #6c63ff; text-decoration: none; }
 
-        /* Responsive */
+        .donate-modal p {
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+            font-size: 0.95rem;
+        }
+
+        .donate-modal img {
+            width: 220px;
+            height: 220px;
+            border-radius: var(--radius-md);
+            margin: 0 auto 24px;
+            display: block;
+            border: 4px solid var(--bg-card);
+            object-fit: cover;
+        }
+
+        .rzp-btn {
+            display: inline-block;
+            width: 100%;
+            background: linear-gradient(135deg, var(--accent), #3ecfcf);
+            color: #ffffff;
+            padding: 16px;
+            border-radius: var(--radius-md);
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: all var(--transition-normal);
+            box-shadow: 0 4px 15px rgba(108, 99, 255, 0.3);
+        }
+
+        .rzp-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(108, 99, 255, 0.5);
+            color: #ffffff;
+        }
+
+        .close-donate {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: color var(--transition-fast);
+        }
+
+        .close-donate:hover {
+            color: var(--text-main);
+        }
+
+        /* ==========================================================================
+           10. RESPONSIVE DESIGN
+           ========================================================================== */
+        @media (max-width: 992px) {
+            .footer-container {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
         @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .glitch-text { font-size: clamp(5rem, 18vw, 10rem); }
-            .oops-heading { font-size: 1.4rem; }
-            .btn-group { flex-direction: column; align-items: center; }
-            .donate-btn-fixed { bottom: 16px; left: 16px; padding: 10px 16px; font-size: 0.8rem; }
+            .glitch-heading {
+                font-size: 6rem;
+            }
+            .hero-section {
+                min-height: 60vh;
+            }
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            .cta-group {
+                flex-direction: column;
+                width: 100%;
+                max-width: 300px;
+            }
+            .btn {
+                width: 100%;
+            }
+            .donate-float-btn {
+                bottom: 20px;
+                right: 20px;
+                padding: 10px 16px;
+                font-size: 0.9rem;
+            }
         }
     </style>
 </head>
-
 <body>
-    <!-- Background -->
+
+    <!-- Background Elements -->
     <div class="bg-shapes">
         <div class="shape shape-1"></div>
         <div class="shape shape-2"></div>
         <div class="shape shape-3"></div>
     </div>
+    <div class="grid-overlay"></div>
+    <div id="particles-container"></div>
+    <canvas id="confetti-canvas"></canvas>
 
-    <!-- Nav -->
-    <nav>
-        <a href="index.html" class="logo"><span>{ }</span> Web Dev Mastery</a>
-        <div class="nav-links">
-            <a href="HTML/index.html">HTML</a>
-            <a href="CSS/index.html">CSS</a>
-            <a href="JavaScript/index.html">JavaScript</a>
-            <a href="React/index.html">React</a>
-            <a href="Follow-Sanskar.html">✨ Follow Sanskar</a>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-back">
+                <svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+                Hub Home
+            </a>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeBtn" aria-label="Toggle Theme" onclick="toggleTheme()">🌙</button>
+            </div>
         </div>
     </nav>
 
-    <!-- 404 Content -->
-    <div class="container-404">
-        <div class="glitch-text" id="glitch404" title="Click me 5 times!">404</div>
-        <h2 class="oops-heading">Oops! Page Not Found</h2>
-        <div class="typing-subtitle" id="typingText"></div>
+    <!-- Main Content -->
+    <main>
+        <section class="hero-section">
+            <div class="glitch-wrapper" id="glitchTitle" title="Click me 5 times!">
+                <h1 class="glitch-heading">404</h1>
+            </div>
+            <h2 class="title-sub">Oops! Page Not Found</h2>
+            
+            <div class="typing-wrapper">
+                <div class="typing-text" id="typingText"></div>
+            </div>
 
-        <div class="btn-group">
-            <a href="index.html" class="btn-primary">🏠 Return to Dashboard</a>
-            <button class="btn-secondary" onclick="history.back()">← Go Back</button>
+            <div class="countdown-text">
+                Auto-redirecting to Hub in <span id="countdown">15</span> seconds...
+            </div>
+
+            <div class="cta-group">
+                <a href="index.html" class="btn btn-primary">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                    Return Home
+                </a>
+                <a href="#modules" class="btn btn-secondary">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                    Explore Modules
+                </a>
+            </div>
+        </section>
+
+        <!-- Modules Section -->
+        <section class="modules-section" id="modules">
+            <div class="section-header">
+                <h2>Keep Learning</h2>
+                <p>Don't let a broken link stop your journey. Jump into one of our premium modules below.</p>
+            </div>
+            
+            <div class="modules-grid">
+                <!-- HTML -->
+                <a href="HTML/index.html" class="module-card">
+                    <div class="module-icon">📄</div>
+                    <h3>HTML Mastery</h3>
+                    <p>Master the structure of the web with modern HTML5 semantic elements and accessibility.</p>
+                </a>
+                
+                <!-- CSS -->
+                <a href="CSS/index.html" class="module-card">
+                    <div class="module-icon">🎨</div>
+                    <h3>CSS Mastery</h3>
+                    <p>Learn advanced styling, flexbox, grid, animations, and responsive design techniques.</p>
+                </a>
+                
+                <!-- JavaScript -->
+                <a href="JavaScript/index.html" class="module-card">
+                    <div class="module-icon">⚡</div>
+                    <h3>JS Mastery</h3>
+                    <p>Dive deep into ES6+, DOM manipulation, async programming, and modern JS patterns.</p>
+                </a>
+                
+                <!-- React -->
+                <a href="React/index.html" class="module-card">
+                    <div class="module-icon">⚛️</div>
+                    <h3>React Mastery</h3>
+                    <p>Build scalable SPAs with hooks, state management, routing, and modern React concepts.</p>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col brand-col">
+                <div class="brand-name"><span>{ }</span> Web Dev Mastery</div>
+                <p>Your ultimate destination for mastering modern web technologies, completely free and open-source.</p>
+                <div class="social-icons">
+                    <a href="https://youtube.com/@Sanskar-in" target="_blank" class="social-icon" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M21.582,6.186c-0.23-0.86-0.908-1.538-1.768-1.768C18.254,4,12,4,12,4s-6.254,0-7.814,0.418 c-0.86,0.23-1.538,0.908-1.768,1.768C2,7.746,2,12,2,12s0,4.254,0.418,5.814c0.23,0.86,0.908,1.538,1.768,1.768 C5.746,20,12,20,12,20s6.254,0,7.814-0.418c0.86-0.23,1.538-0.908,1.768-1.768C22,16.254,22,12,22,12S22,7.746,21.582,6.186z M9.996,15.559l0-7.118l6.732,3.559L9.996,15.559z"/></svg></a>
+                    <a href="https://github.com/Sanskar-in" target="_blank" class="social-icon" aria-label="GitHub"><svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
+                    <a href="https://linkedin.com/in/sanskar-in" target="_blank" class="social-icon" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+                </div>
+            </div>
+            
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">Dashboard</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="Follow-Sanskar.html">Follow Sanskar</a></li>
+                    <li><a href="developer.html">Developer</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms of Service</a></li>
+                    <li><a href="support.html">Support</a></li>
+                    <li><a href="thanks.html">Thank You</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col">
+                <h4>Modules</h4>
+                <ul class="footer-links">
+                    <li><a href="HTML/index.html">HTML</a></li>
+                    <li><a href="CSS/index.html">CSS</a></li>
+                    <li><a href="JavaScript/index.html">JavaScript</a></li>
+                    <li><a href="React/index.html">React</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col">
+                <h4>Contact & Support</h4>
+                <div class="contact-links">
+                    <a href="mailto:sanskaryadavfrom2012to2026@gmail.com">sanskaryadavfrom2012to2026@gmail.com</a>
+                    <a href="mailto:supportramsandesh@gmail.com">supportramsandesh@gmail.com</a>
+                    <a href="mailto:sanskaryadavfromghosimau2026-27@outlook.com">sanskaryadavfromghosimau2026-27@outlook.com</a>
+                    <a href="https://rzp.io/l/Sanskar" target="_blank" style="margin-top:12px; font-weight:700; color:var(--accent);">Donate via Razorpay</a>
+                    <a href="https://ramsandesh.gumroad.com" target="_blank" style="font-weight:700; color:#ff90e8;">Visit Gumroad Store</a>
+                </div>
+            </div>
         </div>
-
-        <div class="redirect-info">
-            Auto-redirecting in <span id="countdown">30</span> seconds...
+        
+        <div class="footer-bottom">
+            <p>&copy; 2026 <strong>Web Development Mastery</strong> by <strong>Sanskar Yadav</strong>. All Rights Reserved.</p>
+            <p>Open Source &bull; Made with <span style="color:#ef4444;">❤️</span> in India</p>
         </div>
+    </footer>
 
-        <div class="easter-egg" id="easterEgg">
-            <h3>🎉 You found the Easter Egg!</h3>
-            <p id="funFact"></p>
-        </div>
-
-        <div class="support-box">
-            <h3>💡 Support This Project</h3>
-            <p>Web Development Mastery is free and open-source. Consider donating to help us create more premium content and keep the platform running.</p>
-            <button onclick="openDonate()" style="margin-top:12px;background:linear-gradient(135deg,#6c63ff,#bf5af2);color:#fff;border:none;padding:10px 20px;border-radius:10px;cursor:pointer;font-weight:600;font-family:inherit;font-size:0.85rem;">🍩 Donate Now</button>
-        </div>
-    </div>
-
-    <!-- Donate Button Fixed -->
-    <button class="donate-btn-fixed" onclick="openDonate()">🍩 Donate</button>
+    <!-- Floating Donate Button -->
+    <button class="donate-float-btn" onclick="openDonate()">
+        🍩 Support Project
+    </button>
 
     <!-- Donate Overlay -->
     <div class="donate-overlay" id="donateOverlay" onclick="if(event.target===this) closeDonate()">
         <div class="donate-modal">
-            <button class="donate-close" onclick="closeDonate()">✕</button>
-            <h2 style="color:#f8fafc;font-size:1.4rem;margin-bottom:6px;">Support Web Dev Mastery</h2>
-            <p style="color:#94a3b8;font-size:0.9rem;">Scan the QR code or use the link below</p>
-            <img src="Payment-Ramsandesh.jpeg" alt="Donation QR Code">
-            <div style="margin-top:12px;">
-                <a href="https://rzp.io/l/Sanskar" target="_blank" rel="noopener noreferrer" style="display:inline-block;background:linear-gradient(135deg,#6c63ff,#3ecfcf);color:#fff;padding:12px 28px;border-radius:12px;text-decoration:none;font-weight:700;font-size:0.95rem;box-shadow:0 4px 15px rgba(108,99,255,0.3);">💳 Donate via Razorpay</a>
-            </div>
-            <p style="margin-top:12px;color:#64748b;font-size:0.8rem;">Thank you for your generosity! 🙏</p>
+            <button class="close-donate" onclick="closeDonate()" aria-label="Close">&times;</button>
+            <h2>Support Web Dev Mastery</h2>
+            <p>Your contribution keeps this project free, ad-free, and continuously improving for everyone.</p>
+            <img src="Payment-Ramsandesh.jpeg" alt="Donate QR Code">
+            <a href="https://rzp.io/l/Sanskar" target="_blank" class="rzp-btn">💳 Donate securely via Razorpay</a>
+            <p style="margin-top:16px; font-size:0.85rem; color:var(--text-muted);">Thank you for your generosity! 🙏</p>
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer>
-        <p>© 2026 <a href="about.html">Web Development Mastery</a> by <strong><a href="Follow-Sanskar.html">Sanskar Yadav</a></strong>. All Rights Reserved.</p>
-        <p style="margin-top:6px;">Open Source • Made with ❤️ in India</p>
-        <p style="margin-top:8px;">
-            <a href="about.html">About</a> · <a href="support.html">Support</a> · <a href="developer.html">Developer</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a>
-        </p>
-    </footer>
+    <!-- Easter Egg Modal -->
+    <div class="easter-egg-modal" id="easterEggModal">
+        <h3>🎉 Easter Egg Found!</h3>
+        <p id="funFactText"></p>
+        <button class="close-egg" onclick="closeEasterEgg()">Awesome!</button>
+    </div>
 
+    <!-- Scripts -->
     <script>
-        // Particles
-        (function createParticles() {
-            for (let i = 0; i < 30; i++) {
-                const p = document.createElement('div');
-                p.className = 'particle';
-                const size = Math.random() * 4 + 2;
-                const colors = ['#6c63ff', '#3ecfcf', '#bf5af2', '#ec4899', '#f59e0b'];
-                p.style.cssText = `
-                    width:${size}px;height:${size}px;
-                    left:${Math.random()*100}%;
-                    background:${colors[Math.floor(Math.random()*colors.length)]};
-                    animation-duration:${Math.random()*8+6}s;
-                    animation-delay:${Math.random()*10}s;
-                `;
-                document.body.appendChild(p);
+        // ---------------------------------------------------------
+        // Theme Management (localStorage key: 'hubMasteryTheme')
+        // ---------------------------------------------------------
+        const THEME_KEY = 'hubMasteryTheme';
+        
+        function initTheme() {
+            const savedTheme = localStorage.getItem(THEME_KEY);
+            if (savedTheme) {
+                document.documentElement.setAttribute('data-theme', savedTheme);
+            } else {
+                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                document.documentElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
             }
-        })();
+            updateThemeIcon();
+        }
 
-        // Typing effect
+        function toggleTheme() {
+            const current = document.documentElement.getAttribute('data-theme');
+            const next = current === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', next);
+            localStorage.setItem(THEME_KEY, next);
+            updateThemeIcon();
+        }
+
+        function updateThemeIcon() {
+            const current = document.documentElement.getAttribute('data-theme');
+            document.getElementById('themeBtn').textContent = current === 'dark' ? '☀️' : '🌙';
+        }
+
+        initTheme();
+
+        // ---------------------------------------------------------
+        // Typing Effect
+        // ---------------------------------------------------------
         const messages = [
-            'This page seems to have wandered off into the void...',
-            'Error 404: The bits got lost in cyberspace...',
-            'Looks like this URL returned undefined...',
-            'The DOM node for this page doesn\'t exist...',
-            'This route was never registered in our router...',
-            'The server searched everywhere but found nothing...',
-            'This file was accidentally garbage collected...'
+            "The page you were looking for doesn't exist...",
+            "Looks like this URL returned undefined...",
+            "Error 404: Bits lost in cyberspace...",
+            "This route is not registered in our router...",
+            "Did you forget a semicolon in the URL?"
         ];
-        let msgIndex = 0, charIndex = 0, isDeleting = false;
+        
+        let msgIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
         const typingEl = document.getElementById('typingText');
 
         function typeEffect() {
-            const msg = messages[msgIndex];
+            const currentMsg = messages[msgIndex];
+            
             if (isDeleting) {
-                typingEl.innerHTML = msg.substring(0, charIndex) + '<span class="typing-cursor"></span>';
+                typingEl.innerHTML = currentMsg.substring(0, charIndex) + '<span class="typing-cursor"></span>';
                 charIndex--;
                 if (charIndex < 0) {
                     isDeleting = false;
@@ -373,59 +1270,197 @@
                     return;
                 }
             } else {
-                typingEl.innerHTML = msg.substring(0, charIndex) + '<span class="typing-cursor"></span>';
+                typingEl.innerHTML = currentMsg.substring(0, charIndex) + '<span class="typing-cursor"></span>';
                 charIndex++;
-                if (charIndex > msg.length) {
+                if (charIndex > currentMsg.length) {
                     isDeleting = true;
                     setTimeout(typeEffect, 2000);
                     return;
                 }
             }
-            setTimeout(typeEffect, isDeleting ? 30 : 60);
+            
+            const speed = isDeleting ? 30 : 60;
+            setTimeout(typeEffect, speed);
         }
-        typeEffect();
+        
+        setTimeout(typeEffect, 500);
 
-        // Countdown redirect
-        let countdownVal = 30;
+        // ---------------------------------------------------------
+        // Background Particles
+        // ---------------------------------------------------------
+        function createParticles() {
+            const container = document.getElementById('particles-container');
+            const particleCount = 25;
+            const colors = ['#6c63ff', '#3ecfcf', '#bf5af2', '#ffffff'];
+            
+            for (let i = 0; i < particleCount; i++) {
+                const p = document.createElement('div');
+                p.className = 'particle';
+                
+                const size = Math.random() * 5 + 2;
+                const left = Math.random() * 100;
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                const duration = Math.random() * 10 + 10;
+                const delay = Math.random() * 15;
+                
+                p.style.width = `${size}px`;
+                p.style.height = `${size}px`;
+                p.style.left = `${left}%`;
+                p.style.backgroundColor = color;
+                p.style.animationDuration = `${duration}s`;
+                p.style.animationDelay = `${delay}s`;
+                
+                container.appendChild(p);
+            }
+        }
+        createParticles();
+
+        // ---------------------------------------------------------
+        // Auto-Redirect Countdown (15s)
+        // ---------------------------------------------------------
+        let countdownValue = 15;
         const countdownEl = document.getElementById('countdown');
+        
         const countdownTimer = setInterval(() => {
-            countdownVal--;
-            countdownEl.textContent = countdownVal;
-            if (countdownVal <= 0) {
+            countdownValue--;
+            countdownEl.textContent = countdownValue;
+            
+            if (countdownValue <= 0) {
                 clearInterval(countdownTimer);
                 window.location.href = 'index.html';
             }
         }, 1000);
 
-        // Easter egg
-        const funFacts = [
-            'The first website ever created is still online at info.cern.ch — it was built in 1991 by Tim Berners-Lee!',
-            'JavaScript was created in just 10 days by Brendan Eich in May 1995 at Netscape.',
-            'The first CSS specification was published in December 1996 — and it only had 59 properties!',
-            'HTML stands for HyperText Markup Language and was first proposed in 1989.',
-            'Over 97% of all websites use JavaScript on the client side as of 2025.'
-        ];
-        let clickCount = 0;
-        document.getElementById('glitch404').addEventListener('click', () => {
-            clickCount++;
-            if (clickCount >= 5) {
-                const egg = document.getElementById('easterEgg');
-                egg.style.display = 'block';
-                document.getElementById('funFact').textContent = funFacts[Math.floor(Math.random() * funFacts.length)];
-                clickCount = 0;
+        // ---------------------------------------------------------
+        // Donate Modal
+        // ---------------------------------------------------------
+        function openDonate() {
+            document.getElementById('donateOverlay').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeDonate() {
+            document.getElementById('donateOverlay').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeDonate();
+                closeEasterEgg();
             }
         });
 
-        // Donate
-        function openDonate() {
-            document.getElementById('donateOverlay').classList.add('active');
-        }
-        function closeDonate() {
-            document.getElementById('donateOverlay').classList.remove('active');
-        }
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') closeDonate();
+        // ---------------------------------------------------------
+        // Easter Egg (Click 404 5 times)
+        // ---------------------------------------------------------
+        const funFacts = [
+            "The first website ever created is still online at info.cern.ch — built in 1991 by Tim Berners-Lee!",
+            "JavaScript was created in just 10 days by Brendan Eich in May 1995.",
+            "The first CSS specification was published in December 1996 with only 59 properties.",
+            "HTML stands for HyperText Markup Language, proposed in 1989.",
+            "404 is an HTTP status code meaning 'Not Found' — it's the most famous error on the web!"
+        ];
+        
+        let clickCount = 0;
+        const glitchTitle = document.getElementById('glitchTitle');
+        const easterEggModal = document.getElementById('easterEggModal');
+        const funFactText = document.getElementById('funFactText');
+        let confettiInterval;
+        
+        glitchTitle.addEventListener('click', () => {
+            clickCount++;
+            
+            // Add a little pop effect on click
+            glitchTitle.style.transform = 'scale(0.95)';
+            setTimeout(() => glitchTitle.style.transform = 'scale(1)', 100);
+            
+            if (clickCount >= 5) {
+                triggerEasterEgg();
+                clickCount = 0;
+            }
         });
+        
+        function triggerEasterEgg() {
+            // Stop redirect timer
+            clearInterval(countdownTimer);
+            document.querySelector('.countdown-text').innerHTML = "Redirect paused. Enjoy the Easter Egg! 🎉";
+            
+            // Show modal
+            const randomFact = funFacts[Math.floor(Math.random() * funFacts.length)];
+            funFactText.textContent = randomFact;
+            easterEggModal.classList.add('active');
+            
+            // Start Confetti
+            startConfetti();
+        }
+        
+        function closeEasterEgg() {
+            easterEggModal.classList.remove('active');
+            stopConfetti();
+        }
+
+        // ---------------------------------------------------------
+        // Confetti Canvas System
+        // ---------------------------------------------------------
+        const canvas = document.getElementById('confetti-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        let animationId;
+        
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+        
+        function startConfetti() {
+            particles = [];
+            for(let i=0; i<100; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height - canvas.height,
+                    w: Math.random() * 10 + 5,
+                    h: Math.random() * 10 + 5,
+                    r: Math.random() * 360,
+                    dx: Math.random() * 4 - 2,
+                    dy: Math.random() * 3 + 2,
+                    dr: Math.random() * 10 - 5,
+                    color: `hsl(${Math.random() * 360}, 100%, 50%)`
+                });
+            }
+            cancelAnimationFrame(animationId);
+            updateConfetti();
+        }
+        
+        function updateConfetti() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for(let i=0; i<particles.length; i++) {
+                let p = particles[i];
+                p.y += p.dy;
+                p.x += p.dx;
+                p.r += p.dr;
+                
+                // Wrap around
+                if(p.y > canvas.height) p.y = -10;
+                if(p.x > canvas.width) p.x = 0;
+                if(p.x < 0) p.x = canvas.width;
+                
+                ctx.save();
+                ctx.translate(p.x, p.y);
+                ctx.rotate(p.r * Math.PI / 180);
+                ctx.fillStyle = p.color;
+                ctx.fillRect(-p.w/2, -p.h/2, p.w, p.h);
+                ctx.restore();
+            }
+            animationId = requestAnimationFrame(updateConfetti);
+        }
+        
+        function stopConfetti() {
+            cancelAnimationFrame(animationId);
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        }
     </script>
 </body>
 </html>
