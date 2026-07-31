@@ -2280,3 +2280,172 @@ body.zen-mode #zenBtn {
     display: none;
   }
 }
+
+/* === 1. SPLASH SCREEN CSS === */
+#splash-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  background: linear-gradient(135deg, #0a0a1a, #12121e);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+#splash-screen.hide {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.splash-logo {
+  width: 120px;
+  height: 120px;
+  border-radius: 24px;
+  margin-bottom: 20px;
+  animation: splashPulse 2s ease-in-out infinite;
+}
+
+@keyframes splashPulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.05); opacity: 0.8; }
+}
+
+.splash-title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 2rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #f97316, #ea580c);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 10px;
+}
+
+.splash-subtitle {
+  color: rgba(255,255,255,0.5);
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* === 2. ZEN MODE CSS === */
+.zen-mode header { display: none !important; }
+.zen-mode #siteFooter { display: none !important; }
+.zen-mode .hdr-actions { display: none !important; }
+.zen-mode .hdr-stats { display: none !important; }
+.zen-mode .social-cluster-nav { display: none !important; }
+.zen-mode .top-donate-btn { display: none !important; }
+.zen-mode .tot-day-card { display: none !important; }
+.zen-mode .notification-banner { display: none !important; }
+.zen-mode #readingTracker { display: none !important; }
+
+/* === 3. ICON BUTTON CSS === */
+.icon-btn {
+  background: none;
+  border: none;
+  color: var(--text2, #a0a0b8);
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 8px;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-btn:hover {
+  color: var(--accent, #f97316);
+  background: rgba(249, 115, 22, 0.1);
+}
+
+/* === 4. MOBILE BOTTOM NAV CSS === */
+.mobile-nav {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  background: var(--bg, #0a0a1a);
+  border-top: 1px solid var(--border);
+  padding: 8px 0 env(safe-area-inset-bottom, 8px);
+  justify-content: space-around;
+}
+.mobile-nav .nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  font-size: 20px;
+  text-decoration: none;
+  color: var(--text2, #a0a0b8);
+  transition: color 0.2s;
+}
+.mobile-nav .nav-item span {
+  font-size: 10px;
+  font-weight: 500;
+}
+.mobile-nav .nav-item:hover, .mobile-nav .nav-item:active {
+  color: var(--accent, #f97316);
+}
+@media (max-width: 768px) {
+  .mobile-nav { display: flex; }
+  #readingTracker { bottom: 80px !important; }
+}
+
+/* === 5. CODE EDITOR IMPROVEMENTS === */
+.code-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 16px;
+  background: rgba(0,0,0,0.2);
+  border-bottom: 1px solid var(--border);
+  font-size: 0.8rem;
+  color: var(--text3);
+}
+
+.code-section {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  margin: 15px 0;
+}
+
+/* === 6. NOTIFICATION BANNER CSS === */
+.notification-banner {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: var(--bg2, #12121a);
+  border: 1px solid var(--accent, #f97316);
+  border-radius: 12px;
+  padding: 20px;
+  max-width: 350px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+  transform: translateX(120%);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  z-index: 9999;
+}
+
+.notification-banner.show {
+  transform: translateX(0);
+}
+
+/* === 7. ENHANCED SCROLLBAR STYLING === */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent, #f97316);
+}

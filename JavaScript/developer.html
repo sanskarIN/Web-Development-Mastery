@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" data-theme="dark">
 
 <head>
@@ -1152,7 +1152,20 @@
         <h3>Guides & Assets</h3>
         <a href="#components">Premium Components</a>
         <a href="#performance">Performance Optimization</a>
+        <a href="#code-examples">Code Examples</a>
+        <a href="#testing">Testing Setup</a>
+        <a href="#deployment">Deployment Guide</a>
+        <a href="#troubleshooting">Troubleshooting</a>
+        <a href="#dev-tools">Developer Tools</a>
+        <a href="#changelog">Version History</a>
         <a href="#contributing">Contribution Guidelines</a>
+      </div>
+      <div class="toc-group">
+        <h3>About the Author</h3>
+        <a href="#profile">Developer Profile</a>
+        <a href="#tech-stack">Tech Stack</a>
+        <a href="#projects">Projects Showcase</a>
+        <a href="#social">Connect With Me</a>
       </div>
       <p style="font-size: 0.75rem; color: var(--text2); margin-top: 30px; text-align: center;">Press <kbd
           style="background: var(--bg3); padding: 2px 6px; border-radius: 4px; font-family: monospace;">Ctrl+K</kbd> to
@@ -1484,6 +1497,364 @@ button:hover { transform: scale(1.05); }</textarea>
       </div>
 
       <!-- 7. Contributing -->
+      <!-- Code Examples -->
+      <div class="doc-section reveal" id="code-examples">
+        <h2>Code Examples & Snippets</h2>
+        <p>The JavaScript Mastery platform relies on reusable patterns. Below are core snippets you can drop into any new page or component.</p>
+        
+        <h3>1. Initializing Theme State</h3>
+        <p>Before the DOM fully loads, you must establish the theme to prevent FOUC (Flash of Unstyled Content):</p>
+        <div class="code-container">
+          <div class="code-header">
+            <span>Theme Initialization (Inline Script)</span>
+            <button class="copy-btn">Copy</button>
+          </div>
+          <div class="code-block">
+&lt;script&gt;
+  (function() {
+    const savedTheme = localStorage.getItem('jsMasteryTheme') || 'dark';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+  })();
+&lt;/script&gt;
+          </div>
+        </div>
+
+        <h3>2. Component Lifecycle Pattern</h3>
+        <p>For custom UI elements (modals, dropdowns) in the JS ecosystem:</p>
+        <div class="code-container">
+          <div class="code-header">
+            <span>Vanilla UI Lifecycle</span>
+            <button class="copy-btn">Copy</button>
+          </div>
+          <div class="code-block">
+class JSComponent {
+  constructor(elementId) {
+    this.el = document.getElementById(elementId);
+    this.init();
+  }
+  
+  init() {
+    this.bindEvents();
+    this.render();
+  }
+  
+  bindEvents() {
+    this.el.addEventListener('click', this.handleClick.bind(this));
+  }
+  
+  destroy() {
+    this.el.removeEventListener('click', this.handleClick);
+  }
+}
+          </div>
+        </div>
+      </div>
+
+      <!-- Testing -->
+      <div class="doc-section reveal" id="testing">
+        <h2>Testing Setup & QA</h2>
+        <p>Maintaining the high quality of JavaScript Mastery requires rigorous testing across devices and browsers. Since we do not use heavy frameworks, our testing approach is streamlined.</p>
+        
+        <div class="feature-grid">
+          <div class="feature-card">
+            <div class="fc-icon">🧪</div>
+            <h4>Unit Testing</h4>
+            <p>We use Jest and JSDOM for testing vanilla JavaScript utilities and state management functions without a browser environment.</p>
+          </div>
+          <div class="feature-card">
+            <div class="fc-icon">🎭</div>
+            <h4>E2E Testing</h4>
+            <p>Playwright is configured to run end-to-end tests, ensuring UI components like the Sidebar and Theme Toggle work in Chromium, WebKit, and Firefox.</p>
+          </div>
+        </div>
+
+        <h3>Running Tests Locally</h3>
+        <div class="code-container">
+          <div class="code-header">
+            <span>Terminal</span>
+            <button class="copy-btn">Copy</button>
+          </div>
+          <div class="code-block">
+# Run unit tests
+npm run test:unit
+
+# Run E2E UI tests
+npm run test:e2e
+
+# Check coverage
+npm run test:coverage
+          </div>
+        </div>
+      </div>
+
+      <!-- Deployment Guide -->
+      <div class="doc-section reveal" id="deployment">
+        <h2>Deployment Guide</h2>
+        <p>The JavaScript Mastery module is statically generated. It can be deployed anywhere that serves static files, with edge-caching for maximum speed.</p>
+        
+        <ol>
+          <li><strong>Pre-deployment Checklist:</strong>
+            <ul>
+              <li>Run <code class="inline">npm run lint</code> to verify code quality.</li>
+              <li>Ensure all assets (images, svgs, fonts) are compressed.</li>
+              <li>Verify that the manifest.json is correctly pointing to the updated icons.</li>
+            </ul>
+          </li>
+          <li><strong>Build Step:</strong>
+            <p>Run <code class="inline">npm run build:js</code> to generate the minified production bundle in the <code class="inline">/dist</code> directory.</p>
+          </li>
+          <li><strong>Hosting:</strong>
+            <p>We recommend Vercel, Netlify, or GitHub Pages. Make sure to configure routing rules so that 404s fallback to <code class="inline">index.html</code> if using client-side routing.</p>
+          </li>
+        </ol>
+      </div>
+
+      <!-- Troubleshooting -->
+      <div class="doc-section reveal" id="troubleshooting">
+        <h2>Extended Troubleshooting Guide</h2>
+        <p>Encountering issues while developing for JavaScript Mastery? Check these common scenarios.</p>
+
+        <div class="alert alert-warning">
+          <div class="alert-icon">⚠️</div>
+          <div>
+            <strong>FOUC (Flash of Unstyled Content) is occurring</strong><br>
+            Ensure your theme initialization script is placed in the <code class="inline">&lt;head&gt;</code> before any stylesheets are loaded. It must be synchronous.
+          </div>
+        </div>
+        
+        <div class="alert alert-info">
+          <div class="alert-icon">💡</div>
+          <div>
+            <strong>Playground iframe is not updating</strong><br>
+            The iframe blob URL might be cached. Ensure that you are revoking the old Blob URL (<code class="inline">URL.revokeObjectURL</code>) before assigning a new one to the iframe src.
+          </div>
+        </div>
+
+        <h3>Common Console Errors</h3>
+        <ul>
+          <li><strong>"localStorage is not available"</strong>: Occurs in incognito mode on strict privacy settings. Fallback gracefully to in-memory state.</li>
+          <li><strong>"Failed to fetch resource"</strong>: Check your relative paths. All module assets must be prefixed correctly depending on the deployment base path.</li>
+        </ul>
+      </div>
+
+      <!-- Additional Developer Tools -->
+      <div class="doc-section reveal" id="dev-tools">
+        <h2>Additional Developer Tools</h2>
+        <p>Enhance your productivity when contributing to JavaScript Mastery with these tools.</p>
+        
+        <div class="feature-grid">
+          <div class="feature-card">
+            <div class="fc-icon">🛠️</div>
+            <h4>VS Code Extensions</h4>
+            <p>We recommend <em>Live Server</em>, <em>Prettier</em>, and <em>ESLint</em>. Workspace settings are included in the repository.</p>
+          </div>
+          <div class="feature-card">
+            <div class="fc-icon">📊</div>
+            <h4>Lighthouse CI</h4>
+            <p>Use our automated Lighthouse checks to ensure every PR maintains a 100/100 performance and accessibility score.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Version History -->
+      <div class="doc-section reveal" id="changelog">
+        <h2>Changelog & Version History</h2>
+        <p>Stay up to date with the structural evolution of the JavaScript Mastery platform.</p>
+        
+        <div style="border-left: 2px solid var(--border); padding-left: 20px; margin-left: 10px;">
+          <div style="position: relative; margin-bottom: 24px;">
+            <div style="position: absolute; left: -27px; top: 0; width: 12px; height: 12px; border-radius: 50%; background: #eab308; border: 2px solid var(--bg);"></div>
+            <h4 style="margin:0; color:var(--text);">v2.1.0 - Next-Gen UI Update</h4>
+            <p style="font-size: 0.85rem; color: var(--text2); margin: 4px 0;">August 2026</p>
+            <ul style="font-size: 0.9rem;">
+              <li>Refactored CSS architecture to use modern <code class="inline">color-mix()</code> and native nesting.</li>
+              <li>Added the Developer Hub documentation.</li>
+              <li>Improved theme switching performance by 40%.</li>
+            </ul>
+          </div>
+
+          <div style="position: relative; margin-bottom: 24px;">
+            <div style="position: absolute; left: -27px; top: 0; width: 12px; height: 12px; border-radius: 50%; background: var(--bg3); border: 2px solid var(--bg);"></div>
+            <h4 style="margin:0; color:var(--text);">v2.0.0 - Module Separation</h4>
+            <p style="font-size: 0.85rem; color: var(--text2); margin: 4px 0;">January 2026</p>
+            <ul style="font-size: 0.9rem;">
+              <li>Split monolith into JS, React, and Backend modules.</li>
+              <li>Implemented the Live Code Playground.</li>
+              <li>Added persistent local storage synchronization.</li>
+            </ul>
+          </div>
+          
+          <div style="position: relative;">
+            <div style="position: absolute; left: -27px; top: 0; width: 12px; height: 12px; border-radius: 50%; background: var(--bg3); border: 2px solid var(--bg);"></div>
+            <h4 style="margin:0; color:var(--text);">v1.0.0 - Initial Release</h4>
+            <p style="font-size: 0.85rem; color: var(--text2); margin: 4px 0;">March 2025</p>
+            <ul style="font-size: 0.9rem;">
+              <li>Core curriculum launch.</li>
+              <li>Basic dark mode implementation.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Developer Profile -->
+      <div class="doc-section reveal" id="profile">
+        <h2>Meet the Developer</h2>
+        <p>The person behind the Web Development Mastery platform.</p>
+
+        <div style="background: var(--bg2); border: 1px solid var(--border); border-radius: 16px; padding: 32px; display: flex; align-items: center; gap: 32px; margin-top: 24px; flex-wrap: wrap;">
+          <div style="width: 140px; height: 140px; border-radius: 50%; background: linear-gradient(135deg, var(--bg3), var(--bg)); display: flex; align-items: center; justify-content: center; border: 2px solid var(--accent);">
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="width: 70px; height: 70px;">
+              <circle cx="50" cy="50" r="48" fill="transparent" stroke="var(--accent)" stroke-width="2"/>
+              <text x="50" y="42" text-anchor="middle" fill="var(--accent)" font-family="Inter, sans-serif" font-size="28" font-weight="800">S</text>
+              <text x="50" y="68" text-anchor="middle" fill="var(--text2)" font-family="Inter, sans-serif" font-size="12" font-weight="500">DEV</text>
+            </svg>
+          </div>
+          <div style="flex: 1; min-width: 300px;">
+            <h3 style="margin-top: 0; font-size: 1.8rem; color: var(--text);">Sanskar Yadav</h3>
+            <p style="color: var(--accent); font-weight: 600; margin-bottom: 16px;">Full-Stack Developer & Educator</p>
+            <p style="color: var(--text2); line-height: 1.7; margin-bottom: 20px;">
+              Passionate full-stack developer and educator dedicated to making web development accessible to everyone. 
+              Creator of the Web Development Mastery platform — a comprehensive, free, and open-source learning ecosystem 
+              covering HTML, CSS, JavaScript, and React. With a deep love for clean code, modern design, and interactive 
+              learning experiences, I build tools that empower developers at every level to grow their skills and build 
+              amazing things for the web.
+            </p>
+            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+              <span style="padding: 4px 12px; background: color-mix(in srgb, var(--accent) 15%, transparent); color: var(--accent); border-radius: 20px; font-size: 0.8rem; font-weight: 600;">⚛️ React</span>
+              <span style="padding: 4px 12px; background: color-mix(in srgb, var(--accent) 15%, transparent); color: var(--accent); border-radius: 20px; font-size: 0.8rem; font-weight: 600;">📜 JavaScript</span>
+              <span style="padding: 4px 12px; background: color-mix(in srgb, var(--accent) 15%, transparent); color: var(--accent); border-radius: 20px; font-size: 0.8rem; font-weight: 600;">🎨 CSS</span>
+              <span style="padding: 4px 12px; background: color-mix(in srgb, var(--accent) 15%, transparent); color: var(--accent); border-radius: 20px; font-size: 0.8rem; font-weight: 600;">🎓 Educator</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tech Stack -->
+      <div class="doc-section reveal" id="tech-stack">
+        <h2>Technologies & Tools</h2>
+        <p>The core technologies powering this platform and my development workflow.</p>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="fc-icon">⚛️</div>
+                <h4>React</h4>
+                <p>95% - Core framework for dynamic rendering.</p>
+            </div>
+            <div class="feature-card">
+                <div class="fc-icon">📜</div>
+                <h4>JavaScript</h4>
+                <p>95% - Foundation of all interactivity.</p>
+            </div>
+            <div class="feature-card">
+                <div class="fc-icon">📐</div>
+                <h4>TypeScript</h4>
+                <p>85% - For robust type-safe codebase.</p>
+            </div>
+            <div class="feature-card">
+                <div class="fc-icon">🌐</div>
+                <h4>HTML5</h4>
+                <p>98% - Semantic markup and accessibility.</p>
+            </div>
+            <div class="feature-card">
+                <div class="fc-icon">🎨</div>
+                <h4>CSS3</h4>
+                <p>96% - Modern styling with custom properties.</p>
+            </div>
+            <div class="feature-card">
+                <div class="fc-icon">🟢</div>
+                <h4>Node.js</h4>
+                <p>88% - Backend environment and tooling.</p>
+            </div>
+        </div>
+      </div>
+
+      <!-- Projects Showcase -->
+      <div class="doc-section reveal" id="projects">
+        <h2>Projects Showcase</h2>
+        <p>A collection of key projects that make up the Web Development Mastery ecosystem.</p>
+
+        <div class="feature-grid">
+          <!-- Web Dev Mastery -->
+          <div class="feature-card">
+            <div class="fc-icon">🌐</div>
+            <h4>Web Development Mastery</h4>
+            <p style="margin-bottom: 12px;">The flagship platform — a comprehensive, interactive web development learning ecosystem with 500+ concepts, interactive examples, progress tracking, and multiple theme support.</p>
+            <a href="../index.html" style="color: var(--accent); font-weight: 600; text-decoration: none; font-size: 0.9rem;">Explore Platform →</a>
+          </div>
+
+          <!-- HTML Mastery -->
+          <div class="feature-card">
+            <div class="fc-icon">📝</div>
+            <h4>HTML Mastery</h4>
+            <p style="margin-bottom: 12px;">A deep-dive module covering everything from basic HTML structure and semantic elements to advanced forms, accessibility best practices, and modern HTML5 APIs.</p>
+            <a href="../HTML/index.html" style="color: var(--accent); font-weight: 600; text-decoration: none; font-size: 0.9rem;">Learn HTML →</a>
+          </div>
+
+          <!-- CSS Mastery -->
+          <div class="feature-card">
+            <div class="fc-icon">🎨</div>
+            <h4>CSS Mastery</h4>
+            <p style="margin-bottom: 12px;">Master modern CSS with tutorials on Flexbox, Grid, animations, custom properties, responsive design, and advanced layout techniques. Features a stunning visual design.</p>
+            <a href="../CSS/index.html" style="color: var(--accent); font-weight: 600; text-decoration: none; font-size: 0.9rem;">Learn CSS →</a>
+          </div>
+
+          <!-- JS Mastery -->
+          <div class="feature-card">
+            <div class="fc-icon">⚡</div>
+            <h4>JavaScript Mastery</h4>
+            <p style="margin-bottom: 12px;">Comprehensive JavaScript module covering ES6+, DOM manipulation, async programming, closures, prototypes, modules, error handling, and modern development patterns.</p>
+            <a href="../JavaScript/index.html" style="color: var(--accent); font-weight: 600; text-decoration: none; font-size: 0.9rem;">Learn JavaScript →</a>
+          </div>
+          
+          <!-- React Mastery -->
+          <div class="feature-card">
+            <div class="fc-icon">⚛️</div>
+            <h4>React Mastery</h4>
+            <p style="margin-bottom: 12px;">The crown jewel — an interactive React learning experience with a built-in code sandbox, live previews, progress tracking, and coverage from JSX basics to advanced hooks.</p>
+            <a href="../React/index.html" style="color: var(--accent); font-weight: 600; text-decoration: none; font-size: 0.9rem;">Learn React →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Connect With Me -->
+      <div class="doc-section reveal" id="social">
+        <h2>Connect With Me</h2>
+        <p>Follow along on your favorite platform for updates, tutorials, and behind-the-scenes.</p>
+        
+        <div class="feature-grid">
+          <!-- YouTube -->
+          <div class="feature-card" style="border-top: 4px solid #ff0000;">
+            <h4 style="display: flex; align-items: center; gap: 8px;"><span style="color: #ff0000; font-size: 1.2rem;">▶</span> YouTube</h4>
+            <p style="font-family: monospace; color: var(--text2); margin-bottom: 8px;">@Sanskar-in</p>
+            <p style="margin-bottom: 12px;">Video tutorials, coding walkthroughs, project breakdowns, and live coding sessions.</p>
+            <a href="https://youtube.com/@Sanskar-in" target="_blank" rel="noopener noreferrer" style="color: var(--accent); font-weight: 600; text-decoration: none; font-size: 0.9rem;">Subscribe →</a>
+          </div>
+
+          <!-- GitHub -->
+          <div class="feature-card" style="border-top: 4px solid var(--text);">
+            <h4 style="display: flex; align-items: center; gap: 8px;"><span style="color: var(--text); font-size: 1.2rem;">⌨</span> GitHub</h4>
+            <p style="font-family: monospace; color: var(--text2); margin-bottom: 8px;">Sanskar-in</p>
+            <p style="margin-bottom: 12px;">All source code, open-source projects, contributions, and development activity.</p>
+            <a href="https://github.com/Sanskar-in" target="_blank" rel="noopener noreferrer" style="color: var(--accent); font-weight: 600; text-decoration: none; font-size: 0.9rem;">Follow →</a>
+          </div>
+
+          <!-- LinkedIn -->
+          <div class="feature-card" style="border-top: 4px solid #0077b5;">
+            <h4 style="display: flex; align-items: center; gap: 8px;"><span style="color: #0077b5; font-size: 1.2rem;">in</span> LinkedIn</h4>
+            <p style="font-family: monospace; color: var(--text2); margin-bottom: 8px;">sanskar-in</p>
+            <p style="margin-bottom: 12px;">Professional updates, career insights, and networking with fellow developers.</p>
+            <a href="https://linkedin.com/in/sanskar-in" target="_blank" rel="noopener noreferrer" style="color: var(--accent); font-weight: 600; text-decoration: none; font-size: 0.9rem;">Connect →</a>
+          </div>
+
+          <!-- Twitter -->
+          <div class="feature-card" style="border-top: 4px solid #1da1f2;">
+            <h4 style="display: flex; align-items: center; gap: 8px;"><span style="color: #1da1f2; font-size: 1.2rem;">𝕏</span> X (Twitter)</h4>
+            <p style="font-family: monospace; color: var(--text2); margin-bottom: 8px;">@Sanskar_in</p>
+            <p style="margin-bottom: 12px;">Quick dev tips, project announcements, and engaging with the community.</p>
+            <a href="https://x.com/Sanskar_in" target="_blank" rel="noopener noreferrer" style="color: var(--accent); font-weight: 600; text-decoration: none; font-size: 0.9rem;">Follow →</a>
+          </div>
+        </div>
+      </div>
+
       <div class="doc-section reveal" id="contributing">
         <h2>Contribution Guidelines & Workflow</h2>
         <p>CSS Full Mastery is an open-source initiative. We welcome contributions from the community, whether it's

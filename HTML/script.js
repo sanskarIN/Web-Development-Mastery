@@ -1,3 +1,12 @@
+// ===== SPLASH SCREEN =====
+setTimeout(() => {
+  const splash = document.getElementById('splash-screen');
+  if (splash) {
+    splash.classList.add('hide');
+    setTimeout(() => splash.remove(), 800);
+  }
+}, 2000);
+
 // ===== THEME DATA =====
 const PRESET_THEMES = [
   { id: "dark", name: "Midnight Dark", bg: "#0a0a1a", bg2: "#12122a", bg3: "#0d0d22", bg4: "#080818", text: "#d0d0ee", text2: "#b0b0d0", text3: "#8888bb", accent: "#6c63ff", accent2: "#3ecfcf", accent3: "#ffa36b", border: "#6c63ff22", card: "#12122a", codeBg: "#080818", sbBg: "#0f0f24", hdrBg: "linear-gradient(135deg,#1a0a3e,#0f2027,#0a1628)" },
