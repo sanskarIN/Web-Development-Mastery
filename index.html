@@ -1,17 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Web Development Mastery — HTML, CSS, JS & React | By Sanskar Developer</title>
-    <meta name="description" content="The ultimate open-source web development learning platform. Master HTML, CSS, JavaScript, and React with 500+ concepts, live code sandboxes, and premium design.">
-    <meta name="keywords" content="Web Development, HTML, CSS, JavaScript, React, Learn to Code, Frontend, Free Course, Sanskar Developer">
+    <meta name="description"
+        content="The ultimate open-source web development learning platform. Master HTML, CSS, JavaScript, and React with 500+ concepts, live code sandboxes, and premium design.">
+    <meta name="keywords"
+        content="Web Development, HTML, CSS, JavaScript, React, Learn to Code, Frontend, Free Course, Sanskar Developer">
     <meta name="author" content="Sanskar">
     <meta name="theme-color" content="#0b0f19">
 
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="Web Development Mastery — HTML, CSS, JS & React | By Sanskar Developer">
-    <meta property="og:description" content="The ultimate open-source web development learning platform. Master HTML, CSS, JavaScript, and React with 500+ concepts, live code sandboxes, and premium design.">
+    <meta property="og:description"
+        content="The ultimate open-source web development learning platform. Master HTML, CSS, JavaScript, and React with 500+ concepts, live code sandboxes, and premium design.">
     <meta property="og:type" content="website">
     <meta property="og:image" content="splash.png">
     <meta property="og:url" content="https://github.com/sanskarIN/Web-Development-Mastery">
@@ -33,7 +37,9 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
 
     <!-- Favicon -->
     <link rel="icon" href="splash.png">
@@ -41,7 +47,9 @@
     <!-- ALL CSS INLINE -->
     <style>
         /* 1. CSS RESET + ROOT VARIABLES */
-        *, *::before, *::after {
+        *,
+        *::before,
+        *::after {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
@@ -60,7 +68,7 @@
             --accent4: #f97316;
             --border: rgba(255, 255, 255, 0.08);
             --card-glass: rgba(255, 255, 255, 0.03);
-            
+
             --html-color: #f97316;
             --css-color: #3b82f6;
             --js-color: #eab308;
@@ -76,12 +84,12 @@
             overflow-x: hidden;
             scroll-behavior: smooth;
         }
-        
+
         a {
             text-decoration: none;
             color: inherit;
         }
-        
+
         ul {
             list-style: none;
         }
@@ -146,12 +154,15 @@
             0% {
                 transform: translate(0, 0) scale(1);
             }
+
             33% {
                 transform: translate(5vw, -5vh) scale(1.1);
             }
+
             66% {
                 transform: translate(-3vw, 8vh) scale(0.9);
             }
+
             100% {
                 transform: translate(8vw, 3vh) scale(1.05);
             }
@@ -181,12 +192,15 @@
                 transform: translateY(100vh) scale(0);
                 opacity: 0;
             }
+
             20% {
                 opacity: 1;
             }
+
             80% {
                 opacity: 1;
             }
+
             100% {
                 transform: translateY(-100px) scale(1);
                 opacity: 0;
@@ -243,9 +257,20 @@
         }
 
         @keyframes pulse {
-            0% { transform: scale(0.95); opacity: 0.8; }
-            50% { transform: scale(1.05); opacity: 1; }
-            100% { transform: scale(0.95); opacity: 0.8; }
+            0% {
+                transform: scale(0.95);
+                opacity: 0.8;
+            }
+
+            50% {
+                transform: scale(1.05);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(0.95);
+                opacity: 0.8;
+            }
         }
 
         /* 6. GLASSMORPHIC STICKY NAVBAR */
@@ -279,7 +304,7 @@
             font-size: 22px;
             font-weight: 800;
         }
-        
+
         .nav-logo .logo-icon {
             font-size: 24px;
             background: linear-gradient(135deg, var(--accent1), var(--accent2));
@@ -340,7 +365,7 @@
             top: 100%;
             left: 0;
             width: 100%;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
 
         .mobile-nav.active {
@@ -360,7 +385,7 @@
         }
 
         .mobile-nav a:hover {
-            background-color: rgba(255,255,255,0.05);
+            background-color: rgba(255, 255, 255, 0.05);
             color: var(--text);
         }
 
@@ -410,7 +435,9 @@
         }
 
         @keyframes shine {
-            to { background-position: 200% center; }
+            to {
+                background-position: 200% center;
+            }
         }
 
         .hero-subtitle {
@@ -430,8 +457,15 @@
         }
 
         @keyframes blink {
-            from, to { border-color: transparent }
-            50% { border-color: var(--accent1); }
+
+            from,
+            to {
+                border-color: transparent
+            }
+
+            50% {
+                border-color: var(--accent1);
+            }
         }
 
         .hero-stats {
@@ -457,10 +491,10 @@
 
         .stat-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-            border-color: rgba(255,255,255,0.15);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            border-color: rgba(255, 255, 255, 0.15);
         }
-        
+
         .stat-value {
             font-size: 28px;
             font-weight: 800;
@@ -468,7 +502,7 @@
             color: var(--text);
             margin-bottom: 4px;
         }
-        
+
         .stat-label {
             font-size: 13px;
             color: var(--text3);
@@ -583,7 +617,7 @@
             overflow: hidden;
             z-index: 1;
         }
-        
+
         .module-card::before {
             content: '';
             position: absolute;
@@ -596,18 +630,40 @@
 
         .module-card:hover {
             transform: translateY(-12px);
-            border-color: rgba(255,255,255,0.2);
+            border-color: rgba(255, 255, 255, 0.2);
         }
 
-        .module-html::before { background: var(--html-color); }
-        .module-css::before { background: var(--css-color); }
-        .module-js::before { background: var(--js-color); }
-        .module-react::before { background: var(--react-color); }
-        
-        .module-card:hover.module-html { box-shadow: 0 20px 40px rgba(249, 115, 22, 0.15); }
-        .module-card:hover.module-css { box-shadow: 0 20px 40px rgba(59, 130, 246, 0.15); }
-        .module-card:hover.module-js { box-shadow: 0 20px 40px rgba(234, 179, 8, 0.15); }
-        .module-card:hover.module-react { box-shadow: 0 20px 40px rgba(97, 218, 251, 0.15); }
+        .module-html::before {
+            background: var(--html-color);
+        }
+
+        .module-css::before {
+            background: var(--css-color);
+        }
+
+        .module-js::before {
+            background: var(--js-color);
+        }
+
+        .module-react::before {
+            background: var(--react-color);
+        }
+
+        .module-card:hover.module-html {
+            box-shadow: 0 20px 40px rgba(249, 115, 22, 0.15);
+        }
+
+        .module-card:hover.module-css {
+            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.15);
+        }
+
+        .module-card:hover.module-js {
+            box-shadow: 0 20px 40px rgba(234, 179, 8, 0.15);
+        }
+
+        .module-card:hover.module-react {
+            box-shadow: 0 20px 40px rgba(97, 218, 251, 0.15);
+        }
 
         .module-icon-wrapper {
             width: 80px;
@@ -644,7 +700,7 @@
         }
 
         .module-stat-pill {
-            background: rgba(0,0,0,0.2);
+            background: rgba(0, 0, 0, 0.2);
             padding: 6px 12px;
             border-radius: 100px;
             font-size: 12px;
@@ -664,12 +720,28 @@
             text-decoration: none;
             display: block;
         }
-        
-        .btn-html { background: linear-gradient(135deg, #f97316, #ea580c); box-shadow: 0 4px 15px rgba(249, 115, 22, 0.3); }
-        .btn-css { background: linear-gradient(135deg, #3b82f6, #2563eb); box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3); }
-        .btn-js { background: linear-gradient(135deg, #eab308, #ca8a04); box-shadow: 0 4px 15px rgba(234, 179, 8, 0.3); }
-        .btn-react { background: linear-gradient(135deg, #61dafb, #087ea4); color: #000; box-shadow: 0 4px 15px rgba(97, 218, 251, 0.3); }
-        
+
+        .btn-html {
+            background: linear-gradient(135deg, #f97316, #ea580c);
+            box-shadow: 0 4px 15px rgba(249, 115, 22, 0.3);
+        }
+
+        .btn-css {
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+        }
+
+        .btn-js {
+            background: linear-gradient(135deg, #eab308, #ca8a04);
+            box-shadow: 0 4px 15px rgba(234, 179, 8, 0.3);
+        }
+
+        .btn-react {
+            background: linear-gradient(135deg, #61dafb, #087ea4);
+            color: #000;
+            box-shadow: 0 4px 15px rgba(97, 218, 251, 0.3);
+        }
+
         .module-btn:hover {
             transform: scale(1.02);
             filter: brightness(1.1);
@@ -681,7 +753,7 @@
             padding: 100px 0;
             border-top: 1px solid var(--border);
         }
-        
+
         .features-title {
             background: linear-gradient(to right, var(--accent2), var(--accent3));
             background-clip: text;
@@ -705,8 +777,8 @@
 
         .feature-card:hover {
             transform: translateY(-5px);
-            background: rgba(255,255,255,0.05);
-            border-color: rgba(255,255,255,0.15);
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.15);
         }
 
         .feature-icon {
@@ -742,15 +814,17 @@
             text-align: center;
             max-width: 700px;
             width: 100%;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
             position: relative;
             overflow: hidden;
         }
-        
+
         .creator-card::before {
             content: '';
             position: absolute;
-            top: 0; left: 0; right: 0;
+            top: 0;
+            left: 0;
+            right: 0;
             height: 4px;
             background: linear-gradient(90deg, var(--accent1), var(--accent3));
         }
@@ -769,11 +843,14 @@
             justify-content: center;
             font-size: 40px;
         }
-        
+
         .creator-avatar::after {
             content: '';
             position: absolute;
-            top: -3px; bottom: -3px; left: -3px; right: -3px;
+            top: -3px;
+            bottom: -3px;
+            left: -3px;
+            right: -3px;
             background: linear-gradient(135deg, var(--accent1), var(--accent3));
             border-radius: 50%;
             z-index: -1;
@@ -817,9 +894,9 @@
         }
 
         .social-pill:hover {
-            background: rgba(255,255,255,0.1);
+            background: rgba(255, 255, 255, 0.1);
             transform: translateY(-3px);
-            border-color: rgba(255,255,255,0.2);
+            border-color: rgba(255, 255, 255, 0.2);
         }
 
         /* 11. PREMIUM 4-COLUMN FOOTER */
@@ -828,7 +905,7 @@
             border-top: 1px solid var(--border);
             padding: 80px 20px 24px;
         }
-        
+
         .footer-container {
             max-width: 1280px;
             margin: 0 auto;
@@ -858,7 +935,7 @@
             align-items: center;
             gap: 8px;
         }
-        
+
         .footer-brand .logo-icon {
             background: linear-gradient(135deg, var(--accent1), var(--accent2));
             background-clip: text;
@@ -915,14 +992,14 @@
             color: var(--accent2);
             padding-left: 4px;
         }
-        
+
         .footer-col .email-link {
             word-break: break-all;
             display: inline-block;
             margin-bottom: 12px;
             color: var(--text3);
         }
-        
+
         .footer-col .email-link:hover {
             color: var(--accent1);
             padding-left: 0;
@@ -942,9 +1019,9 @@
             color: var(--text3);
             font-size: 14px;
         }
-        
+
         .footer-badge {
-            background: rgba(255,255,255,0.05);
+            background: rgba(255, 255, 255, 0.05);
             padding: 4px 12px;
             border-radius: 100px;
             font-size: 12px;
@@ -962,7 +1039,8 @@
             background: rgba(0, 0, 0, 0.7);
             backdrop-filter: blur(8px);
             z-index: 10000;
-            display: none; /* Initially hidden */
+            display: none;
+            /* Initially hidden */
             justify-content: center;
             align-items: center;
             padding: 20px;
@@ -986,7 +1064,7 @@
             position: relative;
             transform: scale(0.95);
             transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
         }
 
         #donate-overlay.active .donate-modal {
@@ -1009,12 +1087,12 @@
             align-items: center;
             justify-content: center;
             border-radius: 50%;
-            background: rgba(255,255,255,0.05);
+            background: rgba(255, 255, 255, 0.05);
         }
 
         .close-donate:hover {
             color: white;
-            background: rgba(255,255,255,0.1);
+            background: rgba(255, 255, 255, 0.1);
         }
 
         .donate-modal h3 {
@@ -1048,7 +1126,7 @@
             width: 50px;
             height: 50px;
             border-radius: 50%;
-            background: rgba(255,255,255,0.1);
+            background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
             border: 1px solid var(--border);
             color: white;
@@ -1062,7 +1140,7 @@
             visibility: hidden;
             transform: translateY(20px);
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         }
 
         #scrollTopBtn.visible {
@@ -1082,37 +1160,48 @@
             .features-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
+
             .footer-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
 
         @media (max-width: 768px) {
-            .nav-links, .btn-follow {
+
+            .nav-links,
+            .btn-follow {
                 display: none;
             }
+
             .mobile-menu-btn {
                 display: block;
             }
+
             .hero h1 {
                 font-size: 40px;
             }
+
             .hero-stats {
                 gap: 12px;
             }
+
             .stat-card {
                 min-width: 120px;
                 padding: 12px 16px;
             }
+
             .features-grid {
                 grid-template-columns: 1fr;
             }
+
             .footer-grid {
                 grid-template-columns: 1fr;
             }
+
             .creator-card {
                 padding: 32px 20px;
             }
+
             .footer-bottom {
                 flex-direction: column;
                 text-align: center;
@@ -1123,19 +1212,24 @@
             .hero h1 {
                 font-size: 32px;
             }
+
             .hero-ctas {
                 flex-direction: column;
                 width: 100%;
             }
+
             .btn {
                 width: 100%;
             }
+
             .stat-card {
                 width: 100%;
             }
+
             .donate-modal {
                 padding: 30px 20px;
             }
+
             .qr-code-img {
                 width: 160px;
                 height: 160px;
@@ -1143,6 +1237,7 @@
         }
     </style>
 </head>
+
 <body>
 
     <!-- 3. ANIMATED BACKGROUND -->
@@ -1159,7 +1254,8 @@
     <!-- 5. SPLASH SCREEN -->
     <div id="splash-screen">
         <div class="splash-content">
-            <img src="splash.png" alt="Web Development Mastery Logo" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAiIGhlaWdodD0iMTIwIiB2aWV3Qm94PSIwIDAgMTIwIDEyMCI+PHJlY3Qgd2lkdGg9IjEyMCIgaGVpZ2h0PSIxMjAiIGZpbGw9IiM2YzYzZmYiIHJ4PSIyMCIvPjwvc3ZnPg=='">
+            <img src="splash.png" alt="Web Development Mastery Logo"
+                onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAiIGhlaWdodD0iMTIwIiB2aWV3Qm94PSIwIDAgMTIwIDEyMCI+PHJlY3Qgd2lkdGg9IjEyMCIgaGVpZ2h0PSIxMjAiIGZpbGw9IiM2YzYzZmYiIHJ4PSIyMCIvPjwvc3ZnPg=='">
             <h2>Web Development Mastery</h2>
             <p>Loading Platform...</p>
         </div>
@@ -1172,7 +1268,7 @@
                 <span class="logo-icon">{ }</span>
                 Web Dev Mastery
             </a>
-            
+
             <div class="nav-links">
                 <a href="#modules">HTML</a>
                 <a href="#modules">CSS</a>
@@ -1182,13 +1278,19 @@
                 <a href="#support">Support</a>
             </div>
 
-            <a href="https://github.com/Sanskar-in" target="_blank" class="btn btn-follow nav-links">✨ Follow Sanskar</a>
-            
+            <a href="https://github.com/Sanskar-in" target="_blank" class="btn btn-follow nav-links">✨ Follow
+                Sanskar</a>
+
             <button id="mobileMenuBtn" class="mobile-menu-btn" aria-label="Toggle Menu">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
             </button>
         </div>
-        
+
         <!-- Mobile Nav -->
         <div id="mobileNav" class="mobile-nav">
             <a href="#modules" class="mobile-link">HTML Mastery</a>
@@ -1197,7 +1299,8 @@
             <a href="#modules" class="mobile-link">React Mastery</a>
             <a href="#about" class="mobile-link">About</a>
             <a href="javascript:void(0)" onclick="openDonate()" class="mobile-link">Support Platform</a>
-            <a href="https://github.com/Sanskar-in" target="_blank" class="mobile-link" style="color: var(--accent1);">✨ Follow Sanskar</a>
+            <a href="https://github.com/Sanskar-in" target="_blank" class="mobile-link" style="color: var(--accent1);">✨
+                Follow Sanskar</a>
         </div>
     </nav>
 
@@ -1205,16 +1308,20 @@
     <main>
         <section class="hero">
             <div class="hero-badge">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg>
                 v2.0 Premium Edition • Open Source
             </div>
-            
+
             <h1>Master Web Development <br><span class="gradient-text">Like a Pro</span></h1>
-            
+
             <div class="hero-subtitle">
                 <span id="typing-text" class="typing-text"></span>
             </div>
-            
+
             <div class="hero-stats" id="stats-container">
                 <div class="stat-card">
                     <span class="stat-value" data-target="500">0</span>
@@ -1233,15 +1340,27 @@
                     <span class="stat-label">Open Source</span>
                 </div>
             </div>
-            
+
             <div class="hero-ctas">
                 <a href="#modules" class="btn btn-primary">Start Learning →</a>
-                <a href="https://github.com/Sanskar-in/Web-Development-Mastery" target="_blank" class="btn btn-secondary">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                <a href="https://github.com/sanskarIN/Web-Development-Mastery" target="_blank"
+                    class="btn btn-secondary">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <polygon
+                            points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                        </polygon>
+                    </svg>
                     Star on GitHub
                 </a>
                 <button onclick="openDonate()" class="btn btn-donate">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"></path><line x1="12" y1="18" x2="12" y2="22"></line><line x1="12" y1="2" x2="12" y2="6"></line></svg>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"></path>
+                        <line x1="12" y1="18" x2="12" y2="22"></line>
+                        <line x1="12" y1="2" x2="12" y2="6"></line>
+                    </svg>
                     Donate
                 </button>
             </div>
@@ -1252,13 +1371,14 @@
             <div class="section-heading">
                 <h2>Choose Your Path</h2>
             </div>
-            
+
             <div class="modules-grid">
                 <!-- HTML Module -->
                 <div class="module-card module-html">
                     <div class="module-icon-wrapper">🌐</div>
                     <h3>HTML Mastery</h3>
-                    <p>Master the foundation of the web. Learn semantic HTML5, accessible markup, forms, media, and SEO best practices to structure robust web pages.</p>
+                    <p>Master the foundation of the web. Learn semantic HTML5, accessible markup, forms, media, and SEO
+                        best practices to structure robust web pages.</p>
                     <div class="module-stats">
                         <span class="module-stat-pill">100+ Tags</span>
                         <span class="module-stat-pill">Full Guide</span>
@@ -1270,7 +1390,8 @@
                 <div class="module-card module-css">
                     <div class="module-icon-wrapper">🎨</div>
                     <h3>CSS Mastery</h3>
-                    <p>Style the web with modern CSS. Dive deep into Flexbox, Grid, animations, variables, responsive design, and glassmorphism techniques.</p>
+                    <p>Style the web with modern CSS. Dive deep into Flexbox, Grid, animations, variables, responsive
+                        design, and glassmorphism techniques.</p>
                     <div class="module-stats">
                         <span class="module-stat-pill">200 Properties</span>
                         <span class="module-stat-pill">Live Demos</span>
@@ -1282,7 +1403,8 @@
                 <div class="module-card module-js">
                     <div class="module-icon-wrapper">⚡</div>
                     <h3>JavaScript Mastery</h3>
-                    <p>Add interactivity and logic. Understand ES6+, DOM manipulation, asynchronous programming, fetch API, and modern JS patterns.</p>
+                    <p>Add interactivity and logic. Understand ES6+, DOM manipulation, asynchronous programming, fetch
+                        API, and modern JS patterns.</p>
                     <div class="module-stats">
                         <span class="module-stat-pill">100 Concepts</span>
                         <span class="module-stat-pill">Live Sandbox</span>
@@ -1294,7 +1416,8 @@
                 <div class="module-card module-react">
                     <div class="module-icon-wrapper">⚛️</div>
                     <h3>React Mastery</h3>
-                    <p>Build scalable UIs with the industry standard. Master components, hooks, state management, routing, and modern React architecture.</p>
+                    <p>Build scalable UIs with the industry standard. Master components, hooks, state management,
+                        routing, and modern React architecture.</p>
                     <div class="module-stats">
                         <span class="module-stat-pill">100+ Concepts</span>
                         <span class="module-stat-pill">Live Sandbox</span>
@@ -1310,37 +1433,43 @@
                 <div class="section-heading">
                     <h2 class="features-title">✨ Why This Platform?</h2>
                 </div>
-                
+
                 <div class="features-grid">
                     <div class="feature-card">
                         <div class="feature-icon">🚀</div>
                         <h4>Zero Dependencies</h4>
-                        <p>No build tools, no npm, no server required. Just open the files in your browser and start learning immediately without setup friction.</p>
+                        <p>No build tools, no npm, no server required. Just open the files in your browser and start
+                            learning immediately without setup friction.</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">🎨</div>
                         <h4>Premium Dark UI</h4>
-                        <p>Glassmorphic design with custom styling, smooth animations, and a beautiful dark mode that's easy on the eyes during long coding sessions.</p>
+                        <p>Glassmorphic design with custom styling, smooth animations, and a beautiful dark mode that's
+                            easy on the eyes during long coding sessions.</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">💻</div>
                         <h4>Live Code Sandbox</h4>
-                        <p>Write and execute code directly in the browser with instant feedback. Practice concepts immediately without switching windows.</p>
+                        <p>Write and execute code directly in the browser with instant feedback. Practice concepts
+                            immediately without switching windows.</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">📊</div>
                         <h4>Progress Tracking</h4>
-                        <p>Master concepts step-by-step, earn XP, and track your learning journey comprehensively across all four modules.</p>
+                        <p>Master concepts step-by-step, earn XP, and track your learning journey comprehensively across
+                            all four modules.</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">🎯</div>
                         <h4>Quiz System</h4>
-                        <p>Test your knowledge with interactive quizzes. Score tracking helps identify areas for improvement and reinforces learning.</p>
+                        <p>Test your knowledge with interactive quizzes. Score tracking helps identify areas for
+                            improvement and reinforces learning.</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">📱</div>
                         <h4>Fully Responsive</h4>
-                        <p>Perfect experience on desktop, tablet, and mobile devices. Learn to code anywhere, anytime, on any screen size.</p>
+                        <p>Perfect experience on desktop, tablet, and mobile devices. Learn to code anywhere, anytime,
+                            on any screen size.</p>
                     </div>
                 </div>
             </div>
@@ -1351,22 +1480,41 @@
             <div class="creator-card">
                 <div class="creator-avatar">👨‍💻</div>
                 <h3>Built by Sanskar Yadav</h3>
-                <p>Full-Stack Web Developer from India 🇮🇳. Passionate about creating free, premium educational content and open-source tools for the global developer community.</p>
+                <p>Full-Stack Web Developer from India 🇮🇳. Passionate about creating free, premium educational content
+                    and open-source tools for the global developer community.</p>
                 <div class="social-links">
                     <a href="https://youtube.com/@Sanskar-in" target="_blank" class="social-pill">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z">
+                            </path>
+                            <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+                        </svg>
                         YouTube
                     </a>
-                    <a href="https://github.com/Sanskar-in" target="_blank" class="social-pill">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                        GitHub
+                    <a href="https://github.com/sanskarIN" target="_blank" class="social-pill">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0
                     </a>
-                    <a href="https://linkedin.com/in/sanskar-in" target="_blank" class="social-pill">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-                        LinkedIn
+                    <a href=" https://linkedin.com/in/sanskarIN" target="_blank" class="social-pill">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path
+                                        d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z">
+                                    </path>
+                                    <rect x="2" y="9" width="4" height="12"></rect>
+                                    <circle cx="4" cy="4" r="2"></circle>
+                                </svg>
+                                LinkedIn
                     </a>
                     <a href="https://x.com/Sanskar_in" target="_blank" class="social-pill">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l11.733 16h4.267l-11.733 -16z"></path><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 4l11.733 16h4.267l-11.733 -16z"></path>
+                            <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path>
+                        </svg>
                         X
                     </a>
                 </div>
@@ -1381,12 +1529,38 @@
                 <!-- Column 1: Brand -->
                 <div class="footer-col footer-brand">
                     <h4><span class="logo-icon">{ }</span> Web Dev Mastery</h4>
-                    <p>The ultimate open-source web development learning platform. Master frontend technologies through interactive, premium-designed modules.</p>
+                    <p>The ultimate open-source web development learning platform. Master frontend technologies through
+                        interactive, premium-designed modules.</p>
                     <div class="footer-socials">
-                        <a href="https://youtube.com/@Sanskar-in" class="footer-social-icon" target="_blank"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg></a>
-                        <a href="https://github.com/Sanskar-in" class="footer-social-icon" target="_blank"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a>
-                        <a href="https://linkedin.com/in/sanskar-in" class="footer-social-icon" target="_blank"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
-                        <a href="https://x.com/Sanskar_in" class="footer-social-icon" target="_blank"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4l11.733 16h4.267l-11.733 -16z"></path><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path></svg></a>
+                        <a href="https://youtube.com/@Sanskar-in" class="footer-social-icon" target="_blank"><svg
+                                width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path
+                                    d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z">
+                                </path>
+                                <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+                            </svg></a>
+                        <a href="https://github.com/Sanskar-in" class="footer-social-icon" target="_blank"><svg
+                                width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path
+                                    d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                                </path>
+                            </svg></a>
+                        <a href="https://linkedin.com/in/sanskar-in" class="footer-social-icon" target="_blank"><svg
+                                width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path
+                                    d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z">
+                                </path>
+                                <rect x="2" y="9" width="4" height="12"></rect>
+                                <circle cx="4" cy="4" r="2"></circle>
+                            </svg></a>
+                        <a href="https://x.com/Sanskar_in" class="footer-social-icon" target="_blank"><svg width="18"
+                                height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 4l11.733 16h4.267l-11.733 -16z"></path>
+                                <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path>
+                            </svg></a>
                     </div>
                 </div>
 
@@ -1419,11 +1593,17 @@
                 <div class="footer-col">
                     <h5>Contact & Support</h5>
                     <ul>
-                        <li><a href="mailto:sanskaryadavfrom2012to2026@gmail.com" class="email-link">sanskaryadavfrom2012to2026@gmail.com</a></li>
-                        <li><a href="mailto:supportramsandesh@gmail.com" class="email-link">supportramsandesh@gmail.com</a></li>
-                        <li><a href="mailto:sanskaryadavfromghosimau2026-27@outlook.com" class="email-link">sanskaryadavfromghosimau2026-27@outlook.com</a></li>
-                        <li><a href="javascript:void(0)" onclick="openDonate()" style="color: var(--accent2); margin-top: 8px; display: inline-block;">🍩 Donate to Project</a></li>
-                        <li><a href="https://ramsandesh.gumroad.com" target="_blank" style="color: var(--accent1); display: inline-block;">🛍️ Gumroad Store</a></li>
+                        <li><a href="mailto:sanskaryadavfrom2012to2026@gmail.com"
+                                class="email-link">sanskaryadavfrom2012to2026@gmail.com</a></li>
+                        <li><a href="mailto:supportramsandesh@gmail.com"
+                                class="email-link">supportramsandesh@gmail.com</a></li>
+                        <li><a href="mailto:sanskaryadavfromghosimau2026-27@outlook.com"
+                                class="email-link">sanskaryadavfromghosimau2026-27@outlook.com</a></li>
+                        <li><a href="javascript:void(0)" onclick="openDonate()"
+                                style="color: var(--accent2); margin-top: 8px; display: inline-block;">🍩 Donate to
+                                Project</a></li>
+                        <li><a href="https://ramsandesh.gumroad.com" target="_blank"
+                                style="color: var(--accent1); display: inline-block;">🛍️ Gumroad Store</a></li>
                     </ul>
                 </div>
             </div>
@@ -1432,7 +1612,8 @@
                 <div class="footer-badge">v2.0 Premium Edition</div>
                 <p>&copy; 2026 Sanskar Yadav. All rights reserved.</p>
                 <p>Made with ❤️ in India 🇮🇳</p>
-                <button onclick="openDonate()" class="btn btn-donate" style="padding: 8px 16px; font-size: 14px;">Support Project</button>
+                <button onclick="openDonate()" class="btn btn-donate"
+                    style="padding: 8px 16px; font-size: 14px;">Support Project</button>
             </div>
         </div>
     </footer>
@@ -1441,23 +1622,36 @@
     <div id="donate-overlay">
         <div class="donate-modal">
             <button class="close-donate" onclick="closeDonate()">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
             </button>
             <h3>Support Web Dev Mastery</h3>
             <p>Scan the QR or use the secure payment link below to support free education.</p>
-            
-            <img src="Payment-Ramsandesh.jpeg" alt="QR Code" class="qr-code-img" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjAwIDIwMCI+PHJlY3Qgdz0iMjAwIiBoPSIyMDAiIGZpbGw9IiNlZWVlZWUiLz48dGV4dCB4PSIxMDAiIHk9IjEwMCIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiM2NjY2NjYiPlFSIENvZGUgTWlzc2luZzwvdGV4dD48L3N2Zz4='">
-            
+
+            <img src="Payment-Ramsandesh.jpeg" alt="QR Code" class="qr-code-img"
+                onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjAwIDIwMCI+PHJlY3Qgdz0iMjAwIiBoPSIyMDAiIGZpbGw9IiNlZWVlZWUiLz48dGV4dCB4PSIxMDAiIHk9IjEwMCIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiM2NjY2NjYiPlFSIENvZGUgTWlzc2luZzwvdGV4dD48L3N2Zz4='">
+
             <a href="https://rzp.io/l/Sanskar" target="_blank" class="btn btn-primary" style="width: 100%;">
                 Donate via Razorpay
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M5 12h14"></path>
+                    <path d="M12 5l7 7-7 7"></path>
+                </svg>
             </a>
         </div>
     </div>
 
     <!-- 13. SCROLL-TO-TOP BUTTON -->
     <button id="scrollTopBtn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" aria-label="Scroll to top">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="19" x2="12" y2="5"></line>
+            <polyline points="5 12 12 5 19 12"></polyline>
+        </svg>
     </button>
 
     <!-- 14. SCRIPTS -->
@@ -1476,28 +1670,28 @@
             // Generate Particles
             const particlesContainer = document.getElementById('particles-container');
             const colors = ['#6c63ff', '#3ecfcf', '#bf5af2', '#f8fafc', '#3b82f6'];
-            
+
             for (let i = 0; i < 40; i++) {
                 const particle = document.createElement('div');
                 particle.classList.add('particle');
-                
+
                 // Random properties
                 const size = Math.random() * 8 + 2; // 2px to 10px
                 const left = Math.random() * 100; // 0% to 100%
                 const animDuration = Math.random() * 15 + 10; // 10s to 25s
                 const delay = Math.random() * 10; // 0s to 10s
                 const color = colors[Math.floor(Math.random() * colors.length)];
-                
+
                 particle.style.width = `${size}px`;
                 particle.style.height = `${size}px`;
                 particle.style.left = `${left}%`;
                 particle.style.animationDuration = `${animDuration}s`;
                 particle.style.animationDelay = `${delay}s`;
                 particle.style.backgroundColor = color;
-                
+
                 // Random opacity
                 particle.style.opacity = Math.random() * 0.5 + 0.1;
-                
+
                 particlesContainer.appendChild(particle);
             }
         });
@@ -1510,15 +1704,15 @@
             'Live Code Sandboxes',
             'Zero Dependencies'
         ];
-        
+
         let phraseIndex = 0;
         let charIndex = 0;
         let isDeleting = false;
         let typingSpeed = 100;
-        
+
         function typeEffect() {
             const currentPhrase = phrases[phraseIndex];
-            
+
             if (isDeleting) {
                 typingElement.textContent = currentPhrase.substring(0, charIndex - 1);
                 charIndex--;
@@ -1528,7 +1722,7 @@
                 charIndex++;
                 typingSpeed = 100;
             }
-            
+
             if (!isDeleting && charIndex === currentPhrase.length) {
                 isDeleting = true;
                 typingSpeed = 2000; // Pause at end of word
@@ -1537,10 +1731,10 @@
                 phraseIndex = (phraseIndex + 1) % phrases.length;
                 typingSpeed = 500; // Pause before new word
             }
-            
+
             setTimeout(typeEffect, typingSpeed);
         }
-        
+
         // Start typing effect after splash screen
         setTimeout(typeEffect, 1500);
 
@@ -1548,11 +1742,11 @@
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const mobileNav = document.getElementById('mobileNav');
         const mobileLinks = document.querySelectorAll('.mobile-link');
-        
+
         mobileMenuBtn.addEventListener('click', () => {
             mobileNav.classList.toggle('active');
         });
-        
+
         mobileLinks.forEach(link => {
             link.addEventListener('click', () => {
                 mobileNav.classList.remove('active');
@@ -1562,7 +1756,7 @@
         // Scroll Events (Navbar styling, Scroll-To-Top)
         const navbar = document.querySelector('.navbar');
         const scrollTopBtn = document.getElementById('scrollTopBtn');
-        
+
         window.addEventListener('scroll', () => {
             // Navbar border shadow
             if (window.scrollY > 50) {
@@ -1570,7 +1764,7 @@
             } else {
                 navbar.style.boxShadow = 'none';
             }
-            
+
             // Scroll to top button
             if (window.scrollY > 300) {
                 scrollTopBtn.classList.add('visible');
@@ -1582,7 +1776,7 @@
         // Counter Animation for Stats
         const statValues = document.querySelectorAll('.stat-value[data-target]');
         let animated = false;
-        
+
         const observer = new IntersectionObserver((entries) => {
             if (entries[0].isIntersecting && !animated) {
                 animated = true;
@@ -1591,7 +1785,7 @@
                     const duration = 2000; // 2 seconds
                     const increment = target / (duration / 16); // 60fps
                     let current = 0;
-                    
+
                     const updateCounter = () => {
                         current += increment;
                         if (current < target) {
@@ -1601,38 +1795,38 @@
                             stat.textContent = target + (target === 100 ? '%' : '+');
                         }
                     };
-                    
+
                     updateCounter();
                 });
             }
         }, { threshold: 0.5 });
-        
+
         const statsContainer = document.getElementById('stats-container');
-        if(statsContainer) observer.observe(statsContainer);
+        if (statsContainer) observer.observe(statsContainer);
 
         // Donate Modal Functions
         const donateOverlay = document.getElementById('donate-overlay');
-        
+
         function openDonate() {
             donateOverlay.classList.add('active');
             document.body.style.overflow = 'hidden'; // Prevent scrolling
-            if(mobileNav.classList.contains('active')) {
+            if (mobileNav.classList.contains('active')) {
                 mobileNav.classList.remove('active');
             }
         }
-        
+
         function closeDonate() {
             donateOverlay.classList.remove('active');
             document.body.style.overflow = 'auto'; // Enable scrolling
         }
-        
+
         // Close on escape key
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && donateOverlay.classList.contains('active')) {
                 closeDonate();
             }
         });
-        
+
         // Close on clicking outside modal
         donateOverlay.addEventListener('click', (e) => {
             if (e.target === donateOverlay) {
@@ -1642,4 +1836,5 @@
 
     </script>
 </body>
+
 </html>
