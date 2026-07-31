@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thank You | Web Development Mastery</title>
-    <meta name="description" content="Thank you for supporting Web Development Mastery. Your contribution helps us keep learning free for everyone.">
+    <meta name="description"
+        content="Thank you for supporting Web Development Mastery. Your contribution helps us keep learning free for everyone.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <style>
         /* ==========================================================================
            1. CSS VARIABLES & THEMING
@@ -18,22 +22,22 @@
             --accent-light: #8b84ff;
             --accent-dark: #5149e6;
             --accent-glow: rgba(108, 99, 255, 0.25);
-            
+
             /* Additional accents for Thank You page */
             --accent-pink: #bf5af2;
             --accent-teal: #3ecfcf;
-            
+
             /* Typography */
             --font-heading: 'Outfit', 'Plus Jakarta Sans', sans-serif;
             --font-body: 'Plus Jakarta Sans', 'Inter', sans-serif;
-            
+
             /* Structure */
             --max-width: 1200px;
             --radius-sm: 8px;
             --radius-md: 12px;
             --radius-lg: 20px;
             --radius-full: 9999px;
-            
+
             /* Transitions */
             --transition-fast: 0.2s ease;
             --transition-normal: 0.3s ease;
@@ -97,7 +101,10 @@
             position: relative;
         }
 
-        h1, h2, h3, h4 {
+        h1,
+        h2,
+        h3,
+        h4 {
             font-family: var(--font-heading);
             font-weight: 700;
             line-height: 1.2;
@@ -141,14 +148,44 @@
             filter: blur(100px);
         }
 
-        .shape-a { width: 50vw; height: 50vw; background: var(--accent); top: -10%; left: -10%; }
-        .shape-b { width: 40vw; height: 40vw; background: var(--accent-pink); bottom: -10%; right: -10%; animation-delay: -5s; }
-        .shape-c { width: 30vw; height: 30vw; background: var(--accent-teal); top: 30%; left: 40%; animation-delay: -10s; }
+        .shape-a {
+            width: 50vw;
+            height: 50vw;
+            background: var(--accent);
+            top: -10%;
+            left: -10%;
+        }
+
+        .shape-b {
+            width: 40vw;
+            height: 40vw;
+            background: var(--accent-pink);
+            bottom: -10%;
+            right: -10%;
+            animation-delay: -5s;
+        }
+
+        .shape-c {
+            width: 30vw;
+            height: 30vw;
+            background: var(--accent-teal);
+            top: 30%;
+            left: 40%;
+            animation-delay: -10s;
+        }
 
         @keyframes float {
-            0% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(5%, 5%) scale(1.1); }
-            100% { transform: translate(-5%, -5%) scale(0.9); }
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            50% {
+                transform: translate(5%, 5%) scale(1.1);
+            }
+
+            100% {
+                transform: translate(-5%, -5%) scale(0.9);
+            }
         }
 
         .noise-overlay {
@@ -177,9 +214,20 @@
         }
 
         @keyframes confettiFall {
-            0% { transform: translateY(0) rotate(0deg) scale(1); opacity: 1; }
-            50% { transform: translateY(50vh) rotate(180deg) scale(1.1); opacity: 1; }
-            100% { transform: translateY(105vh) rotate(360deg) scale(0.9); opacity: 0; }
+            0% {
+                transform: translateY(0) rotate(0deg) scale(1);
+                opacity: 1;
+            }
+
+            50% {
+                transform: translateY(50vh) rotate(180deg) scale(1.1);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(105vh) rotate(360deg) scale(0.9);
+                opacity: 0;
+            }
         }
 
         /* ==========================================================================
@@ -187,7 +235,9 @@
            ========================================================================== */
         .navbar {
             position: fixed;
-            top: 0; left: 0; right: 0;
+            top: 0;
+            left: 0;
+            right: 0;
             height: 72px;
             background: var(--bg-glass);
             backdrop-filter: blur(20px);
@@ -229,21 +279,31 @@
         }
 
         .nav-back svg {
-            width: 18px; height: 18px; fill: currentColor;
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
             transition: transform var(--transition-normal);
         }
-        .nav-back:hover svg { transform: translateX(-4px); }
+
+        .nav-back:hover svg {
+            transform: translateX(-4px);
+        }
 
         .theme-toggle {
-            width: 44px; height: 44px;
+            width: 44px;
+            height: 44px;
             border-radius: 50%;
             background: var(--bg-card);
             border: 1px solid var(--border-color);
             color: var(--text-main);
-            display: flex; align-items: center; justify-content: center;
-            cursor: pointer; font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.2rem;
             transition: all var(--transition-normal);
         }
+
         .theme-toggle:hover {
             background: var(--bg-card-hover);
             transform: scale(1.1);
@@ -275,12 +335,17 @@
             display: inline-block;
             margin-bottom: 24px;
             animation: pulseEmoji 2s infinite ease-in-out alternate;
-            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.2));
+            filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.2));
         }
 
         @keyframes pulseEmoji {
-            0% { transform: scale(1) translateY(0); }
-            100% { transform: scale(1.15) translateY(-10px); }
+            0% {
+                transform: scale(1) translateY(0);
+            }
+
+            100% {
+                transform: scale(1.15) translateY(-10px);
+            }
         }
 
         .thank-you-title {
@@ -297,9 +362,17 @@
         }
 
         @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
         }
 
         .thank-you-desc {
@@ -378,7 +451,7 @@
             font-size: 2.2rem;
             margin-bottom: 12px;
         }
-        
+
         .section-subtitle {
             text-align: center;
             color: var(--text-secondary);
@@ -411,7 +484,9 @@
         .step-card::before {
             content: '';
             position: absolute;
-            top: 0; left: 0; right: 0;
+            top: 0;
+            left: 0;
+            right: 0;
             height: 4px;
             background: linear-gradient(90deg, var(--accent), var(--accent-pink));
             opacity: 0;
@@ -455,7 +530,7 @@
             border: 1px solid var(--border-color);
             transition: all var(--transition-normal);
         }
-        
+
         .step-link:hover {
             background: var(--accent);
             color: #fff;
@@ -503,10 +578,24 @@
             box-shadow: var(--shadow-md);
         }
 
-        .social-pill.youtube:hover { border-color: #ff0000; color: #ff0000; }
-        .social-pill.github:hover { border-color: var(--text-main); }
-        .social-pill.linkedin:hover { border-color: #0077b5; color: #0077b5; }
-        .social-pill.donate:hover { border-color: #ec4899; color: #ec4899; }
+        .social-pill.youtube:hover {
+            border-color: #ff0000;
+            color: #ff0000;
+        }
+
+        .social-pill.github:hover {
+            border-color: var(--text-main);
+        }
+
+        .social-pill.linkedin:hover {
+            border-color: #0077b5;
+            color: #0077b5;
+        }
+
+        .social-pill.donate:hover {
+            border-color: #ec4899;
+            color: #ec4899;
+        }
 
         /* ==========================================================================
            8. FOOTER (Shared with 404)
@@ -539,8 +628,11 @@
 
         .footer-col h4::after {
             content: '';
-            position: absolute; left: 0; bottom: 0;
-            width: 40px; height: 3px;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 3px;
             background: var(--accent);
             border-radius: 2px;
         }
@@ -551,20 +643,32 @@
             font-weight: 800;
             color: var(--text-main);
             margin-bottom: 16px;
-            display: flex; align-items: center; gap: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
-        .brand-col .brand-name span { color: var(--accent); }
+
+        .brand-col .brand-name span {
+            color: var(--accent);
+        }
 
         .brand-col p {
             color: var(--text-muted);
-            margin-bottom: 24px; max-width: 300px;
+            margin-bottom: 24px;
+            max-width: 300px;
         }
 
-        .social-icons { display: flex; gap: 16px; }
+        .social-icons {
+            display: flex;
+            gap: 16px;
+        }
 
         .social-icon {
-            display: flex; align-items: center; justify-content: center;
-            width: 40px; height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             background: var(--bg-card);
             border: 1px solid var(--border-color);
@@ -573,116 +677,215 @@
         }
 
         .social-icon:hover {
-            background: var(--accent); color: #ffffff;
-            border-color: var(--accent); transform: translateY(-3px);
+            background: var(--accent);
+            color: #ffffff;
+            border-color: var(--accent);
+            transform: translateY(-3px);
         }
-        .social-icon svg { width: 20px; height: 20px; fill: currentColor; }
 
-        .footer-links { display: flex; flex-direction: column; gap: 12px; }
+        .social-icon svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
         .footer-links a {
             color: var(--text-secondary);
             font-weight: 500;
             transition: all var(--transition-fast);
-            display: inline-flex; align-items: center;
+            display: inline-flex;
+            align-items: center;
         }
+
         .footer-links a::before {
-            content: '›'; color: var(--accent);
-            margin-right: 8px; font-size: 1.2rem; font-weight: 700;
+            content: '›';
+            color: var(--accent);
+            margin-right: 8px;
+            font-size: 1.2rem;
+            font-weight: 700;
             transition: transform var(--transition-fast);
         }
-        .footer-links a:hover { color: var(--accent); transform: translateX(4px); }
+
+        .footer-links a:hover {
+            color: var(--accent);
+            transform: translateX(4px);
+        }
 
         .contact-links a {
-            word-break: break-all; margin-bottom: 12px; display: block;
+            word-break: break-all;
+            margin-bottom: 12px;
+            display: block;
             color: var(--text-secondary);
         }
-        .contact-links a:hover { color: var(--accent); }
+
+        .contact-links a:hover {
+            color: var(--accent);
+        }
 
         .footer-bottom {
             max-width: var(--max-width);
-            margin: 0 auto; text-align: center;
-            padding-top: 30px; border-top: 1px solid var(--border-color);
-            color: var(--text-muted); font-size: 0.95rem;
-            display: flex; flex-direction: column; gap: 8px;
+            margin: 0 auto;
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
         }
-        .footer-bottom strong { color: var(--text-main); }
+
+        .footer-bottom strong {
+            color: var(--text-main);
+        }
 
         /* ==========================================================================
            9. DONATE OVERLAY
            ========================================================================== */
         .donate-overlay {
             position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
             background: rgba(0, 0, 0, 0.8);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             z-index: 10000;
-            display: flex; align-items: center; justify-content: center;
-            opacity: 0; visibility: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
             transition: all var(--transition-normal);
             padding: 20px;
         }
 
-        .donate-overlay.active { opacity: 1; visibility: visible; }
+        .donate-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
 
         .donate-modal {
             background: var(--bg-secondary);
             border: 1px solid var(--border-color);
             border-radius: var(--radius-lg);
-            padding: 40px; max-width: 450px; width: 100%;
-            text-align: center; position: relative;
-            transform: scale(0.9); transition: all var(--transition-bounce);
+            padding: 40px;
+            max-width: 450px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            transform: scale(0.9);
+            transition: all var(--transition-bounce);
             box-shadow: var(--shadow-lg);
         }
 
-        .donate-overlay.active .donate-modal { transform: scale(1); }
+        .donate-overlay.active .donate-modal {
+            transform: scale(1);
+        }
 
-        .donate-modal h2 { font-size: 1.8rem; margin-bottom: 12px; color: var(--text-main); }
-        .donate-modal p { color: var(--text-secondary); margin-bottom: 24px; font-size: 0.95rem; }
+        .donate-modal h2 {
+            font-size: 1.8rem;
+            margin-bottom: 12px;
+            color: var(--text-main);
+        }
+
+        .donate-modal p {
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+            font-size: 0.95rem;
+        }
+
         .donate-modal img {
-            width: 220px; height: 220px; border-radius: var(--radius-md);
-            margin: 0 auto 24px; display: block;
-            border: 4px solid var(--bg-card); object-fit: cover;
+            width: 220px;
+            height: 220px;
+            border-radius: var(--radius-md);
+            margin: 0 auto 24px;
+            display: block;
+            border: 4px solid var(--bg-card);
+            object-fit: cover;
         }
 
         .rzp-btn {
-            display: inline-block; width: 100%;
+            display: inline-block;
+            width: 100%;
             background: linear-gradient(135deg, var(--accent), #3ecfcf);
-            color: #ffffff; padding: 16px; border-radius: var(--radius-md);
-            font-family: var(--font-heading); font-weight: 700; font-size: 1.1rem;
+            color: #ffffff;
+            padding: 16px;
+            border-radius: var(--radius-md);
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 1.1rem;
             transition: all var(--transition-normal);
             box-shadow: 0 4px 15px rgba(108, 99, 255, 0.3);
-            border: none; cursor: pointer;
+            border: none;
+            cursor: pointer;
         }
 
         .rzp-btn:hover {
-            transform: translateY(-3px); box-shadow: 0 8px 25px rgba(108, 99, 255, 0.5);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(108, 99, 255, 0.5);
         }
 
         .close-donate {
-            position: absolute; top: 20px; right: 20px;
-            background: transparent; border: none;
-            color: var(--text-muted); font-size: 1.5rem;
-            cursor: pointer; transition: color var(--transition-fast);
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: color var(--transition-fast);
         }
-        .close-donate:hover { color: var(--text-main); }
+
+        .close-donate:hover {
+            color: var(--text-main);
+        }
 
         /* ==========================================================================
            10. RESPONSIVE DESIGN
            ========================================================================== */
         @media (max-width: 992px) {
-            .footer-container { grid-template-columns: 1fr 1fr; }
+            .footer-container {
+                grid-template-columns: 1fr 1fr;
+            }
         }
 
         @media (max-width: 768px) {
-            .thank-you-title { font-size: 3.5rem; }
-            .hero-section { padding: 40px 20px 20px; }
-            .footer-container { grid-template-columns: 1fr; gap: 30px; }
-            .cta-row { flex-direction: column; width: 100%; max-width: 350px; margin: 0 auto 40px; }
-            .btn { width: 100%; }
+            .thank-you-title {
+                font-size: 3.5rem;
+            }
+
+            .hero-section {
+                padding: 40px 20px 20px;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .cta-row {
+                flex-direction: column;
+                width: 100%;
+                max-width: 350px;
+                margin: 0 auto 40px;
+            }
+
+            .btn {
+                width: 100%;
+            }
         }
     </style>
 </head>
+
 <body>
 
     <!-- Background Elements -->
@@ -698,7 +901,9 @@
     <nav class="navbar">
         <div class="nav-container">
             <a href="index.html" class="nav-back">
-                <svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+                <svg viewBox="0 0 24 24">
+                    <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" />
+                </svg>
                 Hub Home
             </a>
             <div class="nav-actions">
@@ -714,18 +919,26 @@
             <div class="emoji-pulse">🎉</div>
             <h1 class="thank-you-title">Thank You!</h1>
             <p class="thank-you-desc">
-                Your support means the world to us! Thanks to people like you, 
-                <strong>Web Development Mastery</strong> remains a free, open-source learning hub 
+                Your support means the world to us! Thanks to people like you,
+                <strong>Web Development Mastery</strong> remains a free, open-source learning hub
                 that empowers developers around the globe. Every contribution helps us create better content. 🙏
             </p>
 
             <div class="cta-row">
                 <a href="index.html" class="btn btn-primary">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                    </svg>
                     Return to Hub
                 </a>
                 <a href="#next-steps" class="btn btn-secondary">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
                     Explore Modules
                 </a>
             </div>
@@ -735,7 +948,7 @@
         <section class="next-section" id="next-steps">
             <h2 class="section-title">What Happens Next?</h2>
             <p class="section-subtitle">The journey doesn't end here. Let's keep the momentum going!</p>
-            
+
             <div class="cards-grid">
                 <!-- Keep Learning -->
                 <div class="step-card">
@@ -754,30 +967,33 @@
                 <div class="step-card">
                     <div class="step-icon">⭐</div>
                     <h3>Share the Love</h3>
-                    <p>Help others discover these resources. Star our GitHub repository and share it with your network.</p>
-                    <a href="https://github.com/Sanskar-in" target="_blank" class="step-link" style="margin-top:auto;">Star Repo</a>
+                    <p>Help others discover these resources. Star our GitHub repository and share it with your network.
+                    </p>
+                    <a href="https://github.com/sanskarIN/Web-Development-Mastery" target="_blank" class="step-link"
+                        style="margin-top:auto;">Star Repo</a>
                 </div>
 
                 <!-- Stay Updated -->
                 <div class="step-card">
                     <div class="step-icon">🚀</div>
                     <h3>Stay Updated</h3>
-                    <p>Follow along on social media for new updates, upcoming courses, and behind-the-scenes content.</p>
+                    <p>Follow along on social media for new updates, upcoming courses, and behind-the-scenes content.
+                    </p>
                     <a href="Follow-Sanskar.html" class="step-link" style="margin-top:auto;">Follow Me</a>
                 </div>
             </div>
         </section>
-        
+
         <!-- Social Row -->
         <div class="social-row-container">
             <div class="social-row">
                 <a href="https://youtube.com/@Sanskar-in" target="_blank" class="social-pill youtube">
                     ▶️ YouTube
                 </a>
-                <a href="https://github.com/Sanskar-in" target="_blank" class="social-pill github">
+                <a href="https://github.com/sanskarIN" target="_blank" class="social-pill github">
                     🐙 GitHub
                 </a>
-                <a href="https://linkedin.com/in/sanskar-in" target="_blank" class="social-pill linkedin">
+                <a href="https://linkedin.com/in/sanskarIN" target="_blank" class="social-pill linkedin">
                     💼 LinkedIn
                 </a>
                 <button onclick="openDonate()" class="social-pill donate">
@@ -794,12 +1010,24 @@
                 <div class="brand-name"><span>{ }</span> Web Dev Mastery</div>
                 <p>Your ultimate destination for mastering modern web technologies, completely free and open-source.</p>
                 <div class="social-icons">
-                    <a href="https://youtube.com/@Sanskar-in" target="_blank" class="social-icon" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M21.582,6.186c-0.23-0.86-0.908-1.538-1.768-1.768C18.254,4,12,4,12,4s-6.254,0-7.814,0.418 c-0.86,0.23-1.538,0.908-1.768,1.768C2,7.746,2,12,2,12s0,4.254,0.418,5.814c0.23,0.86,0.908,1.538,1.768,1.768 C5.746,20,12,20,12,20s6.254,0,7.814-0.418c0.86-0.23,1.538-0.908,1.768-1.768C22,16.254,22,12,22,12S22,7.746,21.582,6.186z M9.996,15.559l0-7.118l6.732,3.559L9.996,15.559z"/></svg></a>
-                    <a href="https://github.com/Sanskar-in" target="_blank" class="social-icon" aria-label="GitHub"><svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
-                    <a href="https://linkedin.com/in/sanskar-in" target="_blank" class="social-icon" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+                    <a href="https://youtube.com/@Sanskar-in" target="_blank" class="social-icon"
+                        aria-label="YouTube"><svg viewBox="0 0 24 24">
+                            <path
+                                d="M21.582,6.186c-0.23-0.86-0.908-1.538-1.768-1.768C18.254,4,12,4,12,4s-6.254,0-7.814,0.418 c-0.86,0.23-1.538,0.908-1.768,1.768C2,7.746,2,12,2,12s0,4.254,0.418,5.814c0.23,0.86,0.908,1.538,1.768,1.768 C5.746,20,12,20,12,20s6.254,0,7.814-0.418c0.86-0.23,1.538-0.908,1.768-1.768C22,16.254,22,12,22,12S22,7.746,21.582,6.186z M9.996,15.559l0-7.118l6.732,3.559L9.996,15.559z" />
+                        </svg></a>
+                    <a href="https://github.com/sanskarIN" target="_blank" class="social-icon" aria-label="GitHub"><svg
+                            viewBox="0 0 24 24">
+                            <path
+                                d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                        </svg></a>
+                    <a href="https://linkedin.com/in/sanskarIN" target="_blank" class="social-icon"
+                        aria-label="LinkedIn"><svg viewBox="0 0 24 24">
+                            <path
+                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                        </svg></a>
                 </div>
             </div>
-            
+
             <div class="footer-col">
                 <h4>Quick Links</h4>
                 <ul class="footer-links">
@@ -813,7 +1041,7 @@
                     <li><a href="thanks.html">Thank You</a></li>
                 </ul>
             </div>
-            
+
             <div class="footer-col">
                 <h4>Modules</h4>
                 <ul class="footer-links">
@@ -823,21 +1051,25 @@
                     <li><a href="React/index.html">React</a></li>
                 </ul>
             </div>
-            
+
             <div class="footer-col">
                 <h4>Contact & Support</h4>
                 <div class="contact-links">
                     <a href="mailto:sanskaryadavfrom2012to2026@gmail.com">sanskaryadavfrom2012to2026@gmail.com</a>
                     <a href="mailto:supportramsandesh@gmail.com">supportramsandesh@gmail.com</a>
-                    <a href="mailto:sanskaryadavfromghosimau2026-27@outlook.com">sanskaryadavfromghosimau2026-27@outlook.com</a>
-                    <a href="https://rzp.io/l/Sanskar" target="_blank" style="margin-top:12px; font-weight:700; color:var(--accent);">Donate via Razorpay</a>
-                    <a href="https://ramsandesh.gumroad.com" target="_blank" style="font-weight:700; color:#ff90e8;">Visit Gumroad Store</a>
+                    <a
+                        href="mailto:sanskaryadavfromghosimau2026-27@outlook.com">sanskaryadavfromghosimau2026-27@outlook.com</a>
+                    <a href="https://rzp.io/l/Sanskar" target="_blank"
+                        style="margin-top:12px; font-weight:700; color:var(--accent);">Donate via Razorpay</a>
+                    <a href="https://ramsandesh.gumroad.com" target="_blank"
+                        style="font-weight:700; color:#ff90e8;">Visit Gumroad Store</a>
                 </div>
             </div>
         </div>
-        
+
         <div class="footer-bottom">
-            <p>&copy; 2026 <strong>Web Development Mastery</strong> by <strong>Sanskar Yadav</strong>. All Rights Reserved.</p>
+            <p>&copy; 2026 <strong>Web Development Mastery</strong> by <strong>Sanskar Yadav</strong>. All Rights
+                Reserved.</p>
             <p>Open Source &bull; Made with <span style="color:#ef4444;">❤️</span> in India</p>
         </div>
     </footer>
@@ -850,7 +1082,8 @@
             <p>Your contribution keeps this project free, ad-free, and continuously improving for everyone.</p>
             <img src="Payment-Ramsandesh.jpeg" alt="Donate QR Code">
             <a href="https://rzp.io/l/Sanskar" target="_blank" class="rzp-btn">💳 Donate securely via Razorpay</a>
-            <p style="margin-top:16px; font-size:0.85rem; color:var(--text-muted);">Thank you for your generosity! 🙏</p>
+            <p style="margin-top:16px; font-size:0.85rem; color:var(--text-muted);">Thank you for your generosity! 🙏
+            </p>
         </div>
     </div>
 
@@ -860,7 +1093,7 @@
         // Theme Management (localStorage key: 'hubMasteryTheme')
         // ---------------------------------------------------------
         const THEME_KEY = 'hubMasteryTheme';
-        
+
         function initTheme() {
             const savedTheme = localStorage.getItem(THEME_KEY);
             if (savedTheme) {
@@ -893,11 +1126,11 @@
         function createConfetti() {
             const container = document.getElementById('confetti-container');
             const colors = ['#6c63ff', '#3ecfcf', '#bf5af2', '#f472b6', '#fbbf24', '#34d399', '#f87171'];
-            
+
             for (let i = 0; i < 60; i++) {
                 const conf = document.createElement('div');
                 conf.classList.add('confetti-piece');
-                
+
                 // Random properties
                 const width = Math.random() * 8 + 6;
                 const height = Math.random() * 12 + 6;
@@ -905,19 +1138,19 @@
                 const color = colors[Math.floor(Math.random() * colors.length)];
                 const duration = Math.random() * 4 + 3;
                 const delay = Math.random() * 5;
-                
+
                 conf.style.width = `${width}px`;
                 conf.style.height = `${height}px`;
                 conf.style.left = `${left}vw`;
                 conf.style.backgroundColor = color;
                 conf.style.animationDuration = `${duration}s`;
                 conf.style.animationDelay = `${delay}s`;
-                
+
                 // Randomly make some circular
                 if (Math.random() > 0.7) {
                     conf.style.borderRadius = '50%';
                 }
-                
+
                 container.appendChild(conf);
             }
         }
@@ -943,4 +1176,5 @@
         });
     </script>
 </body>
-</html>
+
+</html>Continue to the part-2
