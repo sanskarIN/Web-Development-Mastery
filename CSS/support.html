@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Get support and help for CSS Mastery. Browse FAQs, contact our team, report bugs, request features, and join our developer community.">
-    <meta name="keywords" content="CSS Mastery, Support, Help, FAQ, Web Development, Sanskar Yadav">
-    <meta name="author" content="Sanskar Yadav">
+    <meta name="description"
+        content="Get support and help for CSS Mastery. Browse FAQs, contact our team, report bugs, request features, and join our developer community.">
+    <meta name="keywords" content="CSS Mastery, Support, Help, FAQ, Web Development, Sanskar">
+    <meta name="author" content="Sanskar">
     <meta name="robots" content="index, follow">
     <meta property="og:title" content="Support & Help | CSS Full Mastery">
-    <meta property="og:description" content="Get support and help for CSS Mastery. Browse FAQs, contact our team, and join our developer community.">
+    <meta property="og:description"
+        content="Get support and help for CSS Mastery. Browse FAQs, contact our team, and join our developer community.">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Support & Help | CSS Full Mastery">
@@ -16,7 +19,9 @@
     <link rel="icon" type="image/svg+xml" href="support_logo.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
     <style>
         /* ===== CSS Variables & Theme System ===== */
         :root {
@@ -32,9 +37,9 @@
             --radius-md: 12px;
             --radius-lg: 16px;
             --radius-xl: 20px;
-            --shadow-sm: 0 2px 8px rgba(0,0,0,0.1);
-            --shadow-md: 0 4px 20px rgba(0,0,0,0.15);
-            --shadow-lg: 0 8px 40px rgba(0,0,0,0.2);
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.15);
+            --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.2);
             --shadow-glow: 0 0 30px var(--accent-glow);
             --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
             --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -75,7 +80,9 @@
         }
 
         /* ===== Reset & Base ===== */
-        *, *::before, *::after {
+        *,
+        *::before,
+        *::after {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -167,10 +174,23 @@
         }
 
         @keyframes floatOrb {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            25% { transform: translate(40px, -50px) scale(1.1); }
-            50% { transform: translate(-30px, 30px) scale(0.95); }
-            75% { transform: translate(50px, 40px) scale(1.05); }
+
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            25% {
+                transform: translate(40px, -50px) scale(1.1);
+            }
+
+            50% {
+                transform: translate(-30px, 30px) scale(0.95);
+            }
+
+            75% {
+                transform: translate(50px, 40px) scale(1.05);
+            }
         }
 
         /* ===== Navigation ===== */
@@ -240,8 +260,13 @@
         }
 
         @keyframes spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
         }
 
         .nav-right {
@@ -299,8 +324,15 @@
         }
 
         @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-12px); }
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-12px);
+            }
         }
 
         .header h1 {
@@ -345,8 +377,17 @@
         }
 
         @keyframes pulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.5; transform: scale(0.8); }
+
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.5;
+                transform: scale(0.8);
+            }
         }
 
         /* ===== Container ===== */
@@ -620,10 +661,25 @@
             font-size: 1.4rem;
         }
 
-        .community-icon.youtube { background: rgba(255, 0, 0, 0.1); color: #ff0000; }
-        .community-icon.github { background: rgba(255, 255, 255, 0.1); color: var(--text-primary); }
-        .community-icon.linkedin { background: rgba(0, 119, 181, 0.1); color: #0077b5; }
-        .community-icon.twitter { background: rgba(29, 161, 242, 0.1); color: #1da1f2; }
+        .community-icon.youtube {
+            background: rgba(255, 0, 0, 0.1);
+            color: #ff0000;
+        }
+
+        .community-icon.github {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
+        }
+
+        .community-icon.linkedin {
+            background: rgba(0, 119, 181, 0.1);
+            color: #0077b5;
+        }
+
+        .community-icon.twitter {
+            background: rgba(29, 161, 242, 0.1);
+            color: #1da1f2;
+        }
 
         .community-card h3 {
             font-size: 1rem;
@@ -769,8 +825,13 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
         }
 
         .donate-modal {
@@ -787,8 +848,15 @@
         }
 
         @keyframes slideUp {
-            from { transform: translateY(40px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
+            from {
+                transform: translateY(40px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
 
         .modal-close {
@@ -1039,6 +1107,7 @@
         }
     </style>
 </head>
+
 <body>
     <!-- Floating Orbs -->
     <div class="floating-orbs">
@@ -1052,7 +1121,9 @@
     <nav class="nav" id="navbar">
         <div class="nav-left">
             <a href="index.html" class="nav-back" title="Back to CSS Mastery">
-                <svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+                <svg viewBox="0 0 24 24">
+                    <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" />
+                </svg>
                 Back
             </a>
             <div class="nav-brand">
@@ -1076,7 +1147,8 @@
             </span>
             <span class="header-icon">🛟</span>
             <h1>Support & Help Center</h1>
-            <p>Find answers to common questions, get in touch with our team, report issues, or join our vibrant developer community.</p>
+            <p>Find answers to common questions, get in touch with our team, report issues, or join our vibrant
+                developer community.</p>
         </div>
     </header>
 
@@ -1101,7 +1173,10 @@
                     </div>
                     <div class="faq-answer">
                         <div class="faq-answer-inner">
-                            Getting started is easy! Simply navigate to the CSS Mastery homepage and explore the modules. Each module is organized from beginner to advanced topics. Start with the fundamentals section to build a solid foundation, then progress through the concepts. Every concept includes interactive code examples you can run directly in the built-in sandbox.
+                            Getting started is easy! Simply navigate to the CSS Mastery homepage and explore the
+                            modules. Each module is organized from beginner to advanced topics. Start with the
+                            fundamentals section to build a solid foundation, then progress through the concepts. Every
+                            concept includes interactive code examples you can run directly in the built-in sandbox.
                         </div>
                     </div>
                 </div>
@@ -1117,7 +1192,10 @@
                     </div>
                     <div class="faq-answer">
                         <div class="faq-answer-inner">
-                            Yes! CSS Mastery is completely free and open-source. All tutorials, code examples, interactive sandboxes, and learning materials are available at no cost. We believe in making quality education accessible to everyone. If you find value in this platform, consider supporting us through donations or by sharing it with others.
+                            Yes! CSS Mastery is completely free and open-source. All tutorials, code examples,
+                            interactive sandboxes, and learning materials are available at no cost. We believe in making
+                            quality education accessible to everyone. If you find value in this platform, consider
+                            supporting us through donations or by sharing it with others.
                         </div>
                     </div>
                 </div>
@@ -1133,7 +1211,10 @@
                     </div>
                     <div class="faq-answer">
                         <div class="faq-answer-inner">
-                            Progress tracking is built right into the platform using your browser's local storage. As you complete concepts and run code examples, your progress is automatically saved. You can view your overall completion percentage on the dashboard. Your progress persists across sessions on the same browser — no account required!
+                            Progress tracking is built right into the platform using your browser's local storage. As
+                            you complete concepts and run code examples, your progress is automatically saved. You can
+                            view your overall completion percentage on the dashboard. Your progress persists across
+                            sessions on the same browser — no account required!
                         </div>
                     </div>
                 </div>
@@ -1149,7 +1230,10 @@
                     </div>
                     <div class="faq-answer">
                         <div class="faq-answer-inner">
-                            Absolutely! All code examples on CSS Mastery are free to use in your personal and commercial projects. The platform is open-source and designed to help you learn by doing. Feel free to copy, modify, and integrate any code snippets into your own applications. We only ask that you don't republish the entire course as your own.
+                            Absolutely! All code examples on CSS Mastery are free to use in your personal and commercial
+                            projects. The platform is open-source and designed to help you learn by doing. Feel free to
+                            copy, modify, and integrate any code snippets into your own applications. We only ask that
+                            you don't republish the entire course as your own.
                         </div>
                     </div>
                 </div>
@@ -1165,7 +1249,10 @@
                     </div>
                     <div class="faq-answer">
                         <div class="faq-answer-inner">
-                            CSS Mastery supports both dark and light themes. You can toggle between them using the theme button (🌙/☀️) in the top navigation bar. Your preference is automatically saved to local storage and will persist across page visits. The platform supports multiple carefully crafted theme variations across all modules.
+                            CSS Mastery supports both dark and light themes. You can toggle between them using the theme
+                            button (🌙/☀️) in the top navigation bar. Your preference is automatically saved to local
+                            storage and will persist across page visits. The platform supports multiple carefully
+                            crafted theme variations across all modules.
                         </div>
                     </div>
                 </div>
@@ -1181,7 +1268,10 @@
                     </div>
                     <div class="faq-answer">
                         <div class="faq-answer-inner">
-                            We appreciate your feedback! You can report bugs or suggest features through several channels: open an issue on our GitHub repository at github.com/Sanskar-in, send an email to supportramsandesh@gmail.com, or use the quick help cards below to get started. We review all submissions and prioritize fixes based on community impact.
+                            We appreciate your feedback! You can report bugs or suggest features through several
+                            channels: open an issue on our GitHub repository at github.com/Sanskar-in, send an email to
+                            supportramsandesh@gmail.com, or use the quick help cards below to get started. We review all
+                            submissions and prioritize fixes based on community impact.
                         </div>
                     </div>
                 </div>
@@ -1197,7 +1287,9 @@
                     </div>
                     <div class="faq-answer">
                         <div class="faq-answer-inner">
-                            Our interactive code sandbox uses the latest standards to run code directly in your browser. This ensures you're learning with modern features. The environment allows you to write and run code without setting up any local development environment.
+                            Our interactive code sandbox uses the latest standards to run code directly in your browser.
+                            This ensures you're learning with modern features. The environment allows you to write and
+                            run code without setting up any local development environment.
                         </div>
                     </div>
                 </div>
@@ -1213,7 +1305,10 @@
                     </div>
                     <div class="faq-answer">
                         <div class="faq-answer-inner">
-                            There are many ways to support CSS Mastery! You can star our GitHub repository, share it on social media, contribute code improvements via pull requests, report bugs, write about us on your blog, or make a donation to help cover hosting and development costs. Every contribution, no matter how small, helps keep this project alive and growing.
+                            There are many ways to support CSS Mastery! You can star our GitHub repository, share it on
+                            social media, contribute code improvements via pull requests, report bugs, write about us on
+                            your blog, or make a donation to help cover hosting and development costs. Every
+                            contribution, no matter how small, helps keep this project alive and growing.
                         </div>
                     </div>
                 </div>
@@ -1235,27 +1330,32 @@
                 <div class="help-card animate-in" onclick="window.location.href='mailto:supportramsandesh@gmail.com'">
                     <span class="help-card-icon">📧</span>
                     <h3>Email Support</h3>
-                    <p>Have a question or need personalized help? Send us an email and we'll get back to you within 24-48 hours.</p>
+                    <p>Have a question or need personalized help? Send us an email and we'll get back to you within
+                        24-48 hours.</p>
                     <span class="card-link">
                         supportramsandesh@gmail.com →
                     </span>
                 </div>
 
                 <!-- Report Bug -->
-                <div class="help-card animate-in" onclick="window.open('https://github.com/Sanskar-in/Web-Development-Mastery/issues/new', '_blank')">
+                <div class="help-card animate-in"
+                    onclick="window.open('https://github.com/sanskarIN/Web-Development-Mastery/issues/new', '_blank')">
                     <span class="help-card-icon">🐛</span>
                     <h3>Report a Bug</h3>
-                    <p>Found something broken? Open an issue on our GitHub repository and help us improve the platform for everyone.</p>
+                    <p>Found something broken? Open an issue on our GitHub repository and help us improve the platform
+                        for everyone.</p>
                     <span class="card-link">
                         Open GitHub Issues →
                     </span>
                 </div>
 
                 <!-- Feature Request -->
-                <div class="help-card animate-in" onclick="window.open('https://github.com/Sanskar-in/Web-Development-Mastery/discussions', '_blank')">
+                <div class="help-card animate-in"
+                    onclick="window.open('https://github.com/sanskarIN/Web-Development-Mastery/discussions', '_blank')">
                     <span class="help-card-icon">💡</span>
                     <h3>Feature Request</h3>
-                    <p>Have an idea for a new feature or improvement? Share your suggestions with us through GitHub Discussions.</p>
+                    <p>Have an idea for a new feature or improvement? Share your suggestions with us through GitHub
+                        Discussions.</p>
                     <span class="card-link">
                         Start Discussion →
                     </span>
@@ -1265,7 +1365,8 @@
                 <div class="help-card animate-in" onclick="window.location.href='index.html'">
                     <span class="help-card-icon">📚</span>
                     <h3>Documentation</h3>
-                    <p>Browse our comprehensive documentation covering all concepts, from fundamentals to advanced patterns.</p>
+                    <p>Browse our comprehensive documentation covering all concepts, from fundamentals to advanced
+                        patterns.</p>
                     <span class="card-link">
                         Browse Docs →
                     </span>
@@ -1289,7 +1390,8 @@
                     <div class="community-icon youtube">▶</div>
                     <h3>YouTube</h3>
                     <p>Watch tutorials, walkthroughs, and coding sessions on our YouTube channel.</p>
-                    <a href="https://youtube.com/@Sanskar-in" target="_blank" rel="noopener noreferrer" class="community-link">
+                    <a href="https://youtube.com/@Sanskar-in" target="_blank" rel="noopener noreferrer"
+                        class="community-link">
                         @Sanskar-in →
                     </a>
                 </div>
@@ -1299,8 +1401,9 @@
                     <div class="community-icon github">⌨</div>
                     <h3>GitHub</h3>
                     <p>Star the repo, contribute code, and track all development progress on GitHub.</p>
-                    <a href="https://github.com/Sanskar-in" target="_blank" rel="noopener noreferrer" class="community-link">
-                        Sanskar-in →
+                    <a href="https://github.com/sanskarIN" target="_blank" rel="noopener noreferrer"
+                        class="community-link">
+                        sanskarIN →
                     </a>
                 </div>
 
@@ -1309,8 +1412,9 @@
                     <div class="community-icon linkedin">in</div>
                     <h3>LinkedIn</h3>
                     <p>Connect professionally and stay updated on career tips and web development trends.</p>
-                    <a href="https://linkedin.com/in/sanskar-in" target="_blank" rel="noopener noreferrer" class="community-link">
-                        sanskar-in →
+                    <a href="https://linkedin.com/in/sanskarIN/" target="_blank" rel="noopener noreferrer"
+                        class="community-link">
+                        sanskarIN →
                     </a>
                 </div>
 
@@ -1334,12 +1438,14 @@
                 <div class="donate-card animate-in">
                     <span class="donate-icon">💖</span>
                     <h2>Support CSS Mastery</h2>
-                    <p>CSS Mastery is a free, open-source project built with passion. Your donations help cover hosting costs, fund new features, and keep this platform accessible to everyone around the world.</p>
+                    <p>CSS Mastery is a free, open-source project built with passion. Your donations help cover hosting
+                        costs, fund new features, and keep this platform accessible to everyone around the world.</p>
                     <div class="donate-buttons">
                         <button class="btn btn-primary" onclick="openDonateOverlay()">
                             ❤️ Donate via UPI
                         </button>
-                        <a href="https://ramsandesh.gumroad.com" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+                        <a href="https://ramsandesh.gumroad.com" target="_blank" rel="noopener noreferrer"
+                            class="btn btn-secondary">
                             ☕ Support on Gumroad
                         </a>
                     </div>
@@ -1351,7 +1457,8 @@
     <!-- Donate Overlay -->
     <div class="donate-overlay" id="donateOverlay">
         <div class="donate-modal">
-            <button class="modal-close" onclick="closeDonateOverlay()" title="Close" aria-label="Close donation modal">✕</button>
+            <button class="modal-close" onclick="closeDonateOverlay()" title="Close"
+                aria-label="Close donation modal">✕</button>
             <h3>💖 Donate via UPI</h3>
             <p>Scan the QR code below with any UPI app to make a donation. Every contribution counts!</p>
             <div class="qr-container">
@@ -1369,7 +1476,8 @@
                     <img src="support_logo.svg" alt="CSS Mastery Logo">
                     <span>CSS Mastery</span>
                 </div>
-                <p class="footer-desc">A comprehensive, interactive learning platform for mastering CSS Mastery — from fundamentals to advanced patterns. Free & open-source.</p>
+                <p class="footer-desc">A comprehensive, interactive learning platform for mastering CSS Mastery — from
+                    fundamentals to advanced patterns. Free & open-source.</p>
             </div>
 
             <div class="footer-col">
@@ -1400,8 +1508,10 @@
                     <li><a href="mailto:sanskaryadavfrom2012to2026@gmail.com">📧 Primary Email</a></li>
                     <li><a href="mailto:supportramsandesh@gmail.com">📧 Support Email</a></li>
                     <li><a href="mailto:sanskaryadavfromghosimau2026-27@outlook.com">📧 Outlook</a></li>
-                    <li><a href="https://rzp.io/l/Sanskar" target="_blank" rel="noopener noreferrer">💸 Razorpay</a></li>
-                    <li><a href="https://ramsandesh.gumroad.com" target="_blank" rel="noopener noreferrer">☕ Gumroad</a></li>
+                    <li><a href="https://rzp.io/l/Sanskar" target="_blank" rel="noopener noreferrer">💸 Razorpay</a>
+                    </li>
+                    <li><a href="https://ramsandesh.gumroad.com" target="_blank" rel="noopener noreferrer">☕ Gumroad</a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -1409,10 +1519,14 @@
         <div class="footer-bottom">
             <p>© 2024–2026 CSS Mastery by Sanskar Yadav. Made with ❤️ for the developer community.</p>
             <div class="footer-social">
-                <a href="https://youtube.com/@Sanskar-in" target="_blank" rel="noopener noreferrer" title="YouTube" aria-label="YouTube">▶</a>
-                <a href="https://github.com/Sanskar-in" target="_blank" rel="noopener noreferrer" title="GitHub" aria-label="GitHub">⌨</a>
-                <a href="https://linkedin.com/in/sanskar-in" target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn">in</a>
-                <a href="https://x.com/Sanskar_in" target="_blank" rel="noopener noreferrer" title="X (Twitter)" aria-label="X Twitter">𝕏</a>
+                <a href="https://youtube.com/@Sanskar-in" target="_blank" rel="noopener noreferrer" title="YouTube"
+                    aria-label="YouTube">▶</a>
+                <a href="https://github.com/sanskarIN" target="_blank" rel="noopener noreferrer" title="GitHub"
+                    aria-label="GitHub">⌨</a>
+                <a href="https://linkedin.com/in/sanskarIN/" target="_blank" rel="noopener noreferrer" title="LinkedIn"
+                    aria-label="LinkedIn">in</a>
+                <a href="https://x.com/Sanskar_in" target="_blank" rel="noopener noreferrer" title="X (Twitter)"
+                    aria-label="X Twitter">𝕏</a>
             </div>
         </div>
     </footer>
@@ -1420,7 +1534,7 @@
     <!-- JavaScript -->
     <script>
         /* ===== Theme Toggle ===== */
-        (function() {
+        (function () {
             const themeKey = 'cssMasteryTheme';
             const saved = localStorage.getItem(themeKey);
             if (saved) {
@@ -1523,4 +1637,5 @@
         });
     </script>
 </body>
+
 </html>
