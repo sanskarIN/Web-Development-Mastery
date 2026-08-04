@@ -1,1389 +1,1331 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="Developer Hub for Web Development Mastery — meet the developer, explore the tech stack, projects, and learn how to contribute.">
-    <meta name="author" content="Sanskar Yadav">
-    <meta name="keywords"
-        content="developer, full-stack, Sanskar Yadav, web development, portfolio, open source, tech stack">
-    <meta property="og:title" content="Developer Hub | Web Development Mastery">
-    <meta property="og:description"
-        content="Meet the developer behind Web Development Mastery. Explore the tech stack, projects, and open-source contributions.">
-    <meta property="og:type" content="website">
-    <title>Developer Hub | Web Development Mastery</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap"
-        rel="stylesheet">
+    <title>Developer Documentation | Web Development Mastery</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        *,
-        *::before,
-        *::after {
+        :root {
+            /* Core Colors */
+            --accent-primary: #6c63ff;
+            --accent-secondary: #00d2ff;
+            --accent-tertiary: #ff007f;
+            
+            /* Light Theme */
+            --bg-base-light: #f8fafc;
+            --bg-surface-light: rgba(255, 255, 255, 0.7);
+            --bg-surface-hover-light: rgba(255, 255, 255, 0.9);
+            --text-primary-light: #0f172a;
+            --text-secondary-light: #334155;
+            --border-light: rgba(15, 23, 42, 0.1);
+            
+            /* Dark Theme */
+            --bg-base-dark: #020617;
+            --bg-surface-dark: rgba(15, 23, 42, 0.6);
+            --bg-surface-hover-dark: rgba(30, 41, 59, 0.8);
+            --text-primary-dark: #f8fafc;
+            --text-secondary-dark: #94a3b8;
+            --border-dark: rgba(255, 255, 255, 0.1);
+            
+            /* Glassmorphism */
+            --glass-blur: blur(12px);
+            --glass-border: 1px solid var(--border-color);
+            --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+            
+            /* Typography */
+            --font-heading: 'Outfit', sans-serif;
+            --font-body: 'Plus Jakarta Sans', sans-serif;
+            --font-mono: 'Fira Code', monospace;
+            
+            /* Transitions */
+            --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            
+            /* Z-Index */
+            --z-behind: -1;
+            --z-normal: 1;
+            --z-above: 10;
+            --z-nav: 100;
+            --z-modal: 1000;
+        }
+
+        /* Theme Application */
+        [data-theme="light"] {
+            --bg-color: var(--bg-base-light);
+            --surface-color: var(--bg-surface-light);
+            --surface-hover: var(--bg-surface-hover-light);
+            --text-primary: var(--text-primary-light);
+            --text-secondary: var(--text-secondary-light);
+            --border-color: var(--border-light);
+        }
+
+        [data-theme="dark"] {
+            --bg-color: var(--bg-base-dark);
+            --surface-color: var(--bg-surface-dark);
+            --surface-hover: var(--bg-surface-hover-dark);
+            --text-primary: var(--text-primary-dark);
+            --text-secondary: var(--text-secondary-dark);
+            --border-color: var(--border-dark);
+        }
+
+        /* Reset & Base */
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        :root {
-            --bg: #0b0f19;
-            --text: #f8fafc;
-            --accent: #6c63ff;
-            --accent2: #3ecfcf;
-            --accent3: #bf5af2;
-            --glass: rgba(255, 255, 255, 0.06);
-            --glass-border: rgba(255, 255, 255, 0.10);
-            --radius: 18px;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
         body {
-            font-family: 'Plus Jakarta Sans', 'Outfit', sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            min-height: 100vh;
+            font-family: var(--font-body);
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.6;
             overflow-x: hidden;
-            line-height: 1.7;
+            transition: background-color var(--transition-normal), color var(--transition-normal);
         }
 
-        /* Animated Gradient Shapes */
-        .gradient-shape {
-            position: fixed;
-            border-radius: 50%;
-            filter: blur(100px);
-            opacity: 0.42;
-            z-index: 0;
-            pointer-events: none;
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
         }
 
-        .shape1 {
-            width: 550px;
-            height: 550px;
-            background: radial-gradient(circle, var(--accent), transparent 70%);
-            top: -140px;
-            left: -140px;
-            animation: floatShape1 18s ease-in-out infinite alternate;
+        a {
+            color: var(--accent-primary);
+            text-decoration: none;
+            transition: color var(--transition-fast);
         }
 
-        .shape2 {
-            width: 460px;
-            height: 460px;
-            background: radial-gradient(circle, var(--accent2), transparent 70%);
-            bottom: -110px;
-            right: -110px;
-            animation: floatShape2 22s ease-in-out infinite alternate;
+        a:hover {
+            color: var(--accent-secondary);
         }
 
-        .shape3 {
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, var(--accent3), transparent 70%);
-            top: 45%;
-            left: 60%;
-            animation: floatShape3 20s ease-in-out infinite alternate;
+        /* Layout */
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
         }
 
-        @keyframes floatShape1 {
-            0% {
-                transform: translate(0, 0) scale(1);
-            }
-
-            100% {
-                transform: translate(90px, 70px) scale(1.18);
-            }
+        .main-layout {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 2rem;
+            margin-top: 5rem;
+            min-height: calc(100vh - 5rem);
         }
 
-        @keyframes floatShape2 {
-            0% {
-                transform: translate(0, 0) scale(1);
-            }
-
-            100% {
-                transform: translate(-80px, -60px) scale(1.12);
-            }
-        }
-
-        @keyframes floatShape3 {
-            0% {
-                transform: translate(0, 0) scale(1);
-            }
-
-            100% {
-                transform: translate(-70px, 50px) scale(1.22);
+        @media (max-width: 1024px) {
+            .main-layout {
+                grid-template-columns: 1fr;
             }
         }
 
         /* Navigation */
-        nav {
-            position: sticky;
+        .navbar {
+            position: fixed;
             top: 0;
-            z-index: 100;
-            background: rgba(11, 15, 25, 0.72);
-            backdrop-filter: blur(18px);
-            -webkit-backdrop-filter: blur(18px);
-            border-bottom: 1px solid var(--glass-border);
+            left: 0;
+            right: 0;
+            height: 5rem;
+            background: var(--surface-color);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border-bottom: var(--glass-border);
+            z-index: var(--z-nav);
+            display: flex;
+            align-items: center;
             padding: 0 2rem;
+            transition: all var(--transition-normal);
         }
 
-        .nav-inner {
-            max-width: 1240px;
-            margin: 0 auto;
+        .nav-content {
             display: flex;
-            align-items: center;
             justify-content: space-between;
-            height: 64px;
-        }
-
-        .nav-logo {
-            font-family: 'Outfit', sans-serif;
-            font-weight: 800;
-            font-size: 1.35rem;
-            background: linear-gradient(135deg, var(--accent), var(--accent2));
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-decoration: none;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 0.4rem;
             align-items: center;
-            flex-wrap: wrap;
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
-        .nav-links a {
-            color: var(--text);
-            text-decoration: none;
-            font-size: 0.88rem;
-            font-weight: 500;
-            padding: 0.4rem 0.85rem;
-            border-radius: 10px;
-            transition: background 0.25s, color 0.25s;
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-family: var(--font-heading);
+            font-size: 1.25rem;
+            font-weight: 700;
         }
 
-        .nav-links a:hover,
-        .nav-links a.active {
-            background: var(--glass);
-            color: var(--accent2);
+        .nav-brand i {
+            color: var(--accent-primary);
+            font-size: 1.5rem;
         }
 
-        .hamburger {
-            display: none;
-            background: none;
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .btn-theme-toggle {
+            background: transparent;
             border: none;
-            color: var(--text);
-            font-size: 1.6rem;
+            color: var(--text-primary);
+            font-size: 1.25rem;
             cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 50%;
+            transition: all var(--transition-fast);
         }
 
-        /* Hero */
-        .hero {
-            position: relative;
-            z-index: 1;
-            text-align: center;
-            padding: 5rem 1.5rem 3rem;
+        .btn-theme-toggle:hover {
+            background: var(--surface-hover);
+            color: var(--accent-primary);
         }
 
-        .hero-emoji {
-            font-size: 3.5rem;
-            margin-bottom: 0.8rem;
+        .btn-hub-home {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            background: var(--surface-color);
+            border: var(--glass-border);
+            color: var(--text-primary);
+            font-weight: 500;
+            transition: all var(--transition-fast);
+        }
+
+        .btn-hub-home:hover {
+            background: var(--accent-primary);
+            color: #fff;
+            border-color: var(--accent-primary);
+        }
+
+        /* Background Orbs */
+        .bg-orbs {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: var(--z-behind);
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.5;
+            animation: float 20s infinite alternate;
+        }
+
+        .orb-1 {
+            width: 400px;
+            height: 400px;
+            background: var(--accent-primary);
+            top: -100px;
+            left: -100px;
+            animation-delay: 0s;
+        }
+
+        .orb-2 {
+            width: 500px;
+            height: 500px;
+            background: var(--accent-secondary);
+            bottom: -150px;
+            right: -100px;
+            animation-delay: -5s;
+        }
+
+        .orb-3 {
+            width: 350px;
+            height: 350px;
+            background: var(--accent-tertiary);
+            top: 40%;
+            left: 40%;
+            animation-delay: -10s;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(50px, -50px) scale(1.1); }
+            66% { transform: translate(-30px, 40px) scale(0.9); }
+            100% { transform: translate(0, 0) scale(1); }
+        }
+
+        /* Sidebar / TOC */
+        .sidebar {
+            position: sticky;
+            top: 6rem;
+            height: calc(100vh - 8rem);
+            overflow-y: auto;
+            padding: 1rem;
+            background: var(--surface-color);
+            backdrop-filter: var(--glass-blur);
+            border-radius: 16px;
+            border: var(--glass-border);
+            scrollbar-width: thin;
+            scrollbar-color: var(--accent-primary) transparent;
+        }
+
+        .sidebar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .sidebar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .sidebar::-webkit-scrollbar-thumb {
+            background: var(--accent-primary);
+            border-radius: 4px;
+        }
+
+        .toc-title {
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            padding-left: 0.5rem;
+        }
+
+        .toc-list {
+            list-style: none;
+        }
+
+        .toc-item {
+            margin-bottom: 0.25rem;
+        }
+
+        .toc-link {
             display: block;
+            padding: 0.5rem 0.75rem;
+            color: var(--text-secondary);
+            border-radius: 8px;
+            transition: all var(--transition-fast);
+            font-size: 0.95rem;
         }
 
-        .hero h1 {
-            font-family: 'Outfit', sans-serif;
-            font-size: clamp(2rem, 5vw, 3.4rem);
-            font-weight: 800;
-            background: linear-gradient(135deg, var(--accent), var(--accent2), var(--accent3));
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 0.7rem;
+        .toc-link:hover, .toc-link.active {
+            color: var(--accent-primary);
+            background: var(--surface-hover);
         }
 
-        .hero p {
-            max-width: 620px;
-            margin: 0 auto;
-            color: rgba(248, 250, 252, 0.7);
-            font-size: 1.08rem;
+        /* Main Content */
+        .content-area {
+            padding-bottom: 5rem;
         }
 
-        /* Sections */
         .section {
-            position: relative;
-            z-index: 1;
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 2.5rem 1.5rem;
+            background: var(--surface-color);
+            backdrop-filter: var(--glass-blur);
+            border: var(--glass-border);
+            border-radius: 16px;
+            padding: 3rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--glass-shadow);
+            scroll-margin-top: 6rem;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: var(--glass-border);
+        }
+
+        .section-icon {
+            width: 3rem;
+            height: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            border-radius: 12px;
+            color: #fff;
+            font-size: 1.25rem;
         }
 
         .section-title {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.7rem;
-            font-weight: 700;
-            margin-bottom: 1.8rem;
+            margin: 0;
+            font-size: 1.75rem;
+        }
+
+        /* Typography inside sections */
+        .section p {
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        .section ul, .section ol {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        .section li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Code Blocks */
+        .code-block {
+            background: #0f172a;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            position: relative;
+            overflow-x: auto;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .code-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            color: #94a3b8;
+            font-family: var(--font-mono);
+            font-size: 0.875rem;
+        }
+
+        .code-block pre {
+            margin: 0;
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            color: #e2e8f0;
+        }
+
+        .copy-btn {
+            background: rgba(255,255,255,0.1);
+            border: none;
+            color: #fff;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .copy-btn:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        /* Architecture Diagram */
+        .arch-diagram {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .arch-node {
+            background: var(--surface-hover);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: var(--glass-border);
             text-align: center;
-            background: linear-gradient(135deg, var(--accent2), var(--accent));
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            transition: transform var(--transition-fast);
         }
 
-        .section-subtitle {
-            text-align: center;
-            color: rgba(248, 250, 252, 0.6);
-            max-width: 640px;
-            margin: -1rem auto 2rem;
-            font-size: 0.98rem;
+        .arch-node:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-primary);
         }
 
-        /* Glass Card */
-        .glass-card {
-            background: var(--glass);
-            border: 1px solid var(--glass-border);
-            border-radius: var(--radius);
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-            padding: 1.8rem;
-            transition: transform 0.3s, box-shadow 0.3s;
+        .arch-icon {
+            font-size: 2rem;
+            color: var(--accent-primary);
+            margin-bottom: 1rem;
         }
 
-        .glass-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 32px rgba(108, 99, 255, 0.13);
+        /* Info Cards */
+        .info-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .info-card {
+            background: var(--surface-hover);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: var(--glass-border);
+        }
+
+        .info-card h4 {
+            color: var(--accent-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Command Palette Modal */
+        .cmd-palette-backdrop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(4px);
+            z-index: var(--z-modal);
+            display: none;
+            justify-content: center;
+            align-items: flex-start;
+            padding-top: 10vh;
+            opacity: 0;
+            transition: opacity var(--transition-normal);
+        }
+
+        .cmd-palette-backdrop.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .cmd-palette {
+            background: var(--surface-color);
+            width: 100%;
+            max-width: 600px;
+            border-radius: 16px;
+            border: var(--glass-border);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            transform: scale(0.95) translateY(-20px);
+            transition: transform var(--transition-normal);
+        }
+
+        .cmd-palette-backdrop.active .cmd-palette {
+            transform: scale(1) translateY(0);
+        }
+
+        .cmd-input {
+            width: 100%;
+            padding: 1.5rem;
+            background: transparent;
+            border: none;
+            border-bottom: var(--glass-border);
+            color: var(--text-primary);
+            font-size: 1.25rem;
+            font-family: var(--font-body);
+        }
+
+        .cmd-input:focus {
+            outline: none;
+        }
+
+        .cmd-results {
+            max-height: 400px;
+            overflow-y: auto;
+            padding: 1rem;
+        }
+
+        .cmd-item {
+            padding: 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: var(--text-secondary);
+        }
+
+        .cmd-item:hover, .cmd-item.active {
+            background: var(--surface-hover);
+            color: var(--text-primary);
         }
 
         /* Developer Profile */
-        .profile-section {
+        .dev-profile {
             display: flex;
             align-items: center;
-            gap: 2.5rem;
-            padding: 2.5rem;
-            flex-wrap: wrap;
+            gap: 2rem;
+            background: var(--surface-hover);
+            padding: 2rem;
+            border-radius: 16px;
+            border: var(--glass-border);
+            margin-top: 2rem;
         }
 
-        .profile-avatar {
-            flex-shrink: 0;
-        }
-
-        .profile-avatar svg {
-            width: 140px;
-            height: 140px;
-            filter: drop-shadow(0 4px 20px rgba(108, 99, 255, 0.3));
-        }
-
-        .profile-info {
-            flex: 1;
-            min-width: 260px;
-        }
-
-        .profile-info h2 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.9rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, var(--accent), var(--accent3));
-            background-clip: text;
-            /* standard property for compatibility */
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 0.3rem;
-        }
-
-        .profile-info .title {
-            color: var(--accent2);
-            font-weight: 600;
-            font-size: 1.05rem;
-            margin-bottom: 0.8rem;
-        }
-
-        .profile-info .bio {
-            color: rgba(248, 250, 252, 0.68);
-            font-size: 0.96rem;
-            line-height: 1.8;
-        }
-
-        /* Tech Stack Grid */
-        .tech-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            gap: 1rem;
-        }
-
-        .tech-card {
-            text-align: center;
-            padding: 1.4rem 1rem;
-        }
-
-        .tech-card .tech-emoji {
-            font-size: 2rem;
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-
-        .tech-card h4 {
-            font-size: 0.95rem;
-            font-weight: 700;
-            margin-bottom: 0.7rem;
-        }
-
-        .progress-bar {
-            width: 100%;
-            height: 7px;
-            background: rgba(255, 255, 255, 0.08);
-            border-radius: 4px;
-            overflow: hidden;
-        }
-
-        .progress-fill {
-            height: 100%;
-            border-radius: 4px;
-            background: linear-gradient(90deg, var(--accent), var(--accent2));
-            transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
-            width: 0;
-        }
-
-        .tech-card .percent {
-            font-size: 0.78rem;
-            color: rgba(248, 250, 252, 0.5);
-            margin-top: 0.3rem;
-            display: block;
-        }
-
-        /* Projects Showcase */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 1.3rem;
-        }
-
-        .project-card {
-            padding: 1.8rem;
-        }
-
-        .project-card .project-emoji {
-            font-size: 2rem;
-            margin-bottom: 0.6rem;
-            display: block;
-        }
-
-        .project-card h3 {
-            font-size: 1.12rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-
-        .project-card p {
-            color: rgba(248, 250, 252, 0.65);
-            font-size: 0.9rem;
-            margin-bottom: 0.8rem;
-        }
-
-        .tech-tags {
+        .dev-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
             display: flex;
-            flex-wrap: wrap;
-            gap: 0.4rem;
-            margin-bottom: 0.8rem;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+            border: 4px solid var(--surface-color);
+            box-shadow: 0 0 20px rgba(108, 99, 255, 0.3);
         }
 
-        .tech-tag {
-            font-size: 0.72rem;
-            font-weight: 600;
-            padding: 0.25rem 0.6rem;
-            background: rgba(108, 99, 255, 0.15);
-            border: 1px solid rgba(108, 99, 255, 0.25);
-            border-radius: 6px;
-            color: var(--accent2);
-        }
-
-        .project-link {
-            color: var(--accent2);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: color 0.25s;
-        }
-
-        .project-link:hover {
-            color: var(--accent);
-        }
-
-        /* Philosophy Cards */
-        .philosophy-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 1.3rem;
-        }
-
-        .philosophy-card {
-            text-align: center;
-            padding: 2rem 1.5rem;
-        }
-
-        .philosophy-card .card-emoji {
-            font-size: 2.5rem;
-            display: block;
-            margin-bottom: 0.7rem;
-        }
-
-        .philosophy-card h3 {
-            font-size: 1.08rem;
-            font-weight: 700;
+        .dev-info h3 {
             margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+        
+        .dev-social {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .dev-social a {
+            color: var(--text-secondary);
+            font-size: 1.25rem;
+        }
+        
+        .dev-social a:hover {
+            color: var(--accent-primary);
+            transform: translateY(-2px);
         }
 
-        .philosophy-card p {
-            color: rgba(248, 250, 252, 0.65);
-            font-size: 0.9rem;
+        /* Footer */
+        .footer {
+            background: var(--surface-color);
+            backdrop-filter: var(--glass-blur);
+            border-top: var(--glass-border);
+            padding: 4rem 2rem;
+            margin-top: 4rem;
         }
 
-        /* Stats */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 1.2rem;
-            text-align: center;
-        }
-
-        .stat-card {
-            padding: 1.8rem 1rem;
-        }
-
-        .stat-number {
-            font-family: 'Outfit', sans-serif;
-            font-size: 2.2rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, var(--accent), var(--accent2));
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .stat-label {
-            color: rgba(248, 250, 252, 0.55);
-            font-size: 0.9rem;
-            font-weight: 500;
-            margin-top: 0.3rem;
-        }
-
-        /* Contributing */
-        .contributing-card {
-            padding: 2.5rem;
-            max-width: 780px;
+        .footer-grid {
+            max-width: 1400px;
             margin: 0 auto;
-        }
-
-        .contributing-card h3 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, var(--accent), var(--accent2));
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .contributing-card ol {
-            padding-left: 1.3rem;
-            color: rgba(248, 250, 252, 0.72);
-            font-size: 0.95rem;
-        }
-
-        .contributing-card ol li {
-            margin-bottom: 0.6rem;
-            line-height: 1.7;
-        }
-
-        .contributing-card code {
-            background: rgba(108, 99, 255, 0.13);
-            padding: 0.15rem 0.5rem;
-            border-radius: 5px;
-            font-size: 0.88rem;
-            color: var(--accent2);
-        }
-
-        /* Architecture */
-        .architecture-card {
-            padding: 2.5rem;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .architecture-card h3 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.2rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, var(--accent2), var(--accent3));
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .folder-tree {
-            font-family: 'Courier New', monospace;
-            font-size: 0.88rem;
-            color: rgba(248, 250, 252, 0.7);
-            line-height: 1.9;
-            background: rgba(0, 0, 0, 0.3);
-            padding: 1.2rem 1.5rem;
-            border-radius: 12px;
-            border: 1px solid var(--glass-border);
-            overflow-x: auto;
-        }
-
-        .folder-tree .folder {
-            color: var(--accent2);
-            font-weight: 600;
-        }
-
-        .folder-tree .file {
-            color: var(--accent);
-        }
-
-        .folder-tree .special {
-            color: var(--accent3);
-        }
-
-        /* Social Cards */
-        .social-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.2rem;
+            gap: 3rem;
         }
 
-        .social-card {
-            text-align: center;
-            padding: 1.5rem 1rem;
+        .footer-col h4 {
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            font-family: var(--font-heading);
         }
 
-        .social-card .card-emoji {
-            font-size: 2rem;
-            margin-bottom: 0.6rem;
-            display: block;
+        .footer-links {
+            list-style: none;
         }
 
-        .social-card h4 {
-            font-size: 1rem;
-            font-weight: 700;
-            margin-bottom: 0.3rem;
+        .footer-links li {
+            margin-bottom: 0.75rem;
         }
 
-        .social-card a {
-            color: var(--accent2);
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: color 0.25s;
+        .footer-links a {
+            color: var(--text-secondary);
+            transition: color var(--transition-fast);
         }
 
-        .social-card a:hover {
-            color: var(--accent3);
+        .footer-links a:hover {
+            color: var(--accent-primary);
         }
-
-        /* Contact Emails */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        
+        .social-icons {
+            display: flex;
             gap: 1rem;
-            max-width: 820px;
-            margin: 0 auto;
-        }
-
-        .contact-card {
-            text-align: center;
-            padding: 1.5rem;
-        }
-
-        .contact-card .card-emoji {
-            font-size: 1.8rem;
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-
-        .contact-card h4 {
-            font-size: 0.95rem;
-            font-weight: 700;
-            margin-bottom: 0.3rem;
-        }
-
-        .contact-card a {
-            color: var(--accent2);
-            text-decoration: none;
-            font-size: 0.8rem;
-            font-weight: 500;
-            word-break: break-all;
-        }
-
-        .contact-card a:hover {
-            color: var(--accent);
-        }
-
-        /* Donate Section */
-        .donate-section {
-            text-align: center;
-            padding-top: 2rem;
-        }
-
-        .donate-section p {
-            color: rgba(248, 250, 252, 0.65);
-            margin-bottom: 1.2rem;
-        }
-
-        .btn-donate {
-            display: inline-block;
-            padding: 0.85rem 2.4rem;
-            background: linear-gradient(135deg, var(--accent), var(--accent3));
-            color: #fff;
-            font-weight: 700;
-            font-size: 1rem;
-            border: none;
-            border-radius: 12px;
-            cursor: pointer;
-            text-decoration: none;
-            transition: transform 0.25s, box-shadow 0.25s;
-        }
-
-        .btn-donate:hover {
-            transform: translateY(-2px) scale(1.04);
-            box-shadow: 0 6px 24px rgba(108, 99, 255, 0.3);
+            margin-top: 1rem;
         }
 
         /* Donate Overlay */
         .donate-overlay {
-            display: none;
             position: fixed;
-            inset: 0;
-            z-index: 9999;
-            background: rgba(0, 0, 0, 0.75);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            align-items: center;
-            justify-content: center;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: var(--z-above);
         }
 
-        .donate-overlay.active {
+        .donate-btn {
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-tertiary));
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(108, 99, 255, 0.4);
             display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            transition: all var(--transition-fast);
+        }
+
+        .donate-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 6px 20px rgba(108, 99, 255, 0.6);
         }
 
         .donate-modal {
-            background: linear-gradient(145deg, rgba(30, 30, 50, 0.97), rgba(11, 15, 25, 0.98));
-            border: 1px solid var(--glass-border);
-            border-radius: 22px;
-            padding: 2.5rem;
-            max-width: 420px;
-            width: 90%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(8px);
+            z-index: var(--z-modal);
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .donate-modal.active {
+            display: flex;
+        }
+
+        .donate-content {
+            background: var(--surface-color);
+            padding: 2rem;
+            border-radius: 16px;
+            border: var(--glass-border);
             text-align: center;
+            max-width: 400px;
+            width: 90%;
             position: relative;
-            animation: modalIn 0.35s ease;
         }
-
-        @keyframes modalIn {
-            from {
-                opacity: 0;
-                transform: scale(0.92) translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: scale(1) translateY(0);
-            }
-        }
-
-        .donate-modal h3 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.4rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, var(--accent), var(--accent2));
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 1rem;
-        }
-
-        .donate-modal img {
-            width: 200px;
-            height: 200px;
-            border-radius: 14px;
-            margin: 1rem 0;
-            border: 2px solid var(--glass-border);
-        }
-
-        .donate-modal .razorpay-link {
-            display: inline-block;
-            margin-top: 1rem;
-            padding: 0.7rem 2rem;
-            background: linear-gradient(135deg, var(--accent2), var(--accent));
-            color: #fff;
-            font-weight: 700;
-            border-radius: 10px;
-            text-decoration: none;
-            transition: transform 0.25s;
-        }
-
-        .donate-modal .razorpay-link:hover {
-            transform: scale(1.05);
-        }
-
-        .close-modal {
+        
+        .close-donate {
             position: absolute;
             top: 1rem;
-            right: 1.2rem;
-            background: none;
+            right: 1rem;
+            background: transparent;
             border: none;
-            color: var(--text);
+            color: var(--text-secondary);
             font-size: 1.5rem;
             cursor: pointer;
-            opacity: 0.6;
-            transition: opacity 0.25s;
+        }
+        
+        .donate-img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 8px;
+            margin: 1rem 0;
         }
 
-        .close-modal:hover {
-            opacity: 1;
-        }
-
-        /* Footer */
-        footer {
-            position: relative;
-            z-index: 1;
-            text-align: center;
-            padding: 3rem 1.5rem 2rem;
-            margin-top: 2rem;
-            border-top: 1px solid var(--glass-border);
-        }
-
-        .footer-links {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 1.2rem;
-            margin-bottom: 1rem;
-        }
-
-        .footer-links a {
-            color: rgba(248, 250, 252, 0.55);
-            text-decoration: none;
-            font-size: 0.88rem;
-            transition: color 0.25s;
-        }
-
-        .footer-links a:hover {
-            color: var(--accent2);
-        }
-
-        .footer-copy {
-            color: rgba(248, 250, 252, 0.35);
-            font-size: 0.82rem;
-        }
-
-        .footer-gumroad {
-            margin-top: 0.6rem;
-        }
-
-        .footer-gumroad a {
-            color: var(--accent);
-            text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 600;
-        }
-
-        .footer-gumroad a:hover {
-            color: var(--accent2);
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .nav-links.open {
-                display: flex;
-                flex-direction: column;
-                position: absolute;
-                top: 64px;
-                left: 0;
-                right: 0;
-                background: rgba(11, 15, 25, 0.96);
-                backdrop-filter: blur(18px);
-                padding: 1rem;
-                gap: 0.3rem;
-                border-bottom: 1px solid var(--glass-border);
-            }
-
-            .hamburger {
-                display: block;
-            }
-
-            .hero h1 {
-                font-size: 1.8rem;
-            }
-
-            .profile-section {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .profile-avatar svg {
-                width: 110px;
-                height: 110px;
-            }
-
-            .tech-grid {
-                grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-            }
-        }
-
-        @media (max-width: 480px) {
-
-            .projects-grid,
-            .philosophy-grid,
-            .social-grid,
-            .stats-grid,
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .tech-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
     </style>
 </head>
-
 <body>
 
-    <!-- Animated Gradient Shapes -->
-    <div class="gradient-shape shape1"></div>
-    <div class="gradient-shape shape2"></div>
-    <div class="gradient-shape shape3"></div>
+    <!-- Background Orbs -->
+    <div class="bg-orbs">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
 
     <!-- Navigation -->
-    <nav>
-        <div class="nav-inner">
-            <a href="index.html" class="nav-logo">🚀 Web Dev Mastery</a>
-            <button class="hamburger" id="hamburger" aria-label="Toggle navigation">☰</button>
-            <div class="nav-links" id="navLinks">
-                <a href="index.html">Home</a>
-                <a href="html.html">HTML</a>
-                <a href="css.html">CSS</a>
-                <a href="javascript.html">JavaScript</a>
-                <a href="react.html">React</a>
-                <a href="developer.html" class="active">Developer</a>
-                <a href="support.html">Support</a>
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="index.html" class="btn-hub-home">
+                <i class="fas fa-arrow-left"></i> Hub Home
+            </a>
+            
+            <div class="nav-brand">
+                <i class="fas fa-code"></i>
+                Web Development Mastery Docs
+            </div>
+            
+            <div class="nav-actions">
+                <button class="btn-theme-toggle" id="themeToggle" aria-label="Toggle Theme">
+                    <i class="fas fa-moon"></i>
+                </button>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Header -->
-    <section class="hero">
-        <span class="hero-emoji">👨‍💻</span>
-        <h1>Developer Hub</h1>
-        <p>Meet the mind behind Web Development Mastery. Explore the tech stack, projects, architecture, and learn how
-            you can contribute to this open-source educational platform.</p>
-    </section>
+    <!-- Main Layout -->
+    <div class="container main-layout">
+        
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="toc-title">Contents</div>
+            <ul class="toc-list" id="tocList">
+                <li class="toc-item"><a href="#hero" class="toc-link">1. Introduction</a></li>
+                <li class="toc-item"><a href="#architecture" class="toc-link">2. Architecture Overview</a></li>
+                <li class="toc-item"><a href="#getting-started" class="toc-link">3. Getting Started</a></li>
+                <li class="toc-item"><a href="#core-arch" class="toc-link">4. Core Architecture</a></li>
+                <li class="toc-item"><a href="#theme-system" class="toc-link">5. Theme System</a></li>
+                <li class="toc-item"><a href="#quiz-system" class="toc-link">6. Quiz & Assessment</a></li>
+                <li class="toc-item"><a href="#translation" class="toc-link">7. Translation System</a></li>
+                <li class="toc-item"><a href="#mastery" class="toc-link">8. Mastery Center</a></li>
+                <li class="toc-item"><a href="#cmd-palette" class="toc-link">9. Command Palette</a></li>
+                <li class="toc-item"><a href="#snippets" class="toc-link">10. Code Examples</a></li>
+                <li class="toc-item"><a href="#qa-guide" class="toc-link">11. Testing & QA Guide</a></li>
+                <li class="toc-item"><a href="#deployment" class="toc-link">12. Deployment Guide</a></li>
+                <li class="toc-item"><a href="#troubleshoot" class="toc-link">13. Troubleshooting</a></li>
+                <li class="toc-item"><a href="#contributing" class="toc-link">14. Contributing</a></li>
+                <li class="toc-item"><a href="#changelog" class="toc-link">15. Changelog</a></li>
+                <li class="toc-item"><a href="#profile" class="toc-link">16. Developer Profile</a></li>
+                <li class="toc-item"><a href="#tech-stack" class="toc-link">17. Tech Stack</a></li>
+            </ul>
+        </aside>
 
-    <!-- Developer Profile -->
-    <section class="section">
-        <div class="glass-card profile-section">
-            <div class="profile-avatar">
-                <svg viewBox="0 0 140 140" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <linearGradient id="avatarGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" style="stop-color:#6c63ff;stop-opacity:1" />
-                            <stop offset="50%" style="stop-color:#3ecfcf;stop-opacity:1" />
-                            <stop offset="100%" style="stop-color:#bf5af2;stop-opacity:1" />
-                        </linearGradient>
-                    </defs>
-                    <circle cx="70" cy="70" r="66" fill="none" stroke="url(#avatarGrad)" stroke-width="4" />
-                    <circle cx="70" cy="55" r="22" fill="url(#avatarGrad)" opacity="0.85" />
-                    <ellipse cx="70" cy="105" rx="35" ry="22" fill="url(#avatarGrad)" opacity="0.65" />
-                    <text x="70" y="76" text-anchor="middle" font-size="28" fill="#0b0f19" font-weight="800"
-                        font-family="Outfit, sans-serif">S</text>
-                </svg>
+        <!-- Content Area -->
+        <main class="content-area">
+            
+            <!-- 1. Hero -->
+            <section id="hero" class="section">
+                <div class="section-header">
+                    <div class="section-icon"><i class="fas fa-laptop-code"></i></div>
+                    <h2 class="section-title">Developer Documentation</h2>
+                </div>
+                <h3>Complete technical reference for Web Development Mastery</h3>
+                <p>Welcome to the official hub-level documentation for the Web Development Mastery platform. This guide provides comprehensive architectural details, deployment strategies, core system functionalities, and guidelines for contributing.</p>
+                <p>The platform encompasses multiple modules including HTML, CSS, JavaScript, and React, bound together by a unified, glassmorphic design language and state management system.</p>
+            </section>
+
+            <!-- 2. Architecture Overview -->
+            <section id="architecture" class="section">
+                <div class="section-header">
+                    <div class="section-icon"><i class="fas fa-sitemap"></i></div>
+                    <h2 class="section-title">Architecture Overview</h2>
+                </div>
+                <p>The Web Development Mastery platform is built on a highly modular, decoupled architecture, allowing each course module to function completely offline while maintaining global state synchronization via the <code>localStorage</code> API.</p>
+                
+                <div class="arch-diagram">
+                    <div class="arch-node">
+                        <i class="fab fa-html5 arch-icon"></i>
+                        <h4>HTML Module</h4>
+                        <p>Semantic structuring & forms</p>
+                    </div>
+                    <div class="arch-node">
+                        <i class="fab fa-css3-alt arch-icon"></i>
+                        <h4>CSS Module</h4>
+                        <p>Styling & animations</p>
+                    </div>
+                    <div class="arch-node">
+                        <i class="fab fa-js arch-icon"></i>
+                        <h4>JS Module</h4>
+                        <p>Logic & DOM manipulation</p>
+                    </div>
+                    <div class="arch-node">
+                        <i class="fab fa-react arch-icon"></i>
+                        <h4>React Module</h4>
+                        <p>Component-based UI</p>
+                    </div>
+                </div>
+
+                <h4>File Organization Pattern</h4>
+                <div class="code-block">
+                    <div class="code-header">
+                        <span>Directory Structure</span>
+                        <button class="copy-btn"><i class="far fa-copy"></i></button>
+                    </div>
+                    <pre>
+Web-Development-Mastery/
+├── index.html           # Main Hub Entry
+├── style.css            # Global Hub Styles
+├── script.js            # Global Logic & Routing
+├── developer.html       # You are here (Hub Docs)
+├── HTML/                # HTML Course Module
+│   ├── index.html
+│   └── developer.html   # Module-specific docs
+├── CSS/                 # CSS Course Module
+├── JS/                  # JavaScript Course Module
+└── React/               # React Course Module
+                    </pre>
+                </div>
+            </section>
+
+            <!-- 3. Getting Started -->
+            <section id="getting-started" class="section">
+                <div class="section-header">
+                    <div class="section-icon"><i class="fas fa-rocket"></i></div>
+                    <h2 class="section-title">Getting Started</h2>
+                </div>
+                <p>To run the platform locally, you simply need a modern web browser. The entire platform is built with vanilla web technologies and supports the <code>file://</code> protocol seamlessly.</p>
+                
+                <ol>
+                    <li><strong>Clone the repository:</strong> <code>git clone https://github.com/Sanskar-in/Web-Development-Mastery.git</code></li>
+                    <li><strong>Navigate to the folder:</strong> <code>cd Web-Development-Mastery</code></li>
+                    <li><strong>Open Hub:</strong> Double-click <code>index.html</code> in the root directory.</li>
+                </ol>
+                
+                <div class="info-cards">
+                    <div class="info-card">
+                        <h4><i class="fas fa-server"></i> Local Server (Optional)</h4>
+                        <p>For advanced features like fetch API requests (if extended), use a local server like Live Server in VS Code.</p>
+                    </div>
+                    <div class="info-card">
+                        <h4><i class="fas fa-file-code"></i> File:// Protocol</h4>
+                        <p>Fully supported. localStorage works perfectly under <code>file://</code> in modern browsers (Chrome, Edge, Firefox).</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 4. Core Architecture -->
+            <section id="core-arch" class="section">
+                <div class="section-header">
+                    <div class="section-icon"><i class="fas fa-microchip"></i></div>
+                    <h2 class="section-title">Core Architecture</h2>
+                </div>
+                
+                <h4>Single-File Module Pattern</h4>
+                <p>Each module primarily relies on an <code>index.html</code> file with inline or co-located CSS/JS. This ensures high portability and ultra-fast load times.</p>
+
+                <h4>State Management (localStorage)</h4>
+                <p>We use a namespaced approach to prevent collisions. Hub settings use <code>hubMasteryTheme</code>, while modules use <code>htmlMastery_data</code>, <code>reactMastery_data</code>, etc.</p>
+                
+                <div class="code-block">
+                    <div class="code-header">
+                        <span>LocalStorage Implementation</span>
+                        <button class="copy-btn"><i class="far fa-copy"></i></button>
+                    </div>
+                    <pre>
+const HUB_THEME_KEY = 'hubMasteryTheme';
+
+function saveHubTheme(theme) {
+    localStorage.setItem(HUB_THEME_KEY, theme);
+    document.documentElement.setAttribute('data-theme', theme);
+}
+
+function initHubTheme() {
+    const saved = localStorage.getItem(HUB_THEME_KEY);
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const theme = saved || (prefersDark ? 'dark' : 'light');
+    saveHubTheme(theme);
+}
+                    </pre>
+                </div>
+            </section>
+
+            <!-- 5. Theme System -->
+            <section id="theme-system" class="section">
+                <div class="section-header">
+                    <div class="section-icon"><i class="fas fa-palette"></i></div>
+                    <h2 class="section-title">Theme System</h2>
+                </div>
+                <p>The platform boasts a robust CSS variables architecture. The hub controls light/dark modes, while individual modules may offer up to 25+ unique themes.</p>
+                
+                <ul>
+                    <li><strong>CSS Variables:</strong> All colors are defined in the <code>:root</code> selector and mapped to semantic names (e.g., <code>--bg-color</code>, <code>--text-primary</code>).</li>
+                    <li><strong>Glassmorphism:</strong> Achieved using <code>backdrop-filter: blur(12px)</code> and semi-transparent RGBA backgrounds.</li>
+                    <li><strong>Theme Switching API:</strong> Simple DOM manipulation flipping the <code>data-theme</code> attribute on the <code>&lt;html&gt;</code> element.</li>
+                </ul>
+            </section>
+            
+            <!-- 6. Quiz & Assessment System -->
+            <section id="quiz-system" class="section">
+                <div class="section-header">
+                    <div class="section-icon"><i class="fas fa-check-circle"></i></div>
+                    <h2 class="section-title">Quiz & Assessment System</h2>
+                </div>
+                <p>Modules contain integrated assessment engines. Questions are stored in JSON format, randomized, and scored client-side. Progress is immediately persisted to localStorage.</p>
+                
+                <div class="code-block">
+                    <div class="code-header">
+                        <span>Quiz Schema Example</span>
+                        <button class="copy-btn"><i class="far fa-copy"></i></button>
+                    </div>
+                    <pre>
+const quizQuestions = [
+    {
+        id: "q1",
+        topic: "React Hooks",
+        question: "Which hook is used for side effects?",
+        options: ["useState", "useEffect", "useContext", "useReducer"],
+        correctIndex: 1,
+        explanation: "useEffect manages side effects like data fetching and subscriptions."
+    }
+];
+                    </pre>
+                </div>
+            </section>
+
+            <!-- 7. Translation System -->
+            <section id="translation" class="section">
+                <div class="section-header">
+                    <div class="section-icon"><i class="fas fa-language"></i></div>
+                    <h2 class="section-title">Translation System</h2>
+                </div>
+                <p>The platform implements an integrated Google Translate widget, enabling localization in 75+ languages globally.</p>
+                <p>Advanced modules may implement direct translation engines via XHR/Fetch depending on the target audience requirements.</p>
+            </section>
+
+            <!-- 8. Mastery Center -->
+            <section id="mastery" class="section">
+                <div class="section-header">
+                    <div class="section-icon"><i class="fas fa-trophy"></i></div>
+                    <h2 class="section-title">Mastery Center</h2>
+                </div>
+                <p>An integrated gamification system that tracks user progress across all modules.</p>
+                <ul>
+                    <li><strong>XP System:</strong> Earn points by completing sections, passing quizzes, and consistent daily streaks.</li>
+                    <li><strong>Achievements:</strong> Unlock badges for milestones (e.g., "First Module Complete", "Quiz Master").</li>
+                </ul>
+            </section>
+            
+            <!-- 9. Command Palette -->
+            <section id="cmd-palette" class="section">
+                <div class="section-header">
+                    <div class="section-icon"><i class="fas fa-keyboard"></i></div>
+                    <h2 class="section-title">Command Palette (Cmd+K)</h2>
+                </div>
+                <p>Press <code>Cmd+K</code> or <code>Ctrl+K</code> to open the global command palette. It features fuzzy search across modules, topics, and quick actions like theme toggling.</p>
+                <p><em>(Try pressing Ctrl+K right now!)</em></p>
+            </section>
+
+            <!-- 10. Code Examples -->
+            <section id="snippets" class="section">
+                <div class="section-header">
+                    <div class="section-icon"><i class="fas fa-code"></i></div>
+                    <h2 class="section-title">Code Examples & Snippets</h2>
+                </div>
+                <p>All modules include rich code editors and snippet displays. We use standard <code>&lt;pre&gt;&lt;code&gt;</code> blocks styled with custom syntax highlighting classes to ensure zero external dependencies.</p>
+            </section>
+            
+            <!-- 11. Testing & QA -->
+            <section id="qa-guide" class="section">
+                <div class="section-header">
+                    <div class="section-icon"><i class="fas fa-vial"></i></div>
+                    <h2 class="section-title">Testing & QA Guide</h2>
+                </div>
+                <p>Ensure the following checklist is met before pushing updates:</p>
+                <ol>
+                    <li>Verify localStorage state doesn't throw quotas exceeded errors.</li>
+                    <li>Test responsive design on mobile (iPhone SE), tablet (iPad), and 4K displays.</li>
+                    <li>Validate <code>file://</code> protocol execution (no CORS issues).</li>
+                    <li>Check contrast ratios for accessibility in both light and dark themes.</li>
+                </ol>
+            </section>
+
+            <!-- 12. Deployment Guide -->
+            <section id="deployment" class="section">
+                <div class="section-header">
+                    <div class="section-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                    <h2 class="section-title">Deployment Guide</h2>
+                </div>
+                <p>The platform is a static site. Recommended deployment targets:</p>
+                <ul>
+                    <li><strong>GitHub Pages:</strong> Direct deployment from the <code>main</code> branch.</li>
+                    <li><strong>Vercel / Netlify:</strong> Drop the folder structure and let it auto-deploy.</li>
+                    <li><strong>Offline Distribution:</strong> Zip the folder and distribute (works perfectly).</li>
+                </ul>
+            </section>
+            
+            <!-- 13. Troubleshooting -->
+            <section id="troubleshoot" class="section">
+                <div class="section-header">
+                    <div class="section-icon"><i class="fas fa-wrench"></i></div>
+                    <h2 class="section-title">Troubleshooting</h2>
+                </div>
+                <div class="info-cards">
+                    <div class="info-card">
+                        <h4>Storage Quota</h4>
+                        <p>If localStorage is full, run <code>localStorage.clear()</code> in the console. Note: this resets all user progress.</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>Icons not loading</h4>
+                        <p>Ensure internet connection is active, as FontAwesome is loaded via CDN.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- 14. Contributing -->
+            <section id="contributing" class="section">
+                <div class="section-header">
+                    <div class="section-icon"><i class="fas fa-hands-helping"></i></div>
+                    <h2 class="section-title">Contributing Guidelines</h2>
+                </div>
+                <p>We welcome contributions! Please adhere to the following rules:</p>
+                <ul>
+                    <li>Maintain the pure HTML/CSS/JS architecture. Do not introduce build steps or Node.js dependencies for the core hub.</li>
+                    <li>Use semantic HTML5 tags.</li>
+                    <li>Ensure all new UI components are glassmorphic and support <code>data-theme="dark"</code> and <code>"light"</code>.</li>
+                </ul>
+            </section>
+            
+            <!-- 15. Changelog -->
+            <section id="changelog" class="section">
+                <div class="section-header">
+                    <div class="section-icon"><i class="fas fa-history"></i></div>
+                    <h2 class="section-title">Changelog / Version History</h2>
+                </div>
+                <ul>
+                    <li><strong>v2.0.0:</strong> Complete architectural rewrite. Introduced glassmorphism, global state, and 4 core modules.</li>
+                    <li><strong>v1.5.0:</strong> Added React Mastery module.</li>
+                    <li><strong>v1.0.0:</strong> Initial launch of HTML & CSS modules.</li>
+                </ul>
+            </section>
+            
+            <!-- 16. Developer Profile -->
+            <section id="profile" class="section">
+                <div class="section-header">
+                    <div class="section-icon"><i class="fas fa-user-circle"></i></div>
+                    <h2 class="section-title">Creator Profile</h2>
+                </div>
+                
+                <div class="dev-profile">
+                    <div class="dev-avatar">
+                        <i class="fas fa-user-astronaut"></i>
+                    </div>
+                    <div class="dev-info">
+                        <h3>Sanskar Yadav</h3>
+                        <p>Lead Architect & Full Stack Developer</p>
+                        <p style="margin-bottom: 0;">Building premium educational platforms pushing the limits of pure web technologies.</p>
+                        <div class="dev-social">
+                            <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+                            <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
+                            <a href="#" target="_blank"><i class="fab fa-x-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- 17. Tech Stack -->
+            <section id="tech-stack" class="section">
+                <div class="section-header">
+                    <div class="section-icon"><i class="fas fa-layer-group"></i></div>
+                    <h2 class="section-title">Tech Stack Overview</h2>
+                </div>
+                <div class="info-cards">
+                    <div class="info-card">
+                        <h4>Frontend</h4>
+                        <p>HTML5, CSS3, Vanilla JavaScript (ES6+)</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>Styling</h4>
+                        <p>CSS Variables, Backdrop Filter, Flexbox/Grid</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>Storage</h4>
+                        <p>Web Storage API (localStorage)</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>Icons & Fonts</h4>
+                        <p>FontAwesome 6, Google Fonts</p>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- 4-Column Footer -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>Web Development Mastery</h4>
+                <p style="color: var(--text-secondary); margin-bottom: 1rem;">The ultimate offline-first learning platform for modern web technologies.</p>
+                <div class="social-icons">
+                    <a href="#" style="color: var(--text-secondary); font-size: 1.5rem;"><i class="fab fa-youtube"></i></a>
+                    <a href="#" style="color: var(--text-secondary); font-size: 1.5rem;"><i class="fab fa-github"></i></a>
+                    <a href="#" style="color: var(--text-secondary); font-size: 1.5rem;"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" style="color: var(--text-secondary); font-size: 1.5rem;"><i class="fab fa-x-twitter"></i></a>
+                </div>
             </div>
-            <div class="profile-info">
-                <h2>Sanskar Yadav</h2>
-                <p class="title">Full-Stack Developer & Educator</p>
-                <p class="bio">Passionate about building beautiful, functional web experiences and sharing knowledge
-                    with the developer community. Creator of Web Development Mastery — an open-source, premium learning
-                    platform covering HTML, CSS, JavaScript, and React with 400+ concepts, 25+ themes, and a
-                    glassmorphic UI. I believe in clean code, accessible design, and making education free for everyone.
-                    When I'm not coding, you'll find me exploring new technologies, creating tutorials on YouTube, and
-                    contributing to open-source projects.</p>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">Hub Home</a></li>
+                    <li><a href="developer.html">Developer Docs</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Modules</h4>
+                <ul class="footer-links">
+                    <li><a href="HTML/index.html">HTML Mastery</a></li>
+                    <li><a href="CSS/index.html">CSS Mastery</a></li>
+                    <li><a href="JS/index.html">JS Mastery</a></li>
+                    <li><a href="React/index.html">React Mastery</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Support</h4>
+                <ul class="footer-links">
+                    <li><a href="mailto:contact@example.com">Email Support</a></li>
+                    <li><a href="#">Razorpay</a></li>
+                    <li><a href="#">Gumroad</a></li>
+                </ul>
             </div>
         </div>
-    </section>
-
-    <!-- Tech Stack -->
-    <section class="section">
-        <h2 class="section-title">🛠️ Tech Stack</h2>
-        <p class="section-subtitle">The tools and technologies I use daily to build modern, performant web applications.
-        </p>
-        <div class="tech-grid">
-            <div class="glass-card tech-card" data-percent="95">
-                <span class="tech-emoji">🌐</span>
-                <h4>HTML5</h4>
-                <div class="progress-bar">
-                    <div class="progress-fill"></div>
-                </div>
-                <span class="percent">95%</span>
-            </div>
-            <div class="glass-card tech-card" data-percent="92">
-                <span class="tech-emoji">🎨</span>
-                <h4>CSS3</h4>
-                <div class="progress-bar">
-                    <div class="progress-fill"></div>
-                </div>
-                <span class="percent">92%</span>
-            </div>
-            <div class="glass-card tech-card" data-percent="90">
-                <span class="tech-emoji">⚡</span>
-                <h4>JavaScript</h4>
-                <div class="progress-bar">
-                    <div class="progress-fill"></div>
-                </div>
-                <span class="percent">90%</span>
-            </div>
-            <div class="glass-card tech-card" data-percent="82">
-                <span class="tech-emoji">🔷</span>
-                <h4>TypeScript</h4>
-                <div class="progress-bar">
-                    <div class="progress-fill"></div>
-                </div>
-                <span class="percent">82%</span>
-            </div>
-            <div class="glass-card tech-card" data-percent="88">
-                <span class="tech-emoji">⚛️</span>
-                <h4>React</h4>
-                <div class="progress-bar">
-                    <div class="progress-fill"></div>
-                </div>
-                <span class="percent">88%</span>
-            </div>
-            <div class="glass-card tech-card" data-percent="85">
-                <span class="tech-emoji">🟢</span>
-                <h4>Node.js</h4>
-                <div class="progress-bar">
-                    <div class="progress-fill"></div>
-                </div>
-                <span class="percent">85%</span>
-            </div>
-            <div class="glass-card tech-card" data-percent="80">
-                <span class="tech-emoji">🚂</span>
-                <h4>Express</h4>
-                <div class="progress-bar">
-                    <div class="progress-fill"></div>
-                </div>
-                <span class="percent">80%</span>
-            </div>
-            <div class="glass-card tech-card" data-percent="78">
-                <span class="tech-emoji">🍃</span>
-                <h4>MongoDB</h4>
-                <div class="progress-bar">
-                    <div class="progress-fill"></div>
-                </div>
-                <span class="percent">78%</span>
-            </div>
-            <div class="glass-card tech-card" data-percent="93">
-                <span class="tech-emoji">🔀</span>
-                <h4>Git</h4>
-                <div class="progress-bar">
-                    <div class="progress-fill"></div>
-                </div>
-                <span class="percent">93%</span>
-            </div>
-            <div class="glass-card tech-card" data-percent="94">
-                <span class="tech-emoji">💎</span>
-                <h4>VS Code</h4>
-                <div class="progress-bar">
-                    <div class="progress-fill"></div>
-                </div>
-                <span class="percent">94%</span>
-            </div>
-            <div class="glass-card tech-card" data-percent="75">
-                <span class="tech-emoji">🖌️</span>
-                <h4>Figma</h4>
-                <div class="progress-bar">
-                    <div class="progress-fill"></div>
-                </div>
-                <span class="percent">75%</span>
-            </div>
-            <div class="glass-card tech-card" data-percent="83">
-                <span class="tech-emoji">🔥</span>
-                <h4>Firebase</h4>
-                <div class="progress-bar">
-                    <div class="progress-fill"></div>
-                </div>
-                <span class="percent">83%</span>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Showcase -->
-    <section class="section">
-        <h2 class="section-title">🚀 Projects Showcase</h2>
-        <p class="section-subtitle">The core modules of Web Development Mastery — each a comprehensive learning
-            experience.</p>
-        <div class="projects-grid">
-            <div class="glass-card project-card">
-                <span class="project-emoji">📄</span>
-                <h3>HTML Mastery</h3>
-                <p>A complete guide to HTML5 covering semantic elements, forms, multimedia, accessibility, SEO, and
-                    modern web structure with 100+ concepts.</p>
-                <div class="tech-tags">
-                    <span class="tech-tag">HTML5</span>
-                    <span class="tech-tag">Semantic</span>
-                    <span class="tech-tag">Accessibility</span>
-                </div>
-                <a href="html.html" class="project-link">Explore Module →</a>
-            </div>
-            <div class="glass-card project-card">
-                <span class="project-emoji">🎨</span>
-                <h3>CSS Mastery</h3>
-                <p>Master CSS3 from selectors to Grid, Flexbox, animations, responsive design, custom properties, and
-                    advanced layout techniques.</p>
-                <div class="tech-tags">
-                    <span class="tech-tag">CSS3</span>
-                    <span class="tech-tag">Flexbox</span>
-                    <span class="tech-tag">Grid</span>
-                    <span class="tech-tag">Animations</span>
-                </div>
-                <a href="css.html" class="project-link">Explore Module →</a>
-            </div>
-            <div class="glass-card project-card">
-                <span class="project-emoji">⚡</span>
-                <h3>JS Mastery</h3>
-                <p>Deep dive into JavaScript — variables, functions, DOM, async/await, closures, prototypes, ES6+, and
-                    real-world patterns.</p>
-                <div class="tech-tags">
-                    <span class="tech-tag">JavaScript</span>
-                    <span class="tech-tag">ES6+</span>
-                    <span class="tech-tag">DOM</span>
-                    <span class="tech-tag">Async</span>
-                </div>
-                <a href="javascript.html" class="project-link">Explore Module →</a>
-            </div>
-            <div class="glass-card project-card">
-                <span class="project-emoji">⚛️</span>
-                <h3>React Mastery</h3>
-                <p>Learn React from JSX to hooks, state management, context API, routing, performance optimization, and
-                    component architecture.</p>
-                <div class="tech-tags">
-                    <span class="tech-tag">React</span>
-                    <span class="tech-tag">Hooks</span>
-                    <span class="tech-tag">JSX</span>
-                    <span class="tech-tag">State</span>
-                </div>
-                <a href="react.html" class="project-link">Explore Module →</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Code Philosophy -->
-    <section class="section">
-        <h2 class="section-title">💡 Code Philosophy</h2>
-        <div class="philosophy-grid">
-            <div class="glass-card philosophy-card">
-                <span class="card-emoji">✨</span>
-                <h3>Clean Code</h3>
-                <p>Writing readable, maintainable, and well-documented code is at the heart of everything I build. Every
-                    variable name, function, and component is crafted with clarity in mind.</p>
-            </div>
-            <div class="glass-card philosophy-card">
-                <span class="card-emoji">🌍</span>
-                <h3>Open Source</h3>
-                <p>I believe in the power of open source. All my projects are publicly available, and I actively
-                    encourage contributions, feedback, and collaboration from the community.</p>
-            </div>
-            <div class="glass-card philosophy-card">
-                <span class="card-emoji">📖</span>
-                <h3>Education First</h3>
-                <p>Knowledge should be free and accessible. I create educational content that breaks down complex
-                    concepts into simple, digestible lessons for learners at every level.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Stats -->
-    <section class="section">
-        <h2 class="section-title">📊 Platform Stats</h2>
-        <div class="stats-grid">
-            <div class="glass-card stat-card">
-                <div class="stat-number">400+</div>
-                <div class="stat-label">Concepts Covered</div>
-            </div>
-            <div class="glass-card stat-card">
-                <div class="stat-number">4</div>
-                <div class="stat-label">Learning Modules</div>
-            </div>
-            <div class="glass-card stat-card">
-                <div class="stat-number">25+</div>
-                <div class="stat-label">Custom Themes</div>
-            </div>
-            <div class="glass-card stat-card">
-                <div class="stat-number">∞</div>
-                <div class="stat-label">Open Source</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contributing Guide -->
-    <section class="section">
-        <h2 class="section-title">🤝 Contributing Guide</h2>
-        <div class="glass-card contributing-card">
-            <h3>How to Contribute on GitHub</h3>
-            <ol>
-                <li><strong>Fork the Repository</strong> — Visit <a
-                        href="https://github.com/sanskarIN/Web-Development-Mastery" target="_blank"
-                        style="color:var(--accent2);">github.com/sanskarIN/Web-Development-Mastery</a> and click the
-                    "Fork" button to create
-                    your own copy of the repository.</li>
-                <li><strong>Clone Your Fork</strong> — Run
-                    <code>git clone https://github.com/sanskarIN/Web-Development-Mastery.git</code> to get the code
-                    on your local machine.
-                </li>
-                <li><strong>Create a Branch</strong> — Create a feature branch with
-                    <code>git checkout -b feature/your-feature-name</code> to keep your changes organized.
-                </li>
-                <li><strong>Make Your Changes</strong> — Add new concepts, fix bugs, improve documentation, or enhance
-                    the UI. Follow the existing code style and conventions.</li>
-                <li><strong>Test Your Changes</strong> — Open the HTML files in your browser to verify everything looks
-                    and works correctly across devices.</li>
-                <li><strong>Commit & Push</strong> — Run <code>git add .</code>, then
-                    <code>git commit -m "Add: brief description"</code>, and
-                    <code>git push origin feature/your-feature-name</code>.
-                </li>
-                <li><strong>Open a Pull Request</strong> — Go to the original repository on GitHub and click "New Pull
-                    Request". Describe your changes in detail and submit.</li>
-                <li><strong>Wait for Review</strong> — I'll review your PR, suggest changes if needed, and merge it once
-                    everything is good. Welcome to the contributors list! 🎉</li>
-            </ol>
-        </div>
-    </section>
-
-    <!-- Project Architecture -->
-    <section class="section">
-        <h2 class="section-title">🏗️ Project Architecture</h2>
-        <div class="glass-card architecture-card">
-            <h3>Folder Structure</h3>
-            <div class="folder-tree">
-                <span class="folder">Web-Development-Mastery/</span>
-                ├── <span class="file">index.html</span> — Landing page & hub
-                ├── <span class="file">html.html</span> — HTML module (100+ concepts)
-                ├── <span class="file">css.html</span> — CSS module (100+ concepts)
-                ├── <span class="file">javascript.html</span> — JavaScript module (100+ concepts)
-                ├── <span class="file">react.html</span> — React module (100+ concepts)
-                ├── <span class="file">developer.html</span> — Developer Hub (this page)
-                ├── <span class="file">support.html</span> — Support & Help Center
-                ├── <span class="special">Payment-Ramsandesh.jpeg</span> — Donation QR code
-                ├── <span class="folder">assets/</span> — Images, icons, media
-                ├── <span class="file">README.md</span> — Project documentation
-                ├── <span class="file">LICENSE</span> — Open source license
-                └── <span class="file">.gitignore</span> — Git ignore rules
-            </div>
-        </div>
-    </section>
-
-    <!-- Social Links -->
-    <section class="section">
-        <h2 class="section-title">🌐 Connect With Me</h2>
-        <p class="section-subtitle">Follow along on social media for updates, tutorials, tips, and behind-the-scenes
-            content.</p>
-        <div class="social-grid">
-            <div class="glass-card social-card">
-                <span class="card-emoji">🎬</span>
-                <h4>YouTube</h4>
-                <a href="https://youtube.com/@Sanskar-in" target="_blank">@Sanskar-in</a>
-            </div>
-            <div class="glass-card social-card">
-                <span class="card-emoji">💻</span>
-                <h4>GitHub</h4>
-                <a href="https://github.com/sanskarIN" target="_blank">sanskarIN</a>
-            </div>
-            <div class="glass-card social-card">
-                <span class="card-emoji">💼</span>
-                <h4>LinkedIn</h4>
-                <a href="https://linkedin.com/in/sanskarIN" target="_blank">sanskarIN</a>
-            </div>
-            <div class="glass-card social-card">
-                <span class="card-emoji">🐦</span>
-                <h4>X (Twitter)</h4>
-                <a href="https://x.com/Sanskar_in" target="_blank">@Sanskar_in</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Emails -->
-    <section class="section">
-        <h2 class="section-title">✉️ Contact Emails</h2>
-        <div class="contact-grid">
-            <div class="glass-card contact-card">
-                <span class="card-emoji">📨</span>
-                <h4>Bussiness Email</h4>
-                <a href="mailto:sanskarin6@outlook.in">sanskarin6@outlook.in</a>
-            </div>
-            <div class="glass-card contact-card">
-                <span class="card-emoji">🛠️</span>
-                <h4>Support Email</h4>
-                <a href="mailto:supportramsandesh@gmail.com">supportramsandesh@gmail.com</a>
-            </div>
-            <div class="glass-card contact-card">
-                <span class="card-emoji">📬</span>
-                <h4>Outlook Email</h4>
-                <a
-                    href="mailto:sanskaryadavfromghosimau2026-27@outlook.com">sanskaryadavfromghosimau2026-27@outlook.com</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Donate Section -->
-    <section class="section donate-section">
-        <h2 class="section-title">💖 Support the Project</h2>
-        <p>If Web Development Mastery has helped you learn and grow, consider supporting the project with a small
-            donation. Your contribution keeps this platform free, open-source, and continuously improving.</p>
-        <button class="btn-donate" id="openDonate">💝 Donate Now</button>
-    </section>
+    </footer>
 
     <!-- Donate Overlay -->
-    <div class="donate-overlay" id="donateOverlay">
-        <div class="donate-modal">
-            <button class="close-modal" id="closeDonate" aria-label="Close donate modal">✕</button>
-            <h3>Support Web Dev Mastery</h3>
-            <p style="color:rgba(248,250,252,0.65);font-size:0.93rem;">Scan the QR code below to donate via UPI, or use
-                the Razorpay link for other payment methods.</p>
-            <img src="Payment-Ramsandesh.jpeg" alt="Payment QR Code" loading="lazy">
-            <br>
-            <a href="https://rzp.io/l/Sanskar" target="_blank" class="razorpay-link">💳 Pay via Razorpay</a>
-            <p style="color:rgba(248,250,252,0.4);font-size:0.8rem;margin-top:1rem;">Thank you for your generous
-                support! 🙏</p>
+    <div class="donate-overlay">
+        <button class="donate-btn" id="btnOpenDonate">
+            <i class="fas fa-heart"></i> Support the Project
+        </button>
+    </div>
+    
+    <div class="donate-modal" id="donateModal">
+        <div class="donate-content">
+            <button class="close-donate" id="btnCloseDonate"><i class="fas fa-times"></i></button>
+            <h3 style="margin-bottom: 1rem;">Support the Creator</h3>
+            <p style="color: var(--text-secondary); margin-bottom: 1rem;">Scan the QR code below to donate via UPI.</p>
+            <img src="Payment-Ramsandesh.jpeg" alt="Donate UPI QR Code" class="donate-img">
+            <p style="color: var(--text-secondary); font-size: 0.875rem;">Thank you for supporting open-source education!</p>
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer>
-        <div class="footer-links">
-            <a href="index.html">Home</a>
-            <a href="html.html">HTML</a>
-            <a href="css.html">CSS</a>
-            <a href="javascript.html">JavaScript</a>
-            <a href="react.html">React</a>
-            <a href="developer.html">Developer</a>
-            <a href="support.html">Support</a>
+    <!-- Command Palette Modal -->
+    <div class="cmd-palette-backdrop" id="cmdBackdrop">
+        <div class="cmd-palette">
+            <input type="text" class="cmd-input" id="cmdInput" placeholder="Search docs, toggle theme, or type command..." autocomplete="off">
+            <div class="cmd-results" id="cmdResults">
+                <!-- Populated via JS -->
+            </div>
         </div>
-        <div class="footer-links">
-            <a href="https://youtube.com/@Sanskar-in" target="_blank">YouTube</a>
-            <a href="https://github.com/Sanskar-in" target="_blank">GitHub</a>
-            <a href="https://linkedin.com/in/sanskar-in" target="_blank">LinkedIn</a>
-            <a href="https://x.com/Sanskar_in" target="_blank">X</a>
-        </div>
-        <div class="footer-gumroad">
-            <a href="https://ramsandesh.gumroad.com" target="_blank">🛒 Visit Gumroad Store</a>
-        </div>
-        <p class="footer-copy">© 2026 Sanskar Yadav. All rights reserved. Built with ❤️ for the web dev community.</p>
-    </footer>
+    </div>
 
-    <!-- Scripts -->
+    <!-- Logic -->
     <script>
-        // Hamburger toggle
-        const hamburger = document.getElementById('hamburger');
-        const navLinks = document.getElementById('navLinks');
-        hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('open');
-            hamburger.textContent = navLinks.classList.contains('open') ? '✕' : '☰';
-        });
+        // 1. Theme Management
+        const HUB_THEME_KEY = 'hubMasteryTheme';
+        const themeToggleBtn = document.getElementById('themeToggle');
+        
+        function initTheme() {
+            const saved = localStorage.getItem(HUB_THEME_KEY);
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const theme = saved || (prefersDark ? 'dark' : 'light');
+            document.documentElement.setAttribute('data-theme', theme);
+            updateThemeIcon(theme);
+        }
 
-        // Close mobile nav on link click
-        navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('open');
-                hamburger.textContent = '☰';
+        function toggleTheme() {
+            const current = document.documentElement.getAttribute('data-theme');
+            const target = current === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', target);
+            localStorage.setItem(HUB_THEME_KEY, target);
+            updateThemeIcon(target);
+        }
+
+        function updateThemeIcon(theme) {
+            themeToggleBtn.innerHTML = theme === 'dark' ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+        }
+
+        themeToggleBtn.addEventListener('click', toggleTheme);
+        initTheme();
+
+        // 2. TOC Highlight on Scroll
+        const sections = document.querySelectorAll('.section');
+        const tocLinks = document.querySelectorAll('.toc-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (scrollY >= sectionTop - 150) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            tocLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current) && current !== '') {
+                    link.classList.add('active');
+                }
             });
         });
 
-        // Tech stack progress bar animation
-        const animateProgressBars = () => {
-            const techCards = document.querySelectorAll('.tech-card');
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const card = entry.target;
-                        const percent = card.getAttribute('data-percent');
-                        const fill = card.querySelector('.progress-fill');
-                        if (fill) {
-                            setTimeout(() => {
-                                fill.style.width = percent + '%';
-                            }, 200);
-                        }
-                        observer.unobserve(card);
-                    }
-                });
-            }, { threshold: 0.3 });
+        // 3. Command Palette
+        const cmdBackdrop = document.getElementById('cmdBackdrop');
+        const cmdInput = document.getElementById('cmdInput');
+        const cmdResults = document.getElementById('cmdResults');
 
-            techCards.forEach(card => observer.observe(card));
-        };
-        animateProgressBars();
+        const commands = [
+            { title: "Toggle Light/Dark Theme", action: toggleTheme, icon: "fa-palette" },
+            { title: "Go to Architecture", action: () => window.location.hash = "#architecture", icon: "fa-sitemap" },
+            { title: "Go to React Docs", action: () => window.location.href = "React/developer.html", icon: "fa-react" },
+            { title: "Support Creator", action: openDonateModal, icon: "fa-heart" }
+        ];
 
-        // Donate overlay
-        const openDonate = document.getElementById('openDonate');
-        const closeDonate = document.getElementById('closeDonate');
-        const donateOverlay = document.getElementById('donateOverlay');
-
-        openDonate.addEventListener('click', () => {
-            donateOverlay.classList.add('active');
-        });
-        closeDonate.addEventListener('click', () => {
-            donateOverlay.classList.remove('active');
-        });
-        donateOverlay.addEventListener('click', (e) => {
-            if (e.target === donateOverlay) {
-                donateOverlay.classList.remove('active');
+        function renderCmdResults(query = "") {
+            cmdResults.innerHTML = "";
+            const filtered = commands.filter(c => c.title.toLowerCase().includes(query.toLowerCase()));
+            
+            if(filtered.length === 0) {
+                cmdResults.innerHTML = '<div class="cmd-item" style="color: var(--text-secondary); cursor: default;">No results found</div>';
+                return;
             }
-        });
-        document.addEventListener('keydown', (e) => {
+
+            filtered.forEach(cmd => {
+                const div = document.createElement('div');
+                div.className = 'cmd-item';
+                div.innerHTML = `<i class="fas ${cmd.icon}"></i> ${cmd.title}`;
+                div.onclick = () => {
+                    cmd.action();
+                    closeCmdPalette();
+                };
+                cmdResults.appendChild(div);
+            });
+        }
+
+        function openCmdPalette() {
+            cmdBackdrop.classList.add('active');
+            cmdInput.value = "";
+            renderCmdResults();
+            setTimeout(() => cmdInput.focus(), 100);
+        }
+
+        function closeCmdPalette() {
+            cmdBackdrop.classList.remove('active');
+        }
+
+        cmdInput.addEventListener('input', (e) => renderCmdResults(e.target.value));
+
+        window.addEventListener('keydown', (e) => {
+            if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+                e.preventDefault();
+                openCmdPalette();
+            }
             if (e.key === 'Escape') {
-                donateOverlay.classList.remove('active');
+                closeCmdPalette();
+                closeDonateModal();
             }
         });
 
-        // Stat counter animation
-        const animateStats = () => {
-            const statNumbers = document.querySelectorAll('.stat-number');
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const el = entry.target;
-                        const text = el.textContent;
-                        if (text === '∞') return;
-                        const target = parseInt(text.replace('+', ''));
-                        const hasPlus = text.includes('+');
-                        let current = 0;
-                        const increment = Math.ceil(target / 60);
-                        const timer = setInterval(() => {
-                            current += increment;
-                            if (current >= target) {
-                                current = target;
-                                clearInterval(timer);
-                            }
-                            el.textContent = current + (hasPlus ? '+' : '');
-                        }, 25);
-                        observer.unobserve(el);
-                    }
+        cmdBackdrop.addEventListener('click', (e) => {
+            if (e.target === cmdBackdrop) closeCmdPalette();
+        });
+
+        // 4. Donate Modal
+        const donateModal = document.getElementById('donateModal');
+        const btnOpenDonate = document.getElementById('btnOpenDonate');
+        const btnCloseDonate = document.getElementById('btnCloseDonate');
+
+        function openDonateModal() {
+            donateModal.classList.add('active');
+        }
+
+        function closeDonateModal() {
+            donateModal.classList.remove('active');
+        }
+
+        btnOpenDonate.addEventListener('click', openDonateModal);
+        btnCloseDonate.addEventListener('click', closeDonateModal);
+        donateModal.addEventListener('click', (e) => {
+            if(e.target === donateModal) closeDonateModal();
+        });
+        
+        // 5. Copy Code Blocks
+        document.querySelectorAll('.copy-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const pre = btn.parentElement.nextElementSibling;
+                navigator.clipboard.writeText(pre.innerText).then(() => {
+                    btn.innerHTML = '<i class="fas fa-check"></i>';
+                    setTimeout(() => {
+                        btn.innerHTML = '<i class="far fa-copy"></i>';
+                    }, 2000);
                 });
-            }, { threshold: 0.5 });
+            });
+        });
 
-            statNumbers.forEach(num => observer.observe(num));
-        };
-        animateStats();
     </script>
-
 </body>
-
 </html>

@@ -2316,52 +2316,119 @@ body.zen-mode #zenBtn {
     display: none;
   }
 }
-/* SPLASH SCREEN UI */
+
+/* ===== 1. SPLASH SCREEN CSS ===== */
 #splash-screen {
   position: fixed;
-  top: 0; left: 0; width: 100vw; height: 100vh;
-  background: var(--bg);
+  inset: 0;
   z-index: 999999;
+  background: linear-gradient(135deg, #0a0a1a, #12121e);
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  transition: opacity 0.8s ease-in-out, visibility 0.8s;
+  justify-content: center;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
 }
 #splash-screen.hide {
   opacity: 0;
   visibility: hidden;
 }
 .splash-logo {
-  width: 150px;
-  height: 150px;
-  object-fit: contain;
+  width: 120px;
+  height: 120px;
+  border-radius: 24px;
   margin-bottom: 20px;
-  animation: floatSplash 3s ease-in-out infinite;
-  filter: drop-shadow(0 0 20px var(--accent));
+  animation: splashPulse 2s ease-in-out infinite;
+}
+@keyframes splashPulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.05); opacity: 0.8; }
 }
 .splash-title {
   font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: 800;
-  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: pulseText 2s infinite;
+  margin-bottom: 10px;
 }
 .splash-subtitle {
-  font-family: 'Inter', sans-serif;
-  color: var(--text2);
-  margin-top: 10px;
+  color: rgba(255,255,255,0.5);
+  font-size: 0.9rem;
   letter-spacing: 2px;
   text-transform: uppercase;
 }
-@keyframes floatSplash {
-  0% { transform: translateY(0px) rotate(0deg); }
-  50% { transform: translateY(-15px) rotate(3deg); }
-  100% { transform: translateY(0px) rotate(0deg); }
+
+/* ===== 2. ZEN MODE CSS ===== */
+.zen-mode header { display: none !important; }
+.zen-mode #siteFooter { display: none !important; }
+.zen-mode .hdr-actions { display: none !important; }
+.zen-mode .hdr-stats { display: none !important; }
+.zen-mode .social-cluster-nav { display: none !important; }
+.zen-mode .top-donate-btn { display: none !important; }
+.zen-mode .tot-day-card { display: none !important; }
+.zen-mode .notification-banner { display: none !important; }
+.zen-mode #readingTracker { display: none !important; }
+
+/* ===== 3. ICON BUTTON CSS ===== */
+.icon-btn {
+  background: none;
+  border: none;
+  color: var(--text2, #a0a0b8);
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 8px;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-@keyframes pulseText {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.7; }
+.icon-btn:hover {
+  color: var(--accent, #3b82f6);
+  background: rgba(59, 130, 246, 0.1);
 }
+
+/* ===== 4. CODE EDITOR CSS ===== */
+.code-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 16px;
+  background: rgba(0,0,0,0.2);
+  border-bottom: 1px solid var(--border);
+  font-size: 0.8rem;
+  color: var(--text3);
+}
+.code-section {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  margin: 15px 0;
+}
+
+/* ===== 5. NOTIFICATION BANNER ===== */
+.notification-banner {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: var(--bg2, #12121a);
+  border: 1px solid var(--accent, #3b82f6);
+  border-radius: 12px;
+  padding: 20px;
+  max-width: 350px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+  transform: translateX(120%);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  z-index: 9999;
+}
+.notification-banner.show {
+  transform: translateX(0);
+}
+
+/* ===== 6. ENHANCED SCROLLBAR ===== */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent, #3b82f6); }
