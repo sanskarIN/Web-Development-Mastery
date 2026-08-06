@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 
 <head>
     <meta charset="UTF-8">
@@ -73,6 +73,17 @@
             --css-color: #3b82f6;
             --js-color: #eab308;
             --react-color: #61dafb;
+        }
+
+        [data-theme='light'] {
+            --bg: #f8f9fc;
+            --bg2: #ffffff;
+            --bg3: #f1f5f9;
+            --text: #1a1a2e;
+            --text2: #555570;
+            --text3: #888888;
+            --border: rgba(0,0,0,0.08);
+            --card-glass: rgba(0,0,0,0.03);
         }
 
         /* 2. BODY */
@@ -1278,8 +1289,11 @@
                 <a href="#support">Support</a>
             </div>
 
-            <a href="https://github.com/Sanskar-in" target="_blank" class="btn btn-follow nav-links">✨ Follow
-                Sanskar</a>
+            <div style="display: flex; align-items: center; gap: 16px;">
+                <button id="themeToggle" style="background: var(--bg3); border: 1px solid var(--border); border-radius: 50%; width: 40px; height: 40px; font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--text); transition: all 0.3s ease;">☀️</button>
+                <a href="https://github.com/Sanskar-in" target="_blank" class="btn btn-follow nav-links">✨ Follow
+                    Sanskar</a>
+            </div>
 
             <button id="mobileMenuBtn" class="mobile-menu-btn" aria-label="Toggle Menu">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -1834,6 +1848,26 @@
             }
         });
 
+        // Theme toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const savedTheme = localStorage.getItem('hubMasteryTheme');
+        
+        if (savedTheme) {
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            if (themeToggle) {
+                themeToggle.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+            }
+        }
+
+        if (themeToggle) {
+            themeToggle.addEventListener('click', () => {
+                const current = document.documentElement.getAttribute('data-theme');
+                const next = current === 'dark' ? 'light' : 'dark';
+                document.documentElement.setAttribute('data-theme', next);
+                localStorage.setItem('hubMasteryTheme', next);
+                themeToggle.textContent = next === 'dark' ? '☀️' : '🌙';
+            });
+        }
     </script>
 </body>
 
