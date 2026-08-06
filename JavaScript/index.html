@@ -1,28 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="100 JavaScript Concepts Explained In-Depth with Live Sandbox & Interactive Code — by Sanskar">
+  <meta name="description"
+    content="100 JavaScript Concepts Explained In-Depth with Live Sandbox & Interactive Code — by Sanskar">
   <meta name="keywords" content="JavaScript, JS, Web Development, Programming, Sanskar, ES6, Async, Promises, DOM">
   <meta name="author" content="Sanskar Developer">
   <meta name="theme-color" content="#eab308">
-  
+
   <meta property="og:title" content="JavaScript Mastery — 100 Concepts | By Sanskar Developer">
-  <meta property="og:description" content="Master JavaScript with 100 interactive concepts, live code sandbox, and complete reference guide.">
+  <meta property="og:description"
+    content="Master JavaScript with 100 interactive concepts, live code sandbox, and complete reference guide.">
   <meta property="og:type" content="website">
-  
+
   <title>JavaScript Mastery — 100 Concepts | By Sanskar Developer</title>
-  
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/theme/dracula.min.css">
-  
+
   <link rel="icon" href="css_logo.svg" type="image/svg+xml">
-  
+
   <style>
     /* Inline Styles for Critical UI / Modals */
     :root {
@@ -37,8 +42,9 @@
       --text3: #94a3b8;
       --border: #334155;
     }
-    
-    .donate-btn, .top-donate-btn {
+
+    .donate-btn,
+    .top-donate-btn {
       background: linear-gradient(135deg, #ef4444, #ec4899);
       color: white;
       border: none;
@@ -51,10 +57,13 @@
       gap: 8px;
       transition: transform 0.2s, box-shadow 0.2s;
     }
-    .donate-btn:hover, .top-donate-btn:hover {
+
+    .donate-btn:hover,
+    .top-donate-btn:hover {
       transform: translateY(-2px);
       box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4);
     }
+
     #donate-overlay {
       position: fixed;
       top: 0;
@@ -70,6 +79,7 @@
       opacity: 0;
       transition: opacity 0.3s;
     }
+
     .donate-modal {
       background: var(--bg2);
       border: 1px solid var(--border);
@@ -81,15 +91,18 @@
       position: relative;
       transform: translateY(20px);
       transition: transform 0.3s;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
     }
+
     #donate-overlay.active {
       display: flex;
       opacity: 1;
     }
+
     #donate-overlay.active .donate-modal {
       transform: translateY(0);
     }
+
     .donate-close {
       position: absolute;
       top: 15px;
@@ -101,13 +114,16 @@
       cursor: pointer;
       transition: color 0.2s;
     }
+
     .donate-close:hover {
       color: var(--text);
     }
+
     dialog#welcomeModal::backdrop {
       background: rgba(0, 0, 0, 0.75);
       backdrop-filter: blur(4px);
     }
+
     .mobile-nav {
       display: none;
       position: fixed;
@@ -120,6 +136,7 @@
       padding: 8px 0 env(safe-area-inset-bottom, 8px);
       justify-content: space-around;
     }
+
     .mobile-nav .nav-item {
       display: flex;
       flex-direction: column;
@@ -130,23 +147,29 @@
       color: var(--text2);
       transition: color 0.2s;
     }
+
     .mobile-nav .nav-item span {
       font-size: 10px;
       font-weight: 500;
     }
-    .mobile-nav .nav-item:hover, .mobile-nav .nav-item:active {
+
+    .mobile-nav .nav-item:hover,
+    .mobile-nav .nav-item:active {
       color: var(--accent);
     }
+
     @media (max-width: 768px) {
       .mobile-nav {
         display: flex;
       }
+
       #readingTracker {
         bottom: 80px !important;
       }
     }
   </style>
 </head>
+
 <body>
   <a href="#content" class="skip-link">Skip to content</a>
 
@@ -156,23 +179,25 @@
     <div class="splash-subtitle">Initializing V8 Sandbox...</div>
   </div>
 
-  <div id="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent-secondary));z-index:10000;width:0%;transition:width 0.1s;"></div>
+  <div id="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"
+    style="position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent-secondary));z-index:10000;width:0%;transition:width 0.1s;">
+  </div>
 
   <aside id="sidebar">
     <div class="sb-header">
       <h2>JS Concepts ⚡</h2>
       <button id="sbClose" aria-label="Close sidebar">×</button>
     </div>
-    
+
     <div class="sb-search-container">
       <input type="text" id="sbSearch" placeholder="🔍 Search concepts...">
       <select id="sbFilter">
         <option value="all">All Categories</option>
       </select>
     </div>
-    
+
     <nav id="sbNav" aria-label="Sidebar navigation"></nav>
-    
+
     <div class="sb-footer">
       <div class="mastery-progress-section">
         <div style="display:flex;justify-content:space-between;margin-bottom:8px;font-size:12px;color:var(--text2);">
@@ -180,22 +205,33 @@
           <span id="sbMasteryCount">0%</span>
         </div>
         <div class="progress-track" style="background:var(--bg3);height:6px;border-radius:3px;overflow:hidden;">
-          <div id="masteryProgressBar" style="height:100%;width:0%;background:var(--accent);transition:width 0.5s;"></div>
+          <div id="masteryProgressBar" style="height:100%;width:0%;background:var(--accent);transition:width 0.5s;">
+          </div>
         </div>
       </div>
-      
+
       <div style="display:flex;flex-direction:column;gap:10px;margin-top:15px;">
-        <button class="donate-btn" onclick="openDonate()" style="width:100%;justify-content:center;">❤️ Support Developer</button>
+        <button class="donate-btn" onclick="openDonate()" style="width:100%;justify-content:center;">❤️ Support
+          Developer</button>
         <div style="display:flex;gap:10px;">
-          <button onclick="document.getElementById('themeModal').showModal()" style="flex:1;background:var(--bg3);border:1px solid var(--border);color:var(--text);padding:8px;border-radius:6px;cursor:pointer;">🎨 Themes</button>
-          <div style="display:flex;background:var(--bg3);border:1px solid var(--border);border-radius:6px;overflow:hidden;">
-            <button onclick="changeFontSize(-1)" style="background:none;border:none;color:var(--text);padding:8px;cursor:pointer;border-right:1px solid var(--border);">A-</button>
-            <button onclick="changeFontSize(1)" style="background:none;border:none;color:var(--text);padding:8px;cursor:pointer;">A+</button>
+          <button onclick="document.getElementById('themeModal').showModal()"
+            style="flex:1;background:var(--bg3);border:1px solid var(--border);color:var(--text);padding:8px;border-radius:6px;cursor:pointer;">🎨
+            Themes</button>
+          <div
+            style="display:flex;background:var(--bg3);border:1px solid var(--border);border-radius:6px;overflow:hidden;">
+            <button onclick="changeFontSize(-1)"
+              style="background:none;border:none;color:var(--text);padding:8px;cursor:pointer;border-right:1px solid var(--border);">A-</button>
+            <button onclick="changeFontSize(1)"
+              style="background:none;border:none;color:var(--text);padding:8px;cursor:pointer;">A+</button>
           </div>
         </div>
         <div style="display:flex;gap:10px;">
-          <button onclick="exportData()" style="flex:1;background:var(--bg3);border:1px solid var(--border);color:var(--text);padding:8px;border-radius:6px;cursor:pointer;font-size:12px;">📤 Export</button>
-          <button onclick="document.getElementById('importFile').click()" style="flex:1;background:var(--bg3);border:1px solid var(--border);color:var(--text);padding:8px;border-radius:6px;cursor:pointer;font-size:12px;">📥 Import</button>
+          <button onclick="exportData()"
+            style="flex:1;background:var(--bg3);border:1px solid var(--border);color:var(--text);padding:8px;border-radius:6px;cursor:pointer;font-size:12px;">📤
+            Export</button>
+          <button onclick="document.getElementById('importFile').click()"
+            style="flex:1;background:var(--bg3);border:1px solid var(--border);color:var(--text);padding:8px;border-radius:6px;cursor:pointer;font-size:12px;">📥
+            Import</button>
           <input type="file" id="importFile" style="display:none;" accept=".json" onchange="importData(event)">
         </div>
       </div>
@@ -206,207 +242,345 @@
 
   <main id="mainWrap">
     <button id="sbOpen" aria-label="Open sidebar">☰</button>
-    
+
     <div style="position:absolute;top:20px;right:20px;display:flex;align-items:center;gap:15px;z-index:100;">
       <div class="social-cluster" style="display:flex;gap:10px;">
-        <a href="https://youtube.com/@Sanskar-in" target="_blank" rel="noopener" aria-label="YouTube" style="color:var(--text2);"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
-        <a href="https://github.com/Sanskar-in" target="_blank" rel="noopener" aria-label="GitHub" style="color:var(--text2);"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
-        <a href="https://linkedin.com/in/sanskar-in" target="_blank" rel="noopener" aria-label="LinkedIn" style="color:var(--text2);"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
-        <a href="https://x.com/Sanskar_in" target="_blank" rel="noopener" aria-label="X" style="color:var(--text2);"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg></a>
+        <a href="https://youtube.com/@Sanskar-in" target="_blank" rel="noopener" aria-label="YouTube"
+          style="color:var(--text2);"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+          </svg></a>
+        <a href="https://github.com/sanskarIN" target="_blank" rel="noopener" aria-label="GitHub"
+          style="color:var(--text2);"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.
++              d=" M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577
+              0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633
+              17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305
+              3.495.998.108-.776.417-1.305. style="color:var(--text2);"><svg width="20" height="20" viewBox="0 0 24 24"
+                fill="currentColor">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3。
+      <a href=" ../Follow-Sanskar.html"
+                  style="color:var(--text);text-decoration:none;font-weight:500;font-size:14px;background:var(--bg3);padding:6px 12px;border-radius:6px;border:1px solid var(--border);">
+                  Follow
+                  Sanskar</a>
+        <button class="top-donate-btn" onclick="openDonate()">❤️ Donate</button>
       </div>
-      <a href="../Follow-Sanskar.html" style="color:var(--text);text-decoration:none;font-weight:500;font-size:14px;background:var(--bg3);padding:6px 12px;border-radius:6px;border:1px solid var(--border);">Follow Sanskar</a>
-      <button class="top-donate-btn" onclick="openDonate()">❤️ Donate</button>
-    </div>
 
-    <header>
-      <div class="logo-wrap">
-        <span style="font-size:32px;">⚡</span>
-      </div>
-      <div id="greetingWrap" style="font-size:14px;color:var(--accent);font-weight:600;margin-bottom:10px;text-transform:uppercase;letter-spacing:1px;"></div>
-      <h1>JavaScript Mastery</h1>
-      <p style="color:var(--text2);max-width:600px;margin:15px auto;font-size:16px;line-height:1.6;">
-        <span id="totalTagsDesc">100</span> Concepts Explained In-Depth with Live Sandbox & Interactive Code — by Sanskar
-      </p>
-      
-      <div id="hdr-stats" style="display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin:25px 0;">
-        <div style="background:var(--bg2);border:1px solid var(--border);padding:10px 20px;border-radius:10px;text-align:center;">
-          <div style="font-size:24px;font-weight:700;color:var(--text);" id="totalTagsStat">100</div>
-          <div style="font-size:12px;color:var(--text3);text-transform:uppercase;">Concepts</div>
+      <header>
+        <div class="logo-wrap">
+          <span style="font-size:32px;">⚡</span>
         </div>
-        <div style="background:var(--bg2);border:1px solid var(--border);padding:10px 20px;border-radius:10px;text-align:center;">
-          <div style="font-size:24px;font-weight:700;color:var(--accent);" id="masteryLevel">0%</div>
-          <div style="font-size:12px;color:var(--text3);text-transform:uppercase;">Level</div>
+        <div id="greetingWrap"
+          style="font-size:14px;color:var(--accent);font-weight:600;margin-bottom:10px;text-transform:uppercase;letter-spacing:1px;">
         </div>
-        <div style="background:var(--bg2);border:1px solid var(--border);padding:10px 20px;border-radius:10px;text-align:center;">
-          <div style="font-size:24px;font-weight:700;color:var(--text);" id="masteryCountStat">0</div>
-          <div style="font-size:12px;color:var(--text3);text-transform:uppercase;">Mastered</div>
-        </div>
-        <div style="background:var(--bg2);border:1px solid var(--border);padding:10px 20px;border-radius:10px;text-align:center;">
-          <div style="font-size:24px;font-weight:700;color:#f43f5e;" id="favCountStat">0</div>
-          <div style="font-size:12px;color:var(--text3);text-transform:uppercase;">Favorites</div>
-        </div>
-        <div style="background:var(--bg2);border:1px solid var(--border);padding:10px 20px;border-radius:10px;text-align:center;">
-          <div style="font-size:24px;font-weight:700;color:#38bdf8;" id="readTime">45m</div>
-          <div style="font-size:12px;color:var(--text3);text-transform:uppercase;">Min Read</div>
-        </div>
-      </div>
-      
-      <div id="masteryRank" style="display:inline-block;background:linear-gradient(90deg, rgba(234, 179, 8, 0.1), rgba(234, 179, 8, 0.2));border:1px solid var(--accent);color:var(--accent);padding:8px 16px;border-radius:20px;font-weight:600;font-size:14px;margin-bottom:20px;">
-        Rank: Novice Developer
-      </div>
-      
-      <div id="totDayCard" style="background:var(--bg2);border:1px solid var(--border);padding:15px 25px;border-radius:12px;max-width:500px;margin:0 auto 30px;cursor:pointer;transition:transform 0.2s, border-color 0.2s;" onclick="openTotDay()">
-        <div style="font-size:12px;color:var(--accent);text-transform:uppercase;font-weight:700;margin-bottom:5px;">✨ Concept of the Day</div>
-        <div id="totDayTitle" style="font-weight:600;color:var(--text);font-size:16px;">Loading...</div>
-      </div>
-      
-      <div class="action-buttons" style="display:flex;justify-content:center;gap:10px;flex-wrap:wrap;">
-        <button onclick="openTranslateModal()" style="background:var(--bg3);border:1px solid var(--border);color:var(--text);padding:10px 20px;border-radius:8px;font-weight:500;cursor:pointer;display:flex;align-items:center;gap:8px;"><span style="font-size:18px;">🌍</span> Translate</button>
-        <button onclick="openQuiz(event)" style="background:var(--bg3);border:1px solid var(--border);color:var(--text);padding:10px 20px;border-radius:8px;font-weight:500;cursor:pointer;display:flex;align-items:center;gap:8px;"><span style="font-size:18px;">🎯</span> Test Knowledge</button>
-        <button onclick="openCheatSheet()" style="background:var(--bg3);border:1px solid var(--border);color:var(--text);padding:10px 20px;border-radius:8px;font-weight:500;cursor:pointer;display:flex;align-items:center;gap:8px;"><span style="font-size:18px;">📜</span> Cheat Sheet</button>
-        <button onclick="openMasteryCenter()" style="background:var(--accent);border:1px solid var(--accent);color:#000;padding:10px 20px;border-radius:8px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:8px;"><span style="font-size:18px;">🎓</span> Mastery Center</button>
-        <button onclick="setTimeout(function(){window.print();},100)" style="background:var(--bg3);border:1px solid var(--border);color:var(--text);padding:10px 20px;border-radius:8px;font-weight:500;cursor:pointer;display:flex;align-items:center;gap:8px;"><span style="font-size:18px;">🖨️</span> Save as PDF</button>
-        <button id="zenBtn" onclick="toggleZenMode()" style="background:var(--bg3);border:1px solid var(--border);color:var(--text);padding:10px 20px;border-radius:8px;font-weight:500;cursor:pointer;display:flex;align-items:center;gap:8px;"><span style="font-size:18px;">👁️</span> Zen Mode</button>
-        <button onclick="document.getElementById('historyModal').showModal()" style="background:var(--bg3);border:1px solid var(--border);color:var(--text);padding:10px 20px;border-radius:8px;font-weight:500;cursor:pointer;display:flex;align-items:center;gap:8px;"><span style="font-size:18px;">⏳</span> History</button>
-        <button onclick="document.getElementById('shortcutsModal').showModal()" style="background:var(--bg3);border:1px solid var(--border);color:var(--text);padding:10px 20px;border-radius:8px;font-weight:500;cursor:pointer;display:flex;align-items:center;gap:8px;"><span style="font-size:18px;">⌨️</span> Shortcuts</button>
-      </div>
-    </header>
+        <h1>JavaScript Mastery</h1>
+        <p style="color:var(--text2);max-width:600px;margin:15px auto;font-size:16px;line-height:1.6;">
+          <span id="totalTagsDesc">100</span> Concepts Explained In-Depth with Live Sandbox & Interactive Code — by
+          Sanskar
+        </p>
 
-    <div id="content" role="region" aria-label="JavaScript concept reference content"></div>
-
-    <footer id="siteFooter" style="background:var(--bg2);border-top:1px solid var(--border);padding:60px 20px 20px;margin-top:60px;">
-      <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));gap:40px;margin-bottom:40px;">
-        
-        <div>
-          <h3 style="color:var(--text);font-size:20px;margin-bottom:15px;display:flex;align-items:center;gap:10px;">🚀 Sanskar Yadav</h3>
-          <p style="color:var(--text2);font-size:14px;line-height:1.6;margin-bottom:20px;">
-            Full-Stack Developer, Open Source Contributor, and Creator of Web Development Mastery. Dedicated to building high-quality, accessible, and interactive learning resources.
-          </p>
-          <div style="display:flex;gap:15px;">
-            <a href="https://youtube.com/@Sanskar-in" target="_blank" rel="noopener" style="color:var(--text2);transition:color 0.2s;"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
-            <a href="https://github.com/Sanskar-in" target="_blank" rel="noopener" style="color:var(--text2);transition:color 0.2s;"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
-            <a href="https://linkedin.com/in/sanskar-in" target="_blank" rel="noopener" style="color:var(--text2);transition:color 0.2s;"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
-            <a href="https://x.com/Sanskar_in" target="_blank" rel="noopener" style="color:var(--text2);transition:color 0.2s;"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg></a>
+        <div id="hdr-stats" style="display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin:25px 0;">
+          <div
+            style="background:var(--bg2);border:1px solid var(--border);padding:10px 20px;border-radius:10px;text-align:center;">
+            <div style="font-size:24px;font-weight:700;color:var(--text);" id="totalTagsStat">100</div>
+            <div style="font-size:12px;color:var(--text3);text-transform:uppercase;">Concepts</div>
+          </div>
+          <div
+            style="background:var(--bg2);border:1px solid var(--border);padding:10px 20px;border-radius:10px;text-align:center;">
+            <div style="font-size:24px;font-weight:700;color:var(--accent);" id="masteryLevel">0%</div>
+            <div style="font-size:12px;color:var(--text3);text-transform:uppercase;">Level</div>
+          </div>
+          <div
+            style="background:var(--bg2);border:1px solid var(--border);padding:10px 20px;border-radius:10px;text-align:center;">
+            <div style="font-size:24px;font-weight:700;color:var(--text);" id="masteryCountStat">0</div>
+            <div style="font-size:12px;color:var(--text3);text-transform:uppercase;">Mastered</div>
+          </div>
+          <div
+            style="background:var(--bg2);border:1px solid var(--border);padding:10px 20px;border-radius:10px;text-align:center;">
+            <div style="font-size:24px;font-weight:700;color:#f43f5e;" id="favCountStat">0</div>
+            <div style="font-size:12px;color:var(--text3);text-transform:uppercase;">Favorites</div>
+          </div>
+          <div
+            style="background:var(--bg2);border:1px solid var(--border);padding:10px 20px;border-radius:10px;text-align:center;">
+            <div style="font-size:24px;font-weight:700;color:#38bdf8;" id="readTime">45m</div>
+            <div style="font-size:12px;color:var(--text3);text-transform:uppercase;">Min Read</div>
           </div>
         </div>
 
-        <div>
-          <h3 style="color:var(--text);font-size:18px;margin-bottom:15px;">Contact & Support</h3>
-          <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px;">
-            <li><a href="mailto:sanskaryadavfrom2012to2026@gmail.com" style="color:var(--text3);text-decoration:none;font-size:14px;transition:color 0.2s;">sanskaryadavfrom2012to2026@gmail.com</a></li>
-            <li><a href="mailto:supportramsandesh@gmail.com" style="color:var(--text3);text-decoration:none;font-size:14px;transition:color 0.2s;">supportramsandesh@gmail.com</a></li>
-            <li><a href="mailto:sanskaryadavfromghosimau2026-27@outlook.com" style="color:var(--text3);text-decoration:none;font-size:14px;transition:color 0.2s;">sanskaryadavfromghosimau2026-27@outlook.com</a></li>
-          </ul>
+        <div id="masteryRank"
+          style="display:inline-block;background:linear-gradient(90deg, rgba(234, 179, 8, 0.1), rgba(234, 179, 8, 0.2));border:1px solid var(--accent);color:var(--accent);padding:8px 16px;border-radius:20px;font-weight:600;font-size:14px;margin-bottom:20px;">
+          Rank: Novice Developer
         </div>
 
-        <div>
-          <h3 style="color:var(--text);font-size:18px;margin-bottom:15px;">E-Books & Store</h3>
-          <p style="color:var(--text3);font-size:14px;margin-bottom:15px;">Get premium resources, templates, and comprehensive guides.</p>
-          <a href="https://ramsandesh.gumroad.com" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg, #ff90e8, #ff6b6b);color:#000;padding:10px 20px;border-radius:8px;text-decoration:none;font-weight:600;transition:transform 0.2s;">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 8v8"></path><path d="M8 12h8"></path></svg>
-            Visit Gumroad
-          </a>
+        <div id="totDayCard"
+          style="background:var(--bg2);border:1px solid var(--border);padding:15px 25px;border-radius:12px;max-width:500px;margin:0 auto 30px;cursor:pointer;transition:transform 0.2s, border-color 0.2s;"
+          onclick="openTotDay()">
+          <div style="font-size:12px;color:var(--accent);text-transform:uppercase;font-weight:700;margin-bottom:5px;">✨
+            Concept of the Day</div>
+          <div id="totDayTitle" style="font-weight:600;color:var(--text);font-size:16px;">Loading...</div>
         </div>
 
-        <div>
-          <h3 style="color:var(--text);font-size:18px;margin-bottom:15px;">Quick Links</h3>
-          <ul style="list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:10px;">
-            <li><a href="../Follow-Sanskar.html" style="color:var(--text3);text-decoration:none;font-size:14px;transition:color 0.2s;">Follow Sanskar</a></li>
-            <li><a href="../about.html" style="color:var(--text3);text-decoration:none;font-size:14px;transition:color 0.2s;">About</a></li>
-            <li><a href="../support.html" style="color:var(--text3);text-decoration:none;font-size:14px;transition:color 0.2s;">Support</a></li>
-            <li><a href="../developer.html" style="color:var(--text3);text-decoration:none;font-size:14px;transition:color 0.2s;">Developer</a></li>
-            <li><a href="../privacy.html" style="color:var(--text3);text-decoration:none;font-size:14px;transition:color 0.2s;">Privacy</a></li>
-            <li><a href="../terms.html" style="color:var(--text3);text-decoration:none;font-size:14px;transition:color 0.2s;">Terms</a></li>
-            <li><a href="../thanks.html" style="color:var(--text3);text-decoration:none;font-size:14px;transition:color 0.2s;">Thank You</a></li>
-            <li><a href="../404.html" style="color:var(--text3);text-decoration:none;font-size:14px;transition:color 0.2s;">404 Error</a></li>
-          </ul>
+        <div class="action-buttons" style="display:flex;justify-content:center;gap:10px;flex-wrap:wrap;">
+          <button onclick="openTranslateModal()"
+            style="background:var(--bg3);border:1px solid var(--border);color:var(--text);padding:10px 20px;border-radius:8px;font-weight:500;cursor:pointer;display:flex;align-items:center;gap:8px;"><span
+              style="font-size:18px;">🌍</span> Translate</button>
+          <button onclick="openQuiz(event)"
+            style="background:var(--bg3);border:1px solid var(--border);color:var(--text);padding:10px 20px;border-radius:8px;font-weight:500;cursor:pointer;display:flex;align-items:center;gap:8px;"><span
+              style="font-size:18px;">🎯</span> Test Knowledge</button>
+          <button onclick="openCheatSheet()"
+            style="background:var(--bg3);border:1px solid var(--border);color:var(--text);padding:10px 20px;border-radius:8px;font-weight:500;cursor:pointer;display:flex;align-items:center;gap:8px;"><span
+              style="font-size:18px;">📜</span> Cheat Sheet</button>
+          <button onclick="openMasteryCenter()"
+            style="background:var(--accent);border:1px solid var(--accent);color:#000;padding:10px 20px;border-radius:8px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:8px;"><span
+              style="font-size:18px;">🎓</span> Mastery Center</button>
+          <button onclick="setTimeout(function(){window.print();},100)"
+            style="background:var(--bg3);border:1px solid var(--border);color:var(--text);padding:10px 20px;border-radius:8px;font-weight:500;cursor:pointer;display:flex;align-items:center;gap:8px;"><span
+              style="font-size:18px;">🖨️</span> Save as PDF</button>
+          <button id="zenBtn" onclick="toggleZenMode()"
+            style="background:var(--bg3);border:1px solid var(--border);color:var(--text);padding:10px 20px;border-radius:8px;font-weight:500;cursor:pointer;display:flex;align-items:center;gap:8px;"><span
+              style="font-size:18px;">👁️</span> Zen Mode</button>
+          <button onclick="document.getElementById('historyModal').showModal()"
+            style="background:var(--bg3);border:1px solid var(--border);color:var(--text);padding:10px 20px;border-radius:8px;font-weight:500;cursor:pointer;display:flex;align-items:center;gap:8px;"><span
+              style="font-size:18px;">⏳</span> History</button>
+          <button onclick="document.getElementById('shortcutsModal').showModal()"
+            style="background:var(--bg3);border:1px solid var(--border);color:var(--text);padding:10px 20px;border-radius:8px;font-weight:500;cursor:pointer;display:flex;align-items:center;gap:8px;"><span
+              style="font-size:18px;">⌨️</span> Shortcuts</button>
+        </div>
+      </header>
+
+      <div id="content" role="region" aria-label="JavaScript concept reference content"></div>
+
+      <footer id="siteFooter"
+        style="background:var(--bg2);border-top:1px solid var(--border);padding:60px 20px 20px;margin-top:60px;">
+        <div
+          style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));gap:40px;margin-bottom:40px;">
+
+          <div>
+            <h3 style="color:var(--text);font-size:20px;margin-bottom:15px;display:flex;align-items:center;gap:10px;">🚀
+              Sanskar Yadav</h3>
+            <p style="color:var(--text2);font-size:14px;line-height:1.6;margin-bottom:20px;">
+              Full-Stack Developer, Open Source Contributor, and Creator of Web Development Mastery. Dedicated to
+              building
+              high-quality, accessible, and interactive learning resources.
+            </p>
+            <div style="display:flex;gap:15px;">
+              <a href="https://youtube.com/@Sanskar-in" target="_blank" rel="noopener"
+                style="color:var(--text2);transition:color 0.2s;"><svg width="24" height="24" viewBox="0 0 24 24"
+                  fill="currentColor">
+                  <path
+                    d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                </svg></a>
+              <a href="https://github.com/sanskarIN" target="_blank" rel="noopener"
+                style="color:var(--text2);transition:color 0.2s;"><svg width="24" height="24" viewBox="0 0 24 24"
+                  fill="currentColor">
+                  <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.
+
+            <a href=" https://linkedin.com/in/sanskar-in/" target="_blank" rel="noopener"
+                    style="color:var(--text2);transition:color 0.2s;"><svg width="24" height="24" viewBox="0 0 24 24"
+                      fill="currentColor">
+                      <path
+                        d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                    </svg></a>
+              <a href="https://x.com/Sanskar_in" target="_blank" rel="noopener"
+                style="color:var(--text2);transition:color 0.2s;"><svg width="24" height="24" viewBox="0 0 24 24"
+                  fill="currentColor">
+                  <path
+                    d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" />
+                </svg></a>
+            </div>
+          </div>
+
+          <div>
+            <h3 style="color:var(--text);font-size:18px;margin-bottom:15px;">Contact & Support</h3>
+            <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px;">
+              <li><a href="mailto:sanskaryadavfrom2012to2026@gmail.com"
+                  style="color:var(--text3);text-decoration:none;font-size:14px;transition:color 0.2s;">sanskaryadavfrom2012to2026@gmail.com</a>
+              </li>
+              <li><a href="mailto:supportramsandesh@gmail.com"
+                  style="color:var(--text3);text-decoration:none;font-size:14px;transition:color 0.2s;">supportramsandesh@gmail.com</a>
+              </li>
+              <li><a href="mailto:sanskaryadavfromghosimau2026-27@outlook.com"
+                  style="color:var(--text3);text-decoration:none;font-size:14px;transition:color 0.2s;">sanskaryadavfromghosimau2026-27@outlook.com</a>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 style="color:var(--text);font-size:18px;margin-bottom:15px;">E-Books & Store</h3>
+            <p style="color:var(--text3);font-size:14px;margin-bottom:15px;">Get premium resources, templates, and
+              comprehensive guides.</p>
+            <a href="https://ramsandesh.gumroad.com" target="_blank" rel="noopener"
+              style="display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg, #ff90e8, #ff6b6b);color:#000;padding:10px 20px;border-radius:8px;text-decoration:none;font-weight:600;transition:transform 0.2s;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M12 8v8"></path>
+                <path d="M8 12h8"></path>
+              </svg>
+              Visit Gumroad
+            </a>
+          </div>
+
+          <div>
+            <h3 style="color:var(--text);font-size:18px;margin-bottom:15px;">Quick Links</h3>
+            <ul style="list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+              <li><a href="../Follow-Sanskar.html"
+                  style="color:var(--text3);text-decoration:none;font-size:14px;transition:color 0.2s;">Follow
+                  Sanskar</a>
+              </li>
+              <li><a href="../about.html"
+                  style="color:var(--text3);text-decoration:none;font-size:14px;transition:color 0.2s;">About</a></li>
+              <li><a href="../support.html"
+                  style="color:var(--text3);text-decoration:none;font-size:14px;transition:color 0.2s;">Support</a></li>
+              <li><a href="../developer.html"
+                  style="color:var(--text3);text-decoration:none;font-size:14px;transition:color 0.2s;">Developer</a>
+              </li>
+              <li><a href="../privacy.html"
+                  style="color:var(--text3);text-decoration:none;font-size:14px;transition:color 0.2s;">Privacy</a></li>
+              <li><a href="../terms.html"
+                  style="color:var(--text3);text-decoration:none;font-size:14px;transition:color 0.2s;">Terms</a></li>
+              <li><a href="../thanks.html"
+                  style="color:var(--text3);text-decoration:none;font-size:14px;transition:color 0.2s;">Thank You</a>
+              </li>
+              <li><a href="../404.html"
+                  style="color:var(--text3);text-decoration:none;font-size:14px;transition:color 0.2s;">404 Error</a>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 style="color:var(--text);font-size:18px;margin-bottom:15px;">Other Modules</h3>
+            <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px;">
+              <li><a href="../HTML/index.html"
+                  style="color:var(--text3);text-decoration:none;font-size:14px;transition:color 0.2s;">🌐 HTML
+                  Mastery</a></li>
+              <li><a href="../CSS/index.html"
+                  style="color:var(--text3);text-decoration:none;font-size:14px;transition:color 0.2s;">🎨 CSS
+                  Mastery</a>
+              </li>
+              <li><a href="../React/index.html"
+                  style="color:var(--text3);text-decoration:none;font-size:14px;transition:color 0.2s;">⚛️ React
+                  Mastery</a></li>
+              <li><a href="../index.html"
+                  style="color:var(--text3);text-decoration:none;font-size:14px;transition:color 0.2s;">🚀 Hub Home</a>
+              </li>
+            </ul>
+          </div>
+
         </div>
 
-        <div>
-          <h3 style="color:var(--text);font-size:18px;margin-bottom:15px;">Other Modules</h3>
-          <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px;">
-            <li><a href="../HTML/index.html" style="color:var(--text3);text-decoration:none;font-size:14px;transition:color 0.2s;">🌐 HTML Mastery</a></li>
-            <li><a href="../CSS/index.html" style="color:var(--text3);text-decoration:none;font-size:14px;transition:color 0.2s;">🎨 CSS Mastery</a></li>
-            <li><a href="../React/index.html" style="color:var(--text3);text-decoration:none;font-size:14px;transition:color 0.2s;">⚛️ React Mastery</a></li>
-            <li><a href="../index.html" style="color:var(--text3);text-decoration:none;font-size:14px;transition:color 0.2s;">🚀 Hub Home</a></li>
-          </ul>
+        <div
+          style="border-top:1px solid var(--border);padding-top:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;color:var(--text3);font-size:14px;max-width:1200px;margin:0 auto;">
+          <div>v2.0 Premium • 100/100 Concepts Indexed</div>
+          <div>&copy; 2026 Sanskar Yadav. Made with <span style="color:#ef4444;">❤️</span> in India.</div>
+          <button onclick="openDonate()"
+            style="background:none;border:none;color:var(--accent);font-weight:600;cursor:pointer;text-decoration:underline;">Support
+            the Project</button>
         </div>
-        
-      </div>
-      
-      <div style="border-top:1px solid var(--border);padding-top:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;color:var(--text3);font-size:14px;max-width:1200px;margin:0 auto;">
-        <div>v2.0 Premium • 100/100 Concepts Indexed</div>
-        <div>&copy; 2026 Sanskar Yadav. Made with <span style="color:#ef4444;">❤️</span> in India.</div>
-        <button onclick="openDonate()" style="background:none;border:none;color:var(--accent);font-weight:600;cursor:pointer;text-decoration:underline;">Support the Project</button>
-      </div>
-    </footer>
+      </footer>
   </main>
 
   <!-- Welcome Modal -->
-  <dialog id="welcomeModal" style="background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:30px;max-width:400px;width:90%;color:var(--text);box-shadow:0 25px 50px -12px rgba(0,0,0,0.5);">
+  <dialog id="welcomeModal"
+    style="background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:30px;max-width:400px;width:90%;color:var(--text);box-shadow:0 25px 50px -12px rgba(0,0,0,0.5);">
     <div style="text-align:center;">
       <h2 style="font-size:24px;margin-bottom:15px;color:var(--accent);">Welcome to JavaScript Mastery! 👋</h2>
-      <p style="color:var(--text2);margin-bottom:20px;font-size:15px;line-height:1.5;">Enter your name to personalize your learning experience and track your mastery progress.</p>
-      <input type="text" id="wmUsername" placeholder="Your Name" style="width:100%;padding:12px;border-radius:8px;border:1px solid var(--border);background:var(--bg);color:var(--text);margin-bottom:20px;font-size:16px;box-sizing:border-box;">
+      <p style="color:var(--text2);margin-bottom:20px;font-size:15px;line-height:1.5;">Enter your name to personalize
+        your learning experience and track your mastery progress.</p>
+      <input type="text" id="wmUsername" placeholder="Your Name"
+        style="width:100%;padding:12px;border-radius:8px;border:1px solid var(--border);background:var(--bg);color:var(--text);margin-bottom:20px;font-size:16px;box-sizing:border-box;">
       <div style="display:flex;gap:10px;">
-        <button onclick="saveName()" style="flex:2;background:var(--accent);color:#000;border:none;padding:12px;border-radius:8px;font-weight:600;cursor:pointer;font-size:16px;">Save & Continue</button>
-        <button onclick="document.getElementById('welcomeModal').close()" style="flex:1;background:var(--bg3);color:var(--text);border:none;padding:12px;border-radius:8px;font-weight:500;cursor:pointer;font-size:16px;">Skip</button>
+        <button onclick="saveName()"
+          style="flex:2;background:var(--accent);color:#000;border:none;padding:12px;border-radius:8px;font-weight:600;cursor:pointer;font-size:16px;">Save
+          & Continue</button>
+        <button onclick="document.getElementById('welcomeModal').close()"
+          style="flex:1;background:var(--bg3);color:var(--text);border:none;padding:12px;border-radius:8px;font-weight:500;cursor:pointer;font-size:16px;">Skip</button>
       </div>
     </div>
   </dialog>
 
   <!-- Theme Gallery Modal -->
-  <dialog id="themeModal" style="background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:30px;max-width:800px;width:90%;color:var(--text);">
+  <dialog id="themeModal"
+    style="background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:30px;max-width:800px;width:90%;color:var(--text);">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
       <h2 style="margin:0;display:flex;align-items:center;gap:10px;">🎨 Theme Gallery & Customizer</h2>
-      <button onclick="document.getElementById('themeModal').close()" style="background:none;border:none;color:var(--text2);font-size:24px;cursor:pointer;">&times;</button>
+      <button onclick="document.getElementById('themeModal').close()"
+        style="background:none;border:none;color:var(--text2);font-size:24px;cursor:pointer;">&times;</button>
     </div>
     <p style="color:var(--accent);font-weight:600;margin-bottom:20px;">✨ 25+ Premium Presets</p>
-    <div id="themeGrid" style="display:grid;grid-template-columns:repeat(auto-fill, minmax(150px, 1fr));gap:15px;margin-bottom:30px;max-height:300px;overflow-y:auto;padding-right:10px;">
+    <div id="themeGrid"
+      style="display:grid;grid-template-columns:repeat(auto-fill, minmax(150px, 1fr));gap:15px;margin-bottom:30px;max-height:300px;overflow-y:auto;padding-right:10px;">
       <!-- Populated by JS -->
     </div>
-    
+
     <div style="background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:20px;">
       <h3 style="margin-top:0;margin-bottom:15px;font-size:16px;">Custom Theme Builder</h3>
       <div style="display:flex;flex-wrap:wrap;gap:15px;margin-bottom:15px;">
-        <label style="display:flex;flex-direction:column;gap:5px;font-size:12px;color:var(--text2);">Background <input type="color" id="ct-bg" value="#0f172a" style="border:none;background:none;width:30px;height:30px;cursor:pointer;"></label>
-        <label style="display:flex;flex-direction:column;gap:5px;font-size:12px;color:var(--text2);">Surface <input type="color" id="ct-bg2" value="#1e293b" style="border:none;background:none;width:30px;height:30px;cursor:pointer;"></label>
-        <label style="display:flex;flex-direction:column;gap:5px;font-size:12px;color:var(--text2);">Text <input type="color" id="ct-text" value="#f8fafc" style="border:none;background:none;width:30px;height:30px;cursor:pointer;"></label>
-        <label style="display:flex;flex-direction:column;gap:5px;font-size:12px;color:var(--text2);">Accent <input type="color" id="ct-accent" value="#eab308" style="border:none;background:none;width:30px;height:30px;cursor:pointer;"></label>
-        <label style="display:flex;flex-direction:column;gap:5px;font-size:12px;color:var(--text2);">Accent 2 <input type="color" id="ct-accent2" value="#fef08a" style="border:none;background:none;width:30px;height:30px;cursor:pointer;"></label>
+        <label style="display:flex;flex-direction:column;gap:5px;font-size:12px;color:var(--text2);">Background <input
+            type="color" id="ct-bg" value="#0f172a"
+            style="border:none;background:none;width:30px;height:30px;cursor:pointer;"></label>
+        <label style="display:flex;flex-direction:column;gap:5px;font-size:12px;color:var(--text2);">Surface <input
+            type="color" id="ct-bg2" value="#1e293b"
+            style="border:none;background:none;width:30px;height:30px;cursor:pointer;"></label>
+        <label style="display:flex;flex-direction:column;gap:5px;font-size:12px;color:var(--text2);">Text <input
+            type="color" id="ct-text" value="#f8fafc"
+            style="border:none;background:none;width:30px;height:30px;cursor:pointer;"></label>
+        <label style="display:flex;flex-direction:column;gap:5px;font-size:12px;color:var(--text2);">Accent <input
+            type="color" id="ct-accent" value="#eab308"
+            style="border:none;background:none;width:30px;height:30px;cursor:pointer;"></label>
+        <label style="display:flex;flex-direction:column;gap:5px;font-size:12px;color:var(--text2);">Accent 2 <input
+            type="color" id="ct-accent2" value="#fef08a"
+            style="border:none;background:none;width:30px;height:30px;cursor:pointer;"></label>
       </div>
-      <button onclick="applyCustomTheme()" style="background:var(--bg3);border:1px solid var(--border);color:var(--text);padding:8px 16px;border-radius:6px;cursor:pointer;">Save Custom Theme</button>
+      <button onclick="applyCustomTheme()"
+        style="background:var(--bg3);border:1px solid var(--border);color:var(--text);padding:8px 16px;border-radius:6px;cursor:pointer;">Save
+        Custom Theme</button>
     </div>
   </dialog>
 
   <!-- Cheat Sheet Modal -->
-  <dialog id="cheatSheetModal" style="background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:30px;max-width:1000px;width:90%;height:80vh;color:var(--text);">
+  <dialog id="cheatSheetModal"
+    style="background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:30px;max-width:1000px;width:90%;height:80vh;color:var(--text);">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
       <h2 style="margin:0;display:flex;align-items:center;gap:10px;">📜 JavaScript Concepts Cheat Sheet</h2>
-      <button onclick="document.getElementById('cheatSheetModal').close()" style="background:none;border:none;color:var(--text2);font-size:24px;cursor:pointer;">&times;</button>
+      <button onclick="document.getElementById('cheatSheetModal').close()"
+        style="background:none;border:none;color:var(--text2);font-size:24px;cursor:pointer;">&times;</button>
     </div>
-    <input type="text" id="csSearch" placeholder="Search cheat sheet..." style="width:100%;padding:12px;border-radius:8px;border:1px solid var(--border);background:var(--bg);color:var(--text);margin-bottom:20px;font-size:16px;box-sizing:border-box;" onkeyup="filterCheatSheet()">
-    <div id="csGrid" style="display:grid;grid-template-columns:repeat(auto-fill, minmax(300px, 1fr));gap:20px;overflow-y:auto;height:calc(100% - 130px);padding-right:10px;">
+    <input type="text" id="csSearch" placeholder="Search cheat sheet..."
+      style="width:100%;padding:12px;border-radius:8px;border:1px solid var(--border);background:var(--bg);color:var(--text);margin-bottom:20px;font-size:16px;box-sizing:border-box;"
+      onkeyup="filterCheatSheet()">
+    <div id="csGrid"
+      style="display:grid;grid-template-columns:repeat(auto-fill, minmax(300px, 1fr));gap:20px;overflow-y:auto;height:calc(100% - 130px);padding-right:10px;">
       <!-- Populated by JS -->
     </div>
   </dialog>
 
   <!-- Mastery Center Modal -->
-  <dialog id="masteryCenterModal" style="background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:0;max-width:1000px;width:90%;height:80vh;color:var(--text);overflow:hidden;">
+  <dialog id="masteryCenterModal"
+    style="background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:0;max-width:1000px;width:90%;height:80vh;color:var(--text);overflow:hidden;">
     <div style="display:flex;height:100%;">
-      <div style="width:250px;background:var(--bg3);border-right:1px solid var(--border);padding:20px;display:flex;flex-direction:column;">
+      <div
+        style="width:250px;background:var(--bg3);border-right:1px solid var(--border);padding:20px;display:flex;flex-direction:column;">
         <h2 style="font-size:18px;margin-top:0;margin-bottom:20px;color:var(--accent);">Mastery Center</h2>
         <div style="display:flex;flex-direction:column;gap:10px;flex:1;">
-          <button onclick="loadMasteryContent('interview')" style="text-align:left;background:transparent;border:none;color:var(--text);padding:10px;border-radius:6px;cursor:pointer;transition:background 0.2s;">💬 Interview Q&A</button>
-          <button onclick="loadMasteryContent('best-practices')" style="text-align:left;background:transparent;border:none;color:var(--text);padding:10px;border-radius:6px;cursor:pointer;transition:background 0.2s;">🛡️ Best Practices</button>
-          <button onclick="loadMasteryContent('flashcards')" style="text-align:left;background:transparent;border:none;color:var(--text);padding:10px;border-radius:6px;cursor:pointer;transition:background 0.2s;">🃏 Flashcards</button>
+          <button onclick="loadMasteryContent('interview')"
+            style="text-align:left;background:transparent;border:none;color:var(--text);padding:10px;border-radius:6px;cursor:pointer;transition:background 0.2s;">💬
+            Interview Q&A</button>
+          <button onclick="loadMasteryContent('best-practices')"
+            style="text-align:left;background:transparent;border:none;color:var(--text);padding:10px;border-radius:6px;cursor:pointer;transition:background 0.2s;">🛡️
+            Best Practices</button>
+          <button onclick="loadMasteryContent('flashcards')"
+            style="text-align:left;background:transparent;border:none;color:var(--text);padding:10px;border-radius:6px;cursor:pointer;transition:background 0.2s;">🃏
+            Flashcards</button>
         </div>
-        <div id="mcRank" style="margin-top:20px;padding:15px;background:var(--bg);border-radius:8px;text-align:center;font-weight:600;color:var(--accent);font-size:14px;border:1px solid var(--border);">
+        <div id="mcRank"
+          style="margin-top:20px;padding:15px;background:var(--bg);border-radius:8px;text-align:center;font-weight:600;color:var(--accent);font-size:14px;border:1px solid var(--border);">
           Rank: Novice
         </div>
       </div>
       <div style="flex:1;padding:30px;overflow-y:auto;position:relative;">
-        <button onclick="document.getElementById('masteryCenterModal').close()" style="position:absolute;top:20px;right:20px;background:none;border:none;color:var(--text2);font-size:24px;cursor:pointer;">&times;</button>
+        <button onclick="document.getElementById('masteryCenterModal').close()"
+          style="position:absolute;top:20px;right:20px;background:none;border:none;color:var(--text2);font-size:24px;cursor:pointer;">&times;</button>
         <div id="mcContent">
           <!-- Populated by JS -->
         </div>
@@ -415,13 +589,17 @@
   </dialog>
 
   <!-- Quiz Modal -->
-  <dialog id="quizModal" style="background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:30px;max-width:600px;width:90%;color:var(--text);">
+  <dialog id="quizModal"
+    style="background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:30px;max-width:600px;width:90%;color:var(--text);">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
       <h2 style="margin:0;display:flex;align-items:center;gap:10px;">🎯 JavaScript Quiz</h2>
-      <div id="quizScoreDisplay" style="font-weight:600;color:var(--accent);background:var(--bg);padding:5px 10px;border-radius:6px;border:1px solid var(--border);">Score: 0</div>
+      <div id="quizScoreDisplay"
+        style="font-weight:600;color:var(--accent);background:var(--bg);padding:5px 10px;border-radius:6px;border:1px solid var(--border);">
+        Score: 0</div>
     </div>
     <div id="quizActiveArea">
-      <div id="quizQuestion" style="font-size:18px;font-weight:500;margin-bottom:20px;line-height:1.5;">Loading question...</div>
+      <div id="quizQuestion" style="font-size:18px;font-weight:500;margin-bottom:20px;line-height:1.5;">Loading
+        question...</div>
       <div id="quizOptions" style="display:flex;flex-direction:column;gap:10px;">
         <!-- Options populated by JS -->
       </div>
@@ -430,161 +608,275 @@
       <h3 style="font-size:24px;margin-bottom:10px;color:var(--accent);">Quiz Complete!</h3>
       <div id="quizFinalScore" style="font-size:48px;font-weight:700;margin-bottom:20px;">0/0</div>
       <div style="display:flex;justify-content:center;gap:10px;">
-        <button onclick="shareScore()" style="background:var(--bg3);border:1px solid var(--border);color:var(--text);padding:10px 20px;border-radius:8px;cursor:pointer;">Share Score</button>
-        <button onclick="startQuiz()" style="background:var(--accent);border:none;color:#000;padding:10px 20px;border-radius:8px;font-weight:600;cursor:pointer;">Play Again</button>
-        <button onclick="document.getElementById('quizModal').close()" style="background:var(--bg);border:1px solid var(--border);color:var(--text);padding:10px 20px;border-radius:8px;cursor:pointer;">Close</button>
+        <button onclick="shareScore()"
+          style="background:var(--bg3);border:1px solid var(--border);color:var(--text);padding:10px 20px;border-radius:8px;cursor:pointer;">Share
+          Score</button>
+        <button onclick="startQuiz()"
+          style="background:var(--accent);border:none;color:#000;padding:10px 20px;border-radius:8px;font-weight:600;cursor:pointer;">Play
+          Again</button>
+        <button onclick="document.getElementById('quizModal').close()"
+          style="background:var(--bg);border:1px solid var(--border);color:var(--text);padding:10px 20px;border-radius:8px;cursor:pointer;">Close</button>
       </div>
     </div>
-    <div id="quizFooter" style="display:flex;justify-content:space-between;margin-top:20px;border-top:1px solid var(--border);padding-top:20px;">
-      <button onclick="document.getElementById('quizModal').close()" style="background:none;border:none;color:var(--text3);cursor:pointer;padding:8px;">Close</button>
-      <button id="quizNextBtn" onclick="nextQuizQuestion()" style="background:var(--accent);border:none;color:#000;padding:8px 20px;border-radius:6px;font-weight:600;cursor:pointer;display:none;">Next Question</button>
+    <div id="quizFooter"
+      style="display:flex;justify-content:space-between;margin-top:20px;border-top:1px solid var(--border);padding-top:20px;">
+      <button onclick="document.getElementById('quizModal').close()"
+        style="background:none;border:none;color:var(--text3);cursor:pointer;padding:8px;">Close</button>
+      <button id="quizNextBtn" onclick="nextQuizQuestion()"
+        style="background:var(--accent);border:none;color:#000;padding:8px 20px;border-radius:6px;font-weight:600;cursor:pointer;display:none;">Next
+        Question</button>
     </div>
   </dialog>
 
   <!-- History Modal -->
-  <dialog id="historyModal" style="background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:30px;max-width:800px;width:90%;max-height:80vh;overflow-y:auto;color:var(--text);">
+  <dialog id="historyModal"
+    style="background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:30px;max-width:800px;width:90%;max-height:80vh;overflow-y:auto;color:var(--text);">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:30px;">
       <h2 style="margin:0;display:flex;align-items:center;gap:10px;">⏳ Evolution of JavaScript</h2>
-      <button onclick="document.getElementById('historyModal').close()" style="background:none;border:none;color:var(--text2);font-size:24px;cursor:pointer;">&times;</button>
+      <button onclick="document.getElementById('historyModal').close()"
+        style="background:none;border:none;color:var(--text2);font-size:24px;cursor:pointer;">&times;</button>
     </div>
     <div class="timeline" style="position:relative;padding-left:30px;border-left:2px solid var(--border);">
-      
+
       <div style="position:relative;margin-bottom:30px;">
-        <div style="position:absolute;left:-39px;top:0;width:16px;height:16px;border-radius:50%;background:var(--accent);border:4px solid var(--bg2);"></div>
+        <div
+          style="position:absolute;left:-39px;top:0;width:16px;height:16px;border-radius:50%;background:var(--accent);border:4px solid var(--bg2);">
+        </div>
         <div style="font-weight:700;color:var(--accent);margin-bottom:5px;">1995</div>
         <h3 style="margin-top:0;margin-bottom:5px;font-size:18px;">Creation (Mocha → LiveScript → JavaScript)</h3>
-        <p style="color:var(--text2);margin:0;font-size:14px;line-height:1.5;">Brendan Eich created the language in just 10 days for Netscape Navigator.</p>
+        <p style="color:var(--text2);margin:0;font-size:14px;line-height:1.5;">Brendan Eich created the language in just
+          10 days for Netscape Navigator.</p>
       </div>
 
       <div style="position:relative;margin-bottom:30px;">
-        <div style="position:absolute;left:-39px;top:0;width:16px;height:16px;border-radius:50%;background:var(--accent);border:4px solid var(--bg2);"></div>
+        <div
+          style="position:absolute;left:-39px;top:0;width:16px;height:16px;border-radius:50%;background:var(--accent);border:4px solid var(--bg2);">
+        </div>
         <div style="font-weight:700;color:var(--accent);margin-bottom:5px;">1999</div>
         <h3 style="margin-top:0;margin-bottom:5px;font-size:18px;">ES3 (Standardization)</h3>
-        <p style="color:var(--text2);margin:0;font-size:14px;line-height:1.5;">Regular expressions, better string handling, try/catch exception handling added.</p>
+        <p style="color:var(--text2);margin:0;font-size:14px;line-height:1.5;">Regular expressions, better string
+          handling, try/catch exception handling added.</p>
       </div>
 
       <div style="position:relative;margin-bottom:30px;">
-        <div style="position:absolute;left:-39px;top:0;width:16px;height:16px;border-radius:50%;background:var(--accent);border:4px solid var(--bg2);"></div>
+        <div
+          style="position:absolute;left:-39px;top:0;width:16px;height:16px;border-radius:50%;background:var(--accent);border:4px solid var(--bg2);">
+        </div>
         <div style="font-weight:700;color:var(--accent);margin-bottom:5px;">2009</div>
         <h3 style="margin-top:0;margin-bottom:5px;font-size:18px;">ES5 & Node.js</h3>
-        <p style="color:var(--text2);margin:0;font-size:14px;line-height:1.5;">"strict mode", JSON support, Array methods (forEach, map, filter). Node.js brings JS to the backend.</p>
+        <p style="color:var(--text2);margin:0;font-size:14px;line-height:1.5;">"strict mode", JSON support, Array
+          methods (forEach, map, filter). Node.js brings JS to the backend.</p>
       </div>
 
       <div style="position:relative;margin-bottom:30px;">
-        <div style="position:absolute;left:-39px;top:0;width:16px;height:16px;border-radius:50%;background:var(--accent);border:4px solid var(--bg2);"></div>
+        <div
+          style="position:absolute;left:-39px;top:0;width:16px;height:16px;border-radius:50%;background:var(--accent);border:4px solid var(--bg2);">
+        </div>
         <div style="font-weight:700;color:var(--accent);margin-bottom:5px;">2015</div>
         <h3 style="margin-top:0;margin-bottom:5px;font-size:18px;">ES6 (ECMAScript 2015) Revolution</h3>
-        <p style="color:var(--text2);margin:0;font-size:14px;line-height:1.5;">let/const, arrow functions, classes, template literals, promises, modules. The biggest update in JS history.</p>
+        <p style="color:var(--text2);margin:0;font-size:14px;line-height:1.5;">let/const, arrow functions, classes,
+          template literals, promises, modules. The biggest update in JS history.</p>
       </div>
 
       <div style="position:relative;margin-bottom:30px;">
-        <div style="position:absolute;left:-39px;top:0;width:16px;height:16px;border-radius:50%;background:var(--accent);border:4px solid var(--bg2);"></div>
+        <div
+          style="position:absolute;left:-39px;top:0;width:16px;height:16px;border-radius:50%;background:var(--accent);border:4px solid var(--bg2);">
+        </div>
         <div style="font-weight:700;color:var(--accent);margin-bottom:5px;">2017</div>
         <h3 style="margin-top:0;margin-bottom:5px;font-size:18px;">Async/Await</h3>
-        <p style="color:var(--text2);margin:0;font-size:14px;line-height:1.5;">ES8 introduces async/await, revolutionizing asynchronous programming and escaping "callback hell".</p>
+        <p style="color:var(--text2);margin:0;font-size:14px;line-height:1.5;">ES8 introduces async/await,
+          revolutionizing asynchronous programming and escaping "callback hell".</p>
       </div>
 
       <div style="position:relative;margin-bottom:30px;">
-        <div style="position:absolute;left:-39px;top:0;width:16px;height:16px;border-radius:50%;background:var(--accent);border:4px solid var(--bg2);"></div>
+        <div
+          style="position:absolute;left:-39px;top:0;width:16px;height:16px;border-radius:50%;background:var(--accent);border:4px solid var(--bg2);">
+        </div>
         <div style="font-weight:700;color:var(--accent);margin-bottom:5px;">2020</div>
         <h3 style="margin-top:0;margin-bottom:5px;font-size:18px;">Optional Chaining & Nullish Coalescing</h3>
-        <p style="color:var(--text2);margin:0;font-size:14px;line-height:1.5;">ES11 brings `?.` and `??`, making property access and default values much cleaner.</p>
+        <p style="color:var(--text2);margin:0;font-size:14px;line-height:1.5;">ES11 brings `?.` and `??`, making
+          property access and default values much cleaner.</p>
       </div>
 
       <div style="position:relative;margin-bottom:0;">
-        <div style="position:absolute;left:-39px;top:0;width:16px;height:16px;border-radius:50%;background:var(--accent);border:4px solid var(--bg2);"></div>
+        <div
+          style="position:absolute;left:-39px;top:0;width:16px;height:16px;border-radius:50%;background:var(--accent);border:4px solid var(--bg2);">
+        </div>
         <div style="font-weight:700;color:var(--accent);margin-bottom:5px;">2023-25</div>
         <h3 style="margin-top:0;margin-bottom:5px;font-size:18px;">Modern JS & Ecosystem</h3>
-        <p style="color:var(--text2);margin:0;font-size:14px;line-height:1.5;">Array mutation methods (toSorted, toReversed), Records/Tuples proposals, and TypeScript dominance.</p>
+        <p style="color:var(--text2);margin:0;font-size:14px;line-height:1.5;">Array mutation methods (toSorted,
+          toReversed), Records/Tuples proposals, and TypeScript dominance.</p>
       </div>
 
     </div>
   </dialog>
 
   <!-- Shortcuts Modal -->
-  <dialog id="shortcutsModal" style="background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:30px;max-width:500px;width:90%;color:var(--text);">
+  <dialog id="shortcutsModal"
+    style="background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:30px;max-width:500px;width:90%;color:var(--text);">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
       <h2 style="margin:0;display:flex;align-items:center;gap:10px;">⌨️ Keyboard Shortcuts</h2>
-      <button onclick="document.getElementById('shortcutsModal').close()" style="background:none;border:none;color:var(--text2);font-size:24px;cursor:pointer;">&times;</button>
+      <button onclick="document.getElementById('shortcutsModal').close()"
+        style="background:none;border:none;color:var(--text2);font-size:24px;cursor:pointer;">&times;</button>
     </div>
     <div style="display:flex;flex-direction:column;gap:15px;">
-      <div style="display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border);padding-bottom:10px;">
+      <div
+        style="display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border);padding-bottom:10px;">
         <span style="color:var(--text2);">Search Palette</span>
-        <kbd style="background:var(--bg3);padding:4px 8px;border-radius:4px;font-family:monospace;border:1px solid var(--border);">Ctrl+K</kbd>
+        <kbd
+          style="background:var(--bg3);padding:4px 8px;border-radius:4px;font-family:monospace;border:1px solid var(--border);">Ctrl+K</kbd>
       </div>
-      <div style="display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border);padding-bottom:10px;">
+      <div
+        style="display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border);padding-bottom:10px;">
         <span style="color:var(--text2);">Take a Quiz</span>
-        <kbd style="background:var(--bg3);padding:4px 8px;border-radius:4px;font-family:monospace;border:1px solid var(--border);">Q</kbd>
+        <kbd
+          style="background:var(--bg3);padding:4px 8px;border-radius:4px;font-family:monospace;border:1px solid var(--border);">Q</kbd>
       </div>
-      <div style="display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border);padding-bottom:10px;">
+      <div
+        style="display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border);padding-bottom:10px;">
         <span style="color:var(--text2);">Toggle Zen Mode</span>
-        <kbd style="background:var(--bg3);padding:4px 8px;border-radius:4px;font-family:monospace;border:1px solid var(--border);">Z</kbd>
+        <kbd
+          style="background:var(--bg3);padding:4px 8px;border-radius:4px;font-family:monospace;border:1px solid var(--border);">Z</kbd>
       </div>
-      <div style="display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border);padding-bottom:10px;">
+      <div
+        style="display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border);padding-bottom:10px;">
         <span style="color:var(--text2);">Toggle Sidebar</span>
-        <kbd style="background:var(--bg3);padding:4px 8px;border-radius:4px;font-family:monospace;border:1px solid var(--border);">M</kbd>
+        <kbd
+          style="background:var(--bg3);padding:4px 8px;border-radius:4px;font-family:monospace;border:1px solid var(--border);">M</kbd>
       </div>
-      <div style="display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border);padding-bottom:10px;">
+      <div
+        style="display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border);padding-bottom:10px;">
         <span style="color:var(--text2);">Print / Save PDF</span>
-        <kbd style="background:var(--bg3);padding:4px 8px;border-radius:4px;font-family:monospace;border:1px solid var(--border);">S</kbd>
+        <kbd
+          style="background:var(--bg3);padding:4px 8px;border-radius:4px;font-family:monospace;border:1px solid var(--border);">S</kbd>
       </div>
       <div style="display:flex;justify-content:space-between;align-items:center;">
         <span style="color:var(--text2);">Close Everything</span>
-        <kbd style="background:var(--bg3);padding:4px 8px;border-radius:4px;font-family:monospace;border:1px solid var(--border);">Esc</kbd>
+        <kbd
+          style="background:var(--bg3);padding:4px 8px;border-radius:4px;font-family:monospace;border:1px solid var(--border);">Esc</kbd>
       </div>
     </div>
   </dialog>
 
   <!-- Cmd+K Modal -->
-  <dialog id="cmdKModal" style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:0;max-width:600px;width:90%;color:var(--text);margin-top:10vh;vertical-align:top;box-shadow:0 25px 50px -12px rgba(0,0,0,0.5);">
+  <dialog id="cmdKModal"
+    style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:0;max-width:600px;width:90%;color:var(--text);margin-top:10vh;vertical-align:top;box-shadow:0 25px 50px -12px rgba(0,0,0,0.5);">
     <div style="padding:15px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px;">
       <span style="color:var(--text3);">🔍</span>
-      <input type="text" id="cmdKInput" placeholder="Search 100 concepts... (Esc to close)" style="flex:1;background:transparent;border:none;color:var(--text);font-size:18px;outline:none;" onkeyup="handleCmdKSearch(event)">
+      <input type="text" id="cmdKInput" placeholder="Search 100 concepts... (Esc to close)"
+        style="flex:1;background:transparent;border:none;color:var(--text);font-size:18px;outline:none;"
+        onkeyup="handleCmdKSearch(event)">
     </div>
     <div id="cmdKResults" style="max-height:400px;overflow-y:auto;padding:10px 0;">
       <!-- Populated by JS -->
     </div>
-    <div style="padding:10px 15px;border-top:1px solid var(--border);font-size:12px;color:var(--text3);display:flex;justify-content:space-between;">
+    <div
+      style="padding:10px 15px;border-top:1px solid var(--border);font-size:12px;color:var(--text3);display:flex;justify-content:space-between;">
       <span>Use ↑↓ to navigate, Enter to select</span>
       <span>100 Concepts Indexed</span>
     </div>
   </dialog>
 
   <!-- Translate Modal -->
-  <dialog id="translateModal" style="padding:0; border:none; border-radius:24px; background:var(--bg); color:var(--text); width:95%; max-width:600px; box-shadow:0 30px 100px rgba(0,0,0,0.7); overflow:hidden; border:1px solid rgba(255,255,255,0.1);">
-    <div style="padding:30px; background:linear-gradient(135deg, var(--bg2), var(--bg3)); border-bottom:1px solid var(--border);">
+  <dialog id="translateModal"
+    style="padding:0; border:none; border-radius:24px; background:var(--bg); color:var(--text); width:95%; max-width:600px; box-shadow:0 30px 100px rgba(0,0,0,0.7); overflow:hidden; border:1px solid rgba(255,255,255,0.1);">
+    <div
+      style="padding:30px; background:linear-gradient(135deg, var(--bg2), var(--bg3)); border-bottom:1px solid var(--border);">
       <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:20px;">
         <div>
-          <h2 style="margin:0; font-family:'Plus Jakarta Sans', sans-serif; font-size:1.5rem; letter-spacing:-0.5px;">🌍 Global Translation</h2>
-          <p style="margin:4px 0 0; opacity:0.6; font-size:0.9rem;">Instantly translate into 130+ languages from around the world.</p>
+          <h2 style="margin:0; font-family:'Plus Jakarta Sans', sans-serif; font-size:1.5rem; letter-spacing:-0.5px;">🌍
+            Global Translation</h2>
+          <p style="margin:4px 0 0; opacity:0.6; font-size:0.9rem;">Instantly translate into 130+ languages from around
+            the world.</p>
         </div>
-        <button onclick="document.getElementById('translateModal').close()" style="background:var(--bg4); color:var(--text); border:none; width:40px; height:40px; border-radius:50%; cursor:pointer; font-size:1.2rem; display:flex; align-items:center; justify-content:center; transition:0.3s;" onmouseover="this.style.transform='rotate(90deg)'" onmouseout="this.style.transform='rotate(0deg)'">✖</button>
+        <button onclick="document.getElementById('translateModal').close()"
+          style="background:var(--bg4); color:var(--text); border:none; width:40px; height:40px; border-radius:50%; cursor:pointer; font-size:1.2rem; display:flex; align-items:center; justify-content:center; transition:0.3s;"
+          onmouseover="this.style.transform='rotate(90deg)'" onmouseout="this.style.transform='rotate(0deg)'">✖</button>
       </div>
       <div style="position:relative;">
         <span style="position:absolute; left:16px; top:50%; transform:translateY(-50%); opacity:0.5;">🔍</span>
-        <input type="text" id="langSearch" list="googleLangs" oninput="handleLangInput(this)" placeholder="Search any language (e.g. Hindi, Sanskrit, French...)" autocomplete="off" style="width:100%; padding:16px 16px 16px 45px; border-radius:16px; border:2px solid var(--accent); background:var(--bg); color:var(--text); font-family:inherit; outline:none; font-size:1rem; box-shadow:0 10px 30px rgba(0,0,0,0.2);">
+        <input type="text" id="langSearch" list="googleLangs" oninput="handleLangInput(this)"
+          placeholder="Search any language (e.g. Hindi, Sanskrit, French...)" autocomplete="off"
+          style="width:100%; padding:16px 16px 16px 45px; border-radius:16px; border:2px solid var(--accent); background:var(--bg); color:var(--text); font-family:inherit; outline:none; font-size:1rem; box-shadow:0 10px 30px rgba(0,0,0,0.2);">
         <datalist id="googleLangs"></datalist>
       </div>
     </div>
-    <div style="padding:20px 30px 10px; font-weight:700; font-size:0.8rem; text-transform:uppercase; letter-spacing:1px; opacity:0.5;">Quick Select</div>
-    <div id="quickLangs" style="max-height: 180px; overflow-y: auto; padding: 0 30px 20px; display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 10px; border-bottom: 1px solid var(--border);"></div>
-    <div style="padding:20px 30px 10px; font-weight:700; font-size:0.8rem; text-transform:uppercase; letter-spacing:1px; opacity:0.5;">All Languages</div>
-    <div id="langList" style="max-height:350px; overflow-y:auto; padding:0 30px 30px; display:grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap:10px;">
+    <div
+      style="padding:20px 30px 10px; font-weight:700; font-size:0.8rem; text-transform:uppercase; letter-spacing:1px; opacity:0.5;">
+      Quick Select</div>
+    <div id="quickLangs"
+      style="max-height: 180px; overflow-y: auto; padding: 0 30px 20px; display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 10px; border-bottom: 1px solid var(--border);">
+    </div>
+    <div
+      style="padding:20px 30px 10px; font-weight:700; font-size:0.8rem; text-transform:uppercase; letter-spacing:1px; opacity:0.5;">
+      All Languages</div>
+    <div id="langList"
+      style="max-height:350px; overflow-y:auto; padding:0 30px 30px; display:grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap:10px;">
       <div style="grid-column: 1 / -1; padding:60px; text-align:center; opacity:0.7;">
-        <div class="loader" style="width:40px; height:40px; border:4px solid var(--accent); border-top-color:transparent; border-radius:50%; margin:0 auto 15px; animation:spin 1s linear infinite;"></div>
+        <div class="loader"
+          style="width:40px; height:40px; border:4px solid var(--accent); border-top-color:transparent; border-radius:50%; margin:0 auto 15px; animation:spin 1s linear infinite;">
+        </div>
         <p style="margin:0; font-weight:600;">Powering up Google Translate...</p>
       </div>
     </div>
     <style>
-      @keyframes spin { to { transform: rotate(360deg); } }
-      .lang-opt { position: relative; overflow: hidden; background: var(--bg2); border: 1px solid var(--border); transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
-      .lang-opt:hover { background: var(--accent); color: #fff; transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); border-color: transparent; }
-      .lang-opt::after { content: '✓'; position: absolute; right: 10px; top: 10px; font-size: 0.7rem; opacity: 0; transition: 0.3s; }
-      .lang-opt:hover::after { opacity: 1; }
-      #quickLangs::-webkit-scrollbar, #langList::-webkit-scrollbar { width: 8px; }
-      #quickLangs::-webkit-scrollbar-track, #langList::-webkit-scrollbar-track { background: transparent; }
-      #quickLangs::-webkit-scrollbar-thumb, #langList::-webkit-scrollbar-thumb { background: var(--border); border-radius: 10px; border: 2px solid var(--bg); }
-      #quickLangs::-webkit-scrollbar-thumb:hover, #langList::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      .lang-opt {
+        position: relative;
+        overflow: hidden;
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .lang-opt:hover {
+        background: var(--accent);
+        color: #fff;
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        border-color: transparent;
+      }
+
+      .lang-opt::after {
+        content: '✓';
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        font-size: 0.7rem;
+        opacity: 0;
+        transition: 0.3s;
+      }
+
+      .lang-opt:hover::after {
+        opacity: 1;
+      }
+
+      #quickLangs::-webkit-scrollbar,
+      #langList::-webkit-scrollbar {
+        width: 8px;
+      }
+
+      #quickLangs::-webkit-scrollbar-track,
+      #langList::-webkit-scrollbar-track {
+        background: transparent;
+      }
+
+      #quickLangs::-webkit-scrollbar-thumb,
+      #langList::-webkit-scrollbar-thumb {
+        background: var(--border);
+        border-radius: 10px;
+        border: 2px solid var(--bg);
+      }
+
+      #quickLangs::-webkit-scrollbar-thumb:hover,
+      #langList::-webkit-scrollbar-thumb:hover {
+        background: var(--accent);
+      }
     </style>
   </dialog>
 
@@ -592,21 +884,30 @@
   <script src="script.js"></script>
 
   <!-- Welcome Notification Banner -->
-  <div id="welcomeBanner" style="position:fixed;bottom:20px;right:20px;background:var(--bg2);border:1px solid var(--accent);border-radius:12px;padding:20px;max-width:350px;box-shadow:0 10px 25px rgba(0,0,0,0.5);transform:translateX(120%);transition:transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);z-index:9999;">
-    <button onclick="dismissBanner()" style="position:absolute;top:10px;right:10px;background:none;border:none;color:var(--text3);cursor:pointer;font-size:18px;">&times;</button>
+  <div id="welcomeBanner"
+    style="position:fixed;bottom:20px;right:20px;background:var(--bg2);border:1px solid var(--accent);border-radius:12px;padding:20px;max-width:350px;box-shadow:0 10px 25px rgba(0,0,0,0.5);transform:translateX(120%);transition:transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);z-index:9999;">
+    <button onclick="dismissBanner()"
+      style="position:absolute;top:10px;right:10px;background:none;border:none;color:var(--text3);cursor:pointer;font-size:18px;">&times;</button>
     <div style="display:flex;gap:15px;align-items:flex-start;">
-      <div style="font-size:24px;background:var(--bg);width:40px;height:40px;display:flex;align-items:center;justify-content:center;border-radius:50%;flex-shrink:0;">👋</div>
+      <div
+        style="font-size:24px;background:var(--bg);width:40px;height:40px;display:flex;align-items:center;justify-content:center;border-radius:50%;flex-shrink:0;">
+        👋</div>
       <div>
         <h4 style="margin:0 0 5px 0;color:var(--text);font-size:16px;">Welcome!</h4>
-        <p style="margin:0;color:var(--text2);font-size:13px;line-height:1.5;">I'm Sanskar. I've curated these 100 JavaScript concepts to help you master the language. Enjoy the interactive sandbox!</p>
+        <p style="margin:0;color:var(--text2);font-size:13px;line-height:1.5;">I'm Sanskar. I've curated these 100
+          JavaScript concepts to help you master the language. Enjoy the interactive sandbox!</p>
       </div>
     </div>
   </div>
 
   <!-- Reading Tracker & Scroll to Top -->
-  <div id="readingTracker" style="position:fixed;bottom:30px;right:30px;width:50px;height:50px;border-radius:50%;background:var(--bg2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;visibility:hidden;transition:all 0.3s;z-index:9000;box-shadow:0 4px 12px rgba(0,0,0,0.3);" onclick="window.scrollTo({top:0,behavior:'smooth'})">
-    <svg class="progress-ring" width="50" height="50" style="position:absolute;top:-1px;left:-1px;transform:rotate(-90deg);">
-      <circle class="progress-ring__circle" stroke="var(--accent)" stroke-width="3" fill="transparent" r="23" cx="25" cy="25" style="transition:stroke-dashoffset 0.1s;stroke-dasharray:144.513;stroke-dashoffset:144.513;"></circle>
+  <div id="readingTracker"
+    style="position:fixed;bottom:30px;right:30px;width:50px;height:50px;border-radius:50%;background:var(--bg2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;visibility:hidden;transition:all 0.3s;z-index:9000;box-shadow:0 4px 12px rgba(0,0,0,0.3);"
+    onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    <svg class="progress-ring" width="50" height="50"
+      style="position:absolute;top:-1px;left:-1px;transform:rotate(-90deg);">
+      <circle class="progress-ring__circle" stroke="var(--accent)" stroke-width="3" fill="transparent" r="23" cx="25"
+        cy="25" style="transition:stroke-dashoffset 0.1s;stroke-dasharray:144.513;stroke-dashoffset:144.513;"></circle>
     </svg>
     <span style="color:var(--text);font-size:20px;">↑</span>
   </div>
@@ -616,12 +917,16 @@
     <div class="donate-modal">
       <button class="donate-close" onclick="closeDonate()">&times;</button>
       <h2 style="margin-top:0;color:var(--text);font-size:24px;margin-bottom:10px;">Support the Developer ❤️</h2>
-      <p style="color:var(--text2);font-size:14px;margin-bottom:20px;">If this mastery guide helped you, consider supporting my work to keep it free and updated.</p>
-      <div style="background:var(--bg);padding:15px;border-radius:12px;display:inline-block;margin-bottom:20px;border:1px solid var(--border);">
-        <img src="../Payment-Ramsandesh.jpeg" alt="Donate QR Code" style="width:200px;height:200px;border-radius:8px;display:block;">
+      <p style="color:var(--text2);font-size:14px;margin-bottom:20px;">If this mastery guide helped you, consider
+        supporting my work to keep it free and updated.</p>
+      <div
+        style="background:var(--bg);padding:15px;border-radius:12px;display:inline-block;margin-bottom:20px;border:1px solid var(--border);">
+        <img src="../Payment-Ramsandesh.jpeg" alt="Donate QR Code"
+          style="width:200px;height:200px;border-radius:8px;display:block;">
       </div>
       <p style="margin-bottom:20px;font-size:14px;color:var(--text2);">Scan the QR Code to donate via UPI</p>
-      <a href="https://rzp.io/l/Sanskar" target="_blank" rel="noopener" style="display:block;background:linear-gradient(135deg, #3b82f6, #2563eb);color:white;text-decoration:none;padding:12px 20px;border-radius:8px;font-weight:600;transition:opacity 0.2s;">
+      <a href="https://rzp.io/l/Sanskar" target="_blank" rel="noopener"
+        style="display:block;background:linear-gradient(135deg, #3b82f6, #2563eb);color:white;text-decoration:none;padding:12px 20px;border-radius:8px;font-weight:600;transition:opacity 0.2s;">
         Pay via Razorpay
       </a>
     </div>
@@ -630,7 +935,7 @@
   <script>
     // Show welcome banner after delay
     setTimeout(() => {
-      if(!localStorage.getItem('jsBannerDismissed')) {
+      if (!localStorage.getItem('jsBannerDismissed')) {
         document.getElementById('welcomeBanner').style.transform = 'translateX(0)';
       }
     }, 5000);
@@ -662,21 +967,21 @@
       const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
       const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
       const scrolled = (winScroll / height) * 100;
-      
+
       document.getElementById('progress-bar').style.width = scrolled + '%';
-      
+
       const tracker = document.getElementById('readingTracker');
       const circle = document.querySelector('.progress-ring__circle');
-      
-      if(winScroll > 300) {
+
+      if (winScroll > 300) {
         tracker.style.opacity = '1';
         tracker.style.visibility = 'visible';
       } else {
         tracker.style.opacity = '0';
         tracker.style.visibility = 'hidden';
       }
-      
-      if(circle) {
+
+      if (circle) {
         const radius = circle.r.baseVal.value;
         const circumference = radius * 2 * Math.PI;
         const offset = circumference - (scrolled / 100) * circumference;
@@ -690,7 +995,7 @@
       if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
         e.preventDefault();
         const modal = document.getElementById('cmdKModal');
-        if(!modal.open) {
+        if (!modal.open) {
           modal.showModal();
           document.getElementById('cmdKInput').focus();
         } else {
@@ -701,11 +1006,11 @@
       if (e.key === 'Escape') {
         closeDonate();
       }
-      
-      // Prevent running shortcuts if user is typing in an input/textarea
-      if(e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
 
-      switch(e.key.toLowerCase()) {
+      // Prevent running shortcuts if user is typing in an input/textarea
+      if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+
+      switch (e.key.toLowerCase()) {
         case 'q':
           openQuiz(e);
           break;
@@ -741,8 +1046,8 @@
     "description": "Master JavaScript with 100 interactive concepts, live code sandbox, and complete reference guide.",
     "author": {
       "@type": "Person",
-      "name": "Sanskar Yadav",
-      "url": "https://github.com/Sanskar-in"
+      "name": "Sanskar",
+      "url": "https://github.com/sanskarIN"
     },
     "publisher": {
       "@type": "Organization",
@@ -1033,15 +1338,19 @@
       }, 'google_translate_element');
     }
   </script>
-  <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  <script type="text/javascript"
+    src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
   <!-- BOTTOM NAV (Mobile Only) -->
   <nav class="mobile-nav" id="mobileNav">
-    <a href="javascript:void(0)" onclick="window.scrollTo({top:0, behavior:'smooth'})" class="nav-item">🏠<span>Home</span></a>
+    <a href="javascript:void(0)" onclick="window.scrollTo({top:0, behavior:'smooth'})"
+      class="nav-item">🏠<span>Home</span></a>
     <a href="javascript:void(0)" onclick="openCmdK()" class="nav-item">🔍<span>Search</span></a>
     <a href="javascript:void(0)" onclick="openQuiz()" class="nav-item">🎯<span>Quiz</span></a>
     <a href="javascript:void(0)" onclick="openTranslateModal()" class="nav-item">🌍<span>Translate</span></a>
-    <a href="javascript:void(0)" onclick="document.getElementById('sbOpen').click()" class="nav-item">☰<span>Menu</span></a>
+    <a href="javascript:void(0)" onclick="document.getElementById('sbOpen').click()"
+      class="nav-item">☰<span>Menu</span></a>
   </nav>
 </body>
+
 </html>
