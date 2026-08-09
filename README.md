@@ -673,7 +673,7 @@ To document a new tag, follow these steps:
 
 ### How to Add a New Theme
 To add a new preset theme:
-1. Open the [script.js](https://wwww.github.com/Sanskar-in/Web-Development-Mastery/blob/main/HTML/script.js) file.
+1. Open the [script.js](https://wwww.github.com/sanskarIN/Web-Development-Mastery/blob/main/HTML/script.js) file.
 2. Locate the global `PRESET_THEMES` array.
 3. Insert a theme object matching the variable scheme:
    ```javascript
@@ -815,7 +815,7 @@ To create custom themes, use the custom theme builder:
 To run the application locally:
 1. Clone the repository:
    ```bash
-   git clone https://github.com/Sanskar-in/Web-Development-Mastery.git
+   git clone https://github.com/sanskarIN/Web-Development-Mastery.git
    ```
 2. Navigate to the directory:
    ```bash
@@ -839,9 +839,9 @@ node split_files.js
 For support and feedback, contact:
 - **Email**: sanskaryadavfrom2012to2026@gmail.com
 - **Support Email**: supportramsandesh@gmail.com
-- **GitHub**: [@Sanskar-in](https://github.com/Sanskar-in)
-- **LinkedIn**: [in/sanskar-in](https://www.linkedin.com/in/sanskar-in)
-- **YouTube**: [@Sanskar-in](https://www.youtube.com/@Sanskar-in)
+- **GitHub**: [@sanskarIN](https://github.com/sanskarIN)
+- **LinkedIn**: [in/sanskarIN](https://www.linkedin.com/in/sanskarIN)
+- **YouTube**: [@sanskarIN](https://www.youtube.com/@sanskarIN)
 - **Twitter/X**: [@Sanskar_in](https://www.x.com/Sanskar_in)
 
 ---
