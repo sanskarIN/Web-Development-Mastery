@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Meet the developer behind React Mastery. Explore the tech stack, projects showcase, code philosophy, contributing guidelines, and architecture of the platform.">
-    <meta name="keywords" content="React Mastery, Developer, Sanskar Yadav, Full Stack Developer, Open Source, Web Development, Portfolio">
-    <meta name="author" content="Sanskar Yadav">
+    <meta name="description"
+        content="Meet the developer behind React Mastery. Explore the tech stack, projects showcase, code philosophy, contributing guidelines, and architecture of the platform.">
+    <meta name="keywords"
+        content="React Mastery, Developer, Sanskar Yadav, Full Stack Developer, Open Source, Web Development, Portfolio">
+    <meta name="author" content="Sanskar">
     <meta name="robots" content="index, follow">
     <meta property="og:title" content="Developer Hub | React Mastery">
-    <meta property="og:description" content="Meet the developer behind React Mastery. Explore the tech stack, projects, and code philosophy.">
+    <meta property="og:description"
+        content="Meet the developer behind React Mastery. Explore the tech stack, projects, and code philosophy.">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Developer Hub | React Mastery">
@@ -17,7 +21,9 @@
     <link rel="icon" type="image/svg+xml" href="react-logo.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
     <style>
         /* ===== CSS Variables & Theme System ===== */
         :root {
@@ -33,9 +39,9 @@
             --radius-md: 12px;
             --radius-lg: 16px;
             --radius-xl: 20px;
-            --shadow-sm: 0 2px 8px rgba(0,0,0,0.1);
-            --shadow-md: 0 4px 20px rgba(0,0,0,0.15);
-            --shadow-lg: 0 8px 40px rgba(0,0,0,0.2);
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.15);
+            --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.2);
             --shadow-glow: 0 0 30px var(--accent-glow);
             --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
             --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -78,7 +84,9 @@
         }
 
         /* ===== Reset & Base ===== */
-        *, *::before, *::after {
+        *,
+        *::before,
+        *::after {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -180,10 +188,23 @@
         }
 
         @keyframes floatOrb {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            25% { transform: translate(40px, -50px) scale(1.1); }
-            50% { transform: translate(-30px, 30px) scale(0.95); }
-            75% { transform: translate(50px, 40px) scale(1.05); }
+
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            25% {
+                transform: translate(40px, -50px) scale(1.1);
+            }
+
+            50% {
+                transform: translate(-30px, 30px) scale(0.95);
+            }
+
+            75% {
+                transform: translate(50px, 40px) scale(1.05);
+            }
         }
 
         /* ===== Particles ===== */
@@ -213,12 +234,15 @@
                 opacity: 0;
                 transform: translateY(100vh) scale(0);
             }
+
             10% {
                 opacity: 0.6;
             }
+
             90% {
                 opacity: 0.6;
             }
+
             100% {
                 opacity: 0;
                 transform: translateY(-20vh) scale(1);
@@ -292,8 +316,13 @@
         }
 
         @keyframes spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
         }
 
         .nav-right {
@@ -351,8 +380,15 @@
         }
 
         @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-12px); }
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-12px);
+            }
         }
 
         .header h1 {
@@ -397,8 +433,17 @@
         }
 
         @keyframes pulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.5; transform: scale(0.8); }
+
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.5;
+                transform: scale(0.8);
+            }
         }
 
         /* ===== Container ===== */
@@ -502,8 +547,17 @@
         }
 
         @keyframes profilePulse {
-            0%, 100% { transform: scale(1); opacity: 0.3; }
-            50% { transform: scale(1.05); opacity: 0.6; }
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 0.3;
+            }
+
+            50% {
+                transform: scale(1.05);
+                opacity: 0.6;
+            }
         }
 
         .profile-avatar svg {
@@ -940,10 +994,21 @@
             opacity: 1;
         }
 
-        .social-card.youtube::before { background: linear-gradient(135deg, #ff0000, #cc0000); }
-        .social-card.github::before { background: linear-gradient(135deg, #6e5494, #333); }
-        .social-card.linkedin::before { background: linear-gradient(135deg, #0077b5, #005582); }
-        .social-card.twitter::before { background: linear-gradient(135deg, #1da1f2, #0c85d0); }
+        .social-card.youtube::before {
+            background: linear-gradient(135deg, #ff0000, #cc0000);
+        }
+
+        .social-card.github::before {
+            background: linear-gradient(135deg, #6e5494, #333);
+        }
+
+        .social-card.linkedin::before {
+            background: linear-gradient(135deg, #0077b5, #005582);
+        }
+
+        .social-card.twitter::before {
+            background: linear-gradient(135deg, #1da1f2, #0c85d0);
+        }
 
         .social-card:hover {
             border-color: var(--border-hover);
@@ -960,10 +1025,25 @@
             font-size: 1.6rem;
         }
 
-        .social-card.youtube .social-icon-wrap { background: rgba(255, 0, 0, 0.1); color: #ff0000; }
-        .social-card.github .social-icon-wrap { background: rgba(255, 255, 255, 0.1); color: var(--text-primary); }
-        .social-card.linkedin .social-icon-wrap { background: rgba(0, 119, 181, 0.1); color: #0077b5; }
-        .social-card.twitter .social-icon-wrap { background: rgba(29, 161, 242, 0.1); color: #1da1f2; }
+        .social-card.youtube .social-icon-wrap {
+            background: rgba(255, 0, 0, 0.1);
+            color: #ff0000;
+        }
+
+        .social-card.github .social-icon-wrap {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
+        }
+
+        .social-card.linkedin .social-icon-wrap {
+            background: rgba(0, 119, 181, 0.1);
+            color: #0077b5;
+        }
+
+        .social-card.twitter .social-icon-wrap {
+            background: rgba(29, 161, 242, 0.1);
+            color: #1da1f2;
+        }
 
         .social-card h3 {
             font-size: 1.05rem;
@@ -1174,8 +1254,13 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
         }
 
         .donate-modal {
@@ -1192,8 +1277,15 @@
         }
 
         @keyframes slideUp {
-            from { transform: translateY(40px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
+            from {
+                transform: translateY(40px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
 
         .modal-close {
@@ -1226,7 +1318,7 @@
             margin-bottom: 0.5rem;
         }
 
-        .donate-modal > p {
+        .donate-modal>p {
             font-size: 0.9rem;
             color: var(--text-secondary);
             margin-bottom: 1.5rem;
@@ -1483,6 +1575,7 @@
         }
     </style>
 </head>
+
 <body>
     <!-- Floating Orbs -->
     <div class="floating-orbs">
@@ -1500,7 +1593,9 @@
     <nav class="nav" id="navbar">
         <div class="nav-left">
             <a href="index.html" class="nav-back" title="Back to React Mastery">
-                <svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+                <svg viewBox="0 0 24 24">
+                    <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" />
+                </svg>
                 Back
             </a>
             <div class="nav-brand">
@@ -1524,7 +1619,8 @@
             </span>
             <span class="header-icon">👨‍💻</span>
             <h1>Developer Hub</h1>
-            <p>Meet the developer, explore the tech stack, discover projects, and learn how to contribute to the React Mastery platform.</p>
+            <p>Meet the developer, explore the tech stack, discover projects, and learn how to contribute to the React
+                Mastery platform.</p>
         </div>
     </header>
 
@@ -1534,7 +1630,8 @@
             <div class="section-header animate-in">
                 <span class="section-label">👤 Developer</span>
                 <h2 class="section-title">Meet the Developer</h2>
-                <p class="section-subtitle">The person behind React Mastery and the Web Development Mastery platform.</p>
+                <p class="section-subtitle">The person behind React Mastery and the Web Development Mastery platform.
+                </p>
             </div>
 
             <div class="profile-card animate-in">
@@ -1547,19 +1644,25 @@
                                 <stop offset="100%" style="stop-color:#1e293b;stop-opacity:1" />
                             </linearGradient>
                         </defs>
-                        <circle cx="50" cy="50" r="48" fill="url(#avatarGrad)" stroke="#61dafb" stroke-width="2"/>
-                        <text x="50" y="42" text-anchor="middle" fill="#61dafb" font-family="Inter, sans-serif" font-size="28" font-weight="800">S</text>
-                        <text x="50" y="68" text-anchor="middle" fill="#94a3b8" font-family="Inter, sans-serif" font-size="12" font-weight="500">DEV</text>
+                        <circle cx="50" cy="50" r="48" fill="url(#avatarGrad)" stroke="#61dafb" stroke-width="2" />
+                        <text x="50" y="42" text-anchor="middle" fill="#61dafb" font-family="Inter, sans-serif"
+                            font-size="28" font-weight="800">S</text>
+                        <text x="50" y="68" text-anchor="middle" fill="#94a3b8" font-family="Inter, sans-serif"
+                            font-size="12" font-weight="500">DEV</text>
                     </svg>
                 </div>
                 <div class="profile-info">
                     <h2>Sanskar Yadav</h2>
                     <p class="profile-title">Full-Stack Developer & Educator</p>
                     <p class="profile-bio">
-                        Passionate full-stack developer and educator dedicated to making web development accessible to everyone. 
-                        Creator of the Web Development Mastery platform — a comprehensive, free, and open-source learning ecosystem 
-                        covering HTML, CSS, JavaScript, and React. With a deep love for clean code, modern design, and interactive 
-                        learning experiences, I build tools that empower developers at every level to grow their skills and build 
+                        Passionate full-stack developer and educator dedicated to making web development accessible to
+                        everyone.
+                        Creator of the Web Development Mastery platform — a comprehensive, free, and open-source
+                        learning ecosystem
+                        covering HTML, CSS, JavaScript, and React. With a deep love for clean code, modern design, and
+                        interactive
+                        learning experiences, I build tools that empower developers at every level to grow their skills
+                        and build
                         amazing things for the web.
                     </p>
                     <div class="profile-tags">
@@ -1583,7 +1686,8 @@
             <div class="section-header animate-in">
                 <span class="section-label">🛠️ Tech Stack</span>
                 <h2 class="section-title">Technologies & Tools</h2>
-                <p class="section-subtitle">The core technologies powering this platform and my development workflow.</p>
+                <p class="section-subtitle">The core technologies powering this platform and my development workflow.
+                </p>
             </div>
 
             <div class="tech-grid">
@@ -1740,7 +1844,8 @@
             <div class="section-header animate-in">
                 <span class="section-label">🚀 Projects</span>
                 <h2 class="section-title">Projects Showcase</h2>
-                <p class="section-subtitle">A collection of key projects that make up the Web Development Mastery ecosystem.</p>
+                <p class="section-subtitle">A collection of key projects that make up the Web Development Mastery
+                    ecosystem.</p>
             </div>
 
             <div class="projects-grid">
@@ -1748,7 +1853,9 @@
                 <div class="project-card animate-in">
                     <span class="project-icon">🌐</span>
                     <h3>Web Development Mastery</h3>
-                    <p>The flagship platform — a comprehensive, interactive web development learning ecosystem with 500+ concepts, interactive examples, progress tracking, and multiple theme support across all modules.</p>
+                    <p>The flagship platform — a comprehensive, interactive web development learning ecosystem with 500+
+                        concepts, interactive examples, progress tracking, and multiple theme support across all
+                        modules.</p>
                     <div class="project-tags">
                         <span class="project-tag">HTML5</span>
                         <span class="project-tag">CSS3</span>
@@ -1763,7 +1870,9 @@
                 <div class="project-card animate-in">
                     <span class="project-icon">📝</span>
                     <h3>HTML Mastery</h3>
-                    <p>A deep-dive module covering everything from basic HTML structure and semantic elements to advanced forms, accessibility best practices, and modern HTML5 APIs. Interactive examples included.</p>
+                    <p>A deep-dive module covering everything from basic HTML structure and semantic elements to
+                        advanced forms, accessibility best practices, and modern HTML5 APIs. Interactive examples
+                        included.</p>
                     <div class="project-tags">
                         <span class="project-tag">HTML5</span>
                         <span class="project-tag">Semantic Web</span>
@@ -1777,7 +1886,8 @@
                 <div class="project-card animate-in">
                     <span class="project-icon">🎨</span>
                     <h3>CSS Mastery</h3>
-                    <p>Master modern CSS with tutorials on Flexbox, Grid, animations, custom properties, responsive design, and advanced layout techniques. Features a stunning visual design with live demos.</p>
+                    <p>Master modern CSS with tutorials on Flexbox, Grid, animations, custom properties, responsive
+                        design, and advanced layout techniques. Features a stunning visual design with live demos.</p>
                     <div class="project-tags">
                         <span class="project-tag">CSS3</span>
                         <span class="project-tag">Flexbox</span>
@@ -1791,7 +1901,8 @@
                 <div class="project-card animate-in">
                     <span class="project-icon">⚡</span>
                     <h3>JavaScript Mastery</h3>
-                    <p>Comprehensive JavaScript module covering ES6+, DOM manipulation, async programming, closures, prototypes, modules, error handling, and modern development patterns with runnable examples.</p>
+                    <p>Comprehensive JavaScript module covering ES6+, DOM manipulation, async programming, closures,
+                        prototypes, modules, error handling, and modern development patterns with runnable examples.</p>
                     <div class="project-tags">
                         <span class="project-tag">ES6+</span>
                         <span class="project-tag">DOM API</span>
@@ -1805,7 +1916,9 @@
                 <div class="project-card animate-in">
                     <span class="project-icon">⚛️</span>
                     <h3>React Mastery</h3>
-                    <p>The crown jewel — an interactive React learning experience with a built-in code sandbox, live previews, progress tracking, and coverage from JSX basics to advanced hooks and state management.</p>
+                    <p>The crown jewel — an interactive React learning experience with a built-in code sandbox, live
+                        previews, progress tracking, and coverage from JSX basics to advanced hooks and state
+                        management.</p>
                     <div class="project-tags">
                         <span class="project-tag">React 18+</span>
                         <span class="project-tag">JSX</span>
@@ -1833,21 +1946,27 @@
                 <div class="philosophy-card animate-in">
                     <div class="philosophy-icon">✨</div>
                     <h3>Clean Code</h3>
-                    <p>Every component is written with clarity, consistency, and maintainability in mind. Well-structured code, meaningful naming conventions, proper documentation, and separation of concerns make the codebase a joy to read and contribute to.</p>
+                    <p>Every component is written with clarity, consistency, and maintainability in mind.
+                        Well-structured code, meaningful naming conventions, proper documentation, and separation of
+                        concerns make the codebase a joy to read and contribute to.</p>
                 </div>
 
                 <!-- Open Source -->
                 <div class="philosophy-card animate-in">
                     <div class="philosophy-icon">🌍</div>
                     <h3>Open Source</h3>
-                    <p>This entire platform is open-source and free forever. We believe knowledge should be accessible to everyone regardless of background or financial situation. Community contributions are welcomed and encouraged — every PR makes us better.</p>
+                    <p>This entire platform is open-source and free forever. We believe knowledge should be accessible
+                        to everyone regardless of background or financial situation. Community contributions are
+                        welcomed and encouraged — every PR makes us better.</p>
                 </div>
 
                 <!-- Education First -->
                 <div class="philosophy-card animate-in">
                     <div class="philosophy-icon">🎓</div>
                     <h3>Education First</h3>
-                    <p>Every design decision prioritizes the learning experience. Interactive examples, clear explanations, progressive difficulty, and hands-on practice ensure that concepts don't just get read — they get understood, applied, and remembered.</p>
+                    <p>Every design decision prioritizes the learning experience. Interactive examples, clear
+                        explanations, progressive difficulty, and hands-on practice ensure that concepts don't just get
+                        read — they get understood, applied, and remembered.</p>
                 </div>
             </div>
         </div>
@@ -1898,7 +2017,11 @@
                         <span class="step-number">01</span>
                         <div class="step-content">
                             <h4>Fork the Repository</h4>
-                            <p>Head over to <a href="https://github.com/sanskarIN/Web-Development-Mastery" target="_blank" rel="noopener noreferrer">github.com/sanskarIN/Web-Development-Mastery</a> and click the <strong>Fork</strong> button in the top-right corner to create your own copy of the repository.</p>
+                            <p>Head over to <a href="https://github.com/sanskarIN/Web-Development-Mastery"
+                                    target="_blank"
+                                    rel="noopener noreferrer">github.com/sanskarIN/Web-Development-Mastery</a> and click
+                                the <strong>Fork</strong> button in the top-right corner to create your own copy of the
+                                repository.</p>
                         </div>
                     </div>
 
@@ -1906,7 +2029,9 @@
                         <span class="step-number">02</span>
                         <div class="step-content">
                             <h4>Clone Your Fork</h4>
-                            <p>Clone your forked repository to your local machine using <code>git clone https://github.com/YOUR-USERNAME/Web-Development-Mastery.git</code> and navigate into the project directory.</p>
+                            <p>Clone your forked repository to your local machine using
+                                <code>git clone https://github.com/YOUR-USERNAME/Web-Development-Mastery.git</code> and
+                                navigate into the project directory.</p>
                         </div>
                     </div>
 
@@ -1914,7 +2039,9 @@
                         <span class="step-number">03</span>
                         <div class="step-content">
                             <h4>Create a Feature Branch</h4>
-                            <p>Create a new branch for your changes with <code>git checkout -b feature/your-feature-name</code>. Use descriptive branch names that reflect the changes you're making.</p>
+                            <p>Create a new branch for your changes with
+                                <code>git checkout -b feature/your-feature-name</code>. Use descriptive branch names
+                                that reflect the changes you're making.</p>
                         </div>
                     </div>
 
@@ -1922,7 +2049,9 @@
                         <span class="step-number">04</span>
                         <div class="step-content">
                             <h4>Make Your Changes</h4>
-                            <p>Implement your changes, following the existing code style and conventions. Test your changes locally by opening the HTML files in a browser. Ensure your changes are responsive and work across different themes.</p>
+                            <p>Implement your changes, following the existing code style and conventions. Test your
+                                changes locally by opening the HTML files in a browser. Ensure your changes are
+                                responsive and work across different themes.</p>
                         </div>
                     </div>
 
@@ -1930,7 +2059,9 @@
                         <span class="step-number">05</span>
                         <div class="step-content">
                             <h4>Commit & Push</h4>
-                            <p>Stage your changes with <code>git add .</code>, commit with a clear message using <code>git commit -m "feat: add your feature description"</code>, and push to your fork with <code>git push origin feature/your-feature-name</code>.</p>
+                            <p>Stage your changes with <code>git add .</code>, commit with a clear message using
+                                <code>git commit -m "feat: add your feature description"</code>, and push to your fork
+                                with <code>git push origin feature/your-feature-name</code>.</p>
                         </div>
                     </div>
 
@@ -1938,7 +2069,9 @@
                         <span class="step-number">06</span>
                         <div class="step-content">
                             <h4>Open a Pull Request</h4>
-                            <p>Navigate to the original repository on GitHub and open a Pull Request from your branch. Provide a clear description of your changes, screenshots if applicable, and reference any related issues. We'll review it promptly!</p>
+                            <p>Navigate to the original repository on GitHub and open a Pull Request from your branch.
+                                Provide a clear description of your changes, screenshots if applicable, and reference
+                                any related issues. We'll review it promptly!</p>
                         </div>
                     </div>
                 </div>
@@ -1952,31 +2085,34 @@
             <div class="section-header animate-in">
                 <span class="section-label">🏗️ Architecture</span>
                 <h2 class="section-title">Project Structure</h2>
-                <p class="section-subtitle">A bird's-eye view of how the Web Development Mastery platform is organized.</p>
+                <p class="section-subtitle">A bird's-eye view of how the Web Development Mastery platform is organized.
+                </p>
             </div>
 
             <div class="architecture-block animate-in">
-<span class="folder">Web-Development-Mastery/</span>
-├── <span class="folder">HTML/</span>                      <span class="comment">── HTML Mastery module</span>
-│   ├── <span class="file">index.html</span>              <span class="comment">── Main tutorial page</span>
-│   ├── <span class="file">support.html</span>            <span class="comment">── Support & Help</span>
-│   └── <span class="file">developer.html</span>          <span class="comment">── Developer Hub</span>
-├── <span class="folder">CSS/</span>                       <span class="comment">── CSS Mastery module</span>
-│   ├── <span class="file">index.html</span>              <span class="comment">── Main tutorial page</span>
-│   ├── <span class="file">support.html</span>            <span class="comment">── Support & Help</span>
-│   └── <span class="file">developer.html</span>          <span class="comment">── Developer Hub</span>
-├── <span class="folder">JS/</span>                        <span class="comment">── JavaScript Mastery module</span>
-│   ├── <span class="file">index.html</span>              <span class="comment">── Main tutorial page</span>
-│   ├── <span class="file">support.html</span>            <span class="comment">── Support & Help</span>
-│   └── <span class="file">developer.html</span>          <span class="comment">── Developer Hub</span>
-├── <span class="folder">React/</span>                     <span class="comment">── React Mastery module</span>
-│   ├── <span class="file">index.html</span>              <span class="comment">── Main tutorial + sandbox</span>
-│   ├── <span class="file">support.html</span>            <span class="comment">── Support & Help (this page)</span>
-│   ├── <span class="file">developer.html</span>          <span class="comment">── Developer Hub (you are here)</span>
-│   └── <span class="file">react-logo.svg</span>          <span class="comment">── React favicon/logo</span>
-├── <span class="file">index.html</span>                  <span class="comment">── Platform landing page</span>
-├── <span class="file">Payment-Ramsandesh.jpeg</span>     <span class="comment">── UPI donation QR code</span>
-└── <span class="file">README.md</span>                   <span class="comment">── Project documentation</span>
+                <span class="folder">Web-Development-Mastery/</span>
+                ├── <span class="folder">HTML/</span> <span class="comment">── HTML Mastery module</span>
+                │ ├── <span class="file">index.html</span> <span class="comment">── Main tutorial page</span>
+                │ ├── <span class="file">support.html</span> <span class="comment">── Support & Help</span>
+                │ └── <span class="file">developer.html</span> <span class="comment">── Developer Hub</span>
+                ├── <span class="folder">CSS/</span> <span class="comment">── CSS Mastery module</span>
+                │ ├── <span class="file">index.html</span> <span class="comment">── Main tutorial page</span>
+                │ ├── <span class="file">support.html</span> <span class="comment">── Support & Help</span>
+                │ └── <span class="file">developer.html</span> <span class="comment">── Developer Hub</span>
+                ├── <span class="folder">JS/</span> <span class="comment">── JavaScript Mastery module</span>
+                │ ├── <span class="file">index.html</span> <span class="comment">── Main tutorial page</span>
+                │ ├── <span class="file">support.html</span> <span class="comment">── Support & Help</span>
+                │ └── <span class="file">developer.html</span> <span class="comment">── Developer Hub</span>
+                ├── <span class="folder">React/</span> <span class="comment">── React Mastery module</span>
+                │ ├── <span class="file">index.html</span> <span class="comment">── Main tutorial + sandbox</span>
+                │ ├── <span class="file">support.html</span> <span class="comment">── Support & Help (this page)</span>
+                │ ├── <span class="file">developer.html</span> <span class="comment">── Developer Hub (you are
+                    here)</span>
+                │ └── <span class="file">react-logo.svg</span> <span class="comment">── React favicon/logo</span>
+                ├── <span class="file">index.html</span> <span class="comment">── Platform landing page</span>
+                ├── <span class="file">Payment-Ramsandesh.jpeg</span> <span class="comment">── UPI donation QR
+                    code</span>
+                └── <span class="file">README.md</span> <span class="comment">── Project documentation</span>
             </div>
         </div>
     </section>
@@ -1987,7 +2123,8 @@
             <div class="section-header animate-in">
                 <span class="section-label">🌐 Social</span>
                 <h2 class="section-title">Connect With Me</h2>
-                <p class="section-subtitle">Follow along on your favorite platform for updates, tutorials, and behind-the-scenes.</p>
+                <p class="section-subtitle">Follow along on your favorite platform for updates, tutorials, and
+                    behind-the-scenes.</p>
             </div>
 
             <div class="social-grid">
@@ -1996,8 +2133,10 @@
                     <div class="social-icon-wrap">▶</div>
                     <h3>YouTube</h3>
                     <p class="social-handle">@sanskarIN</p>
-                    <p>Video tutorials, coding walkthroughs, project breakdowns, and live coding sessions for developers of all levels.</p>
-                    <a href="https://youtube.com/@sanskarIN" target="_blank" rel="noopener noreferrer" class="social-btn">Subscribe →</a>
+                    <p>Video tutorials, coding walkthroughs, project breakdowns, and live coding sessions for developers
+                        of all levels.</p>
+                    <a href="https://youtube.com/@sanskarIN" target="_blank" rel="noopener noreferrer"
+                        class="social-btn">Subscribe →</a>
                 </div>
 
                 <!-- GitHub -->
@@ -2005,8 +2144,10 @@
                     <div class="social-icon-wrap">⌨</div>
                     <h3>GitHub</h3>
                     <p class="social-handle">sanskarIN</p>
-                    <p>All source code, open-source projects, contributions, and development activity. Star the repo and contribute!</p>
-                    <a href="https://github.com/sanskarIN" target="_blank" rel="noopener noreferrer" class="social-btn">Follow →</a>
+                    <p>All source code, open-source projects, contributions, and development activity. Star the repo and
+                        contribute!</p>
+                    <a href="https://github.com/sanskarIN" target="_blank" rel="noopener noreferrer"
+                        class="social-btn">Follow →</a>
                 </div>
 
                 <!-- LinkedIn -->
@@ -2014,8 +2155,10 @@
                     <div class="social-icon-wrap">in</div>
                     <h3>LinkedIn</h3>
                     <p class="social-handle">sanskarIN</p>
-                    <p>Professional updates, career insights, web development industry trends, and networking with fellow developers.</p>
-                    <a href="https://linkedin.com/in/sanskarIN" target="_blank" rel="noopener noreferrer" class="social-btn">Connect →</a>
+                    <p>Professional updates, career insights, web development industry trends, and networking with
+                        fellow developers.</p>
+                    <a href="https://linkedin.com/in/sanskarIN" target="_blank" rel="noopener noreferrer"
+                        class="social-btn">Connect →</a>
                 </div>
 
                 <!-- X (Twitter) -->
@@ -2023,8 +2166,10 @@
                     <div class="social-icon-wrap">𝕏</div>
                     <h3>X (Twitter)</h3>
                     <p class="social-handle">@Sanskar_in</p>
-                    <p>Quick dev tips, project announcements, tech discussions, and engaging with the global developer community.</p>
-                    <a href="https://x.com/Sanskar_in" target="_blank" rel="noopener noreferrer" class="social-btn">Follow →</a>
+                    <p>Quick dev tips, project announcements, tech discussions, and engaging with the global developer
+                        community.</p>
+                    <a href="https://x.com/Sanskar_in" target="_blank" rel="noopener noreferrer"
+                        class="social-btn">Follow →</a>
                 </div>
             </div>
         </div>
@@ -2066,7 +2211,8 @@
                     <div class="contact-info">
                         <h4>Gumroad</h4>
                         <p>Support the project via digital products</p>
-                        <a href="https://ramsandesh.gumroad.com" target="_blank" rel="noopener noreferrer">ramsandesh.gumroad.com</a>
+                        <a href="https://ramsandesh.gumroad.com" target="_blank"
+                            rel="noopener noreferrer">ramsandesh.gumroad.com</a>
                     </div>
                 </div>
 
@@ -2076,7 +2222,8 @@
                     <div class="contact-info">
                         <h4>GitHub Issues</h4>
                         <p>Report bugs or request features</p>
-                        <a href="https://github.com/sanskarIN/Web-Development-Mastery/issues" target="_blank" rel="noopener noreferrer">Open an Issue →</a>
+                        <a href="https://github.com/sanskarIN/Web-Development-Mastery/issues" target="_blank"
+                            rel="noopener noreferrer">Open an Issue →</a>
                     </div>
                 </div>
             </div>
@@ -2090,12 +2237,15 @@
                 <div class="donate-card animate-in">
                     <span class="donate-icon">💖</span>
                     <h2>Support the Developer</h2>
-                    <p>Building and maintaining a free, open-source platform takes time, effort, and resources. Your donations help keep React Mastery alive, fund hosting costs, and enable new features. Every contribution — big or small — makes a difference.</p>
+                    <p>Building and maintaining a free, open-source platform takes time, effort, and resources. Your
+                        donations help keep React Mastery alive, fund hosting costs, and enable new features. Every
+                        contribution — big or small — makes a difference.</p>
                     <div class="donate-buttons">
                         <button class="btn btn-primary" onclick="openDonateOverlay()">
                             ❤️ Donate via UPI
                         </button>
-                        <a href="https://ramsandesh.gumroad.com" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+                        <a href="https://ramsandesh.gumroad.com" target="_blank" rel="noopener noreferrer"
+                            class="btn btn-secondary">
                             ☕ Support on Gumroad
                         </a>
                     </div>
@@ -2107,15 +2257,20 @@
     <!-- Donate Overlay -->
     <div class="donate-overlay" id="donateOverlay">
         <div class="donate-modal">
-            <button class="modal-close" onclick="closeDonateOverlay()" title="Close" aria-label="Close donation modal">✕</button>
+            <button class="modal-close" onclick="closeDonateOverlay()" title="Close"
+                aria-label="Close donation modal">✕</button>
             <h3>💖 Donate via UPI</h3>
             <p>Scan the QR code below with any UPI app to make a donation. Every contribution counts!</p>
             <div class="qr-container">
                 <img src="Payment-Ramsandesh.jpeg" alt="UPI QR Code for Donation" loading="lazy">
             </div>
             <p class="qr-label">Scan with Google Pay, PhonePe, Paytm, or any UPI app</p>
-            <a href="https://rzp.io/l/Sanskar" target="_blank" rel="noopener noreferrer" style="display:inline-block;background:linear-gradient(135deg, #61dafb, #4fa8c9);color:#1a1a2e;padding:14px 28px;border-radius:12px;text-decoration:none;font-weight:700;font-size:0.95rem;margin-top:12px;transition:transform 0.2s;">Pay via Razorpay</a>
-            <a href="https://buymeacoffee.com/sanskarIN" target="_blank" rel="noopener noreferrer" style="display:inline-block;background:linear-gradient(135deg, #FFDD00, #FF6600);color:#000;padding:14px 28px;border-radius:12px;text-decoration:none;font-weight:700;font-size:0.95rem;margin-top:12px;transition:transform 0.2s;">☕ Buy Me a Coffee</a>
+            <a href="https://rzp.io/l/Sanskar" target="_blank" rel="noopener noreferrer"
+                style="display:inline-block;background:linear-gradient(135deg, #61dafb, #4fa8c9);color:#1a1a2e;padding:14px 28px;border-radius:12px;text-decoration:none;font-weight:700;font-size:0.95rem;margin-top:12px;transition:transform 0.2s;">Pay
+                via Razorpay</a>
+            <a href="https://buymeacoffee.com/sanskarIN" target="_blank" rel="noopener noreferrer"
+                style="display:inline-block;background:linear-gradient(135deg, #FFDD00, #FF6600);color:#000;padding:14px 28px;border-radius:12px;text-decoration:none;font-weight:700;font-size:0.95rem;margin-top:12px;transition:transform 0.2s;">☕
+                Buy Me a Coffee</a>
         </div>
     </div>
 
@@ -2127,7 +2282,8 @@
                     <img src="react-logo.svg" alt="React Logo">
                     <span>React Mastery</span>
                 </div>
-                <p class="footer-desc">A comprehensive, interactive learning platform for mastering React.js — from fundamentals to advanced patterns. Free, open-source, and built with ❤️ by Sanskar Yadav.</p>
+                <p class="footer-desc">A comprehensive, interactive learning platform for mastering React.js — from
+                    fundamentals to advanced patterns. Free, open-source, and built with ❤️ by Sanskar Yadav.</p>
             </div>
 
             <div class="footer-col">
@@ -2145,8 +2301,10 @@
                 <ul>
                     <li><a href="support.html">🛟 Support & Help</a></li>
                     <li><a href="developer.html">👨‍💻 Developer Hub</a></li>
-                    <li><a href="https://github.com/sanskarIN/Web-Development-Mastery" target="_blank" rel="noopener noreferrer">📂 GitHub Repo</a></li>
-                    <li><a href="https://ramsandesh.gumroad.com" target="_blank" rel="noopener noreferrer">☕ Gumroad</a></li>
+                    <li><a href="https://github.com/sanskarIN/Web-Development-Mastery" target="_blank"
+                            rel="noopener noreferrer">📂 GitHub Repo</a></li>
+                    <li><a href="https://ramsandesh.gumroad.com" target="_blank" rel="noopener noreferrer">☕ Gumroad</a>
+                    </li>
                 </ul>
             </div>
 
@@ -2155,31 +2313,45 @@
                 <ul>
                     <li><a href="mailto:sanskaryadavfrom2012to2026@gmail.com">📧 Primary Email</a></li>
                     <li><a href="mailto:supportramsandesh@gmail.com">📧 Support Email</a></li>
-                    <li><a href="https://youtube.com/@sanskarIN" target="_blank" rel="noopener noreferrer">▶️ YouTube</a></li>
-                    <li><a href="https://x.com/Sanskar_in" target="_blank" rel="noopener noreferrer">𝕏 Twitter / X</a></li>
+                    <li><a href="https://youtube.com/@sanskarIN" target="_blank" rel="noopener noreferrer">▶️
+                            YouTube</a></li>
+                    <li><a href="https://x.com/Sanskar_in" target="_blank" rel="noopener noreferrer">𝕏 Twitter / X</a>
+                    </li>
                 </ul>
             </div>
             <!-- Other Modules -->
             <div class="footer-col">
-              <div>
-                <h3 style="color:var(--text,#fff);font-size:18px;margin-bottom:15px;">Other Modules</h3>
-                <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px;">
-                  <li><a href="../HTML/index.html" style="color:var(--text3,#6d758d);text-decoration:none;font-size:14px;transition:color 0.2s;">🌐 HTML Mastery</a></li>
-                  <li><a href="../CSS/index.html" style="color:var(--text3,#6d758d);text-decoration:none;font-size:14px;transition:color 0.2s;">🎨 CSS Mastery</a></li>
-                  <li><a href="../JavaScript/index.html" style="color:var(--text3,#6d758d);text-decoration:none;font-size:14px;transition:color 0.2s;">⚡ JavaScript Mastery</a></li>
-                  <li><a href="../index.html" style="color:var(--text3,#6d758d);text-decoration:none;font-size:14px;transition:color 0.2s;">🚀 Hub Home</a></li>
-                </ul>
-              </div>
+                <div>
+                    <h3 style="color:var(--text,#fff);font-size:18px;margin-bottom:15px;">Other Modules</h3>
+                    <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px;">
+                        <li><a href="../HTML/index.html"
+                                style="color:var(--text3,#6d758d);text-decoration:none;font-size:14px;transition:color 0.2s;">🌐
+                                HTML Mastery</a></li>
+                        <li><a href="../CSS/index.html"
+                                style="color:var(--text3,#6d758d);text-decoration:none;font-size:14px;transition:color 0.2s;">🎨
+                                CSS Mastery</a></li>
+                        <li><a href="../JavaScript/index.html"
+                                style="color:var(--text3,#6d758d);text-decoration:none;font-size:14px;transition:color 0.2s;">⚡
+                                JavaScript Mastery</a></li>
+                        <li><a href="../index.html"
+                                style="color:var(--text3,#6d758d);text-decoration:none;font-size:14px;transition:color 0.2s;">🚀
+                                Hub Home</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
 
         <div class="footer-bottom">
             <p>© 2024–2026 React Mastery by Sanskar Yadav. Made with ❤️ for the developer community.</p>
             <div class="footer-social">
-                <a href="https://youtube.com/@sanskarIN" target="_blank" rel="noopener noreferrer" title="YouTube" aria-label="YouTube">▶</a>
-                <a href="https://github.com/sanskarIN" target="_blank" rel="noopener noreferrer" title="GitHub" aria-label="GitHub">⌨</a>
-                <a href="https://linkedin.com/in/sanskarIN" target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn">in</a>
-                <a href="https://x.com/Sanskar_in" target="_blank" rel="noopener noreferrer" title="X (Twitter)" aria-label="X Twitter">𝕏</a>
+                <a href="https://youtube.com/@sanskarIN" target="_blank" rel="noopener noreferrer" title="YouTube"
+                    aria-label="YouTube">▶</a>
+                <a href="https://github.com/sanskarIN" target="_blank" rel="noopener noreferrer" title="GitHub"
+                    aria-label="GitHub">⌨</a>
+                <a href="https://linkedin.com/in/sanskarIN" target="_blank" rel="noopener noreferrer" title="LinkedIn"
+                    aria-label="LinkedIn">in</a>
+                <a href="https://x.com/Sanskar_in" target="_blank" rel="noopener noreferrer" title="X (Twitter)"
+                    aria-label="X Twitter">𝕏</a>
             </div>
         </div>
     </footer>
@@ -2187,7 +2359,7 @@
     <!-- JavaScript -->
     <script>
         /* ===== Theme Toggle ===== */
-        (function() {
+        (function () {
             const themeKey = 'reactMasteryTheme';
             const saved = localStorage.getItem(themeKey);
             if (saved) {
@@ -2213,7 +2385,7 @@
         updateThemeIcon();
 
         /* ===== Particle System (30 particles) ===== */
-        (function() {
+        (function () {
             const container = document.getElementById('particlesContainer');
             const particleCount = 30;
 
@@ -2318,4 +2490,5 @@
         });
     </script>
 </body>
+
 </html>
