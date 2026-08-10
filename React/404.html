@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="404 Page Not Found — The page you're looking for doesn't exist in React Mastery. Navigate back to continue your learning journey.">
+    <meta name="description"
+        content="404 Page Not Found — The page you're looking for doesn't exist in React Mastery. Navigate back to continue your learning journey.">
     <meta name="keywords" content="404, not found, React Mastery, web development, error page">
     <meta name="author" content="React Mastery">
     <meta name="robots" content="noindex, nofollow">
@@ -15,7 +17,9 @@
     <link rel="icon" type="image/svg+xml" href="react-logo.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500;600&display=swap"
+        rel="stylesheet">
     <style>
         /* ===== CSS Variables & Themes ===== */
         :root[data-theme="dark"] {
@@ -51,7 +55,9 @@
         }
 
         /* ===== Reset & Base ===== */
-        *, *::before, *::after {
+        *,
+        *::before,
+        *::after {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -114,23 +120,59 @@
         }
 
         @keyframes orb-float-1 {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            25% { transform: translate(-60px, 40px) scale(1.1); }
-            50% { transform: translate(30px, -50px) scale(0.9); }
-            75% { transform: translate(-40px, -30px) scale(1.05); }
+
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            25% {
+                transform: translate(-60px, 40px) scale(1.1);
+            }
+
+            50% {
+                transform: translate(30px, -50px) scale(0.9);
+            }
+
+            75% {
+                transform: translate(-40px, -30px) scale(1.05);
+            }
         }
 
         @keyframes orb-float-2 {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            25% { transform: translate(50px, -30px) scale(1.15); }
-            50% { transform: translate(-40px, 60px) scale(0.95); }
-            75% { transform: translate(30px, 20px) scale(1.08); }
+
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            25% {
+                transform: translate(50px, -30px) scale(1.15);
+            }
+
+            50% {
+                transform: translate(-40px, 60px) scale(0.95);
+            }
+
+            75% {
+                transform: translate(30px, 20px) scale(1.08);
+            }
         }
 
         @keyframes orb-float-3 {
-            0%, 100% { transform: translate(-50%, -50%) scale(1); }
-            33% { transform: translate(-45%, -55%) scale(1.2); }
-            66% { transform: translate(-55%, -45%) scale(0.85); }
+
+            0%,
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+            }
+
+            33% {
+                transform: translate(-45%, -55%) scale(1.2);
+            }
+
+            66% {
+                transform: translate(-55%, -45%) scale(0.85);
+            }
         }
 
         /* ===== Floating Particles ===== */
@@ -151,14 +193,17 @@
                 opacity: 0;
                 transform: translateY(100vh) scale(0);
             }
+
             10% {
                 opacity: 0.8;
                 transform: translateY(90vh) scale(1);
             }
+
             90% {
                 opacity: 0.3;
                 transform: translateY(-10vh) scale(0.5);
             }
+
             100% {
                 opacity: 0;
                 transform: translateY(-20vh) scale(0);
@@ -280,29 +325,86 @@
         }
 
         @keyframes glitch-skew {
-            0%, 90%, 100% { transform: skew(0deg); }
-            92% { transform: skew(2deg); }
-            94% { transform: skew(-1deg); }
-            96% { transform: skew(3deg); }
-            98% { transform: skew(-2deg); }
+
+            0%,
+            90%,
+            100% {
+                transform: skew(0deg);
+            }
+
+            92% {
+                transform: skew(2deg);
+            }
+
+            94% {
+                transform: skew(-1deg);
+            }
+
+            96% {
+                transform: skew(3deg);
+            }
+
+            98% {
+                transform: skew(-2deg);
+            }
         }
 
         @keyframes glitch-before {
-            0%, 85%, 100% { transform: translate(0); }
-            87% { transform: translate(-4px, -2px); }
-            89% { transform: translate(4px, 2px); }
-            91% { transform: translate(-2px, 1px); }
-            93% { transform: translate(2px, -1px); }
-            95% { transform: translate(-3px, 2px); }
+
+            0%,
+            85%,
+            100% {
+                transform: translate(0);
+            }
+
+            87% {
+                transform: translate(-4px, -2px);
+            }
+
+            89% {
+                transform: translate(4px, 2px);
+            }
+
+            91% {
+                transform: translate(-2px, 1px);
+            }
+
+            93% {
+                transform: translate(2px, -1px);
+            }
+
+            95% {
+                transform: translate(-3px, 2px);
+            }
         }
 
         @keyframes glitch-after {
-            0%, 80%, 100% { transform: translate(0); }
-            82% { transform: translate(3px, 1px); }
-            84% { transform: translate(-3px, -1px); }
-            86% { transform: translate(2px, -2px); }
-            88% { transform: translate(-2px, 2px); }
-            90% { transform: translate(4px, -1px); }
+
+            0%,
+            80%,
+            100% {
+                transform: translate(0);
+            }
+
+            82% {
+                transform: translate(3px, 1px);
+            }
+
+            84% {
+                transform: translate(-3px, -1px);
+            }
+
+            86% {
+                transform: translate(2px, -2px);
+            }
+
+            88% {
+                transform: translate(-2px, 2px);
+            }
+
+            90% {
+                transform: translate(4px, -1px);
+            }
         }
 
         /* ===== Headings ===== */
@@ -336,8 +438,16 @@
         }
 
         @keyframes cursor-blink {
-            0%, 50% { border-color: var(--accent); }
-            51%, 100% { border-color: transparent; }
+
+            0%,
+            50% {
+                border-color: var(--accent);
+            }
+
+            51%,
+            100% {
+                border-color: transparent;
+            }
         }
 
         /* ===== Buttons ===== */
@@ -384,7 +494,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
             transition: left 0.5s ease;
         }
 
@@ -457,6 +567,7 @@
                 opacity: 0;
                 transform: translateY(20px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -545,6 +656,7 @@
                 opacity: 0;
                 transform: translateY(30px) scale(0.95);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0) scale(1);
@@ -552,8 +664,13 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
         }
 
         .donate-modal .close-btn {
@@ -664,9 +781,20 @@
                 padding: 18px;
             }
 
-            .orb-1 { width: 300px; height: 300px; }
-            .orb-2 { width: 250px; height: 250px; }
-            .orb-3 { width: 200px; height: 200px; }
+            .orb-1 {
+                width: 300px;
+                height: 300px;
+            }
+
+            .orb-2 {
+                width: 250px;
+                height: 250px;
+            }
+
+            .orb-3 {
+                width: 200px;
+                height: 200px;
+            }
         }
 
         @media (max-width: 400px) {
@@ -708,6 +836,7 @@
         }
     </style>
 </head>
+
 <body>
     <!-- Floating Gradient Orbs -->
     <div class="orb orb-1" aria-hidden="true"></div>
@@ -764,7 +893,8 @@
         <!-- Premium Support Box -->
         <div class="support-box">
             <h3>💎 Support React Mastery</h3>
-            <p>Love this project? Consider donating to help keep React Mastery free, updated, and accessible to everyone. Every contribution powers new lessons, better content, and a stronger community.</p>
+            <p>Love this project? Consider donating to help keep React Mastery free, updated, and accessible to
+                everyone. Every contribution powers new lessons, better content, and a stronger community.</p>
             <button class="btn-donate" onclick="openDonate()" aria-label="Donate to React Mastery">
                 ❤️ Donate Now
             </button>
@@ -774,15 +904,23 @@
     <!-- Footer -->
     <footer class="footer">
         <div style="margin-bottom: 20px; display: inline-block; text-align: left;">
-          <div>
-            <h3 style="color:var(--text,#fff);font-size:18px;margin-bottom:15px;">Other Modules</h3>
-            <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px;">
-              <li><a href="../HTML/index.html" style="color:var(--text3,#6d758d);text-decoration:none;font-size:14px;transition:color 0.2s;">🌐 HTML Mastery</a></li>
-              <li><a href="../CSS/index.html" style="color:var(--text3,#6d758d);text-decoration:none;font-size:14px;transition:color 0.2s;">🎨 CSS Mastery</a></li>
-              <li><a href="../JavaScript/index.html" style="color:var(--text3,#6d758d);text-decoration:none;font-size:14px;transition:color 0.2s;">⚡ JavaScript Mastery</a></li>
-              <li><a href="../index.html" style="color:var(--text3,#6d758d);text-decoration:none;font-size:14px;transition:color 0.2s;">🚀 Hub Home</a></li>
-            </ul>
-          </div>
+            <div>
+                <h3 style="color:var(--text,#fff);font-size:18px;margin-bottom:15px;">Other Modules</h3>
+                <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px;">
+                    <li><a href="../HTML/index.html"
+                            style="color:var(--text3,#6d758d);text-decoration:none;font-size:14px;transition:color 0.2s;">🌐
+                            HTML Mastery</a></li>
+                    <li><a href="../CSS/index.html"
+                            style="color:var(--text3,#6d758d);text-decoration:none;font-size:14px;transition:color 0.2s;">🎨
+                            CSS Mastery</a></li>
+                    <li><a href="../JavaScript/index.html"
+                            style="color:var(--text3,#6d758d);text-decoration:none;font-size:14px;transition:color 0.2s;">⚡
+                            JavaScript Mastery</a></li>
+                    <li><a href="../index.html"
+                            style="color:var(--text3,#6d758d);text-decoration:none;font-size:14px;transition:color 0.2s;">🚀
+                            Hub Home</a></li>
+                </ul>
+            </div>
         </div>
         <p>&copy; 2026 React Mastery. Lost pages happen — great recoveries are what matter.</p>
     </footer>
@@ -792,11 +930,16 @@
         <div class="donate-modal">
             <button class="close-btn" onclick="closeDonate()" aria-label="Close donate modal">✕</button>
             <h2 id="donateTitle">💖 Support React Mastery</h2>
-            <p>Scan the QR code below to donate. Your generosity helps us create world-class React content for learners everywhere!</p>
+            <p>Scan the QR code below to donate. Your generosity helps us create world-class React content for learners
+                everywhere!</p>
             <img src="Payment-Ramsandesh.jpeg" alt="Scan to donate — Payment QR Code" class="qr-code" loading="lazy">
             <p class="thank-you">Thank you for your incredible support! 🙏</p>
-            <a href="https://rzp.io/l/Sanskar" target="_blank" rel="noopener noreferrer" style="display:inline-block;background:linear-gradient(135deg, #61dafb, #4fa8c9);color:#1a1a2e;padding:14px 28px;border-radius:12px;text-decoration:none;font-weight:700;font-size:0.95rem;margin-top:12px;transition:transform 0.2s;">Pay via Razorpay</a>
-            <a href="https://buymeacoffee.com/sanskarIN" target="_blank" rel="noopener noreferrer" style="display:inline-block;background:linear-gradient(135deg, #FFDD00, #FF6600);color:#000;padding:14px 28px;border-radius:12px;text-decoration:none;font-weight:700;font-size:0.95rem;margin-top:12px;transition:transform 0.2s;">☕ Buy Me a Coffee</a>
+            <a href="https://rzp.io/l/Sanskar" target="_blank" rel="noopener noreferrer"
+                style="display:inline-block;background:linear-gradient(135deg, #61dafb, #4fa8c9);color:#1a1a2e;padding:14px 28px;border-radius:12px;text-decoration:none;font-weight:700;font-size:0.95rem;margin-top:12px;transition:transform 0.2s;">Pay
+                via Razorpay</a>
+            <a href="https://buymeacoffee.com/sanskarIN" target="_blank" rel="noopener noreferrer"
+                style="display:inline-block;background:linear-gradient(135deg, #FFDD00, #FF6600);color:#000;padding:14px 28px;border-radius:12px;text-decoration:none;font-weight:700;font-size:0.95rem;margin-top:12px;transition:transform 0.2s;">☕
+                Buy Me a Coffee</a>
         </div>
     </div>
 
@@ -871,7 +1014,7 @@
             const timerEl = document.getElementById('countdownTimer');
             const countdownEl = document.getElementById('countdown');
 
-            const interval = setInterval(function() {
+            const interval = setInterval(function () {
                 seconds--;
                 timerEl.textContent = seconds;
 
@@ -899,7 +1042,7 @@
             const box = document.getElementById('easterEggBox');
             const factText = document.getElementById('funFactText');
 
-            wrapper.addEventListener('click', function() {
+            wrapper.addEventListener('click', function () {
                 clickCount++;
 
                 if (clickCount >= 5) {
@@ -909,12 +1052,12 @@
                     clickCount = 0;
 
                     wrapper.style.transform = 'scale(1.08)';
-                    setTimeout(function() {
+                    setTimeout(function () {
                         wrapper.style.transform = 'scale(1)';
                     }, 200);
                 } else {
                     wrapper.style.transform = 'scale(0.95)';
-                    setTimeout(function() {
+                    setTimeout(function () {
                         wrapper.style.transform = 'scale(1)';
                     }, 150);
                 }
@@ -933,7 +1076,7 @@
                 toggle.textContent = savedTheme === 'dark' ? '🌙' : '☀️';
             }
 
-            toggle.addEventListener('click', function() {
+            toggle.addEventListener('click', function () {
                 const current = html.getAttribute('data-theme');
                 const next = current === 'dark' ? 'light' : 'dark';
                 html.setAttribute('data-theme', next);
@@ -941,7 +1084,7 @@
                 localStorage.setItem(storageKey, next);
 
                 toggle.style.transform = 'rotate(360deg) scale(1.2)';
-                setTimeout(function() {
+                setTimeout(function () {
                     toggle.style.transform = '';
                 }, 400);
             });
@@ -959,18 +1102,19 @@
         }
 
         /* Close on overlay background click */
-        document.getElementById('donateOverlay').addEventListener('click', function(e) {
+        document.getElementById('donateOverlay').addEventListener('click', function (e) {
             if (e.target === this) {
                 closeDonate();
             }
         });
 
         /* Close on Escape key */
-        document.addEventListener('keydown', function(e) {
+        document.addEventListener('keydown', function (e) {
             if (e.key === 'Escape') {
                 closeDonate();
             }
         });
     </script>
 </body>
+
 </html>
