@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Developer Documentation | Web Development Mastery</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -12,7 +15,7 @@
             --accent-primary: #6c63ff;
             --accent-secondary: #00d2ff;
             --accent-tertiary: #ff007f;
-            
+
             /* Light Theme */
             --bg-base-light: #f8fafc;
             --bg-surface-light: rgba(255, 255, 255, 0.7);
@@ -20,7 +23,7 @@
             --text-primary-light: #0f172a;
             --text-secondary-light: #334155;
             --border-light: rgba(15, 23, 42, 0.1);
-            
+
             /* Dark Theme */
             --bg-base-dark: #020617;
             --bg-surface-dark: rgba(15, 23, 42, 0.6);
@@ -28,22 +31,22 @@
             --text-primary-dark: #f8fafc;
             --text-secondary-dark: #94a3b8;
             --border-dark: rgba(255, 255, 255, 0.1);
-            
+
             /* Glassmorphism */
             --glass-blur: blur(12px);
             --glass-border: 1px solid var(--border-color);
             --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
-            
+
             /* Typography */
             --font-heading: 'Outfit', sans-serif;
             --font-body: 'Plus Jakarta Sans', sans-serif;
             --font-mono: 'Fira Code', monospace;
-            
+
             /* Transitions */
             --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
             --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            
+
             /* Z-Index */
             --z-behind: -1;
             --z-normal: 1;
@@ -87,7 +90,12 @@
             transition: background-color var(--transition-normal), color var(--transition-normal);
         }
 
-        h1, h2, h3, h4, h5, h6 {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
             font-family: var(--font-heading);
             font-weight: 700;
             line-height: 1.2;
@@ -256,10 +264,21 @@
         }
 
         @keyframes float {
-            0% { transform: translate(0, 0) scale(1); }
-            33% { transform: translate(50px, -50px) scale(1.1); }
-            66% { transform: translate(-30px, 40px) scale(0.9); }
-            100% { transform: translate(0, 0) scale(1); }
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            33% {
+                transform: translate(50px, -50px) scale(1.1);
+            }
+
+            66% {
+                transform: translate(-30px, 40px) scale(0.9);
+            }
+
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
         }
 
         /* Sidebar / TOC */
@@ -280,9 +299,11 @@
         .sidebar::-webkit-scrollbar {
             width: 4px;
         }
+
         .sidebar::-webkit-scrollbar-track {
             background: transparent;
         }
+
         .sidebar::-webkit-scrollbar-thumb {
             background: var(--accent-primary);
             border-radius: 4px;
@@ -314,7 +335,8 @@
             font-size: 0.95rem;
         }
 
-        .toc-link:hover, .toc-link.active {
+        .toc-link:hover,
+        .toc-link.active {
             color: var(--accent-primary);
             background: var(--surface-hover);
         }
@@ -367,7 +389,8 @@
             color: var(--text-secondary);
         }
 
-        .section ul, .section ol {
+        .section ul,
+        .section ol {
             margin-bottom: 1.5rem;
             padding-left: 1.5rem;
             color: var(--text-secondary);
@@ -394,7 +417,7 @@
             align-items: center;
             margin-bottom: 1rem;
             padding-bottom: 0.5rem;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             color: #94a3b8;
             font-family: var(--font-mono);
             font-size: 0.875rem;
@@ -408,7 +431,7 @@
         }
 
         .copy-btn {
-            background: rgba(255,255,255,0.1);
+            background: rgba(255, 255, 255, 0.1);
             border: none;
             color: #fff;
             padding: 0.25rem 0.5rem;
@@ -418,7 +441,7 @@
         }
 
         .copy-btn:hover {
-            background: rgba(255,255,255,0.2);
+            background: rgba(255, 255, 255, 0.2);
         }
 
         /* Architecture Diagram */
@@ -478,7 +501,7 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: rgba(0,0,0,0.5);
+            background: rgba(0, 0, 0, 0.5);
             backdrop-filter: blur(4px);
             z-index: var(--z-modal);
             display: none;
@@ -541,7 +564,8 @@
             color: var(--text-secondary);
         }
 
-        .cmd-item:hover, .cmd-item.active {
+        .cmd-item:hover,
+        .cmd-item.active {
             background: var(--surface-hover);
             color: var(--text-primary);
         }
@@ -576,18 +600,18 @@
             margin-bottom: 0.5rem;
             color: var(--text-primary);
         }
-        
+
         .dev-social {
             display: flex;
             gap: 1rem;
             margin-top: 1rem;
         }
-        
+
         .dev-social a {
             color: var(--text-secondary);
             font-size: 1.25rem;
         }
-        
+
         .dev-social a:hover {
             color: var(--accent-primary);
             transform: translateY(-2px);
@@ -632,7 +656,7 @@
         .footer-links a:hover {
             color: var(--accent-primary);
         }
-        
+
         .social-icons {
             display: flex;
             gap: 1rem;
@@ -675,7 +699,7 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: rgba(0,0,0,0.8);
+            background: rgba(0, 0, 0, 0.8);
             backdrop-filter: blur(8px);
             z-index: var(--z-modal);
             display: none;
@@ -697,7 +721,7 @@
             width: 90%;
             position: relative;
         }
-        
+
         .close-donate {
             position: absolute;
             top: 1rem;
@@ -708,16 +732,16 @@
             font-size: 1.5rem;
             cursor: pointer;
         }
-        
+
         .donate-img {
             width: 100%;
             max-width: 300px;
             border-radius: 8px;
             margin: 1rem 0;
         }
-
     </style>
 </head>
+
 <body>
 
     <!-- Background Orbs -->
@@ -733,12 +757,12 @@
             <a href="index.html" class="btn-hub-home">
                 <i class="fas fa-arrow-left"></i> Hub Home
             </a>
-            
+
             <div class="nav-brand">
                 <i class="fas fa-code"></i>
                 Web Development Mastery Docs
             </div>
-            
+
             <div class="nav-actions">
                 <button class="btn-theme-toggle" id="themeToggle" aria-label="Toggle Theme">
                     <i class="fas fa-moon"></i>
@@ -749,7 +773,7 @@
 
     <!-- Main Layout -->
     <div class="container main-layout">
-        
+
         <!-- Sidebar -->
         <aside class="sidebar">
             <div class="toc-title">Contents</div>
@@ -776,7 +800,7 @@
 
         <!-- Content Area -->
         <main class="content-area">
-            
+
             <!-- 1. Hero -->
             <section id="hero" class="section">
                 <div class="section-header">
@@ -784,8 +808,11 @@
                     <h2 class="section-title">Developer Documentation</h2>
                 </div>
                 <h3>Complete technical reference for Web Development Mastery</h3>
-                <p>Welcome to the official hub-level documentation for the Web Development Mastery platform. This guide provides comprehensive architectural details, deployment strategies, core system functionalities, and guidelines for contributing.</p>
-                <p>The platform encompasses multiple modules including HTML, CSS, JavaScript, and React, bound together by a unified, glassmorphic design language and state management system.</p>
+                <p>Welcome to the official hub-level documentation for the Web Development Mastery platform. This guide
+                    provides comprehensive architectural details, deployment strategies, core system functionalities,
+                    and guidelines for contributing.</p>
+                <p>The platform encompasses multiple modules including HTML, CSS, JavaScript, and React, bound together
+                    by a unified, glassmorphic design language and state management system.</p>
             </section>
 
             <!-- 2. Architecture Overview -->
@@ -794,8 +821,10 @@
                     <div class="section-icon"><i class="fas fa-sitemap"></i></div>
                     <h2 class="section-title">Architecture Overview</h2>
                 </div>
-                <p>The Web Development Mastery platform is built on a highly modular, decoupled architecture, allowing each course module to function completely offline while maintaining global state synchronization via the <code>localStorage</code> API.</p>
-                
+                <p>The Web Development Mastery platform is built on a highly modular, decoupled architecture, allowing
+                    each course module to function completely offline while maintaining global state synchronization via
+                    the <code>localStorage</code> API.</p>
+
                 <div class="arch-diagram">
                     <div class="arch-node">
                         <i class="fab fa-html5 arch-icon"></i>
@@ -847,22 +876,26 @@ Web-Development-Mastery/
                     <div class="section-icon"><i class="fas fa-rocket"></i></div>
                     <h2 class="section-title">Getting Started</h2>
                 </div>
-                <p>To run the platform locally, you simply need a modern web browser. The entire platform is built with vanilla web technologies and supports the <code>file://</code> protocol seamlessly.</p>
-                
+                <p>To run the platform locally, you simply need a modern web browser. The entire platform is built with
+                    vanilla web technologies and supports the <code>file://</code> protocol seamlessly.</p>
+
                 <ol>
-                    <li><strong>Clone the repository:</strong> <code>git clone https://github.com/sanskarIN/Web-Development-Mastery.git</code></li>
+                    <li><strong>Clone the repository:</strong>
+                        <code>git clone https://github.com/sanskarIN/Web-Development-Mastery.git</code></li>
                     <li><strong>Navigate to the folder:</strong> <code>cd Web-Development-Mastery</code></li>
                     <li><strong>Open Hub:</strong> Double-click <code>index.html</code> in the root directory.</li>
                 </ol>
-                
+
                 <div class="info-cards">
                     <div class="info-card">
                         <h4><i class="fas fa-server"></i> Local Server (Optional)</h4>
-                        <p>For advanced features like fetch API requests (if extended), use a local server like Live Server in VS Code.</p>
+                        <p>For advanced features like fetch API requests (if extended), use a local server like Live
+                            Server in VS Code.</p>
                     </div>
                     <div class="info-card">
                         <h4><i class="fas fa-file-code"></i> File:// Protocol</h4>
-                        <p>Fully supported. localStorage works perfectly under <code>file://</code> in modern browsers (Chrome, Edge, Firefox).</p>
+                        <p>Fully supported. localStorage works perfectly under <code>file://</code> in modern browsers
+                            (Chrome, Edge, Firefox).</p>
                     </div>
                 </div>
             </section>
@@ -873,13 +906,15 @@ Web-Development-Mastery/
                     <div class="section-icon"><i class="fas fa-microchip"></i></div>
                     <h2 class="section-title">Core Architecture</h2>
                 </div>
-                
+
                 <h4>Single-File Module Pattern</h4>
-                <p>Each module primarily relies on an <code>index.html</code> file with inline or co-located CSS/JS. This ensures high portability and ultra-fast load times.</p>
+                <p>Each module primarily relies on an <code>index.html</code> file with inline or co-located CSS/JS.
+                    This ensures high portability and ultra-fast load times.</p>
 
                 <h4>State Management (localStorage)</h4>
-                <p>We use a namespaced approach to prevent collisions. Hub settings use <code>hubMasteryTheme</code>, while modules use <code>htmlMastery_data</code>, <code>reactMastery_data</code>, etc.</p>
-                
+                <p>We use a namespaced approach to prevent collisions. Hub settings use <code>hubMasteryTheme</code>,
+                    while modules use <code>htmlMastery_data</code>, <code>reactMastery_data</code>, etc.</p>
+
                 <div class="code-block">
                     <div class="code-header">
                         <span>LocalStorage Implementation</span>
@@ -909,23 +944,28 @@ function initHubTheme() {
                     <div class="section-icon"><i class="fas fa-palette"></i></div>
                     <h2 class="section-title">Theme System</h2>
                 </div>
-                <p>The platform boasts a robust CSS variables architecture. The hub controls light/dark modes, while individual modules may offer up to 25+ unique themes.</p>
-                
+                <p>The platform boasts a robust CSS variables architecture. The hub controls light/dark modes, while
+                    individual modules may offer up to 25+ unique themes.</p>
+
                 <ul>
-                    <li><strong>CSS Variables:</strong> All colors are defined in the <code>:root</code> selector and mapped to semantic names (e.g., <code>--bg-color</code>, <code>--text-primary</code>).</li>
-                    <li><strong>Glassmorphism:</strong> Achieved using <code>backdrop-filter: blur(12px)</code> and semi-transparent RGBA backgrounds.</li>
-                    <li><strong>Theme Switching API:</strong> Simple DOM manipulation flipping the <code>data-theme</code> attribute on the <code>&lt;html&gt;</code> element.</li>
+                    <li><strong>CSS Variables:</strong> All colors are defined in the <code>:root</code> selector and
+                        mapped to semantic names (e.g., <code>--bg-color</code>, <code>--text-primary</code>).</li>
+                    <li><strong>Glassmorphism:</strong> Achieved using <code>backdrop-filter: blur(12px)</code> and
+                        semi-transparent RGBA backgrounds.</li>
+                    <li><strong>Theme Switching API:</strong> Simple DOM manipulation flipping the
+                        <code>data-theme</code> attribute on the <code>&lt;html&gt;</code> element.</li>
                 </ul>
             </section>
-            
+
             <!-- 6. Quiz & Assessment System -->
             <section id="quiz-system" class="section">
                 <div class="section-header">
                     <div class="section-icon"><i class="fas fa-check-circle"></i></div>
                     <h2 class="section-title">Quiz & Assessment System</h2>
                 </div>
-                <p>Modules contain integrated assessment engines. Questions are stored in JSON format, randomized, and scored client-side. Progress is immediately persisted to localStorage.</p>
-                
+                <p>Modules contain integrated assessment engines. Questions are stored in JSON format, randomized, and
+                    scored client-side. Progress is immediately persisted to localStorage.</p>
+
                 <div class="code-block">
                     <div class="code-header">
                         <span>Quiz Schema Example</span>
@@ -952,8 +992,10 @@ const quizQuestions = [
                     <div class="section-icon"><i class="fas fa-language"></i></div>
                     <h2 class="section-title">Translation System</h2>
                 </div>
-                <p>The platform implements an integrated Google Translate widget, enabling localization in 75+ languages globally.</p>
-                <p>Advanced modules may implement direct translation engines via XHR/Fetch depending on the target audience requirements.</p>
+                <p>The platform implements an integrated Google Translate widget, enabling localization in 75+ languages
+                    globally.</p>
+                <p>Advanced modules may implement direct translation engines via XHR/Fetch depending on the target
+                    audience requirements.</p>
             </section>
 
             <!-- 8. Mastery Center -->
@@ -964,18 +1006,21 @@ const quizQuestions = [
                 </div>
                 <p>An integrated gamification system that tracks user progress across all modules.</p>
                 <ul>
-                    <li><strong>XP System:</strong> Earn points by completing sections, passing quizzes, and consistent daily streaks.</li>
-                    <li><strong>Achievements:</strong> Unlock badges for milestones (e.g., "First Module Complete", "Quiz Master").</li>
+                    <li><strong>XP System:</strong> Earn points by completing sections, passing quizzes, and consistent
+                        daily streaks.</li>
+                    <li><strong>Achievements:</strong> Unlock badges for milestones (e.g., "First Module Complete",
+                        "Quiz Master").</li>
                 </ul>
             </section>
-            
+
             <!-- 9. Command Palette -->
             <section id="cmd-palette" class="section">
                 <div class="section-header">
                     <div class="section-icon"><i class="fas fa-keyboard"></i></div>
                     <h2 class="section-title">Command Palette (Cmd+K)</h2>
                 </div>
-                <p>Press <code>Cmd+K</code> or <code>Ctrl+K</code> to open the global command palette. It features fuzzy search across modules, topics, and quick actions like theme toggling.</p>
+                <p>Press <code>Cmd+K</code> or <code>Ctrl+K</code> to open the global command palette. It features fuzzy
+                    search across modules, topics, and quick actions like theme toggling.</p>
                 <p><em>(Try pressing Ctrl+K right now!)</em></p>
             </section>
 
@@ -985,9 +1030,11 @@ const quizQuestions = [
                     <div class="section-icon"><i class="fas fa-code"></i></div>
                     <h2 class="section-title">Code Examples & Snippets</h2>
                 </div>
-                <p>All modules include rich code editors and snippet displays. We use standard <code>&lt;pre&gt;&lt;code&gt;</code> blocks styled with custom syntax highlighting classes to ensure zero external dependencies.</p>
+                <p>All modules include rich code editors and snippet displays. We use standard
+                    <code>&lt;pre&gt;&lt;code&gt;</code> blocks styled with custom syntax highlighting classes to ensure
+                    zero external dependencies.</p>
             </section>
-            
+
             <!-- 11. Testing & QA -->
             <section id="qa-guide" class="section">
                 <div class="section-header">
@@ -1016,7 +1063,7 @@ const quizQuestions = [
                     <li><strong>Offline Distribution:</strong> Zip the folder and distribute (works perfectly).</li>
                 </ul>
             </section>
-            
+
             <!-- 13. Troubleshooting -->
             <section id="troubleshoot" class="section">
                 <div class="section-header">
@@ -1026,7 +1073,8 @@ const quizQuestions = [
                 <div class="info-cards">
                     <div class="info-card">
                         <h4>Storage Quota</h4>
-                        <p>If localStorage is full, run <code>localStorage.clear()</code> in the console. Note: this resets all user progress.</p>
+                        <p>If localStorage is full, run <code>localStorage.clear()</code> in the console. Note: this
+                            resets all user progress.</p>
                     </div>
                     <div class="info-card">
                         <h4>Icons not loading</h4>
@@ -1034,7 +1082,7 @@ const quizQuestions = [
                     </div>
                 </div>
             </section>
-            
+
             <!-- 14. Contributing -->
             <section id="contributing" class="section">
                 <div class="section-header">
@@ -1043,12 +1091,14 @@ const quizQuestions = [
                 </div>
                 <p>We welcome contributions! Please adhere to the following rules:</p>
                 <ul>
-                    <li>Maintain the pure HTML/CSS/JS architecture. Do not introduce build steps or Node.js dependencies for the core hub.</li>
+                    <li>Maintain the pure HTML/CSS/JS architecture. Do not introduce build steps or Node.js dependencies
+                        for the core hub.</li>
                     <li>Use semantic HTML5 tags.</li>
-                    <li>Ensure all new UI components are glassmorphic and support <code>data-theme="dark"</code> and <code>"light"</code>.</li>
+                    <li>Ensure all new UI components are glassmorphic and support <code>data-theme="dark"</code> and
+                        <code>"light"</code>.</li>
                 </ul>
             </section>
-            
+
             <!-- 15. Changelog -->
             <section id="changelog" class="section">
                 <div class="section-header">
@@ -1056,19 +1106,20 @@ const quizQuestions = [
                     <h2 class="section-title">Changelog / Version History</h2>
                 </div>
                 <ul>
-                    <li><strong>v2.0.0:</strong> Complete architectural rewrite. Introduced glassmorphism, global state, and 4 core modules.</li>
+                    <li><strong>v2.0.0:</strong> Complete architectural rewrite. Introduced glassmorphism, global state,
+                        and 4 core modules.</li>
                     <li><strong>v1.5.0:</strong> Added React Mastery module.</li>
                     <li><strong>v1.0.0:</strong> Initial launch of HTML & CSS modules.</li>
                 </ul>
             </section>
-            
+
             <!-- 16. Developer Profile -->
             <section id="profile" class="section">
                 <div class="section-header">
                     <div class="section-icon"><i class="fas fa-user-circle"></i></div>
                     <h2 class="section-title">Creator Profile</h2>
                 </div>
-                
+
                 <div class="dev-profile">
                     <div class="dev-avatar">
                         <i class="fas fa-user-astronaut"></i>
@@ -1076,7 +1127,8 @@ const quizQuestions = [
                     <div class="dev-info">
                         <h3>Sanskar Yadav</h3>
                         <p>Lead Architect & Full Stack Developer</p>
-                        <p style="margin-bottom: 0;">Building premium educational platforms pushing the limits of pure web technologies.</p>
+                        <p style="margin-bottom: 0;">Building premium educational platforms pushing the limits of pure
+                            web technologies.</p>
                         <div class="dev-social">
                             <a href="#" target="_blank"><i class="fab fa-github"></i></a>
                             <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
@@ -1086,7 +1138,7 @@ const quizQuestions = [
                     </div>
                 </div>
             </section>
-            
+
             <!-- 17. Tech Stack -->
             <section id="tech-stack" class="section">
                 <div class="section-header">
@@ -1121,12 +1173,17 @@ const quizQuestions = [
         <div class="footer-grid">
             <div class="footer-col">
                 <h4>Web Development Mastery</h4>
-                <p style="color: var(--text-secondary); margin-bottom: 1rem;">The ultimate offline-first learning platform for modern web technologies.</p>
+                <p style="color: var(--text-secondary); margin-bottom: 1rem;">The ultimate offline-first learning
+                    platform for modern web technologies.</p>
                 <div class="social-icons">
-                    <a href="#" style="color: var(--text-secondary); font-size: 1.5rem;"><i class="fab fa-youtube"></i></a>
-                    <a href="#" style="color: var(--text-secondary); font-size: 1.5rem;"><i class="fab fa-github"></i></a>
-                    <a href="#" style="color: var(--text-secondary); font-size: 1.5rem;"><i class="fab fa-linkedin"></i></a>
-                    <a href="#" style="color: var(--text-secondary); font-size: 1.5rem;"><i class="fab fa-x-twitter"></i></a>
+                    <a href="#" style="color: var(--text-secondary); font-size: 1.5rem;"><i
+                            class="fab fa-youtube"></i></a>
+                    <a href="#" style="color: var(--text-secondary); font-size: 1.5rem;"><i
+                            class="fab fa-github"></i></a>
+                    <a href="#" style="color: var(--text-secondary); font-size: 1.5rem;"><i
+                            class="fab fa-linkedin"></i></a>
+                    <a href="#" style="color: var(--text-secondary); font-size: 1.5rem;"><i
+                            class="fab fa-x-twitter"></i></a>
                 </div>
             </div>
             <div class="footer-col">
@@ -1162,23 +1219,31 @@ const quizQuestions = [
             <i class="fas fa-heart"></i> Support the Project
         </button>
     </div>
-    
+
     <div class="donate-modal" id="donateModal">
         <div class="donate-content">
             <button class="close-donate" id="btnCloseDonate"><i class="fas fa-times"></i></button>
             <h3 style="margin-bottom: 1rem;">Support the Creator</h3>
             <p style="color: var(--text-secondary); margin-bottom: 1rem;">Scan the QR code below to donate via UPI.</p>
             <img src="Payment-Ramsandesh.jpeg" alt="Donate UPI QR Code" class="donate-img">
-            <p style="color: var(--text-secondary); font-size: 0.875rem; margin-bottom: 16px;">Every contribution, no matter how small, makes a difference. Thank you for your generosity! 🙏</p>
-            <a href="https://rzp.io/l/Sanskar" target="_blank" rel="noopener noreferrer" style="display:inline-block;background:linear-gradient(135deg, #6c63ff, #5b52e0);color:#fff;padding:14px 28px;border-radius:12px;text-decoration:none;font-weight:700;font-size:0.95rem;transition:transform 0.2s;">💳 Pay via Razorpay</a>
-            <a href="https://buymeacoffee.com/sanskarIN" target="_blank" rel="noopener noreferrer" style="display:inline-block;background:linear-gradient(135deg, #FFDD00, #FF6600);color:#000;padding:14px 28px;border-radius:12px;text-decoration:none;font-weight:700;font-size:0.95rem;margin-top:12px;transition:transform 0.2s;"><img src="bmc-logo.jpg" alt="BMC" style="width:24px;height:24px;border-radius:6px;vertical-align:middle;margin-right:8px;">Buy Me a Coffee</a>
+            <p style="color: var(--text-secondary); font-size: 0.875rem; margin-bottom: 16px;">Every contribution, no
+                matter how small, makes a difference. Thank you for your generosity! 🙏</p>
+            <a href="https://rzp.io/l/Sanskar" target="_blank" rel="noopener noreferrer"
+                style="display:inline-block;background:linear-gradient(135deg, #6c63ff, #5b52e0);color:#fff;padding:14px 28px;border-radius:12px;text-decoration:none;font-weight:700;font-size:0.95rem;transition:transform 0.2s;">💳
+                Pay via Razorpay</a>
+            <a href="https://buymeacoffee.com/sanskarIN" target="_blank" rel="noopener noreferrer"
+                style="display:inline-block;background:linear-gradient(135deg, #FFDD00, #FF6600);color:#000;padding:14px 28px;border-radius:12px;text-decoration:none;font-weight:700;font-size:0.95rem;margin-top:12px;transition:transform 0.2s;"><img
+                    src="bmc-logo.jpg" alt="BMC"
+                    style="width:24px;height:24px;border-radius:6px;vertical-align:middle;margin-right:8px;">Buy Me a
+                Coffee</a>
         </div>
     </div>
 
     <!-- Command Palette Modal -->
     <div class="cmd-palette-backdrop" id="cmdBackdrop">
         <div class="cmd-palette">
-            <input type="text" class="cmd-input" id="cmdInput" placeholder="Search docs, toggle theme, or type command..." autocomplete="off">
+            <input type="text" class="cmd-input" id="cmdInput"
+                placeholder="Search docs, toggle theme, or type command..." autocomplete="off">
             <div class="cmd-results" id="cmdResults">
                 <!-- Populated via JS -->
             </div>
@@ -1190,7 +1255,7 @@ const quizQuestions = [
         // 1. Theme Management
         const HUB_THEME_KEY = 'hubMasteryTheme';
         const themeToggleBtn = document.getElementById('themeToggle');
-        
+
         function initTheme() {
             const saved = localStorage.getItem(HUB_THEME_KEY);
             const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -1250,8 +1315,8 @@ const quizQuestions = [
         function renderCmdResults(query = "") {
             cmdResults.innerHTML = "";
             const filtered = commands.filter(c => c.title.toLowerCase().includes(query.toLowerCase()));
-            
-            if(filtered.length === 0) {
+
+            if (filtered.length === 0) {
                 cmdResults.innerHTML = '<div class="cmd-item" style="color: var(--text-secondary); cursor: default;">No results found</div>';
                 return;
             }
@@ -1312,9 +1377,9 @@ const quizQuestions = [
         btnOpenDonate.addEventListener('click', openDonateModal);
         btnCloseDonate.addEventListener('click', closeDonateModal);
         donateModal.addEventListener('click', (e) => {
-            if(e.target === donateModal) closeDonateModal();
+            if (e.target === donateModal) closeDonateModal();
         });
-        
+
         // 5. Copy Code Blocks
         document.querySelectorAll('.copy-btn').forEach(btn => {
             btn.addEventListener('click', () => {
@@ -1330,4 +1395,5 @@ const quizQuestions = [
 
     </script>
 </body>
+
 </html>
