@@ -758,6 +758,91 @@
             filter: brightness(1.1);
         }
 
+        /* 8b. LEARNING ROADMAP TIMELINE */
+        .roadmap-section {
+            padding: 100px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .roadmap-timeline {
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            padding-left: 40px;
+        }
+
+        .roadmap-timeline::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, var(--html-color), var(--css-color), var(--js-color), var(--react-color));
+            border-radius: 3px;
+        }
+
+        .roadmap-step {
+            position: relative;
+            margin-bottom: 48px;
+            padding: 24px 28px;
+            background: var(--bg2);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .roadmap-step:hover {
+            transform: translateX(8px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .roadmap-step::before {
+            content: '';
+            position: absolute;
+            left: -33px;
+            top: 28px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            border: 3px solid var(--bg);
+            z-index: 1;
+        }
+
+        .roadmap-step:nth-child(1)::before { background: var(--html-color); }
+        .roadmap-step:nth-child(2)::before { background: var(--css-color); }
+        .roadmap-step:nth-child(3)::before { background: var(--js-color); }
+        .roadmap-step:nth-child(4)::before { background: var(--react-color); }
+
+        .roadmap-step-number {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+
+        .roadmap-step:nth-child(1) .roadmap-step-number { color: var(--html-color); }
+        .roadmap-step:nth-child(2) .roadmap-step-number { color: var(--css-color); }
+        .roadmap-step:nth-child(3) .roadmap-step-number { color: var(--js-color); }
+        .roadmap-step:nth-child(4) .roadmap-step-number { color: var(--react-color); }
+
+        .roadmap-step h4 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+
+        .roadmap-step p {
+            color: var(--text2);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .roadmap-step:last-child {
+            margin-bottom: 0;
+        }
+
         /* 9. FEATURES SECTION */
         .features-section {
             background: linear-gradient(to bottom, var(--bg) 0%, var(--bg2) 100%);
@@ -1544,6 +1629,37 @@
                         <span class="module-stat-pill">Live Sandbox</span>
                     </div>
                     <a href="React/index.html" class="module-btn btn-react">Start Learning →</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8b. LEARNING ROADMAP TIMELINE -->
+        <section class="roadmap-section">
+            <div class="section-container" style="padding: 0 24px;">
+                <div class="section-heading">
+                    <h2>🗺️ Learning Roadmap</h2>
+                </div>
+                <div class="roadmap-timeline">
+                    <div class="roadmap-step">
+                        <div class="roadmap-step-number">Step 1 — Foundation</div>
+                        <h4>🌐 HTML Mastery</h4>
+                        <p>Start with the foundation of every website. Learn 100+ HTML tags, semantic structure, forms, media embedding, accessibility, and SEO best practices.</p>
+                    </div>
+                    <div class="roadmap-step">
+                        <div class="roadmap-step-number">Step 2 — Styling</div>
+                        <h4>🎨 CSS Mastery</h4>
+                        <p>Make your pages beautiful. Master 200 CSS properties including Flexbox, Grid, animations, custom properties, responsive design, and glassmorphism techniques.</p>
+                    </div>
+                    <div class="roadmap-step">
+                        <div class="roadmap-step-number">Step 3 — Interactivity</div>
+                        <h4>⚡ JavaScript Mastery</h4>
+                        <p>Add dynamic behavior. Learn ES6+ syntax, DOM manipulation, event handling, async/await, Fetch API, closures, and modern JavaScript patterns.</p>
+                    </div>
+                    <div class="roadmap-step">
+                        <div class="roadmap-step-number">Step 4 — Frameworks</div>
+                        <h4>⚛️ React Mastery</h4>
+                        <p>Build production-ready UIs. Master components, hooks, state management, routing, context API, and modern React architecture patterns.</p>
+                    </div>
                 </div>
             </div>
         </section>
