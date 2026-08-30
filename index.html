@@ -1166,6 +1166,113 @@
             transform: translateY(-5px);
         }
 
+        /* 13a. KEYBOARD SHORTCUTS MODAL */
+        #shortcuts-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(8px);
+            z-index: 10000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        #shortcuts-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .shortcuts-modal {
+            background: var(--bg2);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 40px;
+            max-width: 560px;
+            width: 100%;
+            position: relative;
+            transform: scale(0.95);
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        #shortcuts-overlay.active .shortcuts-modal {
+            transform: scale(1);
+        }
+
+        .close-shortcuts {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border: none;
+            color: var(--text2);
+            cursor: pointer;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.2s;
+        }
+
+        .close-shortcuts:hover {
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .shortcuts-modal h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+
+        .shortcuts-modal > p {
+            color: var(--text2);
+            margin-bottom: 24px;
+            font-size: 14px;
+        }
+
+        .shortcuts-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .shortcut-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 16px;
+            background: var(--bg3);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+
+        .shortcut-item kbd {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 4px 10px;
+            font-family: 'Inter', monospace;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text);
+            box-shadow: 0 2px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        .shortcut-item span {
+            color: var(--text2);
+            font-size: 14px;
+        }
+
         /* RESPONSIVE */
         @media (max-width: 1024px) {
             .features-grid {
@@ -1664,6 +1771,59 @@
         </div>
     </div>
 
+    <!-- 13a. KEYBOARD SHORTCUTS MODAL -->
+    <div id="shortcuts-overlay">
+        <div class="shortcuts-modal">
+            <button class="close-shortcuts" onclick="closeShortcuts()">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            <h3>⌨️ Keyboard Shortcuts</h3>
+            <p>Navigate the platform quickly using these shortcuts.</p>
+            <div class="shortcuts-grid">
+                <div class="shortcut-item">
+                    <kbd>Ctrl</kbd> + <kbd>K</kbd>
+                    <span>Open this panel</span>
+                </div>
+                <div class="shortcut-item">
+                    <kbd>1</kbd>
+                    <span>Go to HTML Module</span>
+                </div>
+                <div class="shortcut-item">
+                    <kbd>2</kbd>
+                    <span>Go to CSS Module</span>
+                </div>
+                <div class="shortcut-item">
+                    <kbd>3</kbd>
+                    <span>Go to JavaScript Module</span>
+                </div>
+                <div class="shortcut-item">
+                    <kbd>4</kbd>
+                    <span>Go to React Module</span>
+                </div>
+                <div class="shortcut-item">
+                    <kbd>T</kbd>
+                    <span>Toggle Theme</span>
+                </div>
+                <div class="shortcut-item">
+                    <kbd>D</kbd>
+                    <span>Open Donate Modal</span>
+                </div>
+                <div class="shortcut-item">
+                    <kbd>↑</kbd>
+                    <span>Scroll to Top</span>
+                </div>
+                <div class="shortcut-item">
+                    <kbd>Esc</kbd>
+                    <span>Close Modal</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- 13. SCROLL-TO-TOP BUTTON -->
     <button id="scrollTopBtn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" aria-label="Scroll to top">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -1873,6 +2033,66 @@
                 themeToggle.textContent = next === 'dark' ? '☀️' : '🌙';
             });
         }
+
+        // Keyboard Shortcuts Modal
+        const shortcutsOverlay = document.getElementById('shortcuts-overlay');
+
+        function openShortcuts() {
+            shortcutsOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeShortcuts() {
+            shortcutsOverlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        shortcutsOverlay.addEventListener('click', (e) => {
+            if (e.target === shortcutsOverlay) closeShortcuts();
+        });
+
+        // Global Keyboard Shortcut Listener
+        document.addEventListener('keydown', (e) => {
+            // Don't trigger shortcuts when typing in inputs
+            const tag = document.activeElement.tagName.toLowerCase();
+            if (tag === 'input' || tag === 'textarea' || tag === 'select') return;
+
+            // Ctrl+K — open shortcuts modal
+            if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+                e.preventDefault();
+                openShortcuts();
+                return;
+            }
+
+            // Escape — close any active modal
+            if (e.key === 'Escape') {
+                if (shortcutsOverlay.classList.contains('active')) closeShortcuts();
+                if (donateOverlay.classList.contains('active')) closeDonate();
+                return;
+            }
+
+            // Module navigation shortcuts (only when no modal is open)
+            if (shortcutsOverlay.classList.contains('active') || donateOverlay.classList.contains('active')) return;
+
+            switch (e.key) {
+                case '1': window.location.href = 'HTML/index.html'; break;
+                case '2': window.location.href = 'CSS/index.html'; break;
+                case '3': window.location.href = 'JavaScript/index.html'; break;
+                case '4': window.location.href = 'React/index.html'; break;
+                case 't': case 'T':
+                    if (themeToggle) themeToggle.click();
+                    break;
+                case 'd': case 'D':
+                    openDonate();
+                    break;
+                case 'ArrowUp':
+                    if (e.altKey) {
+                        e.preventDefault();
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }
+                    break;
+            }
+        });
     </script>
 </body>
 
