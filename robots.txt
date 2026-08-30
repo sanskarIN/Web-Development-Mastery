@@ -1,0 +1,11 @@
+# https://www.robotstxt.org/robotstxt.html
+# Robots.txt for Web Development Mastery
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://sanskarin.github.io/Web-Development-Mastery/sitemap.xml
+
+# Allow all crawlers access to all content
+# This is an open-source educational platform
