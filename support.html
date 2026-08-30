@@ -1276,7 +1276,7 @@
                 <div class="footer-links">
                     <a href="HTML/index.html">HTML Mastery</a>
                     <a href="CSS/index.html">CSS Mastery</a>
-                    <a href="JS/index.html">JavaScript Mastery</a>
+                    <a href="JavaScript/index.html">JavaScript Mastery</a>
                     <a href="React/index.html">React Mastery</a>
                 </div>
             </div>
@@ -1325,7 +1325,7 @@
         const html = document.documentElement;
 
         // Check for saved theme preference or use system preference
-        const savedTheme = localStorage.getItem('hub-theme');
+        const savedTheme = localStorage.getItem('hubMasteryTheme');
         const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
         
         if (savedTheme) {
@@ -1339,7 +1339,7 @@
             const currentTheme = html.getAttribute('data-theme');
             const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
             html.setAttribute('data-theme', newTheme);
-            localStorage.setItem('hub-theme', newTheme);
+            localStorage.setItem('hubMasteryTheme', newTheme);
         });
 
         // --- FAQ Accordion ---
