@@ -894,6 +894,84 @@
             line-height: 1.6;
         }
 
+        /* 9b. TESTIMONIALS SECTION */
+        .testimonials-section {
+            padding: 100px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .testimonial-card {
+            background: var(--bg2);
+            border: 1px solid var(--border);
+            padding: 32px;
+            border-radius: 20px;
+            position: relative;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 16px;
+            right: 24px;
+            font-size: 60px;
+            font-family: 'Outfit', serif;
+            color: var(--accent1);
+            opacity: 0.15;
+            line-height: 1;
+        }
+
+        .testimonial-text {
+            color: var(--text2);
+            font-size: 15px;
+            line-height: 1.7;
+            margin-bottom: 24px;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .testimonial-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--bg3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            border: 2px solid var(--border);
+        }
+
+        .testimonial-info h5 {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .testimonial-info p {
+            font-size: 13px;
+            color: var(--text3);
+        }
+
         /* 10. CREATOR SECTION */
         .creator-section {
             padding: 100px 24px;
@@ -993,6 +1071,80 @@
             background: rgba(255, 255, 255, 0.1);
             transform: translateY(-3px);
             border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* 10b. FAQ SECTION */
+        .faq-section {
+            padding: 100px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .faq-item {
+            background: var(--bg2);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            margin-bottom: 16px;
+            overflow: hidden;
+            transition: border-color 0.3s;
+        }
+
+        .faq-item:hover {
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 20px 24px;
+            background: none;
+            border: none;
+            color: var(--text);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            text-align: left;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            transition: color 0.2s;
+        }
+
+        .faq-question:hover {
+            color: var(--accent2);
+        }
+
+        .faq-question .faq-icon {
+            font-size: 18px;
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+        }
+
+        .faq-answer-content {
+            padding: 0 24px 20px;
+            color: var(--text2);
+            font-size: 15px;
+            line-height: 1.7;
         }
 
         /* 11. PREMIUM 4-COLUMN FOOTER */
@@ -1712,6 +1864,47 @@
             </div>
         </section>
 
+        <!-- 9b. TESTIMONIALS SECTION -->
+        <section class="testimonials-section">
+            <div class="section-container" style="padding: 0 24px;">
+                <div class="section-heading">
+                    <h2>💬 What Developers Say</h2>
+                </div>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">This platform replaced three paid courses for me. The interactive code sandboxes and deep-dive explanations make complex concepts click instantly.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">🧑💻</div>
+                        <div class="testimonial-info">
+                            <h5>Arjun Mehta</h5>
+                            <p>Frontend Developer, Bangalore</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">The best free resource I've found for learning CSS. The 200 properties with live demos and the theme gallery are absolutely premium quality.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">👩💻</div>
+                        <div class="testimonial-info">
+                            <h5>Priya Sharma</h5>
+                            <p>CS Student, Delhi University</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">Zero dependencies, zero setup — just open and learn. I use it offline during my commute. The progress tracking and XP system keeps me motivated daily.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">👨🎓</div>
+                        <div class="testimonial-info">
+                            <h5>Ravi Kumar</h5>
+                            <p>Self-taught Developer, Pune</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- 10. CREATOR SECTION -->
         <section class="creator-section">
             <div class="creator-card">
@@ -1760,6 +1953,71 @@
             </div>
         </section>
     </main>
+
+    <!-- 10b. FAQ SECTION -->
+    <section class="faq-section">
+        <div class="section-container" style="padding: 0 24px;">
+            <div class="section-heading">
+                <h2>❓ Frequently Asked Questions</h2>
+            </div>
+        </div>
+        <div class="faq-container">
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+                    Is this platform completely free?
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer" role="region">
+                    <div class="faq-answer-content">Yes! Web Development Mastery is 100% free and open-source under the MIT License. There are no premium tiers, paywalls, or hidden costs. All 500+ concepts across HTML, CSS, JavaScript, and React are freely accessible.</div>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+                    Do I need an internet connection?
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer" role="region">
+                    <div class="faq-answer-content">The platform works offline after the initial load. All learning content, code sandboxes, and progress tracking work without an internet connection. Only Google Fonts and CodeMirror CDN require connectivity on first load.</div>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+                    Is my progress saved across sessions?
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer" role="region">
+                    <div class="faq-answer-content">Yes. All progress, XP, mastered concepts, favorites, theme preferences, and settings are saved in your browser's localStorage. You can also export and import your progress to transfer it between devices.</div>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+                    What technologies does this platform use?
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer" role="region">
+                    <div class="faq-answer-content">Web Development Mastery is built entirely with vanilla HTML5, CSS3, and JavaScript — zero external frameworks or build tools. CodeMirror is used for the code editor, and Google Fonts for typography.</div>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+                    Can I contribute to this project?
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer" role="region">
+                    <div class="faq-answer-content">Absolutely! The project is open-source on GitHub. You can contribute by adding new concepts, fixing bugs, improving documentation, or suggesting features. Check the CONTRIBUTING.md guide for details.</div>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+                    Who created this platform?
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer" role="region">
+                    <div class="faq-answer-content">Web Development Mastery was created by Sanskar Yadav, a Full-Stack Web Developer from India. He is passionate about free education and creating premium-quality open-source learning tools.</div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- 11. PREMIUM 4-COLUMN FOOTER -->
     <footer id="support">
@@ -2209,6 +2467,21 @@
                     break;
             }
         });
+    // FAQ Accordion
+    function toggleFaq(btn) {
+        const item = btn.parentElement;
+        const isActive = item.classList.contains('active');
+        // Close all other FAQ items
+        document.querySelectorAll('.faq-item.active').forEach(openItem => {
+            openItem.classList.remove('active');
+            openItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+        });
+        // Toggle current item
+        if (!isActive) {
+            item.classList.add('active');
+            btn.setAttribute('aria-expanded', 'true');
+        }
+    }
     </script>
 </body>
 
