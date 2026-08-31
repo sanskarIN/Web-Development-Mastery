@@ -1236,6 +1236,74 @@
             }
         }
 
+        /* 10d. COOKIE CONSENT BANNER */
+        .cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--bg2);
+            border-top: 1px solid var(--border);
+            padding: 16px 24px;
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .cookie-banner.visible {
+            display: flex;
+        }
+
+        .cookie-banner p {
+            color: var(--text2);
+            font-size: 14px;
+            max-width: 600px;
+        }
+
+        .cookie-banner-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .cookie-btn-accept {
+            padding: 10px 20px;
+            border-radius: 8px;
+            border: none;
+            background: var(--accent1);
+            color: white;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .cookie-btn-accept:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(108, 99, 255, 0.4);
+        }
+
+        .cookie-btn-decline {
+            padding: 10px 20px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            background: none;
+            color: var(--text2);
+            font-weight: 500;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .cookie-btn-decline:hover {
+            color: var(--text);
+            border-color: var(--text3);
+        }
+
         /* 11. PREMIUM 4-COLUMN FOOTER */
         footer {
             background-color: var(--bg2);
@@ -2300,6 +2368,15 @@
         </div>
     </div>
 
+    <!-- 10d. COOKIE CONSENT BANNER -->
+    <div id="cookieBanner" class="cookie-banner" role="alert" aria-label="Cookie consent">
+        <p>🍪 This platform uses <strong>localStorage</strong> to save your progress, themes, and preferences. No data is sent to any server.</p>
+        <div class="cookie-banner-actions">
+            <button class="cookie-btn-accept" onclick="acceptCookies()">Accept</button>
+            <button class="cookie-btn-decline" onclick="declineCookies()">Decline</button>
+        </div>
+    </div>
+
     <!-- 13. SCROLL-TO-TOP BUTTON -->
     <button id="scrollTopBtn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" aria-label="Scroll to top">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -2612,6 +2689,27 @@
             }
         }
     })();
+
+    // Cookie/localStorage Consent Banner
+    (function() {
+        const consent = localStorage.getItem('wdm-cookie-consent');
+        if (!consent) {
+            const banner = document.getElementById('cookieBanner');
+            if (banner) {
+                setTimeout(() => banner.classList.add('visible'), 2000);
+            }
+        }
+    })();
+
+    function acceptCookies() {
+        localStorage.setItem('wdm-cookie-consent', 'accepted');
+        document.getElementById('cookieBanner').classList.remove('visible');
+    }
+
+    function declineCookies() {
+        localStorage.setItem('wdm-cookie-consent', 'declined');
+        document.getElementById('cookieBanner').classList.remove('visible');
+    }
     </script>
 </body>
 
