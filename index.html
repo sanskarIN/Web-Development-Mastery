@@ -1147,6 +1147,95 @@
             line-height: 1.7;
         }
 
+        /* 10c. NEWSLETTER SECTION */
+        .newsletter-section {
+            padding: 80px 24px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .newsletter-card {
+            background: linear-gradient(135deg, rgba(108, 99, 255, 0.1), rgba(62, 207, 207, 0.1));
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 48px;
+            text-align: center;
+            max-width: 600px;
+            width: 100%;
+            backdrop-filter: blur(10px);
+        }
+
+        .newsletter-card h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 28px;
+            margin-bottom: 12px;
+        }
+
+        .newsletter-card > p {
+            color: var(--text2);
+            margin-bottom: 24px;
+            font-size: 15px;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 12px;
+            max-width: 440px;
+            margin: 0 auto;
+        }
+
+        .newsletter-form input[type="email"] {
+            flex: 1;
+            padding: 14px 20px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            background: var(--bg2);
+            color: var(--text);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 15px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .newsletter-form input[type="email"]:focus {
+            border-color: var(--accent1);
+        }
+
+        .newsletter-form input[type="email"]::placeholder {
+            color: var(--text3);
+        }
+
+        .newsletter-form button {
+            padding: 14px 24px;
+            border-radius: 12px;
+            border: none;
+            background: linear-gradient(135deg, var(--accent1), var(--accent2));
+            color: white;
+            font-weight: 600;
+            font-size: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+
+        .newsletter-form button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(108, 99, 255, 0.4);
+        }
+
+        .newsletter-success {
+            display: none;
+            color: var(--accent2);
+            font-weight: 600;
+            margin-top: 16px;
+        }
+
+        @media (max-width: 480px) {
+            .newsletter-form {
+                flex-direction: column;
+            }
+        }
+
         /* 11. PREMIUM 4-COLUMN FOOTER */
         footer {
             background-color: var(--bg2);
@@ -2019,6 +2108,19 @@
         </div>
     </section>
 
+    <!-- 10c. NEWSLETTER SECTION -->
+    <section class="newsletter-section">
+        <div class="newsletter-card">
+            <h3>📬 Stay Updated</h3>
+            <p>Get notified when new modules, concepts, and features are added to the platform.</p>
+            <form class="newsletter-form" id="newsletterForm" onsubmit="return handleNewsletter(event)">
+                <input type="email" id="newsletterEmail" placeholder="your@email.com" required aria-label="Email address">
+                <button type="submit">Subscribe</button>
+            </form>
+            <p class="newsletter-success" id="newsletterSuccess">✅ You're subscribed! Thank you for joining.</p>
+        </div>
+    </section>
+
     <!-- 11. PREMIUM 4-COLUMN FOOTER -->
     <footer id="support">
         <div class="footer-container">
@@ -2482,6 +2584,34 @@
             btn.setAttribute('aria-expanded', 'true');
         }
     }
+
+    // Newsletter Signup (localStorage-based)
+    function handleNewsletter(e) {
+        e.preventDefault();
+        const email = document.getElementById('newsletterEmail').value.trim();
+        if (!email) return false;
+        const subscribers = JSON.parse(localStorage.getItem('wdm-subscribers') || '[]');
+        if (!subscribers.includes(email)) {
+            subscribers.push(email);
+            localStorage.setItem('wdm-subscribers', JSON.stringify(subscribers));
+        }
+        document.getElementById('newsletterForm').style.display = 'none';
+        document.getElementById('newsletterSuccess').style.display = 'block';
+        return false;
+    }
+
+    // Check if already subscribed
+    (function() {
+        const subscribers = JSON.parse(localStorage.getItem('wdm-subscribers') || '[]');
+        if (subscribers.length > 0) {
+            const form = document.getElementById('newsletterForm');
+            const success = document.getElementById('newsletterSuccess');
+            if (form && success) {
+                form.style.display = 'none';
+                success.style.display = 'block';
+            }
+        }
+    })();
     </script>
 </body>
 
