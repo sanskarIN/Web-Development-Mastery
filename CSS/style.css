@@ -2432,3 +2432,5 @@ body.zen-mode #zenBtn {
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 10px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--accent, #3b82f6); }
+
+/* Optimized styling by Sanskar */
