@@ -52,3 +52,5 @@ console.log("Updating HTML file...");
 fs.writeFileSync(filePath, outHtml.join('\n'), 'utf8');
 
 console.log("✅ Success! The CSS and JS have been perfectly separated.");
+
+// Code optimized and documented by Sanskar Developer
