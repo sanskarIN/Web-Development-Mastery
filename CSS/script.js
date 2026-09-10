@@ -5678,3 +5678,5 @@ setTimeout(() => {
         setTimeout(() => splash.remove(), 800);
     }
 }, 1500);
+
+// Code optimized and documented by Sanskar Developer
