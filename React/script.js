@@ -2302,3 +2302,5 @@ if (document.readyState === 'loading') {
 } else {
     init();
 }
+
+// Code optimized and documented by Sanskar Developer
