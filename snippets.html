@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Snippets Library</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="splash.png">
+    <style>
+        :root {
+            --bg: #0b0f19;
+            --text: #f8fafc;
+            --accent1: #6c63ff;
+            --surface: rgba(255, 255, 255, 0.05);
+            --border: rgba(255, 255, 255, 0.1);
+        }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 2rem;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        h1 { text-align: center; color: var(--accent1); margin-bottom: 2rem; }
+        .filters {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .filter-btn {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+        .filter-btn.active {
+            background: var(--accent1);
+        }
+        .snippet {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            backdrop-filter: blur(10px);
+        }
+        .snippet h3 { margin-top: 0; }
+        pre {
+            background: #000;
+            padding: 1rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            position: relative;
+        }
+        code { font-family: monospace; }
+        .copy-btn {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+        .copy-btn:hover { background: var(--accent1); }
+        .tags { display: flex; gap: 0.5rem; margin-top: 1rem; }
+        .tag { background: rgba(108, 99, 255, 0.2); padding: 0.2rem 0.6rem; border-radius: 12px; font-size: 0.8rem; }
+        
+        input[type="text"] {
+            width: 100%;
+            padding: 0.8rem;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            background: var(--surface);
+            color: var(--text);
+            margin-bottom: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Code Snippets Library</h1>
+        
+        <input type="text" id="searchInput" placeholder="Search snippets..." onkeyup="filterSnippets()">
+        
+        <div class="filters">
+            <button class="filter-btn active" onclick="setCategory('all')">All</button>
+            <button class="filter-btn" onclick="setCategory('html')">HTML</button>
+            <button class="filter-btn" onclick="setCategory('css')">CSS</button>
+            <button class="filter-btn" onclick="setCategory('js')">JavaScript</button>
+            <button class="filter-btn" onclick="setCategory('react')">React</button>
+        </div>
+
+        <div id="snippetsContainer">
+            <div class="snippet" data-category="html">
+                <h3>Responsive Meta Tag</h3>
+                <p>The standard meta viewport tag for responsive web design.</p>
+                <pre><button class="copy-btn" onclick="copyCode(this)">Copy</button><code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code></pre>
+                <div class="tags"><span class="tag">html</span><span class="tag">responsive</span></div>
+            </div>
+            
+            <!-- Generate more snippets similarly -->
+            <div class="snippet" data-category="css">
+                <h3>Center Element with Flexbox</h3>
+                <p>Easily center an element both vertically and horizontally.</p>
+                <pre><button class="copy-btn" onclick="copyCode(this)">Copy</button><code>.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}</code></pre>
+                <div class="tags"><span class="tag">css</span><span class="tag">flexbox</span></div>
+            </div>
+            
+            <div class="snippet" data-category="js">
+                <h3>Fetch API GET Request</h3>
+                <p>Make a simple GET request using async/await.</p>
+                <pre><button class="copy-btn" onclick="copyCode(this)">Copy</button><code>async function getData() {
+    try {
+        const response = await fetch('https://api.example.com/data');
+        const data = await response.json();
+        console.log(data);
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}</code></pre>
+                <div class="tags"><span class="tag">javascript</span><span class="tag">api</span></div>
+            </div>
+
+            <div class="snippet" data-category="react">
+                <h3>useState Counter</h3>
+                <p>A simple counter component using hooks.</p>
+                <pre><button class="copy-btn" onclick="copyCode(this)">Copy</button><code>import { useState } from 'react';
+
+function Counter() {
+    const [count, setCount] = useState(0);
+    return (
+        &lt;button onClick={() => setCount(c => c + 1)}&gt;Count: {count}&lt;/button&gt;
+    );
+}</code></pre>
+                <div class="tags"><span class="tag">react</span><span class="tag">hooks</span></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentCategory = 'all';
+
+        function setCategory(cat) {
+            currentCategory = cat;
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            filterSnippets();
+        }
+
+        function filterSnippets() {
+            const search = document.getElementById('searchInput').value.toLowerCase();
+            document.querySelectorAll('.snippet').forEach(snippet => {
+                const text = snippet.textContent.toLowerCase();
+                const category = snippet.dataset.category;
+                const matchSearch = text.includes(search);
+                const matchCat = currentCategory === 'all' || category === currentCategory;
+                
+                if(matchSearch && matchCat) {
+                    snippet.style.display = 'block';
+                } else {
+                    snippet.style.display = 'none';
+                }
+            });
+        }
+
+        function copyCode(btn) {
+            const code = btn.nextElementSibling.textContent;
+            navigator.clipboard.writeText(code).then(() => {
+                const originalText = btn.textContent;
+                btn.textContent = 'Copied!';
+                setTimeout(() => btn.textContent = originalText, 2000);
+            });
+        }
+    </script>
+</body>
+</html>
