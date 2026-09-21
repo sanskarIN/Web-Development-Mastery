@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="splash.png">
+    <title>Changelog - WebDev Mastery</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --bg: #0b0f19; --text: #f8fafc; --accent1: #6c63ff; --accent2: #3ecfcf; --glass: rgba(255, 255, 255, 0.05); }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
+        body { background: var(--bg); color: var(--text); }
+        nav { background: var(--glass); padding: 1rem 2rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        nav a { color: var(--text); text-decoration: none; margin-left: 1rem; }
+        .logo { font-size: 1.5rem; font-weight: 700; color: var(--accent2); }
+        .container { max-width: 800px; margin: 3rem auto; padding: 0 2rem; position: relative; }
+        .timeline::before { content: ''; position: absolute; left: 40px; top: 0; bottom: 0; width: 2px; background: rgba(255,255,255,0.1); }
+        .release { position: relative; padding-left: 3rem; margin-bottom: 3rem; }
+        .release::before { content: ''; position: absolute; left: 6px; top: 8px; width: 14px; height: 14px; border-radius: 50%; background: var(--accent1); box-shadow: 0 0 0 4px var(--bg), 0 0 0 6px var(--accent1); }
+        .version { font-size: 1.5rem; font-weight: 700; color: var(--accent2); margin-bottom: 0.5rem; }
+        .date { font-size: 0.9rem; opacity: 0.6; margin-bottom: 1rem; }
+        .changes { background: var(--glass); padding: 1.5rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); }
+        .badge { display: inline-block; padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.8rem; font-weight: 600; margin-right: 0.5rem; margin-bottom: 0.5rem; }
+        .badge.feat { background: rgba(108, 99, 255, 0.2); color: #6c63ff; }
+        .badge.fix { background: rgba(239, 68, 68, 0.2); color: #ef4444; }
+        .change-item { display: flex; align-items: flex-start; margin-bottom: 0.75rem; }
+        .change-item:last-child { margin-bottom: 0; }
+        @media(max-width: 600px) { .timeline::before { left: 20px; } .release { padding-left: 2rem; } .release::before { left: -14px; } }
+    </style>
+</head>
+<body>
+    <nav><div class="logo">WebDev Mastery</div><div><a href="index.html">Home</a><a href="changelog-viewer.html">Changelog</a></div></nav>
+    <div class="container timeline">
+        <div class="release">
+            <div class="version">v1.2.0</div><div class="date">September 21, 2026</div>
+            <div class="changes">
+                <div class="change-item"><span class="badge feat">Feature</span> Added interactive web development quiz page.</div>
+                <div class="change-item"><span class="badge feat">Feature</span> Added standalone code playground with live preview.</div>
+                <div class="change-item"><span class="badge feat">Feature</span> Added progress dashboard page.</div>
+            </div>
+        </div>
+        <div class="release">
+            <div class="version">v1.1.0</div><div class="date">September 15, 2026</div>
+            <div class="changes">
+                <div class="change-item"><span class="badge feat">Feature</span> Added resources and cheatsheet pages.</div>
+                <div class="change-item"><span class="badge fix">Fix</span> Resolved mobile navigation overlap issue.</div>
+            </div>
+        </div>
+        <div class="release">
+            <div class="version">v1.0.0</div><div class="date">September 1, 2026</div>
+            <div class="changes">
+                <div class="change-item"><span class="badge feat">Feature</span> Initial launch of WebDev Mastery.</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
