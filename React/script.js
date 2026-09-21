@@ -1279,6 +1279,18 @@ const TAGS = [
             "example": "const App = () => {\n  // Concurrent mode is enabled automatically with createRoot\n  return <div>Welcome to Concurrent React!</div>;\n};\nconst root = ReactDOM.createRoot(document.getElementById('root'));\nroot.render(<App />);",
             "content": "<h3>Concurrent Rendering</h3><p>React can pause, abort, or resume rendering work to keep the UI responsive.</p><h4>Best Practices</h4><p>Utilize useTransition and useDeferredValue to fully leverage concurrency.</p><h4>Common Pitfalls</h4><p>Assuming renders run uninterrupted synchronously can lead to bugs in strict mode.</p>",
             "challenge": "Read the React docs on how createRoot enables concurrent features."
+    },
+    {
+
+            "id": "automatic_batching_18",
+            "title": "Automatic Batching",
+            "category": "React 18",
+            "xp": 30,
+            "description": "React 18 batched state updates for better performance out-of-the-box.",
+            "syntax": "// State updates in promises or timeouts are batched automatically",
+            "example": "const App = () => {\n  const [count, setCount] = React.useState(0);\n  const [flag, setFlag] = React.useState(false);\n  const handleClick = () => {\n    setTimeout(() => {\n      setCount(c => c + 1);\n      setFlag(f => !f);\n      // Only one re-render happens!\n    }, 1000);\n  };\n  return <button onClick={handleClick}>Click</button>;\n};\nconst root = ReactDOM.createRoot(document.getElementById('root'));\nroot.render(<App />);",
+            "content": "<h3>Automatic Batching</h3><p>React batches multiple state updates into a single re-render, even inside promises, setTimeout, or native event handlers.</p><h4>Best Practices</h4><p>Trust React to batch updates; use flushSync if you absolutely need a synchronous update.</p><h4>Common Pitfalls</h4><p>Don't assume intermediate states will be painted to the screen.</p>",
+            "challenge": "Test automatic batching in an async function."
     }
 ];
 
