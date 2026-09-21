@@ -53,3 +53,13 @@ temp/
 *.bak
 *.backup
 *.orig
+
+# ── Python ───────────────────────────────────────────
+__pycache__/
+*.pyc
+*.pyo
+venv/
+.venv/
+
+# ── Automation scripts (dev only) ────────────────────
+auto_commit*.py
