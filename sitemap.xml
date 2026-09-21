@@ -127,8 +127,58 @@
     </url>
     <url>
         <loc>https://sanskarin.github.io/Web-Development-Mastery/Follow-Sanskar.html</loc>
-        <lastmod>2026-08-30</lastmod>
+        <lastmod>2026-09-21</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
+    </url>
+
+    <!-- New v3.0 Pages -->
+    <url>
+        <loc>https://sanskarin.github.io/Web-Development-Mastery/playground.html</loc>
+        <lastmod>2026-09-21</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://sanskarin.github.io/Web-Development-Mastery/quiz.html</loc>
+        <lastmod>2026-09-21</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://sanskarin.github.io/Web-Development-Mastery/glossary.html</loc>
+        <lastmod>2026-09-21</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://sanskarin.github.io/Web-Development-Mastery/cheatsheet.html</loc>
+        <lastmod>2026-09-21</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://sanskarin.github.io/Web-Development-Mastery/resources.html</loc>
+        <lastmod>2026-09-21</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://sanskarin.github.io/Web-Development-Mastery/bookmarks.html</loc>
+        <lastmod>2026-09-21</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://sanskarin.github.io/Web-Development-Mastery/progress-dashboard.html</loc>
+        <lastmod>2026-09-21</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://sanskarin.github.io/Web-Development-Mastery/changelog-viewer.html</loc>
+        <lastmod>2026-09-21</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
     </url>
 </urlset>
