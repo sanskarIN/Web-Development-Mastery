@@ -1195,6 +1195,18 @@ const TAGS = [
             "example": "const FancyButton = React.forwardRef((props, ref) => (\n  <button ref={ref} className=\"FancyButton\">\n    {props.children}\n  </button>\n));\nconst App = () => {\n  const ref = React.useRef();\n  return <FancyButton ref={ref}>Click me!</FancyButton>;\n};\nconst root = ReactDOM.createRoot(document.getElementById('root'));\nroot.render(<App />);",
             "content": "<h3>forwardRef</h3><p>Ref forwarding is an opt-in feature that lets some components take a ref they receive, and pass it further down to a child.</p><h4>Best Practices</h4><p>Useful for reusable component libraries (like inputs or buttons).</p><h4>Common Pitfalls</h4><p>Overusing refs breaks the declarative paradigm of React.</p>",
             "challenge": "Forward a ref to a custom input component."
+    },
+    {
+
+            "id": "use_imperative_handle",
+            "title": "useImperativeHandle",
+            "category": "Advanced Hooks",
+            "xp": 35,
+            "description": "Customizing the ref instance value that is exposed to parent components.",
+            "syntax": "useImperativeHandle(ref, createHandle, [deps])",
+            "example": "const FancyInput = React.forwardRef((props, ref) => {\n  const inputRef = React.useRef();\n  React.useImperativeHandle(ref, () => ({\n    focus: () => { inputRef.current.focus(); }\n  }));\n  return <input ref={inputRef} />;\n});\nconst App = () => {\n  const ref = React.useRef();\n  return <FancyInput ref={ref} />;\n};\nconst root = ReactDOM.createRoot(document.getElementById('root'));\nroot.render(<App />);",
+            "content": "<h3>useImperativeHandle</h3><p>Customizes the instance value that is exposed to parent components when using ref.</p><h4>Best Practices</h4><p>Should be used with forwardRef. Only expose necessary methods.</p><h4>Common Pitfalls</h4><p>Avoid using imperative code in mostly declarative React applications.</p>",
+            "challenge": "Expose a 'clear' method on a custom input component."
     }
 ];
 
