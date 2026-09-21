@@ -1135,6 +1135,18 @@ const TAGS = [
         "example": "const App = () => {\n  return (\n    <div style={{color:'white', padding: '20px', textAlign: 'center'}}>\n      <h1 style={{color: '#61dafb', fontSize: '3rem'}}>🎉 Congratulations!</h1>\n      <p style={{fontSize: '1.2rem'}}>You have mastered React.</p>\n      <div style={{\n        marginTop: '20px',\n        padding: '20px',\n        background: 'linear-gradient(45deg, #61dafb, #d946ef)',\n        borderRadius: '10px',\n        color: 'black',\n        fontWeight: 'bold'\n      }}>\n        You are now ready to build massive, interactive single-page applications!\n      </div>\n    </div>\n  );\n};\nconst root = ReactDOM.createRoot(document.getElementById('root'));\nroot.render(<App />);",
         "content": "<h3>Conclusion</h3><p>This covers exactly 100 concepts, from useState to the bleeding edge React 19 Actions. Build incredible things!</p>",
         "challenge": "Review all 100 concepts and start your next big project!"
+    },
+    {
+
+            "id": "react_memo_perf",
+            "title": "React.memo",
+            "category": "Performance",
+            "xp": 25,
+            "description": "Performance optimization with memoization to prevent unnecessary re-renders.",
+            "syntax": "const MemoizedComponent = React.memo(MyComponent);",
+            "example": "const MyComponent = React.memo((props) => {\n  return <div>{props.text}</div>;\n});\nconst App = () => <MyComponent text=\"Hello\" />;\nconst root = ReactDOM.createRoot(document.getElementById('root'));\nroot.render(<App />);",
+            "content": "<h3>React.memo</h3><p>React.memo is a higher-order component. If your component renders the same result given the same props, React will skip rendering the component, and use the last rendered result.</p><h4>Best Practices</h4><p>Use it for pure components that render often with the same props.</p><h4>Common Pitfalls</h4><p>Don't use it everywhere. The comparison itself has a cost.</p>",
+            "challenge": "Wrap a component in React.memo and log when it renders."
     }
 ];
 
