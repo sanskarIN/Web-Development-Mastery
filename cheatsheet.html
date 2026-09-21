@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="splash.png">
+    <title>Cheatsheet</title>
+    <style>
+        :root { --bg: #0b0f19; --text: #f8fafc; --accent: #6c63ff; }
+        body { background: var(--bg); color: var(--text); font-family: sans-serif; padding: 2rem; }
+        .tabs { display: flex; gap: 1rem; margin-bottom: 1rem; }
+        .tab { padding: 0.5rem 1rem; background: rgba(255,255,255,0.1); cursor: pointer; border-radius: 4px; }
+        .tab.active { background: var(--accent); }
+        .content { display: none; background: rgba(255,255,255,0.05); padding: 2rem; border-radius: 8px; }
+        .content.active { display: block; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { padding: 0.75rem; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    </style>
+</head>
+<body>
+    <h1>Web Dev Cheatsheet</h1>
+    <div class="tabs">
+        <div class="tab active" onclick="openTab(event, 'html')">HTML</div>
+        <div class="tab" onclick="openTab(event, 'css')">CSS</div>
+        <div class="tab" onclick="openTab(event, 'js')">JavaScript</div>
+    </div>
+    
+    <div id="html" class="content active">
+        <h2>HTML Tags</h2>
+        <table><tr><th>Tag</th><th>Description</th></tr><tr><td>&lt;div&gt;</td><td>Defines a division or a section in an HTML document</td></tr><tr><td>&lt;span&gt;</td><td>Defines a section in a document</td></tr><tr><td>&lt;a&gt;</td><td>Defines a hyperlink</td></tr></table>
+    </div>
+    
+    <div id="css" class="content">
+        <h2>CSS Properties</h2>
+        <table><tr><th>Property</th><th>Usage</th></tr><tr><td>display: flex;</td><td>Enables flexbox layout</td></tr><tr><td>margin: auto;</td><td>Centers element horizontally</td></tr></table>
+    </div>
+
+    <div id="js" class="content">
+        <h2>JS Methods</h2>
+        <table><tr><th>Method</th><th>Description</th></tr><tr><td>querySelector()</td><td>Returns the first element that matches a CSS selector</td></tr><tr><td>addEventListener()</td><td>Attaches an event handler to the specified element</td></tr></table>
+    </div>
+
+    <script>
+        function openTab(evt, tabName) {
+            document.querySelectorAll('.content').forEach(c => c.classList.remove('active'));
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.getElementById(tabName).classList.add('active');
+            evt.currentTarget.classList.add('active');
+        }
+    </script>
+</body>
+</html>
