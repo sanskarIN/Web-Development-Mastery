@@ -1363,6 +1363,18 @@ const TAGS = [
             "example": "import Link from 'next/link';\nexport default function Home() {\n  return (\n    <div>\n      <h1>Welcome to Next.js</h1>\n      <Link href=\"/about\">About Us</Link>\n    </div>\n  );\n}",
             "content": "<h3>Next.js</h3><p>The standard React framework. Provides SSR, SSG, file-system routing, API routes, and first-class React Server Components support.</p><h4>Best Practices</h4><p>Use the App Router for new projects to fully leverage React 18/19 features.</p><h4>Common Pitfalls</h4><p>Mixing client and server logic improperly in Server Components.</p>",
             "challenge": "Create a dynamic route like [id].js or [id]/page.js."
+    },
+    {
+
+            "id": "react_performance_profiling",
+            "title": "React Performance Profiling",
+            "category": "Optimization",
+            "xp": 35,
+            "description": "Using the React DevTools Profiler to find performance bottlenecks.",
+            "syntax": "// Open React DevTools -> Profiler -> Record",
+            "example": "const App = () => {\n  return <div>Profile me in the React DevTools!</div>;\n};\nconst root = ReactDOM.createRoot(document.getElementById('root'));\nroot.render(<App />);",
+            "content": "<h3>Performance Profiling</h3><p>The Profiler plugin in browser DevTools lets you record rendering sessions to see which components render, why, and how long they take.</p><h4>Best Practices</h4><p>Profile in a production build or use the DevTools with 'Record why each component rendered' enabled.</p><h4>Common Pitfalls</h4><p>Optimizing components that take less than 1ms to render.</p>",
+            "challenge": "Record a profiling session while interacting with your app."
     }
 ];
 
