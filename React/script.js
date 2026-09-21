@@ -1231,6 +1231,18 @@ const TAGS = [
             "example": "const App = () => {\n  const [text, setText] = React.useState('');\n  const deferredText = React.useDeferredValue(text);\n  return (\n    <div>\n      <input value={text} onChange={e => setText(e.target.value)} />\n      <SlowList text={deferredText} />\n    </div>\n  );\n};\nconst root = ReactDOM.createRoot(document.getElementById('root'));\nroot.render(<App />);",
             "content": "<h3>useDeferredValue</h3><p>Allows you to defer updating a part of the UI. It's like debouncing, but integrated into React's rendering pipeline.</p><h4>Best Practices</h4><p>Use it for slow-rendering components that depend on fast-updating state like user input.</p><h4>Common Pitfalls</h4><p>Do not use for network requests, only for rendering optimizations.</p>",
             "challenge": "Defer a search query used in a heavy list."
+    },
+    {
+
+            "id": "use_transition_blocking",
+            "title": "useTransition",
+            "category": "React 18",
+            "xp": 35,
+            "description": "Marking state updates as non-blocking transitions.",
+            "syntax": "const [isPending, startTransition] = useTransition();",
+            "example": "const App = () => {\n  const [isPending, startTransition] = React.useTransition();\n  const [val, setVal] = React.useState(0);\n  const update = () => startTransition(() => setVal(val + 1));\n  return <button onClick={update}>{isPending ? 'Loading...' : 'Update'}</button>;\n};\nconst root = ReactDOM.createRoot(document.getElementById('root'));\nroot.render(<App />);",
+            "content": "<h3>useTransition</h3><p>Lets you update state without blocking the UI. Urgent updates (like typing) interrupt non-urgent transitions.</p><h4>Best Practices</h4><p>Wrap slow, non-urgent state updates (like filtering a large list) in startTransition.</p><h4>Common Pitfalls</h4><p>Cannot be used for controlled inputs directly.</p>",
+            "challenge": "Wrap a slow filtering operation in a transition."
     }
 ];
 
