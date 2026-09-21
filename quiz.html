@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Web Development Quiz">
+    <link rel="icon" type="image/png" href="splash.png">
+    <title>Web Dev Quiz</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --bg: #0b0f19; --text: #f8fafc; --accent1: #6c63ff; --accent2: #3ecfcf; --accent3: #bf5af2; --glass-bg: rgba(255, 255, 255, 0.05); --glass-border: rgba(255, 255, 255, 0.1); }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
+        body { background-color: var(--bg); color: var(--text); line-height: 1.6; }
+        nav { background: var(--glass-bg); backdrop-filter: blur(10px); border-bottom: 1px solid var(--glass-border); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+        nav a { color: var(--text); text-decoration: none; margin-left: 1rem; font-weight: 500; }
+        .logo { font-size: 1.5rem; font-weight: 700; background: linear-gradient(45deg, var(--accent1), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .container { max-width: 800px; margin: 2rem auto; padding: 2rem; background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 12px; backdrop-filter: blur(10px); }
+        h1 { text-align: center; margin-bottom: 1rem; color: var(--accent2); }
+        .stats { display: flex; justify-content: space-between; margin-bottom: 1rem; font-size: 0.9rem; opacity: 0.8; }
+        .progress-bar { width: 100%; height: 8px; background: rgba(255,255,255,0.1); border-radius: 4px; margin-bottom: 2rem; overflow: hidden; }
+        .progress { width: 0%; height: 100%; background: linear-gradient(90deg, var(--accent1), var(--accent2)); transition: width 0.3s ease; }
+        .question-container { margin-bottom: 2rem; }
+        .question { font-size: 1.2rem; font-weight: 600; margin-bottom: 1rem; }
+        .options { display: flex; flex-direction: column; gap: 0.75rem; }
+        .option { padding: 1rem; border: 1px solid var(--glass-border); border-radius: 8px; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; gap: 1rem; }
+        .option:hover { background: rgba(255,255,255,0.1); }
+        .option input { transform: scale(1.2); accent-color: var(--accent1); }
+        .btn { padding: 0.75rem 1.5rem; background: var(--accent1); color: #fff; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; transition: background 0.3s; font-size: 1rem; width: 100%; }
+        .btn:hover { background: var(--accent3); }
+        .result { display: none; text-align: center; }
+        .result h2 { margin-bottom: 1rem; color: var(--accent2); }
+        .score { font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; }
+        footer { background: var(--glass-bg); border-top: 1px solid var(--glass-border); padding: 2rem; text-align: center; margin-top: 4rem; }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">WebDev Mastery</div>
+        <div><a href="index.html">Home</a><a href="quiz.html">Quiz</a></div>
+    </nav>
+    <div class="container">
+        <div id="quiz-screen">
+            <h1>Web Dev Knowledge Quiz</h1>
+            <div class="stats">
+                <span id="q-counter">Question 1 of 10</span>
+                <span id="best-score">Best Score: 0%</span>
+            </div>
+            <div class="progress-bar"><div class="progress" id="progress"></div></div>
+            <div class="question-container">
+                <div class="question" id="question-text">Loading question...</div>
+                <div class="options" id="options"></div>
+            </div>
+            <button class="btn" id="next-btn">Next</button>
+        </div>
+        <div id="result-screen" class="result">
+            <h2>Quiz Completed!</h2>
+            <div class="score" id="score-text">0/10</div>
+            <p id="feedback" style="margin-bottom: 2rem;"></p>
+            <button class="btn" onclick="location.reload()">Try Again</button>
+        </div>
+    </div>
+    <footer><p>&copy; 2026 Web Development Mastery</p></footer>
+    <script>
+        const questions = [
+            { q: "What does HTML stand for?", options: ["Hyper Text Markup Language", "High Tech Modern Language", "Hyperlink Text Markup Language", "Home Tool Markup Language"], a: 0 },
+            { q: "Which property is used to change the background color?", options: ["color", "bgcolor", "background-color", "background-image"], a: 2 },
+            { q: "Choose the correct HTML element for the largest heading:", options: ["<h1>", "<heading>", "<head>", "<h6>"], a: 0 },
+            { q: "Inside which HTML element do we put the JavaScript?", options: ["<scripting>", "<js>", "<javascript>", "<script>"], a: 3 },
+            { q: "What is the correct syntax for referring to an external script called 'app.js'?", options: ["<script href='app.js'>", "<script name='app.js'>", "<script src='app.js'>", "<script file='app.js'>"], a: 2 },
+            { q: "How do you write 'Hello World' in an alert box?", options: ["msgBox('Hello World');", "alertBox('Hello World');", "msg('Hello World');", "alert('Hello World');"], a: 3 },
+            { q: "How do you create a function in JavaScript?", options: ["function myFunction()", "function:myFunction()", "function = myFunction()", "def myFunction()"], a: 0 },
+            { q: "Which CSS property controls the text size?", options: ["text-style", "font-size", "text-size", "font-style"], a: 1 },
+            { q: "How do you select an element with id 'demo'?", options: [".demo", "#demo", "demo", "*demo"], a: 1 },
+            { q: "Which event occurs when the user clicks on an HTML element?", options: ["onmouseclick", "onchange", "onclick", "onmouseover"], a: 2 }
+        ];
+        let currentQ = 0; let score = 0;
+        const qText = document.getElementById('question-text');
+        const opts = document.getElementById('options');
+        const nextBtn = document.getElementById('next-btn');
+        const progress = document.getElementById('progress');
+        const qCounter = document.getElementById('q-counter');
+        const quizScreen = document.getElementById('quiz-screen');
+        const resultScreen = document.getElementById('result-screen');
+        const bestScoreDisplay = document.getElementById('best-score');
+        
+        let bestScore = localStorage.getItem('quizBestScore') || 0;
+        bestScoreDisplay.textContent = `Best Score: ${bestScore}%`;
+
+        function loadQuestion() {
+            const q = questions[currentQ];
+            qText.textContent = q.q;
+            opts.innerHTML = '';
+            q.options.forEach((opt, idx) => {
+                const label = document.createElement('label');
+                label.className = 'option';
+                label.innerHTML = `<input type="radio" name="quiz" value="${idx}"> ${opt}`;
+                opts.appendChild(label);
+            });
+            progress.style.width = `${(currentQ / questions.length) * 100}%`;
+            qCounter.textContent = `Question ${currentQ + 1} of ${questions.length}`;
+        }
+        
+        nextBtn.addEventListener('click', () => {
+            const selected = document.querySelector('input[name="quiz"]:checked');
+            if (!selected) return alert("Please select an option!");
+            if (parseInt(selected.value) === questions[currentQ].a) score++;
+            currentQ++;
+            if (currentQ < questions.length) loadQuestion();
+            else showResult();
+        });
+
+        function showResult() {
+            quizScreen.style.display = 'none';
+            resultScreen.style.display = 'block';
+            const percent = (score / questions.length) * 100;
+            document.getElementById('score-text').textContent = `${score}/${questions.length} (${percent}%)`;
+            if (percent > bestScore) { localStorage.setItem('quizBestScore', percent); }
+        }
+        loadQuestion();
+    </script>
+</body>
+</html>
