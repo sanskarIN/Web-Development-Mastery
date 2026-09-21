@@ -6,6 +6,36 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [3.1.0] — 2026-09-21
+
+### 🔗 Link & Contact Updates
+- Updated all Gumroad links across 40+ files from `ramsandesh.gumroad.com` → `sanskarIN.gumroad.com`
+- Updated all BMC links to `www.buymeacoffee.com/sanskarIN`
+- Updated business email #1: `sanskarin@outlook.in`
+- Updated business email #2: `sanskarin.business@gmail.com`
+- Support email: `supportramsandesh@gmail.com`
+
+### ⚛️ React Module Enhancements (20 new concepts)
+- React.memo, React.lazy & Suspense, Error Boundaries, React Portals
+- React.forwardRef, useImperativeHandle, useLayoutEffect
+- useDeferredValue, useTransition, useId
+- Server Components, Concurrent Rendering, Automatic Batching
+- React Compiler, React Testing Library, React Router v6
+- Redux Toolkit, TanStack Query, Next.js Integration
+- React Performance Profiling
+
+### 🆕 New Feature Pages
+- **Framework Comparison** (`compare.html`) — React vs Vue vs Angular vs Svelte comparison tool
+- **Detailed Learning Roadmap** (`roadmap-detail.html`) — Interactive 4-phase learning path with localStorage progress
+- **Code Snippets Library** (`snippets.html`) — 40+ curated snippets with copy-to-clipboard
+- **Daily Web Dev Tips** (`tips.html`) — 30+ tips organized by category with random tip generator
+
+### 🔍 SEO
+- Added 4 new pages to sitemap.xml
+- Fixed commit-graph integrity
+
+---
+
 ## [3.0.0] — 2026-09-21
 
 ### 🚀 Major New Features
