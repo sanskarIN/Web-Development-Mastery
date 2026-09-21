@@ -95,12 +95,37 @@ Web-Development-Mastery/
 ├── thanks.html             # Root thanks page
 ├── 404.html                # Root 404 page
 ├── Follow-Sanskar.html     # Follow developer page
+├── playground.html         # Standalone code playground
+├── quiz.html               # Interactive web dev quiz
+├── glossary.html           # Searchable web dev glossary
+├── cheatsheet.html         # Quick reference cheat sheets
+├── resources.html          # Curated learning resources
+├── bookmarks.html          # Bookmark management page
+├── progress-dashboard.html # Learning progress dashboard
+├── changelog-viewer.html   # Visual changelog viewer
 ├── sitemap.xml             # XML sitemap
 ├── robots.txt              # Crawler directives
+├── manifest.json           # PWA web app manifest
+├── sw.js                   # Service worker for offline caching
+├── humans.txt              # Team credits
+├── .editorconfig           # Editor configuration
+├── .prettierrc             # Prettier formatting config
 ├── README.md               # Project documentation
 ├── CONTRIBUTING.md         # This file
 ├── CHANGELOG.md            # Version history
-└── LICENSE                 # MIT License
+├── CODE_OF_CONDUCT.md      # Community guidelines
+├── SECURITY.md             # Security policy
+├── LICENSE                 # MIT License
+└── .github/
+    ├── FUNDING.yml         # GitHub Sponsors config
+    ├── README.md           # GitHub profile README
+    ├── PULL_REQUEST_TEMPLATE.md
+    ├── ISSUE_TEMPLATE/
+    │   ├── bug_report.md
+    │   └── feature_request.md
+    └── workflows/
+        ├── deploy.yml      # GitHub Pages deployment
+        └── lint.yml        # HTML linting CI
 ```
 
 ---
