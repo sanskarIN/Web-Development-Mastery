@@ -3,6 +3,7 @@
 
 User-agent: *
 Allow: /
+Crawl-delay: 10
 
 # Sitemap location
 Sitemap: https://sanskarin.github.io/Web-Development-Mastery/sitemap.xml
