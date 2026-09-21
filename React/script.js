@@ -1171,6 +1171,18 @@ const TAGS = [
             "example": "class ErrorBoundary extends React.Component {\n  state = { hasError: false };\n  static getDerivedStateFromError() { return { hasError: true }; }\n  render() { return this.state.hasError ? <h1>Error!</h1> : this.props.children; }\n}\nconst App = () => <ErrorBoundary><MyBuggyComponent /></ErrorBoundary>;\nconst root = ReactDOM.createRoot(document.getElementById('root'));\nroot.render(<App />);",
             "content": "<h3>Error Boundaries</h3><p>Error boundaries catch JavaScript errors anywhere in their child component tree.</p><h4>Best Practices</h4><p>Place error boundaries at logical boundaries like routes or major UI sections.</p><h4>Common Pitfalls</h4><p>Error boundaries do not catch errors inside event handlers.</p>",
             "challenge": "Create an ErrorBoundary and intentionally throw an error in a child."
+    },
+    {
+
+            "id": "react_portals_rendering",
+            "title": "React Portals",
+            "category": "Advanced",
+            "xp": 25,
+            "description": "Rendering outside the DOM hierarchy for modals, tooltips, etc.",
+            "syntax": "ReactDOM.createPortal(child, container)",
+            "example": "const Modal = ({ children }) => {\n  return ReactDOM.createPortal(<div>{children}</div>, document.getElementById('modal-root'));\n};\nconst App = () => <Modal>Hello Portal!</Modal>;\nconst root = ReactDOM.createRoot(document.getElementById('root'));\nroot.render(<App />);",
+            "content": "<h3>Portals</h3><p>Portals provide a first-class way to render children into a DOM node that exists outside the DOM hierarchy of the parent component.</p><h4>Best Practices</h4><p>Use for modals, tooltips, and popovers to avoid z-index and overflow issues.</p><h4>Common Pitfalls</h4><p>Events bubble up through the React tree, not the DOM tree.</p>",
+            "challenge": "Create a portal for a tooltip."
     }
 ];
 
