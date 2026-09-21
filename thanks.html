@@ -919,7 +919,14 @@
         <!-- Hero Section -->
         <section class="hero-section">
             <div class="emoji-pulse">🎉</div>
-            <h1 class="thank-you-title">Thank You!</h1>
+            <style>
+                .thank-you-title:focus {
+                    outline: 2px dashed #ff90e8;
+                    outline-offset: 8px;
+                    border-radius: 4px;
+                }
+            </style>
+            <h1 class="thank-you-title" tabindex="0">Thank You!</h1>
             <p class="thank-you-desc">
                 Your support means the world to us! Thanks to people like you,
                 <strong>Web Development Mastery</strong> remains a free, open-source learning hub
