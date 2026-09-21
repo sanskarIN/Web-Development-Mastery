@@ -1327,6 +1327,18 @@ const TAGS = [
             "example": "import { BrowserRouter, Routes, Route } from 'react-router-dom';\nconst App = () => (\n  <BrowserRouter>\n    <Routes>\n      <Route path=\"/\" element={<Home />} />\n      <Route path=\"/about\" element={<About />} />\n    </Routes>\n  </BrowserRouter>\n);",
             "content": "<h3>React Router v6</h3><p>Introduces a more declarative API, nested routes, and powerful data loading capabilities via the newer Data Routers.</p><h4>Best Practices</h4><p>Use the latest createBrowserRouter for data fetching and action mutations.</p><h4>Common Pitfalls</h4><p>Confusing v5 syntax (like Switch) with v6 (Routes).</p>",
             "challenge": "Create a nested route layout using the Outlet component."
+    },
+    {
+
+            "id": "redux_toolkit_state",
+            "title": "Redux Toolkit",
+            "category": "State Management",
+            "xp": 40,
+            "description": "Modern, opinionated state management with Redux Toolkit (RTK).",
+            "syntax": "const slice = createSlice({ name: 'counter', initialState, reducers: { ... } });",
+            "example": "import { createSlice, configureStore } from '@reduxjs/toolkit';\nconst counterSlice = createSlice({\n  name: 'counter',\n  initialState: { value: 0 },\n  reducers: { increment: s => { s.value += 1 } }\n});\nconst store = configureStore({ reducer: counterSlice.reducer });",
+            "content": "<h3>Redux Toolkit</h3><p>The official, recommended way to write Redux logic. It simplifies store setup, reduces boilerplate, and uses Immer for immutable updates.</p><h4>Best Practices</h4><p>Use RTK Query for data fetching instead of writing manual thunks.</p><h4>Common Pitfalls</h4><p>Overusing Redux for local UI state that should just be in useState.</p>",
+            "challenge": "Create a basic RTK slice and dispatch an action."
     }
 ];
 
