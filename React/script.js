@@ -1243,6 +1243,18 @@ const TAGS = [
             "example": "const App = () => {\n  const [isPending, startTransition] = React.useTransition();\n  const [val, setVal] = React.useState(0);\n  const update = () => startTransition(() => setVal(val + 1));\n  return <button onClick={update}>{isPending ? 'Loading...' : 'Update'}</button>;\n};\nconst root = ReactDOM.createRoot(document.getElementById('root'));\nroot.render(<App />);",
             "content": "<h3>useTransition</h3><p>Lets you update state without blocking the UI. Urgent updates (like typing) interrupt non-urgent transitions.</p><h4>Best Practices</h4><p>Wrap slow, non-urgent state updates (like filtering a large list) in startTransition.</p><h4>Common Pitfalls</h4><p>Cannot be used for controlled inputs directly.</p>",
             "challenge": "Wrap a slow filtering operation in a transition."
+    },
+    {
+
+            "id": "use_id_accessibility",
+            "title": "useId",
+            "category": "React 18",
+            "xp": 20,
+            "description": "Generating unique IDs for accessibility attributes.",
+            "syntax": "const id = useId();",
+            "example": "const App = () => {\n  const id = React.useId();\n  return (\n    <div>\n      <label htmlFor={id}>Name</label>\n      <input id={id} type=\"text\" />\n    </div>\n  );\n};\nconst root = ReactDOM.createRoot(document.getElementById('root'));\nroot.render(<App />);",
+            "content": "<h3>useId</h3><p>A hook for generating unique IDs that are stable across the server and client, avoiding hydration mismatches.</p><h4>Best Practices</h4><p>Use for connecting labels and inputs with aria attributes.</p><h4>Common Pitfalls</h4><p>Do not use useId to generate keys for lists.</p>",
+            "challenge": "Connect an input and an error message using useId and aria-describedby."
     }
 ];
 
