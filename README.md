@@ -30,6 +30,24 @@ This platform requires **no compilation, no server setup, and no dependencies**.
 - 🌙 **Theme Gallery** — 25+ curated presets + custom theme builder
 - 📤 **Export/Import** — Save and restore your progress across devices
 
+## 🆕 What's New in v3.0
+
+| Feature | Description |
+|---------|-------------|
+| 📱 **PWA Support** | Install as native app, offline caching via service worker |
+| 🎮 **Code Playground** | Standalone HTML/CSS/JS editor with live preview |
+| 📝 **Interactive Quiz** | 10-question web dev quiz with scoring and timer |
+| 📊 **Progress Dashboard** | Visual XP tracking, streaks, and module progress |
+| 📖 **Searchable Glossary** | 50+ web dev terms with live search |
+| 📋 **Cheat Sheets** | Tabbed reference with copy-to-clipboard |
+| 🔖 **Bookmarks** | Save concepts to revisit later |
+| 📚 **Resources** | Curated learning resources and tools |
+| 📝 **Changelog Viewer** | Visual timeline of all releases |
+| 🛡️ **Security Policy** | Vulnerability reporting guidelines |
+| ⚙️ **CI/CD** | GitHub Actions for deployment and linting |
+| ♿ **Accessibility** | ARIA labels, skip nav, heading hierarchy fixes |
+
+
 
 ---
 
