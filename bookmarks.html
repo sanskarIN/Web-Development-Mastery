@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Web Dev Bookmarks">
+    <link rel="icon" type="image/png" href="splash.png">
+    <title>My Bookmarks</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --bg: #0b0f19; --text: #f8fafc; --accent1: #6c63ff; --accent2: #3ecfcf; --accent3: #bf5af2; --glass: rgba(255, 255, 255, 0.05); }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
+        body { background: var(--bg); color: var(--text); line-height: 1.6; }
+        nav { background: var(--glass); backdrop-filter: blur(10px); padding: 1rem 2rem; display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        nav a { color: var(--text); text-decoration: none; margin-left: 1rem; }
+        .logo { font-size: 1.5rem; font-weight: 700; color: var(--accent2); }
+        .container { max-width: 900px; margin: 2rem auto; padding: 2rem; }
+        .controls { display: flex; justify-content: space-between; margin-bottom: 2rem; gap: 1rem; }
+        input[type="text"] { padding: 0.75rem 1rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2); background: var(--glass); color: var(--text); flex-grow: 1; }
+        button { padding: 0.75rem 1.5rem; border-radius: 8px; border: none; background: var(--accent1); color: #fff; cursor: pointer; font-weight: 600; }
+        .list { display: flex; flex-direction: column; gap: 1rem; }
+        .item { background: var(--glass); padding: 1rem; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; border: 1px solid rgba(255,255,255,0.1); }
+        .item-info h3 { color: var(--accent2); margin-bottom: 0.25rem; }
+        .item-info p { font-size: 0.85rem; opacity: 0.7; }
+        .del-btn { background: #ef4444; padding: 0.5rem 1rem; }
+        .empty { text-align: center; opacity: 0.5; margin-top: 2rem; }
+    </style>
+</head>
+<body>
+    <nav><div class="logo">WebDev Mastery</div><div><a href="index.html">Home</a><a href="bookmarks.html">Bookmarks</a></div></nav>
+    <div class="container">
+        <h1>My Bookmarks</h1>
+        <div class="controls">
+            <input type="text" id="search" placeholder="Search bookmarks...">
+            <button id="add-btn">Add New</button>
+            <button id="clear-btn" style="background: var(--accent3)">Clear All</button>
+        </div>
+        <div class="list" id="bookmark-list"></div>
+    </div>
+    <script>
+        let bookmarks = JSON.parse(localStorage.getItem('webDevBookmarks')) || [
+            { id: 1, title: 'Flexbox Guide', url: 'https://css-tricks.com/snippets/css/a-guide-to-flexbox/', date: new Date().toLocaleDateString() }
+        ];
+
+        function render() {
+            const list = document.getElementById('bookmark-list');
+            const term = document.getElementById('search').value.toLowerCase();
+            const filtered = bookmarks.filter(b => b.title.toLowerCase().includes(term));
+            
+            if(filtered.length === 0) { list.innerHTML = `<div class="empty">No bookmarks found.</div>`; return; }
+            
+            list.innerHTML = filtered.map(b => `
+                <div class="item">
+                    <div class="item-info">
+                        <h3><a href="${b.url}" target="_blank" style="color:inherit;text-decoration:none">${b.title}</a></h3>
+                        <p>Added: ${b.date} | ${b.url}</p>
+                    </div>
+                    <button class="del-btn" onclick="remove(${b.id})">Delete</button>
+                </div>
+            `).join('');
+        }
+
+        function remove(id) {
+            bookmarks = bookmarks.filter(b => b.id !== id);
+            save(); render();
+        }
+
+        function save() { localStorage.setItem('webDevBookmarks', JSON.stringify(bookmarks)); }
+
+        document.getElementById('add-btn').addEventListener('click', () => {
+            const title = prompt("Enter bookmark title:");
+            if(!title) return;
+            const url = prompt("Enter URL (starting with http/https):");
+            if(!url) return;
+            bookmarks.push({ id: Date.now(), title, url, date: new Date().toLocaleDateString() });
+            save(); render();
+        });
+
+        document.getElementById('clear-btn').addEventListener('click', () => {
+            if(confirm("Clear all bookmarks?")) { bookmarks = []; save(); render(); }
+        });
+
+        document.getElementById('search').addEventListener('input', render);
+        render();
+    </script>
+</body>
+</html>
