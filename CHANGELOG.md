@@ -6,6 +6,56 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [3.0.0] — 2026-09-21
+
+### 🚀 Major New Features
+- **Progressive Web App (PWA)** — Full offline support with service worker caching, web app manifest for installability, and Apple touch icon support
+- **Standalone Code Playground** (`playground.html`) — Split-pane code editor with HTML/CSS/JS panels and live preview iframe
+- **Interactive Quiz Page** (`quiz.html`) — 10-question web dev quiz with score tracking, timer, progress bar, and localStorage best score
+- **Progress Dashboard** (`progress-dashboard.html`) — Learning analytics with XP tracking, module progress bars, streaks, and circular progress rings
+- **Searchable Glossary** (`glossary.html`) — 50+ web development terms with A-Z alphabetical listing, live search, and expandable definitions
+- **Cheat Sheet Reference** (`cheatsheet.html`) — Tabbed reference for HTML tags, CSS properties, JS methods, and React hooks with copy-to-clipboard
+- **Bookmarks System** (`bookmarks.html`) — localStorage-based bookmarking with search, filter, timestamps, and bulk management
+- **Resources Directory** (`resources.html`) — Curated web dev resources organized by Learning Platforms, Dev Tools, Design Resources, API References, and Community
+- **Visual Changelog Viewer** (`changelog-viewer.html`) — Timeline-formatted release notes with color-coded badges and scroll animations
+
+### 🛡️ Security & Compliance
+- Added `SECURITY.md` — Vulnerability reporting policy with structured disclosure process
+- Added `CODE_OF_CONDUCT.md` — Contributor Covenant v2.1 community guidelines
+
+### 🔧 CI/CD & Infrastructure
+- Added GitHub Actions deployment workflow (`.github/workflows/deploy.yml`) — Auto-deploy to GitHub Pages on push to main
+- Added HTML linting workflow (`.github/workflows/lint.yml`) — Automated HTML validation on PRs
+- Added GitHub Issue Templates — Structured bug report and feature request forms
+- Added Pull Request Template — PR checklist with description, testing, and screenshots
+- Added GitHub Sponsors Funding configuration (`.github/FUNDING.yml`)
+- Added `.editorconfig` — Cross-editor coding style consistency
+- Added `.prettierrc` and `.prettierignore` — Prettier code formatting configuration
+
+### ♿ Accessibility Improvements
+- Added ARIA labels to 404.html navigation elements
+- Added descriptive alt text to about.html images
+- Added skip-to-main-content navigation to developer.html
+- Added proper form labels to support.html inputs
+- Fixed heading hierarchy in privacy.html (h1 → h2 → h3)
+- Added landmark roles to terms.html sections
+- Improved focus management in thanks.html
+- Added lang attribute to Follow-Sanskar.html
+
+### 🔍 SEO & Performance
+- Updated sitemap.xml with September 2026 lastmod dates
+- Added crawl delay to robots.txt
+- Added SEO meta robots tags across all 40+ HTML files
+- Added PWA manifest for enhanced mobile discoverability
+
+### 📄 Documentation
+- Added `humans.txt` — Team credits and technology stack
+- Added `.github/README.md` — Project badges and quick links
+- Updated `.gitignore` with Python and automation exclusions
+- Updated `CHANGELOG.md` — This comprehensive release document
+
+---
+
 ## [2.1.0] — 2026-08-30
 
 ### 🐛 Bug Fixes
