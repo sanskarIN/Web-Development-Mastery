@@ -1255,6 +1255,18 @@ const TAGS = [
             "example": "const App = () => {\n  const id = React.useId();\n  return (\n    <div>\n      <label htmlFor={id}>Name</label>\n      <input id={id} type=\"text\" />\n    </div>\n  );\n};\nconst root = ReactDOM.createRoot(document.getElementById('root'));\nroot.render(<App />);",
             "content": "<h3>useId</h3><p>A hook for generating unique IDs that are stable across the server and client, avoiding hydration mismatches.</p><h4>Best Practices</h4><p>Use for connecting labels and inputs with aria attributes.</p><h4>Common Pitfalls</h4><p>Do not use useId to generate keys for lists.</p>",
             "challenge": "Connect an input and an error message using useId and aria-describedby."
+    },
+    {
+
+            "id": "server_components_concept",
+            "title": "Server Components",
+            "category": "Architecture",
+            "xp": 40,
+            "description": "React Server Components (RSC) for rendering directly on the server.",
+            "syntax": "export default async function ServerComponent() { ... }",
+            "example": "export default async function Page() {\n  const data = await db.query('SELECT * FROM users');\n  return <ul>{data.map(u => <li key={u.id}>{u.name}</li>)}</ul>;\n}",
+            "content": "<h3>Server Components</h3><p>RSC allow components to run only on the server, resulting in zero bundle size on the client.</p><h4>Best Practices</h4><p>Use server components for data fetching and heavy dependencies.</p><h4>Common Pitfalls</h4><p>Server components cannot use state, effects, or event listeners.</p>",
+            "challenge": "Identify a component that could be converted to a Server Component."
     }
 ];
 
