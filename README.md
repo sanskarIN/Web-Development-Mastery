@@ -855,9 +855,9 @@ node split_files.js
 ## 📧 Contact & Support
 
 For support and feedback, contact:
-- **Email**: sanskaryadavfrom2012to2026@gmail.com
+- **Email**: sanskarin@outlook.in
 - **Support Email**: supportramsandesh@gmail.com
-- **Buy Me a Coffee**: [buymeacoffee.com/sanskarIN](https://buymeacoffee.com/sanskarIN)
+- **Buy Me a Coffee**: [www.buymeacoffee.com/sanskarIN](https://www.buymeacoffee.com/sanskarIN)
 - **GitHub**: [@sanskarIN](https://github.com/sanskarIN)
 - **LinkedIn**: [in/sanskarIN](https://www.linkedin.com/in/sanskarIN)
 - **YouTube**: [@sanskarIN](https://www.youtube.com/@sanskarIN)
