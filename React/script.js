@@ -1303,6 +1303,18 @@ const TAGS = [
             "example": "const App = () => {\n  // The React Compiler automatically memoizes this component and its values\n  return <div>Compiled React Code</div>;\n};\nconst root = ReactDOM.createRoot(document.getElementById('root'));\nroot.render(<App />);",
             "content": "<h3>React Compiler</h3><p>An optimizing compiler that automatically applies memoization (equivalent to useMemo/useCallback/React.memo) during the build step.</p><h4>Best Practices</h4><p>Write standard, idiomatic React and let the compiler optimize it.</p><h4>Common Pitfalls</h4><p>Mutating variables instead of updating state can break compiler guarantees.</p>",
             "challenge": "Read the React Compiler documentation."
+    },
+    {
+
+            "id": "react_testing_library_concept",
+            "title": "React Testing",
+            "category": "Testing",
+            "xp": 35,
+            "description": "Testing React components reliably with React Testing Library.",
+            "syntax": "render(<App />); expect(screen.getByRole('button')).toBeInTheDocument();",
+            "example": "import { render, screen } from '@testing-library/react';\nimport App from './App';\ntest('renders button', () => {\n  render(<App />);\n  const btn = screen.getByRole('button', { name: /submit/i });\n  expect(btn).toBeInTheDocument();\n});",
+            "content": "<h3>Testing Library</h3><p>Focuses on testing components from the user's perspective rather than implementation details.</p><h4>Best Practices</h4><p>Query by accessibility roles or text content, rather than class names or test IDs.</p><h4>Common Pitfalls</h4><p>Testing internal component state directly instead of DOM output.</p>",
+            "challenge": "Write a test that clicks a button and verifies new text appears."
     }
 ];
 
