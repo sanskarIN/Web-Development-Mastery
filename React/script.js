@@ -1159,6 +1159,18 @@ const TAGS = [
             "example": "const LazyComp = React.lazy(() => import('./LazyComp'));\nconst App = () => (\n  <React.Suspense fallback={<div>Loading...</div>}>\n    <LazyComp />\n  </React.Suspense>\n);\nconst root = ReactDOM.createRoot(document.getElementById('root'));\nroot.render(<App />);",
             "content": "<h3>Lazy Loading</h3><p>React.lazy lets you render a dynamic import as a regular component.</p><h4>Best Practices</h4><p>Use lazy loading for large routes or components not immediately visible.</p><h4>Common Pitfalls</h4><p>Forgetting to wrap lazy components in a Suspense boundary will crash the app.</p>",
             "challenge": "Implement lazy loading for a heavy component."
+    },
+    {
+
+            "id": "error_boundaries_handling",
+            "title": "Error Boundaries",
+            "category": "Error Handling",
+            "xp": 30,
+            "description": "Catching and handling component errors in the React tree gracefully.",
+            "syntax": "class ErrorBoundary extends React.Component { ... }",
+            "example": "class ErrorBoundary extends React.Component {\n  state = { hasError: false };\n  static getDerivedStateFromError() { return { hasError: true }; }\n  render() { return this.state.hasError ? <h1>Error!</h1> : this.props.children; }\n}\nconst App = () => <ErrorBoundary><MyBuggyComponent /></ErrorBoundary>;\nconst root = ReactDOM.createRoot(document.getElementById('root'));\nroot.render(<App />);",
+            "content": "<h3>Error Boundaries</h3><p>Error boundaries catch JavaScript errors anywhere in their child component tree.</p><h4>Best Practices</h4><p>Place error boundaries at logical boundaries like routes or major UI sections.</p><h4>Common Pitfalls</h4><p>Error boundaries do not catch errors inside event handlers.</p>",
+            "challenge": "Create an ErrorBoundary and intentionally throw an error in a child."
     }
 ];
 
