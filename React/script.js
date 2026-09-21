@@ -1207,6 +1207,18 @@ const TAGS = [
             "example": "const FancyInput = React.forwardRef((props, ref) => {\n  const inputRef = React.useRef();\n  React.useImperativeHandle(ref, () => ({\n    focus: () => { inputRef.current.focus(); }\n  }));\n  return <input ref={inputRef} />;\n});\nconst App = () => {\n  const ref = React.useRef();\n  return <FancyInput ref={ref} />;\n};\nconst root = ReactDOM.createRoot(document.getElementById('root'));\nroot.render(<App />);",
             "content": "<h3>useImperativeHandle</h3><p>Customizes the instance value that is exposed to parent components when using ref.</p><h4>Best Practices</h4><p>Should be used with forwardRef. Only expose necessary methods.</p><h4>Common Pitfalls</h4><p>Avoid using imperative code in mostly declarative React applications.</p>",
             "challenge": "Expose a 'clear' method on a custom input component."
+    },
+    {
+
+            "id": "use_layout_effect_sync",
+            "title": "useLayoutEffect",
+            "category": "Advanced Hooks",
+            "xp": 30,
+            "description": "Synchronous side effects after DOM mutations but before browser paint.",
+            "syntax": "useLayoutEffect(() => { ... }, [deps])",
+            "example": "const App = () => {\n  const ref = React.useRef();\n  React.useLayoutEffect(() => {\n    console.log(ref.current.getBoundingClientRect());\n  }, []);\n  return <div ref={ref}>Hello</div>;\n};\nconst root = ReactDOM.createRoot(document.getElementById('root'));\nroot.render(<App />);",
+            "content": "<h3>useLayoutEffect</h3><p>The signature is identical to useEffect, but it fires synchronously after all DOM mutations.</p><h4>Best Practices</h4><p>Use it to read layout from the DOM and synchronously re-render to prevent visual flickers.</p><h4>Common Pitfalls</h4><p>Blocks browser painting; use useEffect instead whenever possible.</p>",
+            "challenge": "Measure a DOM node's width synchronously before paint."
     }
 ];
 
