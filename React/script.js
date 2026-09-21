@@ -1147,6 +1147,18 @@ const TAGS = [
             "example": "const MyComponent = React.memo((props) => {\n  return <div>{props.text}</div>;\n});\nconst App = () => <MyComponent text=\"Hello\" />;\nconst root = ReactDOM.createRoot(document.getElementById('root'));\nroot.render(<App />);",
             "content": "<h3>React.memo</h3><p>React.memo is a higher-order component. If your component renders the same result given the same props, React will skip rendering the component, and use the last rendered result.</p><h4>Best Practices</h4><p>Use it for pure components that render often with the same props.</p><h4>Common Pitfalls</h4><p>Don't use it everywhere. The comparison itself has a cost.</p>",
             "challenge": "Wrap a component in React.memo and log when it renders."
+    },
+    {
+
+            "id": "react_lazy_suspense",
+            "title": "React.lazy and Suspense",
+            "category": "Code Splitting",
+            "xp": 30,
+            "description": "Code splitting and lazy loading of components to reduce initial bundle size.",
+            "syntax": "const LazyComp = React.lazy(() => import('./LazyComp'));",
+            "example": "const LazyComp = React.lazy(() => import('./LazyComp'));\nconst App = () => (\n  <React.Suspense fallback={<div>Loading...</div>}>\n    <LazyComp />\n  </React.Suspense>\n);\nconst root = ReactDOM.createRoot(document.getElementById('root'));\nroot.render(<App />);",
+            "content": "<h3>Lazy Loading</h3><p>React.lazy lets you render a dynamic import as a regular component.</p><h4>Best Practices</h4><p>Use lazy loading for large routes or components not immediately visible.</p><h4>Common Pitfalls</h4><p>Forgetting to wrap lazy components in a Suspense boundary will crash the app.</p>",
+            "challenge": "Implement lazy loading for a heavy component."
     }
 ];
 
