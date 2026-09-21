@@ -1267,6 +1267,18 @@ const TAGS = [
             "example": "export default async function Page() {\n  const data = await db.query('SELECT * FROM users');\n  return <ul>{data.map(u => <li key={u.id}>{u.name}</li>)}</ul>;\n}",
             "content": "<h3>Server Components</h3><p>RSC allow components to run only on the server, resulting in zero bundle size on the client.</p><h4>Best Practices</h4><p>Use server components for data fetching and heavy dependencies.</p><h4>Common Pitfalls</h4><p>Server components cannot use state, effects, or event listeners.</p>",
             "challenge": "Identify a component that could be converted to a Server Component."
+    },
+    {
+
+            "id": "concurrent_rendering_features",
+            "title": "Concurrent Rendering",
+            "category": "React 18",
+            "xp": 45,
+            "description": "React 18+ concurrent features allowing interruptible rendering.",
+            "syntax": "ReactDOM.createRoot(root).render(<App />);",
+            "example": "const App = () => {\n  // Concurrent mode is enabled automatically with createRoot\n  return <div>Welcome to Concurrent React!</div>;\n};\nconst root = ReactDOM.createRoot(document.getElementById('root'));\nroot.render(<App />);",
+            "content": "<h3>Concurrent Rendering</h3><p>React can pause, abort, or resume rendering work to keep the UI responsive.</p><h4>Best Practices</h4><p>Utilize useTransition and useDeferredValue to fully leverage concurrency.</p><h4>Common Pitfalls</h4><p>Assuming renders run uninterrupted synchronously can lead to bugs in strict mode.</p>",
+            "challenge": "Read the React docs on how createRoot enables concurrent features."
     }
 ];
 
