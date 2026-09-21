@@ -1351,6 +1351,18 @@ const TAGS = [
             "example": "import { useQuery } from '@tanstack/react-query';\nconst App = () => {\n  const { data, isLoading } = useQuery({ queryKey: ['data'], queryFn: fetchMyAPI });\n  if (isLoading) return <div>Loading...</div>;\n  return <div>{JSON.stringify(data)}</div>;\n};",
             "content": "<h3>TanStack Query</h3><p>Handles caching, background updates, stale data, and deduplication for server state.</p><h4>Best Practices</h4><p>Treat server state as a cache. Let React Query manage it entirely.</p><h4>Common Pitfalls</h4><p>Setting staleTime too low or zero, causing excessive network requests.</p>",
             "challenge": "Configure a global staleTime for your QueryClient."
+    },
+    {
+
+            "id": "nextjs_integration_framework",
+            "title": "Next.js Integration",
+            "category": "Frameworks",
+            "xp": 45,
+            "description": "Using React with the Next.js framework for full-stack applications.",
+            "syntax": "export default function Page() { return <div>Next.js Page</div>; }",
+            "example": "import Link from 'next/link';\nexport default function Home() {\n  return (\n    <div>\n      <h1>Welcome to Next.js</h1>\n      <Link href=\"/about\">About Us</Link>\n    </div>\n  );\n}",
+            "content": "<h3>Next.js</h3><p>The standard React framework. Provides SSR, SSG, file-system routing, API routes, and first-class React Server Components support.</p><h4>Best Practices</h4><p>Use the App Router for new projects to fully leverage React 18/19 features.</p><h4>Common Pitfalls</h4><p>Mixing client and server logic improperly in Server Components.</p>",
+            "challenge": "Create a dynamic route like [id].js or [id]/page.js."
     }
 ];
 
