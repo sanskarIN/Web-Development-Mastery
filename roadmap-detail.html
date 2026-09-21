@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detailed Learning Roadmap</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="splash.png">
+    <style>
+        :root {
+            --bg: #0b0f19;
+            --text: #f8fafc;
+            --accent1: #6c63ff;
+            --surface: rgba(255, 255, 255, 0.05);
+            --border: rgba(255, 255, 255, 0.1);
+        }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 2rem;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h1 { text-align: center; color: var(--accent1); }
+        .phase {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+        }
+        .phase h2 { margin-top: 0; color: var(--text); border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; }
+        .task-list { list-style: none; padding: 0; }
+        .task-list li { margin-bottom: 0.5rem; display: flex; align-items: center; }
+        .task-list input[type="checkbox"] { margin-right: 1rem; }
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 5px;
+            margin-top: 1rem;
+            overflow: hidden;
+        }
+        .progress {
+            height: 100%;
+            background: var(--accent1);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Detailed Learning Roadmap</h1>
+        
+        <div class="phase" id="phase1">
+            <h2>Phase 1: Beginner (HTML/CSS) - 4 Weeks</h2>
+            <ul class="task-list">
+                <li><input type="checkbox" id="t1" onchange="updateProgress('phase1')"><label for="t1">HTML Basics & Semantic Tags</label></li>
+                <li><input type="checkbox" id="t2" onchange="updateProgress('phase1')"><label for="t2">Forms and Validations</label></li>
+                <li><input type="checkbox" id="t3" onchange="updateProgress('phase1')"><label for="t3">CSS Selectors & Properties</label></li>
+                <li><input type="checkbox" id="t4" onchange="updateProgress('phase1')"><label for="t4">Flexbox Layout</label></li>
+                <li><input type="checkbox" id="t5" onchange="updateProgress('phase1')"><label for="t5">CSS Grid Layout</label></li>
+                <li><input type="checkbox" id="t6" onchange="updateProgress('phase1')"><label for="t6">Responsive Design & Media Queries</label></li>
+                <li><input type="checkbox" id="t7" onchange="updateProgress('phase1')"><label for="t7">CSS Variables</label></li>
+                <li><input type="checkbox" id="t8" onchange="updateProgress('phase1')"><label for="t8">Basic Animations</label></li>
+                <li><input type="checkbox" id="t9" onchange="updateProgress('phase1')"><label for="t9">Accessibility Basics (a11y)</label></li>
+                <li><input type="checkbox" id="t10" onchange="updateProgress('phase1')"><label for="t10">Git & GitHub Basics</label></li>
+            </ul>
+            <div class="progress-bar"><div class="progress" id="prog-phase1"></div></div>
+        </div>
+
+        <div class="phase" id="phase2">
+            <h2>Phase 2: Intermediate (JavaScript) - 6 Weeks</h2>
+            <ul class="task-list">
+                <li><input type="checkbox" id="t11" onchange="updateProgress('phase2')"><label for="t11">Variables & Data Types</label></li>
+                <li><input type="checkbox" id="t12" onchange="updateProgress('phase2')"><label for="t12">Functions & Scope</label></li>
+                <li><input type="checkbox" id="t13" onchange="updateProgress('phase2')"><label for="t13">Arrays & Array Methods</label></li>
+                <li><input type="checkbox" id="t14" onchange="updateProgress('phase2')"><label for="t14">Objects & Prototypes</label></li>
+                <li><input type="checkbox" id="t15" onchange="updateProgress('phase2')"><label for="t15">DOM Manipulation</label></li>
+                <li><input type="checkbox" id="t16" onchange="updateProgress('phase2')"><label for="t16">Events & Event Listeners</label></li>
+                <li><input type="checkbox" id="t17" onchange="updateProgress('phase2')"><label for="t17">Promises & Async/Await</label></li>
+                <li><input type="checkbox" id="t18" onchange="updateProgress('phase2')"><label for="t18">Fetch API</label></li>
+                <li><input type="checkbox" id="t19" onchange="updateProgress('phase2')"><label for="t19">ES6+ Features</label></li>
+                <li><input type="checkbox" id="t20" onchange="updateProgress('phase2')"><label for="t20">Error Handling</label></li>
+            </ul>
+            <div class="progress-bar"><div class="progress" id="prog-phase2"></div></div>
+        </div>
+        
+        <div class="phase" id="phase3">
+            <h2>Phase 3: Advanced (React) - 8 Weeks</h2>
+            <ul class="task-list">
+                <li><input type="checkbox" id="t21" onchange="updateProgress('phase3')"><label for="t21">React Basics & JSX</label></li>
+                <li><input type="checkbox" id="t22" onchange="updateProgress('phase3')"><label for="t22">Components & Props</label></li>
+                <li><input type="checkbox" id="t23" onchange="updateProgress('phase3')"><label for="t23">State & useState Hook</label></li>
+                <li><input type="checkbox" id="t24" onchange="updateProgress('phase3')"><label for="t24">useEffect Hook</label></li>
+                <li><input type="checkbox" id="t25" onchange="updateProgress('phase3')"><label for="t25">Context API</label></li>
+                <li><input type="checkbox" id="t26" onchange="updateProgress('phase3')"><label for="t26">React Router</label></li>
+                <li><input type="checkbox" id="t27" onchange="updateProgress('phase3')"><label for="t27">Form Handling in React</label></li>
+                <li><input type="checkbox" id="t28" onchange="updateProgress('phase3')"><label for="t28">Custom Hooks</label></li>
+                <li><input type="checkbox" id="t29" onchange="updateProgress('phase3')"><label for="t29">State Management (Redux)</label></li>
+                <li><input type="checkbox" id="t30" onchange="updateProgress('phase3')"><label for="t30">Performance Optimization</label></li>
+            </ul>
+            <div class="progress-bar"><div class="progress" id="prog-phase3"></div></div>
+        </div>
+
+        <div class="phase" id="phase4">
+            <h2>Phase 4: Expert (Full Stack) - 10 Weeks</h2>
+            <ul class="task-list">
+                <li><input type="checkbox" id="t31" onchange="updateProgress('phase4')"><label for="t31">Node.js Basics</label></li>
+                <li><input type="checkbox" id="t32" onchange="updateProgress('phase4')"><label for="t32">Express.js</label></li>
+                <li><input type="checkbox" id="t33" onchange="updateProgress('phase4')"><label for="t33">RESTful APIs</label></li>
+                <li><input type="checkbox" id="t34" onchange="updateProgress('phase4')"><label for="t34">Database Concepts</label></li>
+                <li><input type="checkbox" id="t35" onchange="updateProgress('phase4')"><label for="t35">MongoDB & Mongoose</label></li>
+                <li><input type="checkbox" id="t36" onchange="updateProgress('phase4')"><label for="t36">Authentication (JWT)</label></li>
+                <li><input type="checkbox" id="t37" onchange="updateProgress('phase4')"><label for="t37">Next.js Framework</label></li>
+                <li><input type="checkbox" id="t38" onchange="updateProgress('phase4')"><label for="t38">TypeScript</label></li>
+                <li><input type="checkbox" id="t39" onchange="updateProgress('phase4')"><label for="t39">Testing (Jest/Cypress)</label></li>
+                <li><input type="checkbox" id="t40" onchange="updateProgress('phase4')"><label for="t40">Deployment (Vercel)</label></li>
+            </ul>
+            <div class="progress-bar"><div class="progress" id="prog-phase4"></div></div>
+        </div>
+    </div>
+    
+    <script>
+        function updateProgress(phaseId) {
+            const phase = document.getElementById(phaseId);
+            const checkboxes = phase.querySelectorAll('input[type="checkbox"]');
+            const checked = phase.querySelectorAll('input[type="checkbox"]:checked').length;
+            const progress = (checked / checkboxes.length) * 100;
+            document.getElementById('prog-' + phaseId).style.width = progress + '%';
+            
+            const state = {};
+            document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+                state[cb.id] = cb.checked;
+            });
+            localStorage.setItem('roadmapState', JSON.stringify(state));
+        }
+
+        window.onload = function() {
+            const state = JSON.parse(localStorage.getItem('roadmapState') || '{}');
+            Object.keys(state).forEach(id => {
+                const cb = document.getElementById(id);
+                if(cb) cb.checked = state[id];
+            });
+            ['phase1', 'phase2', 'phase3', 'phase4'].forEach(updateProgress);
+        };
+    </script>
+</body>
+</html>
