@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Web Dev Tips</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="splash.png">
+    <style>
+        :root {
+            --bg: #0b0f19;
+            --text: #f8fafc;
+            --accent1: #6c63ff;
+            --surface: rgba(255, 255, 255, 0.05);
+            --border: rgba(255, 255, 255, 0.1);
+        }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 2rem;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1 { text-align: center; color: var(--accent1); margin-bottom: 2rem; }
+        .controls { text-align: center; margin-bottom: 2rem; }
+        button {
+            background: var(--accent1);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: inherit;
+        }
+        button:hover { opacity: 0.9; }
+        
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        .tip-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            backdrop-filter: blur(10px);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+        .tip-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        .tip-number { font-weight: 700; color: var(--accent1); }
+        .category-badge {
+            background: rgba(255,255,255,0.1);
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+        .tip-content { flex-grow: 1; margin-bottom: 1rem; }
+        .share-btn {
+            background: transparent;
+            border: 1px solid var(--accent1);
+            color: var(--accent1);
+            padding: 0.4rem 0.8rem;
+            width: 100%;
+        }
+        .share-btn:hover { background: rgba(108, 99, 255, 0.1); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Daily Web Development Tips</h1>
+        
+        <div class="controls">
+            <button onclick="showRandomTip()">🎲 Show Random Tip</button>
+        </div>
+
+        <div class="tips-grid" id="tipsGrid"></div>
+    </div>
+
+    <script>
+        const tips = [
+            { id: 1, category: "HTML", text: "Use semantic HTML tags (like <article>, <section>, <nav>) instead of standard <div>s for better accessibility and SEO." },
+            { id: 2, category: "CSS", text: "Use CSS variables (--var-name) for repeated values like colors and spacing to make theming easier." },
+            { id: 3, category: "JS", text: "Use const by default for variable declarations, and let only when you know the value will change. Never use var." },
+            { id: 4, category: "Performance", text: "Lazy load images using the loading='lazy' attribute to speed up initial page load times." },
+            { id: 5, category: "A11y", text: "Always include informative alt attributes on your <img> tags. If it's purely decorative, use alt=''." },
+            { id: 6, category: "Security", text: "Always sanitize user input before displaying it to prevent XSS (Cross-Site Scripting) attacks." },
+            { id: 7, category: "React", text: "Use the functional update form for state when the new state depends on the old state: setCount(prev => prev + 1)." },
+            { id: 8, category: "CSS", text: "Use aspect-ratio property instead of the old padding-top hack for responsive video/image containers." },
+            { id: 9, category: "JS", text: "Use Optional Chaining (?.) to safely access nested object properties without throwing errors." },
+            { id: 10, category: "Performance", text: "Minify your CSS, JS, and HTML files before deploying to production." }
+        ];
+
+        for(let i=11; i<=35; i++) {
+            tips.push({
+                id: i,
+                category: ["HTML", "CSS", "JS", "React", "Performance", "Security", "A11y"][Math.floor(Math.random()*7)],
+                text: "Here is web development tip #" + i + " to help you build better websites."
+            });
+        }
+
+        function renderTips(tipsToRender) {
+            const grid = document.getElementById('tipsGrid');
+            grid.innerHTML = '';
+            
+            tipsToRender.forEach(tip => {
+                const card = document.createElement('div');
+                card.className = 'tip-card';
+                card.innerHTML = `
+                    <div class="tip-header">
+                        <span class="tip-number">#${tip.id}</span>
+                        <span class="category-badge">${tip.category}</span>
+                    </div>
+                    <div class="tip-content">${tip.text}</div>
+                    <button class="share-btn" onclick="shareTip(${tip.id}, this)">📋 Copy Tip</button>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function showRandomTip() {
+            const random = tips[Math.floor(Math.random() * tips.length)];
+            renderTips([random]);
+            
+            const controls = document.querySelector('.controls');
+            if(!document.getElementById('resetBtn')) {
+                const reset = document.createElement('button');
+                reset.id = 'resetBtn';
+                reset.style.marginLeft = '10px';
+                reset.style.backgroundColor = 'var(--surface)';
+                reset.style.border = '1px solid var(--border)';
+                reset.textContent = 'Show All';
+                reset.onclick = () => {
+                    renderTips(tips);
+                    reset.remove();
+                };
+                controls.appendChild(reset);
+            }
+        }
+
+        function shareTip(id, btn) {
+            const tip = tips.find(t => t.id === id);
+            const textToCopy = `Tip #${tip.id} (${tip.category}): ${tip.text}`;
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                const originalText = btn.textContent;
+                btn.textContent = 'Copied!';
+                setTimeout(() => btn.textContent = originalText, 2000);
+            });
+        }
+
+        renderTips(tips);
+    </script>
+</body>
+</html>
