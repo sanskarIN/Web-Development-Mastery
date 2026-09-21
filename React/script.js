@@ -1219,6 +1219,18 @@ const TAGS = [
             "example": "const App = () => {\n  const ref = React.useRef();\n  React.useLayoutEffect(() => {\n    console.log(ref.current.getBoundingClientRect());\n  }, []);\n  return <div ref={ref}>Hello</div>;\n};\nconst root = ReactDOM.createRoot(document.getElementById('root'));\nroot.render(<App />);",
             "content": "<h3>useLayoutEffect</h3><p>The signature is identical to useEffect, but it fires synchronously after all DOM mutations.</p><h4>Best Practices</h4><p>Use it to read layout from the DOM and synchronously re-render to prevent visual flickers.</p><h4>Common Pitfalls</h4><p>Blocks browser painting; use useEffect instead whenever possible.</p>",
             "challenge": "Measure a DOM node's width synchronously before paint."
+    },
+    {
+
+            "id": "use_deferred_value_state",
+            "title": "useDeferredValue",
+            "category": "React 18",
+            "xp": 35,
+            "description": "Deferring non-urgent state updates to keep the UI responsive.",
+            "syntax": "const deferredValue = useDeferredValue(value);",
+            "example": "const App = () => {\n  const [text, setText] = React.useState('');\n  const deferredText = React.useDeferredValue(text);\n  return (\n    <div>\n      <input value={text} onChange={e => setText(e.target.value)} />\n      <SlowList text={deferredText} />\n    </div>\n  );\n};\nconst root = ReactDOM.createRoot(document.getElementById('root'));\nroot.render(<App />);",
+            "content": "<h3>useDeferredValue</h3><p>Allows you to defer updating a part of the UI. It's like debouncing, but integrated into React's rendering pipeline.</p><h4>Best Practices</h4><p>Use it for slow-rendering components that depend on fast-updating state like user input.</p><h4>Common Pitfalls</h4><p>Do not use for network requests, only for rendering optimizations.</p>",
+            "challenge": "Defer a search query used in a heavy list."
     }
 ];
 
