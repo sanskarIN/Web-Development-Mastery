@@ -1315,6 +1315,18 @@ const TAGS = [
             "example": "import { render, screen } from '@testing-library/react';\nimport App from './App';\ntest('renders button', () => {\n  render(<App />);\n  const btn = screen.getByRole('button', { name: /submit/i });\n  expect(btn).toBeInTheDocument();\n});",
             "content": "<h3>Testing Library</h3><p>Focuses on testing components from the user's perspective rather than implementation details.</p><h4>Best Practices</h4><p>Query by accessibility roles or text content, rather than class names or test IDs.</p><h4>Common Pitfalls</h4><p>Testing internal component state directly instead of DOM output.</p>",
             "challenge": "Write a test that clicks a button and verifies new text appears."
+    },
+    {
+
+            "id": "react_router_v6_modern",
+            "title": "React Router v6",
+            "category": "Routing",
+            "xp": 35,
+            "description": "Modern declarative routing with React Router v6.",
+            "syntax": "<Route path=\"/\" element={<Home />} />",
+            "example": "import { BrowserRouter, Routes, Route } from 'react-router-dom';\nconst App = () => (\n  <BrowserRouter>\n    <Routes>\n      <Route path=\"/\" element={<Home />} />\n      <Route path=\"/about\" element={<About />} />\n    </Routes>\n  </BrowserRouter>\n);",
+            "content": "<h3>React Router v6</h3><p>Introduces a more declarative API, nested routes, and powerful data loading capabilities via the newer Data Routers.</p><h4>Best Practices</h4><p>Use the latest createBrowserRouter for data fetching and action mutations.</p><h4>Common Pitfalls</h4><p>Confusing v5 syntax (like Switch) with v6 (Routes).</p>",
+            "challenge": "Create a nested route layout using the Outlet component."
     }
 ];
 
