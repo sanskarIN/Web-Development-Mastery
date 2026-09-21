@@ -1291,6 +1291,18 @@ const TAGS = [
             "example": "const App = () => {\n  const [count, setCount] = React.useState(0);\n  const [flag, setFlag] = React.useState(false);\n  const handleClick = () => {\n    setTimeout(() => {\n      setCount(c => c + 1);\n      setFlag(f => !f);\n      // Only one re-render happens!\n    }, 1000);\n  };\n  return <button onClick={handleClick}>Click</button>;\n};\nconst root = ReactDOM.createRoot(document.getElementById('root'));\nroot.render(<App />);",
             "content": "<h3>Automatic Batching</h3><p>React batches multiple state updates into a single re-render, even inside promises, setTimeout, or native event handlers.</p><h4>Best Practices</h4><p>Trust React to batch updates; use flushSync if you absolutely need a synchronous update.</p><h4>Common Pitfalls</h4><p>Don't assume intermediate states will be painted to the screen.</p>",
             "challenge": "Test automatic batching in an async function."
+    },
+    {
+
+            "id": "react_compiler_forget",
+            "title": "React Compiler",
+            "category": "Bleeding Edge",
+            "xp": 50,
+            "description": "React Forget / compiler optimization to remove the need for manual memoization.",
+            "syntax": "// No need for useMemo or useCallback anymore!",
+            "example": "const App = () => {\n  // The React Compiler automatically memoizes this component and its values\n  return <div>Compiled React Code</div>;\n};\nconst root = ReactDOM.createRoot(document.getElementById('root'));\nroot.render(<App />);",
+            "content": "<h3>React Compiler</h3><p>An optimizing compiler that automatically applies memoization (equivalent to useMemo/useCallback/React.memo) during the build step.</p><h4>Best Practices</h4><p>Write standard, idiomatic React and let the compiler optimize it.</p><h4>Common Pitfalls</h4><p>Mutating variables instead of updating state can break compiler guarantees.</p>",
+            "challenge": "Read the React Compiler documentation."
     }
 ];
 
