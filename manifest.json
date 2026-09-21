@@ -1,0 +1,21 @@
+{
+  "name": "Web Development Mastery",
+  "short_name": "WDM",
+  "description": "Web Development Mastery Project",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0b0f19",
+  "theme_color": "#6c63ff",
+  "icons": [
+    {
+      "src": "splash.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "splash.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
