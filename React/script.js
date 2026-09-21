@@ -1183,6 +1183,18 @@ const TAGS = [
             "example": "const Modal = ({ children }) => {\n  return ReactDOM.createPortal(<div>{children}</div>, document.getElementById('modal-root'));\n};\nconst App = () => <Modal>Hello Portal!</Modal>;\nconst root = ReactDOM.createRoot(document.getElementById('root'));\nroot.render(<App />);",
             "content": "<h3>Portals</h3><p>Portals provide a first-class way to render children into a DOM node that exists outside the DOM hierarchy of the parent component.</p><h4>Best Practices</h4><p>Use for modals, tooltips, and popovers to avoid z-index and overflow issues.</p><h4>Common Pitfalls</h4><p>Events bubble up through the React tree, not the DOM tree.</p>",
             "challenge": "Create a portal for a tooltip."
+    },
+    {
+
+            "id": "react_forward_ref_passing",
+            "title": "React.forwardRef",
+            "category": "Advanced Hooks",
+            "xp": 25,
+            "description": "Forwarding refs to child components directly.",
+            "syntax": "const FancyButton = React.forwardRef((props, ref) => <button ref={ref}>{props.children}</button>);",
+            "example": "const FancyButton = React.forwardRef((props, ref) => (\n  <button ref={ref} className=\"FancyButton\">\n    {props.children}\n  </button>\n));\nconst App = () => {\n  const ref = React.useRef();\n  return <FancyButton ref={ref}>Click me!</FancyButton>;\n};\nconst root = ReactDOM.createRoot(document.getElementById('root'));\nroot.render(<App />);",
+            "content": "<h3>forwardRef</h3><p>Ref forwarding is an opt-in feature that lets some components take a ref they receive, and pass it further down to a child.</p><h4>Best Practices</h4><p>Useful for reusable component libraries (like inputs or buttons).</p><h4>Common Pitfalls</h4><p>Overusing refs breaks the declarative paradigm of React.</p>",
+            "challenge": "Forward a ref to a custom input component."
     }
 ];
 
