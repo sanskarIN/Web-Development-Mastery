@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="splash.png">
+    <title>Web Dev Glossary</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --bg: #0b0f19; --text: #f8fafc; --accent1: #6c63ff; --accent2: #3ecfcf; --glass: rgba(255, 255, 255, 0.05); }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
+        body { background: var(--bg); color: var(--text); }
+        nav { background: var(--glass); padding: 1rem 2rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .container { max-width: 1000px; margin: 2rem auto; padding: 2rem; }
+        input { width: 100%; padding: 1rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2); background: var(--glass); color: white; font-size: 1.1rem; margin-bottom: 2rem; }
+        .term-list { display: grid; gap: 1rem; }
+        .term { background: var(--glass); padding: 1.5rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); }
+        .term h3 { color: var(--accent2); margin-bottom: 0.5rem; }
+    </style>
+</head>
+<body>
+    <nav><h2>Glossary</h2></nav>
+    <div class="container">
+        <input type="text" id="search" placeholder="Search terms (e.g., API, DOM)...">
+        <div class="term-list" id="list"></div>
+    </div>
+    <script>
+        const glossary = [
+            { t: "API", d: "Application Programming Interface. A set of rules allowing programs to talk to each other." },
+            { t: "AJAX", d: "Asynchronous JavaScript and XML. Allows updating parts of a web page without reloading." },
+            { t: "DOM", d: "Document Object Model. The structural representation of a web document." },
+            { t: "JSON", d: "JavaScript Object Notation. A lightweight data-interchange format." },
+            { t: "CORS", d: "Cross-Origin Resource Sharing. A mechanism that allows restricted resources to be requested from another domain." },
+            { t: "ES6", d: "ECMAScript 2015. A major update to JavaScript bringing features like classes and arrow functions." },
+            { t: "Flexbox", d: "CSS Flexible Box Layout Module. A layout model providing an easy and clean way to arrange items." },
+            { t: "JWT", d: "JSON Web Token. A compact, URL-safe means of representing claims between two parties." },
+            { t: "SPA", d: "Single Page Application. A web app that interacts with the user by dynamically rewriting the current page." }
+        ].sort((a,b) => a.t.localeCompare(b.t));
+
+        function render(filter = "") {
+            const list = document.getElementById('list');
+            list.innerHTML = glossary
+                .filter(i => i.t.toLowerCase().includes(filter.toLowerCase()) || i.d.toLowerCase().includes(filter.toLowerCase()))
+                .map(i => `<div class="term"><h3>${i.t}</h3><p>${i.d}</p></div>`).join('');
+        }
+        document.getElementById('search').addEventListener('input', (e) => render(e.target.value));
+        render();
+    </script>
+</body>
+</html>
