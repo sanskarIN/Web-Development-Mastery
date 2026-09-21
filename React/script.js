@@ -1339,6 +1339,18 @@ const TAGS = [
             "example": "import { createSlice, configureStore } from '@reduxjs/toolkit';\nconst counterSlice = createSlice({\n  name: 'counter',\n  initialState: { value: 0 },\n  reducers: { increment: s => { s.value += 1 } }\n});\nconst store = configureStore({ reducer: counterSlice.reducer });",
             "content": "<h3>Redux Toolkit</h3><p>The official, recommended way to write Redux logic. It simplifies store setup, reduces boilerplate, and uses Immer for immutable updates.</p><h4>Best Practices</h4><p>Use RTK Query for data fetching instead of writing manual thunks.</p><h4>Common Pitfalls</h4><p>Overusing Redux for local UI state that should just be in useState.</p>",
             "challenge": "Create a basic RTK slice and dispatch an action."
+    },
+    {
+
+            "id": "react_query_tanstack_server",
+            "title": "React Query / TanStack Query",
+            "category": "Data Fetching",
+            "xp": 40,
+            "description": "Server state management and data fetching with TanStack Query.",
+            "syntax": "const { data, isLoading } = useQuery({ queryKey: ['todos'], queryFn: fetchTodos });",
+            "example": "import { useQuery } from '@tanstack/react-query';\nconst App = () => {\n  const { data, isLoading } = useQuery({ queryKey: ['data'], queryFn: fetchMyAPI });\n  if (isLoading) return <div>Loading...</div>;\n  return <div>{JSON.stringify(data)}</div>;\n};",
+            "content": "<h3>TanStack Query</h3><p>Handles caching, background updates, stale data, and deduplication for server state.</p><h4>Best Practices</h4><p>Treat server state as a cache. Let React Query manage it entirely.</p><h4>Common Pitfalls</h4><p>Setting staleTime too low or zero, causing excessive network requests.</p>",
+            "challenge": "Configure a global staleTime for your QueryClient."
     }
 ];
 
