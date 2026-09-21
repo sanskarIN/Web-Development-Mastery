@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Framework Comparison Tool</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="splash.png">
+    <style>
+        :root {
+            --bg: #0b0f19;
+            --text: #f8fafc;
+            --accent1: #6c63ff;
+            --surface: rgba(255, 255, 255, 0.05);
+            --border: rgba(255, 255, 255, 0.1);
+            --green: #2ecc71;
+            --yellow: #f1c40f;
+            --red: #e74c3c;
+        }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 2rem;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            color: var(--accent1);
+            margin-bottom: 2rem;
+        }
+        .table-container {
+            overflow-x: auto;
+            background: var(--surface);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            backdrop-filter: blur(10px);
+            padding: 1rem;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 800px;
+        }
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+        th {
+            font-weight: 600;
+            color: var(--accent1);
+        }
+        .green { color: var(--green); }
+        .yellow { color: var(--yellow); }
+        .red { color: var(--red); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Framework Comparison Tool</h1>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th>React</th>
+                        <th>Vue</th>
+                        <th>Angular</th>
+                        <th>Svelte</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Learning Curve</td><td class="yellow">Medium</td><td class="green">Easy</td><td class="red">Steep</td><td class="green">Easy</td></tr>
+                    <tr><td>Performance</td><td class="yellow">Good</td><td class="green">Excellent</td><td class="yellow">Good</td><td class="green">Excellent</td></tr>
+                    <tr><td>Bundle Size</td><td class="yellow">Medium</td><td class="yellow">Medium</td><td class="red">Large</td><td class="green">Small</td></tr>
+                    <tr><td>Community</td><td class="green">Huge</td><td class="yellow">Large</td><td class="yellow">Large</td><td class="yellow">Growing</td></tr>
+                    <tr><td>TypeScript Support</td><td class="green">Excellent</td><td class="green">Excellent</td><td class="green">Excellent</td><td class="green">Excellent</td></tr>
+                    <tr><td>Mobile Support</td><td class="green">React Native</td><td class="yellow">Capacitor</td><td class="yellow">Ionic</td><td class="yellow">Capacitor</td></tr>
+                    <tr><td>SSR Support</td><td class="green">Next.js</td><td class="green">Nuxt</td><td class="yellow">Angular Universal</td><td class="green">SvelteKit</td></tr>
+                    <tr><td>State Management</td><td class="yellow">Redux/Zustand</td><td class="green">Pinia</td><td class="red">NgRx</td><td class="green">Built-in</td></tr>
+                    <tr><td>Testing</td><td class="green">Excellent</td><td class="green">Excellent</td><td class="green">Excellent</td><td class="yellow">Good</td></tr>
+                    <tr><td>Job Market</td><td class="green">Huge</td><td class="yellow">Large</td><td class="green">Large</td><td class="red">Small</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
