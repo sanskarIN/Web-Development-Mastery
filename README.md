@@ -30,7 +30,7 @@ This platform requires **no compilation, no server setup, and no dependencies**.
 - 🌙 **Theme Gallery** — 25+ curated presets + custom theme builder
 - 📤 **Export/Import** — Save and restore your progress across devices
 
-## 🆕 What's New in v3.0
+## 🆕 What's New in v3.x
 
 | Feature | Description |
 |---------|-------------|
@@ -42,11 +42,19 @@ This platform requires **no compilation, no server setup, and no dependencies**.
 | 📋 **Cheat Sheets** | Tabbed reference with copy-to-clipboard |
 | 🔖 **Bookmarks** | Save concepts to revisit later |
 | 📚 **Resources** | Curated learning resources and tools |
-| 📝 **Changelog Viewer** | Visual timeline of all releases |
-| 🛡️ **Security Policy** | Vulnerability reporting guidelines |
+| ⚖️ **Framework Comparison** | Compare React vs Vue vs Angular vs Svelte |
+| 🗺️ **Learning Roadmap** | Interactive 4-phase roadmap with progress tracking |
+| 💻 **Code Snippets** | 40+ curated snippets with copy-to-clipboard |
+| 💡 **Daily Tips** | 30+ tips organized by category |
+| 🔧 **CSS Tools** | Color picker, gradient builder, shadow & radius generators |
+| 💼 **Interview Prep** | 50+ questions with answers, filters by topic & difficulty |
+| 🏆 **Certificates** | Earn and download learning completion badges |
+| 🎯 **Coding Challenges** | 20+ challenges with difficulty levels |
+| 👥 **Community Hub** | Contributor highlights, open source stats |
+| 🐦 **Twitter Cards** | Rich social media previews across all pages |
+| ⚛️ **20 React Concepts** | React.memo, Suspense, Portals, Server Components, and more |
 | ⚙️ **CI/CD** | GitHub Actions for deployment and linting |
 | ♿ **Accessibility** | ARIA labels, skip nav, heading hierarchy fixes |
-
 
 
 ---
