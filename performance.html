@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Performance Guide</title>
+    <link rel="icon" type="image/png" href="splash.png">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0b0f19;
+            --text: #f8fafc;
+            --accent1: #6c63ff;
+            --accent2: #3ecfcf;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --card-border: rgba(255, 255, 255, 0.1);
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        header {
+            padding: 60px 20px;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(11, 15, 25, 0.9), rgba(62, 207, 207, 0.2));
+            border-bottom: 1px solid var(--card-border);
+        }
+        h1 { margin: 0 0 10px 0; color: var(--accent2); font-size: 2.5rem; }
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        section {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+        }
+        h2 { color: var(--accent1); border-bottom: 1px solid var(--card-border); padding-bottom: 10px; margin-top: 0; }
+        code {
+            background: rgba(0,0,0,0.3);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+            color: #fca5a5;
+        }
+        pre {
+            background: rgba(0,0,0,0.3);
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            border: 1px solid var(--card-border);
+        }
+        .simulator {
+            background: rgba(108, 99, 255, 0.1);
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid var(--accent1);
+            margin-top: 40px;
+        }
+        .sim-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        label { display: block; margin-bottom: 5px; font-size: 0.9rem; }
+        input[type="range"] { width: 100%; }
+        .score-circle {
+            width: 120px; height: 120px;
+            border-radius: 50%;
+            border: 8px solid var(--accent2);
+            display: flex; justify-content: center; align-items: center;
+            font-size: 2rem; font-weight: bold;
+            margin: 20px auto;
+        }
+        .tools-list {
+            display: flex; gap: 15px; flex-wrap: wrap;
+        }
+        .tool-link {
+            display: inline-block;
+            padding: 10px 20px;
+            background: var(--card-bg);
+            border: 1px solid var(--accent2);
+            color: var(--text);
+            text-decoration: none;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+        .tool-link:hover { background: var(--accent2); color: var(--bg); }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Web Performance Optimization</h1>
+        <p>Strategies and techniques to make your websites load blazingly fast.</p>
+    </header>
+
+    <div class="container">
+        
+        <section>
+            <h2>1. Image Optimization</h2>
+            <p>Images often account for most of the downloaded bytes on a page. Optimizing them yields the largest performance improvements.</p>
+            <ul>
+                <li><strong>Use modern formats:</strong> WebP or AVIF instead of JPEG/PNG.</li>
+                <li><strong>Responsive images:</strong> Use <code>srcset</code> to serve appropriate sizes.</li>
+            </ul>
+            <pre><code>&lt;picture&gt;
+  &lt;source srcset="image.webp" type="image/webp"&gt;
+  &lt;img src="image.jpg" alt="Description" loading="lazy"&gt;
+&lt;/picture&gt;</code></pre>
+        </section>
+
+        <section>
+            <h2>2. Lazy Loading</h2>
+            <p>Defer loading non-critical resources at page load time. Images and iframes off-screen shouldn't be loaded until the user scrolls near them.</p>
+            <p>Native lazy loading is supported in all modern browsers:</p>
+            <pre><code>&lt;img src="heavy-image.jpg" loading="lazy" alt="Loads when needed"&gt;</code></pre>
+        </section>
+
+        <section>
+            <h2>3. Code Splitting & Minification</h2>
+            <p>Don't send all your JavaScript to the client at once. Split bundles and minify CSS/JS/HTML.</p>
+            <p>Minification removes whitespace and shortens variable names, reducing file size by 30-40%.</p>
+        </section>
+
+        <section>
+            <h2>4. Caching Strategies</h2>
+            <p>Set appropriate Cache-Control headers so returning visitors don't have to re-download static assets.</p>
+            <pre><code>Cache-Control: public, max-age=31536000, immutable</code></pre>
+        </section>
+
+        <section>
+            <h2>5. Critical CSS</h2>
+            <p>Extract and inline the CSS required to render the above-the-fold content, deferring the rest. This prevents render-blocking CSS.</p>
+        </section>
+
+        <section class="simulator">
+            <h2>Lighthouse Score Simulator (Estimate)</h2>
+            <div class="sim-grid">
+                <div>
+                    <label>Bundle Size: <span id="bundleVal">1.5 MB</span></label>
+                    <input type="range" id="bundleSize" min="0.1" max="5" step="0.1" value="1.5">
+                    
+                    <label>Image Optimization Level: <span id="imgVal">50%</span></label>
+                    <input type="range" id="imgOpt" min="0" max="100" value="50">
+                    
+                    <label>Server Response Time: <span id="ttfbVal">300 ms</span></label>
+                    <input type="range" id="ttfb" min="50" max="1000" step="50" value="300">
+                </div>
+                <div style="text-align: center;">
+                    <div class="score-circle" id="scoreCircle">65</div>
+                    <p id="scoreText" style="color: #facc15;">Average</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Testing Tools</h2>
+            <div class="tools-list">
+                <a href="https://pagespeed.web.dev/" target="_blank" class="tool-link">PageSpeed Insights</a>
+                <a href="https://www.webpagetest.org/" target="_blank" class="tool-link">WebPageTest</a>
+                <a href="https://gtmetrix.com/" target="_blank" class="tool-link">GTmetrix</a>
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        const bundleInput = document.getElementById('bundleSize');
+        const imgInput = document.getElementById('imgOpt');
+        const ttfbInput = document.getElementById('ttfb');
+        const scoreCircle = document.getElementById('scoreCircle');
+        const scoreText = document.getElementById('scoreText');
+
+        function calcScore() {
+            const bundle = parseFloat(bundleInput.value);
+            const img = parseInt(imgInput.value);
+            const ttfb = parseInt(ttfbInput.value);
+
+            document.getElementById('bundleVal').textContent = bundle + ' MB';
+            document.getElementById('imgVal').textContent = img + '%';
+            document.getElementById('ttfbVal').textContent = ttfb + ' ms';
+
+            // Fake calculation logic for simulation
+            let score = 100;
+            score -= (bundle * 10);
+            score -= ((100 - img) * 0.2);
+            score -= (ttfb * 0.02);
+
+            score = Math.max(0, Math.min(100, Math.round(score)));
+
+            scoreCircle.textContent = score;
+
+            if (score >= 90) {
+                scoreCircle.style.borderColor = '#4ade80';
+                scoreCircle.style.color = '#4ade80';
+                scoreText.textContent = "Excellent";
+                scoreText.style.color = '#4ade80';
+            } else if (score >= 50) {
+                scoreCircle.style.borderColor = '#facc15';
+                scoreCircle.style.color = '#facc15';
+                scoreText.textContent = "Needs Improvement";
+                scoreText.style.color = '#facc15';
+            } else {
+                scoreCircle.style.borderColor = '#ef4444';
+                scoreCircle.style.color = '#ef4444';
+                scoreText.textContent = "Poor";
+                scoreText.style.color = '#ef4444';
+            }
+        }
+
+        bundleInput.addEventListener('input', calcScore);
+        imgInput.addEventListener('input', calcScore);
+        ttfbInput.addEventListener('input', calcScore);
+
+        calcScore();
+    </script>
+</body>
+</html>
