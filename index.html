@@ -799,6 +799,46 @@
             border-color: rgba(255, 255, 255, 0.15);
         }
 
+        
+        /* TECH STACK SECTION */
+        .tech-stack-section {
+            padding: 80px 0;
+            border-top: 1px solid var(--border);
+            overflow: hidden;
+        }
+        .tech-track {
+            display: flex;
+            gap: 24px;
+            width: max-content;
+            animation: scroll-tech 30s linear infinite;
+        }
+        .tech-track:hover {
+            animation-play-state: paused;
+        }
+        .tech-badge {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--bg2);
+            border: 1px solid var(--border);
+            padding: 16px 32px;
+            border-radius: 100px;
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text);
+            transition: all 0.3s;
+        }
+        .tech-badge:hover {
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateY(-3px);
+            border-color: var(--accent1);
+            color: var(--accent1);
+        }
+        @keyframes scroll-tech {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
         /* 8b. LEARNING ROADMAP TIMELINE */
         .roadmap-section {
             padding: 100px 0;
