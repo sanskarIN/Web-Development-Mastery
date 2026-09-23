@@ -103,6 +103,15 @@ Web-Development-Mastery/
 ├── bookmarks.html          # Bookmark management page
 ├── progress-dashboard.html # Learning progress dashboard
 ├── changelog-viewer.html   # Visual changelog viewer
+├── compare.html            # Framework comparison tool
+├── roadmap-detail.html     # Interactive learning roadmap
+├── snippets.html           # Code snippets library
+├── tips.html               # Daily web dev tips
+├── tools.html              # Interactive CSS tools
+├── interview.html          # Interview questions & answers
+├── certificates.html       # Learning certificates & badges
+├── challenges.html         # Coding challenges
+├── community.html          # Community hub
 ├── sitemap.xml             # XML sitemap
 ├── robots.txt              # Crawler directives
 ├── manifest.json           # PWA web app manifest
