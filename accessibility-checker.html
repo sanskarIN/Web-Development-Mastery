@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A11y Checker Tool</title>
+    <link rel="icon" type="image/png" href="splash.png">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0b0f19;
+            --text: #f8fafc;
+            --accent1: #6c63ff;
+            --accent2: #3ecfcf;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --card-border: rgba(255, 255, 255, 0.1);
+            --error: #ef4444;
+            --warn: #f59e0b;
+            --info: #3b82f6;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+        }
+        header {
+            padding: 40px 20px;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(11, 15, 25, 0.9), rgba(239, 68, 68, 0.1));
+            border-bottom: 1px solid var(--card-border);
+        }
+        h1 { margin: 0 0 10px 0; color: var(--accent1); }
+        .container {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        @media(max-width: 768px) {
+            .container { grid-template-columns: 1fr; }
+        }
+        textarea {
+            width: 100%;
+            height: 400px;
+            background: var(--card-bg);
+            border: 1px solid var(--accent1);
+            border-radius: 8px;
+            color: var(--text);
+            padding: 15px;
+            font-family: monospace;
+            resize: vertical;
+            box-sizing: border-box;
+        }
+        .results-panel {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 8px;
+            padding: 20px;
+            overflow-y: auto;
+            max-height: 600px;
+        }
+        button {
+            background: var(--accent1);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 10px;
+            width: 100%;
+            transition: opacity 0.3s;
+        }
+        button:hover { opacity: 0.9; }
+        .score-display {
+            font-size: 2rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .issue {
+            background: rgba(0,0,0,0.2);
+            border-left: 4px solid;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+        }
+        .issue.error { border-color: var(--error); }
+        .issue.warn { border-color: var(--warn); }
+        .issue.info { border-color: var(--info); }
+        .badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        .badge.error { background: rgba(239, 68, 68, 0.2); color: var(--error); }
+        .badge.warn { background: rgba(245, 158, 11, 0.2); color: var(--warn); }
+        .badge.info { background: rgba(59, 130, 246, 0.2); color: var(--info); }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>HTML Accessibility Checker</h1>
+        <p>Paste your HTML below to audit for a11y issues.</p>
+    </header>
+
+    <div class="container">
+        <div class="input-panel">
+            <textarea id="htmlInput" placeholder="Paste HTML code here...
+Example:
+<html lang='en'>
+  <img src='logo.png'>
+  <button>Click me</button>
+  <input type='text'>
+</html>"></textarea>
+            <button id="checkBtn">Run Audit</button>
+        </div>
+        
+        <div class="results-panel" id="results">
+            <div class="score-display" id="score">Score: --/100</div>
+            <div id="issueList">
+                <p style="text-align:center; color:#94a3b8;">Click 'Run Audit' to see results.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('checkBtn').addEventListener('click', runAudit);
+
+        function runAudit() {
+            const html = document.getElementById('htmlInput').value;
+            const issues = [];
+            let score = 100;
+
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, "text/html");
+
+            // Check lang attribute
+            if (!doc.documentElement.getAttribute('lang')) {
+                issues.push({ type: 'error', title: 'Missing lang attribute', desc: 'The <html> element should have a lang attribute.', rec: 'Add lang="en" (or appropriate language code) to <html>.' });
+                score -= 10;
+            }
+
+            // Check img alt
+            const imgs = doc.querySelectorAll('img');
+            imgs.forEach(img => {
+                if (!img.hasAttribute('alt')) {
+                    issues.push({ type: 'error', title: 'Missing alt attribute', desc: `Image <img src="${img.src || 'unknown'}"> is missing an alt attribute.`, rec: 'Add descriptive alt="" text.' });
+                    score -= 5;
+                }
+            });
+
+            // Check form inputs for labels
+            const inputs = doc.querySelectorAll('input:not([type="submit"]):not([type="button"]):not([type="hidden"])');
+            inputs.forEach(input => {
+                const id = input.id;
+                let hasLabel = false;
+                if (id) {
+                    hasLabel = doc.querySelector(`label[for="${id}"]`) !== null;
+                }
+                if (!hasLabel && !input.closest('label') && !input.hasAttribute('aria-label')) {
+                    issues.push({ type: 'error', title: 'Missing form label', desc: 'An input element is missing an associated label.', rec: 'Wrap with <label> or use aria-label.' });
+                    score -= 5;
+                }
+            });
+
+            // Check heading hierarchy (basic)
+            const h1s = doc.querySelectorAll('h1');
+            if (h1s.length === 0 && doc.body.innerHTML.trim().length > 0) {
+                issues.push({ type: 'warn', title: 'Missing H1', desc: 'The document does not have a main <h1> heading.', rec: 'Add a descriptive <h1>.' });
+                score -= 5;
+            } else if (h1s.length > 1) {
+                issues.push({ type: 'info', title: 'Multiple H1s', desc: 'Found multiple <h1> elements. Usually, there should only be one.', rec: 'Consider changing secondary headings to <h2>.' });
+            }
+
+            // Check links with empty text
+            const links = doc.querySelectorAll('a');
+            links.forEach(link => {
+                if (link.textContent.trim() === '' && !link.querySelector('img[alt]')) {
+                    issues.push({ type: 'error', title: 'Empty Link', desc: 'Found an <a> tag with no text content.', rec: 'Add text inside the link or aria-label.' });
+                    score -= 5;
+                }
+            });
+
+            score = Math.max(0, score);
+            displayResults(score, issues);
+        }
+
+        function displayResults(score, issues) {
+            document.getElementById('score').textContent = `Score: ${score}/100`;
+            const list = document.getElementById('issueList');
+            
+            if (issues.length === 0) {
+                list.innerHTML = `<div class="issue" style="border-color:var(--beginner)"><h3 style="margin:0;color:var(--beginner)">Perfect! No issues found.</h3></div>`;
+                return;
+            }
+
+            list.innerHTML = issues.map(issue => `
+                <div class="issue ${issue.type}">
+                    <span class="badge ${issue.type}">${issue.type.toUpperCase()}</span>
+                    <h3 style="margin: 0 0 5px 0; font-size: 1rem;">${issue.title}</h3>
+                    <p style="margin: 0 0 5px 0; font-size: 0.9rem;">${issue.desc}</p>
+                    <p style="margin: 0; font-size: 0.85rem; color: #a7f3d0;"><strong>Fix:</strong> ${issue.rec}</p>
+                </div>
+            `).join('');
+        }
+    </script>
+</body>
+</html>
