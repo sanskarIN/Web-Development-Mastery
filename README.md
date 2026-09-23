@@ -53,6 +53,11 @@ This platform requires **no compilation, no server setup, and no dependencies**.
 | 👥 **Community Hub** | Contributor highlights, open source stats |
 | 🐦 **Twitter Cards** | Rich social media previews across all pages |
 | ⚛️ **20 React Concepts** | React.memo, Suspense, Portals, Server Components, and more |
+| 🃏 **Flashcards** | 40+ interactive flip cards with keyboard nav and mastery tracking |
+| ⌨️ **Shortcuts Reference** | VS Code, DevTools, Terminal, and Git shortcuts |
+| 📐 **Project Ideas** | 25+ project ideas with difficulty levels and tech tags |
+| ♿ **A11y Checker** | Paste HTML and get instant accessibility audit with scores |
+| ⚡ **Performance Guide** | Optimization techniques with code examples and score simulator |
 | ⚙️ **CI/CD** | GitHub Actions for deployment and linting |
 | ♿ **Accessibility** | ARIA labels, skip nav, heading hierarchy fixes |
 
