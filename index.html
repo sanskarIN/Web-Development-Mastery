@@ -773,6 +773,32 @@
             filter: brightness(1.1);
         }
 
+        
+        /* OUTCOMES SECTION */
+        .outcomes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 24px;
+        }
+        .outcome-card {
+            background: var(--bg3);
+            border: 1px solid var(--border);
+            padding: 24px;
+            border-radius: 20px;
+            transition: transform 0.3s, background 0.3s, opacity 0.6s ease-out, transform 0.6s ease-out;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        .outcome-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .outcome-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+
         /* 8b. LEARNING ROADMAP TIMELINE */
         .roadmap-section {
             padding: 100px 0;
@@ -1957,6 +1983,58 @@
             </div>
         </section>
 
+
+        <!-- WHAT YOU WILL LEARN SECTION -->
+        <section id="outcomes" class="features-section" style="padding-top: 50px;">
+            <div class="section-container" style="padding: 0 24px;">
+                <div class="section-heading">
+                    <h2 class="features-title">What You'll Learn</h2>
+                </div>
+                <div class="outcomes-grid">
+                    <div class="outcome-card">
+                        <div class="feature-icon">🌐</div>
+                        <h4>Semantic HTML5</h4>
+                        <p>Write accessible, SEO-friendly markup.</p>
+                    </div>
+                    <div class="outcome-card">
+                        <div class="feature-icon">📱</div>
+                        <h4>Responsive Design</h4>
+                        <p>Create layouts for any device size.</p>
+                    </div>
+                    <div class="outcome-card">
+                        <div class="feature-icon">🎨</div>
+                        <h4>Modern CSS (Flexbox & Grid)</h4>
+                        <p>Master advanced layout techniques.</p>
+                    </div>
+                    <div class="outcome-card">
+                        <div class="feature-icon">⚡</div>
+                        <h4>JavaScript ES6+</h4>
+                        <p>Write clean, modern JavaScript code.</p>
+                    </div>
+                    <div class="outcome-card">
+                        <div class="feature-icon">⚛️</div>
+                        <h4>React Components</h4>
+                        <p>Build reusable, modular user interfaces.</p>
+                    </div>
+                    <div class="outcome-card">
+                        <div class="feature-icon">📦</div>
+                        <h4>State Management</h4>
+                        <p>Handle complex application data flow.</p>
+                    </div>
+                    <div class="outcome-card">
+                        <div class="feature-icon">🔌</div>
+                        <h4>API Integration</h4>
+                        <p>Connect frontend to backend services.</p>
+                    </div>
+                    <div class="outcome-card">
+                        <div class="feature-icon">🚀</div>
+                        <h4>Performance Optimization</h4>
+                        <p>Ensure your apps load incredibly fast.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- 8b. LEARNING ROADMAP TIMELINE -->
         <section class="roadmap-section">
             <div class="section-container" style="padding: 0 24px;">
@@ -2601,7 +2679,20 @@
             }
         });
 
-        // Theme toggle
+    
+    // Scroll Animations Observer
+    (function() {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.outcome-card').forEach(el => observer.observe(el));
+    })();
+
+    // Theme toggle
         const themeToggle = document.getElementById('themeToggle');
         const savedTheme = localStorage.getItem('hubMasteryTheme');
         
