@@ -839,6 +839,45 @@
             100% { transform: translateX(-50%); }
         }
 
+        
+        /* STATS SECTION */
+        .stats-section {
+            padding: 100px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+        .os-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+        }
+        .os-stat-card {
+            background: var(--card-glass);
+            border: 1px solid var(--border);
+            backdrop-filter: blur(10px);
+            padding: 32px 24px;
+            border-radius: 16px;
+            transition: all 0.3s;
+            opacity: 0;
+            transform: scale(0.9);
+        }
+        .os-stat-card.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+        .os-stat-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+        .os-stat-value {
+            font-size: 36px;
+            font-weight: 800;
+            font-family: 'Outfit', sans-serif;
+            color: var(--text);
+            margin-bottom: 8px;
+        }
+
         /* 8b. LEARNING ROADMAP TIMELINE */
         .roadmap-section {
             padding: 100px 0;
@@ -2106,6 +2145,46 @@
             </div>
         </section>
 
+
+        <!-- OPEN SOURCE STATS SECTION -->
+        <section class="stats-section">
+            <div class="section-container" style="padding: 0 24px;">
+                <div class="section-heading">
+                    <h2 class="features-title">Open Source & Free Forever</h2>
+                    <p style="color: var(--text2); margin-top: 16px;">Built by the community, for the community.</p>
+                </div>
+                <div class="os-stats-grid">
+                    <div class="os-stat-card">
+                        <div class="os-stat-value">264+</div>
+                        <div class="stat-label">Commits</div>
+                    </div>
+                    <div class="os-stat-card">
+                        <div class="os-stat-value">50+</div>
+                        <div class="stat-label">Pages</div>
+                    </div>
+                    <div class="os-stat-card">
+                        <div class="os-stat-value">500+</div>
+                        <div class="stat-label">Concepts</div>
+                    </div>
+                    <div class="os-stat-card">
+                        <div class="os-stat-value">25+</div>
+                        <div class="stat-label">Themes</div>
+                    </div>
+                    <div class="os-stat-card">
+                        <div class="os-stat-value">20+</div>
+                        <div class="stat-label">React Concepts</div>
+                    </div>
+                    <div class="os-stat-card">
+                        <div class="os-stat-value">100%</div>
+                        <div class="stat-label">Free</div>
+                    </div>
+                </div>
+                <div style="margin-top: 40px;">
+                    <a href="https://github.com/sanskarIN/Web-Development-Mastery" target="_blank" class="btn btn-secondary">View GitHub Repository</a>
+                </div>
+            </div>
+        </section>
+
         <!-- 9. FEATURES SECTION -->
         <section id="about" class="features-section">
             <div class="section-container" style="padding: 0 24px;">
@@ -2729,7 +2808,7 @@
                 }
             });
         }, { threshold: 0.1 });
-        document.querySelectorAll('.outcome-card').forEach(el => observer.observe(el));
+        document.querySelectorAll('.outcome-card, .os-stat-card').forEach(el => observer.observe(el));
     })();
 
     // Theme toggle
