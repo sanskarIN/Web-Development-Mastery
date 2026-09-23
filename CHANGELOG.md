@@ -6,6 +6,27 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [3.3.0] — 2026-09-23
+
+### 🆕 New Feature Pages
+- **Interactive Flashcards** (`flashcards.html`) — 40+ flip cards with category filters, shuffle, keyboard navigation, mastery tracking
+- **Keyboard Shortcuts Reference** (`shortcuts.html`) — VS Code, DevTools, Terminal, and Git shortcuts with search and platform toggle
+- **Project Ideas** (`projects.html`) — 25+ project ideas by difficulty with tech tags and estimated completion time
+- **Accessibility Checker** (`accessibility-checker.html`) — Paste HTML code and get instant A11y audit with severity badges and score
+- **Performance Guide** (`performance.html`) — Optimization techniques with code examples and performance score simulator
+
+### 🔍 SEO — Structured Data
+- Added JSON-LD `Course` schema to index.html (Google rich results)
+- Added JSON-LD `WebSite` schema with search action
+- Added `<link rel="canonical">` to all root HTML pages
+- Added `og:url` meta tags to pages missing them
+
+### 🧭 Module Navigation
+- Added cross-module navigation banner (HTML → CSS → JS → React → Home) to all 4 module index pages
+- Added floating "Home" button (fixed bottom-left) to all 4 module index pages
+
+---
+
 ## [3.2.0] — 2026-09-23
 
 ### 🆕 New Feature Pages
