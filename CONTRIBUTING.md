@@ -112,6 +112,11 @@ Web-Development-Mastery/
 ├── certificates.html       # Learning certificates & badges
 ├── challenges.html         # Coding challenges
 ├── community.html          # Community hub
+├── flashcards.html         # Interactive flashcard study
+├── shortcuts.html          # Developer keyboard shortcuts
+├── projects.html           # Project ideas gallery
+├── accessibility-checker.html # HTML A11y checker tool
+├── performance.html        # Web performance guide
 ├── sitemap.xml             # XML sitemap
 ├── robots.txt              # Crawler directives
 ├── manifest.json           # PWA web app manifest
