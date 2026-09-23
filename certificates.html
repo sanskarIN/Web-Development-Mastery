@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificates - Web Development Mastery</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="splash.png">
+    <style>
+        :root {
+            --bg: #0b0f19;
+            --text: #f8fafc;
+            --accent1: #6c63ff;
+            --accent2: #3ecfcf;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 2rem;
+            min-height: 100vh;
+        }
+        .container { max-width: 1200px; margin: 0 auto; }
+        h1 {
+            text-align: center;
+            background: linear-gradient(to right, var(--accent1), var(--accent2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 2rem;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .cert-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .cert-card h2 { margin-top: 0; color: var(--accent2); }
+        .progress-bar {
+            background: rgba(255,255,255,0.1);
+            height: 10px;
+            border-radius: 5px;
+            margin: 1rem 0;
+            overflow: hidden;
+        }
+        .progress {
+            height: 100%;
+            background: linear-gradient(to right, var(--accent1), var(--accent2));
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+        button {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid var(--glass-border);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            margin: 0.25rem;
+            transition: background 0.3s;
+        }
+        button:hover { background: rgba(255,255,255,0.2); }
+        .certificate-render {
+            display: none;
+            position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            background: var(--bg); border: 4px solid var(--accent1); padding: 3rem;
+            text-align: center; border-radius: 1rem; z-index: 100;
+        }
+        .certificate-render h1 { font-size: 2.5rem; margin-bottom: 1rem; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Learning Certificates</h1>
+        <div class="grid" id="certs"></div>
+    </div>
+    
+    <div id="render-target" class="certificate-render">
+        <h1 id="render-title">Certificate</h1>
+        <p>This certifies that the user has completed</p>
+        <h2 id="render-course" style="color: var(--accent2)">Course Name</h2>
+        <p>Web Development Mastery</p>
+    </div>
+
+    <script>
+        const certs = [
+            { id: 'html-beg', title: 'HTML Beginner', reqs: 'Basic Tags, Forms, Semantic HTML' },
+            { id: 'css-beg', title: 'CSS Beginner', reqs: 'Selectors, Colors, Box Model' },
+            { id: 'js-beg', title: 'JS Beginner', reqs: 'Variables, Functions, Loops' },
+            { id: 'react-beg', title: 'React Beginner', reqs: 'JSX, Components, Props' },
+            { id: 'html-mast', title: 'HTML Master', reqs: 'SEO, Accessibility, Canvas' },
+            { id: 'css-mast', title: 'CSS Master', reqs: 'Flexbox, Grid, Animations' },
+            { id: 'js-mast', title: 'JS Master', reqs: 'Async/Await, Closures, DOM' },
+            { id: 'react-mast', title: 'React Master', reqs: 'Hooks, Context, Router' },
+            { id: 'fs-dev', title: 'Full Stack Developer', reqs: 'All Master Certificates' }
+        ];
+
+        const container = document.getElementById('certs');
+        
+        certs.forEach(c => {
+            const progress = localStorage.getItem(`prog_${c.id}`) || Math.floor(Math.random() * 101); // Mock progress
+            container.innerHTML += `
+                <div class="cert-card">
+                    <h2>${c.title}</h2>
+                    <p style="font-size: 0.9rem; color: #aaa">Requires: ${c.reqs}</p>
+                    <div class="progress-bar"><div class="progress" style="width: ${progress}%"></div></div>
+                    <p>${progress}% Completed</p>
+                    <button onclick="downloadCert('${c.title}')" ${progress < 100 ? 'disabled style="opacity:0.5"' : ''}>Download</button>
+                    <button onclick="shareCert('${c.title}')">Share</button>
+                </div>
+            `;
+        });
+
+        function downloadCert(title) {
+            document.getElementById('render-course').innerText = title;
+            document.getElementById('render-target').style.display = 'block';
+            setTimeout(() => {
+                alert('In a real app, this would use html2canvas to download an image!');
+                document.getElementById('render-target').style.display = 'none';
+            }, 2000);
+        }
+
+        function shareCert(title) {
+            alert(`I just earned the ${title} certificate on Web Development Mastery!`);
+        }
+    </script>
+</body>
+</html>
