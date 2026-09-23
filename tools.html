@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Developer Tools - Web Development Mastery</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="splash.png">
+    <style>
+        :root {
+            --bg: #0b0f19;
+            --text: #f8fafc;
+            --accent1: #6c63ff;
+            --accent2: #3ecfcf;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 2rem;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            background: linear-gradient(to right, var(--accent1), var(--accent2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 2rem;
+        }
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .tool-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            backdrop-filter: blur(10px);
+        }
+        .tool-card h2 {
+            margin-top: 0;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+        .control-group {
+            margin-bottom: 1rem;
+        }
+        .control-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+        input[type="range"], input[type="color"] {
+            width: 100%;
+            margin-bottom: 0.5rem;
+        }
+        .preview-box {
+            height: 100px;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #333;
+            font-weight: bold;
+        }
+        .output-box {
+            background: rgba(0,0,0,0.3);
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            font-family: monospace;
+            font-size: 0.85rem;
+            word-break: break-all;
+            margin-bottom: 0.5rem;
+        }
+        button {
+            background: linear-gradient(to right, var(--accent1), var(--accent2));
+            border: none;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 600;
+            width: 100%;
+            transition: opacity 0.2s;
+        }
+        button:hover {
+            opacity: 0.9;
+        }
+        @media (max-width: 768px) {
+            body { padding: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Developer Tools</h1>
+        <div class="tools-grid">
+            <!-- Box Shadow Generator -->
+            <div class="tool-card">
+                <h2>Box Shadow Generator</h2>
+                <div class="preview-box" id="shadow-preview">Preview</div>
+                <div class="control-group">
+                    <label>X Offset <span id="shadow-x-val">0</span>px</label>
+                    <input type="range" id="shadow-x" min="-50" max="50" value="0">
+                    <label>Y Offset <span id="shadow-y-val">10</span>px</label>
+                    <input type="range" id="shadow-y" min="-50" max="50" value="10">
+                    <label>Blur <span id="shadow-blur-val">20</span>px</label>
+                    <input type="range" id="shadow-blur" min="0" max="100" value="20">
+                    <label>Color</label>
+                    <input type="color" id="shadow-color" value="#000000">
+                </div>
+                <div class="output-box" id="shadow-output">box-shadow: 0px 10px 20px #000000;</div>
+                <button onclick="copyText('shadow-output')">Copy CSS</button>
+            </div>
+
+            <!-- Border Radius Visualizer -->
+            <div class="tool-card">
+                <h2>Border Radius Visualizer</h2>
+                <div class="preview-box" id="radius-preview" style="background: var(--accent1)"></div>
+                <div class="control-group">
+                    <label>Radius <span id="radius-val">20</span>px</label>
+                    <input type="range" id="radius-slider" min="0" max="50" value="20">
+                </div>
+                <div class="output-box" id="radius-output">border-radius: 20px;</div>
+                <button onclick="copyText('radius-output')">Copy CSS</button>
+            </div>
+            
+            <!-- CSS Gradient Builder -->
+            <div class="tool-card">
+                <h2>CSS Gradient Builder</h2>
+                <div class="preview-box" id="gradient-preview"></div>
+                <div class="control-group">
+                    <label>Color 1</label>
+                    <input type="color" id="grad-color1" value="#6c63ff">
+                    <label>Color 2</label>
+                    <input type="color" id="grad-color2" value="#3ecfcf">
+                    <label>Angle <span id="grad-angle-val">90</span>deg</label>
+                    <input type="range" id="grad-angle" min="0" max="360" value="90">
+                </div>
+                <div class="output-box" id="gradient-output">background: linear-gradient(90deg, #6c63ff, #3ecfcf);</div>
+                <button onclick="copyText('gradient-output')">Copy CSS</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function copyText(id) {
+            const text = document.getElementById(id).innerText;
+            navigator.clipboard.writeText(text).then(() => alert('Copied to clipboard!'));
+        }
+
+        // Box Shadow Logic
+        const shadowInputs = ['x', 'y', 'blur'].map(id => document.getElementById(`shadow-${id}`));
+        const shadowColor = document.getElementById('shadow-color');
+        const shadowPreview = document.getElementById('shadow-preview');
+        const shadowOutput = document.getElementById('shadow-output');
+
+        function updateShadow() {
+            const [x, y, blur] = shadowInputs.map(input => input.value);
+            const color = shadowColor.value;
+            const css = `${x}px ${y}px ${blur}px ${color}`;
+            shadowPreview.style.boxShadow = css;
+            shadowOutput.innerText = `box-shadow: ${css};`;
+            shadowInputs.forEach(input => {
+                document.getElementById(`${input.id}-val`).innerText = input.value;
+            });
+        }
+        shadowInputs.forEach(input => input.addEventListener('input', updateShadow));
+        shadowColor.addEventListener('input', updateShadow);
+        updateShadow();
+
+        // Border Radius Logic
+        const radiusSlider = document.getElementById('radius-slider');
+        const radiusPreview = document.getElementById('radius-preview');
+        const radiusOutput = document.getElementById('radius-output');
+        function updateRadius() {
+            const val = radiusSlider.value;
+            document.getElementById('radius-val').innerText = val;
+            radiusPreview.style.borderRadius = `${val}px`;
+            radiusOutput.innerText = `border-radius: ${val}px;`;
+        }
+        radiusSlider.addEventListener('input', updateRadius);
+        updateRadius();
+
+        // Gradient Logic
+        const gradC1 = document.getElementById('grad-color1');
+        const gradC2 = document.getElementById('grad-color2');
+        const gradAngle = document.getElementById('grad-angle');
+        const gradPreview = document.getElementById('gradient-preview');
+        const gradOutput = document.getElementById('gradient-output');
+        function updateGradient() {
+            const c1 = gradC1.value, c2 = gradC2.value, angle = gradAngle.value;
+            document.getElementById('grad-angle-val').innerText = angle;
+            const css = `linear-gradient(${angle}deg, ${c1}, ${c2})`;
+            gradPreview.style.background = css;
+            gradOutput.innerText = `background: ${css};`;
+        }
+        gradC1.addEventListener('input', updateGradient);
+        gradC2.addEventListener('input', updateGradient);
+        gradAngle.addEventListener('input', updateGradient);
+        updateGradient();
+    </script>
+</body>
+</html>
