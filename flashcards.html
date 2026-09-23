@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Development Flashcards</title>
+    <link rel="icon" type="image/png" href="splash.png">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0b0f19;
+            --text: #f8fafc;
+            --accent1: #6c63ff;
+            --accent2: #3ecfcf;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --card-border: rgba(255, 255, 255, 0.1);
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+        header {
+            width: 100%;
+            padding: 20px;
+            text-align: center;
+            background: rgba(11, 15, 25, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--card-border);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        .controls {
+            display: flex;
+            gap: 15px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        button, select {
+            background: var(--card-bg);
+            color: var(--text);
+            border: 1px solid var(--accent1);
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-family: inherit;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        button:hover {
+            background: var(--accent1);
+        }
+        .flashcard-container {
+            width: 90%;
+            max-width: 600px;
+            height: 350px;
+            perspective: 1000px;
+            margin: 30px auto;
+        }
+        .flashcard {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            cursor: pointer;
+        }
+        .flashcard.flipped {
+            transform: rotateY(180deg);
+        }
+        .flashcard-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+            box-sizing: border-box;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+            text-align: center;
+        }
+        .flashcard-back {
+            transform: rotateY(180deg);
+            background: rgba(108, 99, 255, 0.1);
+            border-color: var(--accent1);
+        }
+        .category-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--accent2);
+            color: var(--bg);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        .nav-controls {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .progress-container {
+            width: 90%;
+            max-width: 600px;
+            margin-bottom: 20px;
+        }
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: var(--card-bg);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent1), var(--accent2));
+            width: 0%;
+            transition: width 0.3s;
+        }
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            margin-top: 5px;
+            color: #aaa;
+        }
+        @media (max-width: 600px) {
+            .flashcard-container { height: 400px; }
+            .flashcard-face { font-size: 0.9rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Web Dev Flashcards</h1>
+        <p>Press Space to flip, ← → to navigate</p>
+    </header>
+
+    <div class="controls">
+        <select id="categoryFilter">
+            <option value="All">All Categories</option>
+            <option value="HTML">HTML</option>
+            <option value="CSS">CSS</option>
+            <option value="JavaScript">JavaScript</option>
+            <option value="React">React</option>
+        </select>
+        <button id="shuffleBtn">Shuffle</button>
+        <button id="masterBtn">Mark as Mastered</button>
+        <button id="resetBtn">Reset Progress</button>
+    </div>
+
+    <div class="progress-container">
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <div class="stats">
+            <span id="masteredCount">Mastered: 0/40</span>
+            <span id="progressPercent">0%</span>
+        </div>
+    </div>
+
+    <div class="nav-controls">
+        <button id="prevBtn">&larr; Prev</button>
+        <span id="cardCounter">1 / 40</span>
+        <button id="nextBtn">Next &rarr;</button>
+    </div>
+
+    <div class="flashcard-container">
+        <div class="flashcard" id="flashcard">
+            <div class="flashcard-face flashcard-front">
+                <span class="category-badge" id="cardCategoryFront">HTML</span>
+                <h2 id="cardQuestion">What does HTML stand for?</h2>
+            </div>
+            <div class="flashcard-face flashcard-back">
+                <span class="category-badge" id="cardCategoryBack">HTML</span>
+                <h2 id="cardAnswer">HyperText Markup Language</h2>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const allCards = [
+            // HTML (10)
+            { id: 1, category: 'HTML', q: 'What does HTML stand for?', a: 'HyperText Markup Language' },
+            { id: 2, category: 'HTML', q: 'What is the purpose of the alt attribute in an img tag?', a: 'To provide alternative text for screen readers and when the image fails to load.' },
+            { id: 3, category: 'HTML', q: 'What is semantic HTML?', a: 'Using HTML tags that convey the meaning of the content, like <article>, <nav>, or <header>.' },
+            { id: 4, category: 'HTML', q: 'Difference between block and inline elements?', a: 'Block elements take up the full width available and start on a new line. Inline elements only take up as much width as necessary and do not start a new line.' },
+            { id: 5, category: 'HTML', q: 'What does the <canvas> element do?', a: 'Used to draw graphics on a web page via JavaScript.' },
+            { id: 6, category: 'HTML', q: 'What is the DOM?', a: 'Document Object Model - a programming interface for web documents that represents the page so programs can change the document structure, style, and content.' },
+            { id: 7, category: 'HTML', q: 'How do you create a hyperlink?', a: 'Using the <a> tag with the href attribute: <a href="url">link text</a>' },
+            { id: 8, category: 'HTML', q: 'What is the purpose of the <head> tag?', a: 'Contains meta-information about the document, such as title, character set, styles, and scripts.' },
+            { id: 9, category: 'HTML', q: 'What are data- attributes?', a: 'Custom attributes used to store extra data on standard HTML elements without needing non-standard attributes.' },
+            { id: 10, category: 'HTML', q: 'Difference between <ul> and <ol>?', a: '<ul> is an unordered list (bullet points), <ol> is an ordered list (numbered).' },
+            // CSS (10)
+            { id: 11, category: 'CSS', q: 'What does CSS stand for?', a: 'Cascading Style Sheets' },
+            { id: 12, category: 'CSS', q: 'What is the CSS box model?', a: 'A box that wraps around every HTML element, consisting of margins, borders, padding, and the actual content.' },
+            { id: 13, category: 'CSS', q: 'Difference between relative, absolute, fixed, and sticky positioning?', a: 'Relative: relative to its normal position. Absolute: relative to nearest positioned ancestor. Fixed: relative to viewport. Sticky: toggles between relative and fixed based on scroll.' },
+            { id: 14, category: 'CSS', q: 'What is flexbox?', a: 'A one-dimensional layout method for laying out items in rows or columns.' },
+            { id: 15, category: 'CSS', q: 'What is CSS Grid?', a: 'A two-dimensional layout system for the web.' },
+            { id: 16, category: 'CSS', q: 'What does "cascading" mean in CSS?', a: 'The process of determining which rules apply to an element based on specificity, inheritance, and order of appearance.' },
+            { id: 17, category: 'CSS', q: 'What is a CSS preprocessor?', a: 'A program that lets you generate CSS from a unique syntax, like Sass or LESS.' },
+            { id: 18, category: 'CSS', q: 'What are media queries?', a: 'CSS techniques used to apply styles based on the characteristics of the device, like screen width (responsive design).' },
+            { id: 19, category: 'CSS', q: 'What is z-index?', a: 'Controls the vertical stacking order of elements that overlap.' },
+            { id: 20, category: 'CSS', q: 'What is the difference between visibility: hidden and display: none?', a: 'visibility: hidden hides the element but keeps its space. display: none removes the element from the document flow completely.' },
+            // JavaScript (10)
+            { id: 21, category: 'JavaScript', q: 'What are the primitive data types in JS?', a: 'String, Number, BigInt, Boolean, Undefined, Symbol, and Null.' },
+            { id: 22, category: 'JavaScript', q: 'Difference between let, const, and var?', a: 'var is function-scoped. let and const are block-scoped. const cannot be reassigned.' },
+            { id: 23, category: 'JavaScript', q: 'What is a closure?', a: 'A feature where an inner function has access to the outer (enclosing) function\'s variables, even after the outer function has returned.' },
+            { id: 24, category: 'JavaScript', q: 'What is hoisting?', a: 'JS\'s default behavior of moving declarations to the top of the current scope before code execution.' },
+            { id: 25, category: 'JavaScript', q: 'Difference between == and ===?', a: '== compares values after type coercion. === compares both values and types (strict equality).' },
+            { id: 26, category: 'JavaScript', q: 'What is a Promise?', a: 'An object representing the eventual completion or failure of an asynchronous operation.' },
+            { id: 27, category: 'JavaScript', q: 'What does the "this" keyword refer to?', a: 'Refers to the object it belongs to. In a method, it refers to the owner object. Alone, it refers to the global object.' },
+            { id: 28, category: 'JavaScript', q: 'What is event delegation?', a: 'Adding a single event listener to a parent element to handle events from its children, utilizing event bubbling.' },
+            { id: 29, category: 'JavaScript', q: 'What is JSON?', a: 'JavaScript Object Notation - a lightweight format for storing and transporting data.' },
+            { id: 30, category: 'JavaScript', q: 'What are arrow functions?', a: 'A shorter syntax for writing function expressions. They do not bind their own "this".' },
+            // React (10)
+            { id: 31, category: 'React', q: 'What is React?', a: 'A JavaScript library for building user interfaces.' },
+            { id: 32, category: 'React', q: 'What is JSX?', a: 'A syntax extension for JavaScript that looks similar to XML/HTML, used with React to describe the UI.' },
+            { id: 33, category: 'React', q: 'What is a component?', a: 'Independent, reusable pieces of UI. They can be Class-based or Function-based.' },
+            { id: 34, category: 'React', q: 'What are hooks?', a: 'Functions that let you "hook into" React state and lifecycle features from function components (e.g., useState, useEffect).' },
+            { id: 35, category: 'React', q: 'What is the Virtual DOM?', a: 'A lightweight copy of the actual DOM. React uses it to figure out the minimal number of changes needed to update the real DOM.' },
+            { id: 36, category: 'React', q: 'Difference between state and props?', a: 'State is local and mutable data managed within the component. Props are read-only data passed from a parent component.' },
+            { id: 37, category: 'React', q: 'What is useEffect used for?', a: 'Performing side effects in function components, like fetching data, subscriptions, or manually changing the DOM.' },
+            { id: 38, category: 'React', q: 'What is context API?', a: 'A way to pass data through the component tree without having to pass props down manually at every level.' },
+            { id: 39, category: 'React', q: 'What are React fragments?', a: 'A common pattern in React for a component to return multiple elements without adding an extra node (e.g., <div>) to the DOM.' },
+            { id: 40, category: 'React', q: 'What is React Router?', a: 'A standard library for routing in React, enabling the navigation among views of various components, keeping the UI in sync with the URL.' }
+        ];
+
+        let cards = [...allCards];
+        let currentIndex = 0;
+        let masteredIds = JSON.parse(localStorage.getItem('masteredFlashcards')) || [];
+
+        const flashcardEl = document.getElementById('flashcard');
+        const qEl = document.getElementById('cardQuestion');
+        const aEl = document.getElementById('cardAnswer');
+        const catFront = document.getElementById('cardCategoryFront');
+        const catBack = document.getElementById('cardCategoryBack');
+        const counterEl = document.getElementById('cardCounter');
+        
+        function init() {
+            updateView();
+            updateStats();
+        }
+
+        function updateView() {
+            if (cards.length === 0) {
+                qEl.textContent = "No cards found!";
+                aEl.textContent = "";
+                return;
+            }
+            const card = cards[currentIndex];
+            flashcardEl.classList.remove('flipped');
+            setTimeout(() => {
+                qEl.textContent = card.q;
+                aEl.textContent = card.a;
+                catFront.textContent = card.category;
+                catBack.textContent = card.category;
+                counterEl.textContent = `${currentIndex + 1} / ${cards.length}`;
+                
+                if(masteredIds.includes(card.id)) {
+                    document.getElementById('masterBtn').textContent = "Unmark Mastered";
+                } else {
+                    document.getElementById('masterBtn').textContent = "Mark as Mastered";
+                }
+            }, 150); // wait for flip animation to hide text swap
+        }
+
+        function updateStats() {
+            const total = allCards.length;
+            const mastered = masteredIds.length;
+            const pct = Math.round((mastered / total) * 100);
+            
+            document.getElementById('masteredCount').textContent = `Mastered: ${mastered}/${total}`;
+            document.getElementById('progressPercent').textContent = `${pct}%`;
+            document.getElementById('progressFill').style.width = `${pct}%`;
+        }
+
+        // Event Listeners
+        flashcardEl.addEventListener('click', () => {
+            flashcardEl.classList.toggle('flipped');
+        });
+
+        document.getElementById('prevBtn').addEventListener('click', () => {
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateView();
+            }
+        });
+
+        document.getElementById('nextBtn').addEventListener('click', () => {
+            if (currentIndex < cards.length - 1) {
+                currentIndex++;
+                updateView();
+            }
+        });
+
+        document.getElementById('shuffleBtn').addEventListener('click', () => {
+            for (let i = cards.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [cards[i], cards[j]] = [cards[j], cards[i]];
+            }
+            currentIndex = 0;
+            updateView();
+        });
+
+        document.getElementById('categoryFilter').addEventListener('change', (e) => {
+            const cat = e.target.value;
+            if (cat === 'All') {
+                cards = [...allCards];
+            } else {
+                cards = allCards.filter(c => c.category === cat);
+            }
+            currentIndex = 0;
+            updateView();
+        });
+
+        document.getElementById('masterBtn').addEventListener('click', () => {
+            if(cards.length === 0) return;
+            const cardId = cards[currentIndex].id;
+            if(masteredIds.includes(cardId)) {
+                masteredIds = masteredIds.filter(id => id !== cardId);
+            } else {
+                masteredIds.push(cardId);
+            }
+            localStorage.setItem('masteredFlashcards', JSON.stringify(masteredIds));
+            updateView();
+            updateStats();
+        });
+
+        document.getElementById('resetBtn').addEventListener('click', () => {
+            if(confirm("Are you sure you want to reset your progress?")) {
+                masteredIds = [];
+                localStorage.removeItem('masteredFlashcards');
+                updateView();
+                updateStats();
+            }
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') {
+                if (currentIndex > 0) { currentIndex--; updateView(); }
+            } else if (e.key === 'ArrowRight') {
+                if (currentIndex < cards.length - 1) { currentIndex++; updateView(); }
+            } else if (e.key === ' ' || e.key === 'Spacebar') {
+                e.preventDefault();
+                flashcardEl.classList.toggle('flipped');
+            }
+        });
+
+        init();
+    </script>
+</body>
+</html>
