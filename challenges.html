@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coding Challenges - Web Development Mastery</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="splash.png">
+    <style>
+        :root {
+            --bg: #0b0f19; --text: #f8fafc; --accent1: #6c63ff; --accent2: #3ecfcf;
+            --glass-bg: rgba(255, 255, 255, 0.05); --glass-border: rgba(255, 255, 255, 0.1);
+        }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--bg); color: var(--text); margin: 0; padding: 2rem; }
+        .container { max-width: 1000px; margin: 0 auto; }
+        h1 { text-align: center; background: linear-gradient(to right, var(--accent1), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .progress-container { background: var(--glass-bg); padding: 1rem; border-radius: 1rem; margin-bottom: 2rem; text-align: center;}
+        .progress-bar { height: 10px; background: rgba(255,255,255,0.1); border-radius: 5px; margin-top: 0.5rem; overflow: hidden;}
+        .progress-fill { height: 100%; background: var(--accent1); width: 0%; transition: width 0.3s; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+        .card { background: var(--glass-bg); border: 1px solid var(--glass-border); padding: 1.5rem; border-radius: 1rem; }
+        .badge { display: inline-block; padding: 0.25rem 0.5rem; border-radius: 9999px; font-size: 0.75rem; font-weight: bold; margin-bottom: 0.5rem; }
+        .beg { background: rgba(34, 197, 94, 0.2); color: #22c55e; }
+        .int { background: rgba(234, 179, 8, 0.2); color: #eab308; }
+        .adv { background: rgba(239, 68, 68, 0.2); color: #ef4444; }
+        .cat { background: rgba(108, 99, 255, 0.2); color: var(--accent1); margin-left: 0.5rem; }
+        button { background: transparent; border: 1px solid var(--accent1); color: var(--text); padding: 0.5rem 1rem; border-radius: 0.5rem; cursor: pointer; margin-top: 1rem; margin-right: 0.5rem; }
+        button.completed { background: var(--accent1); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Coding Challenges</h1>
+        <div class="progress-container">
+            <h3>Overall Progress: <span id="prog-text">0%</span></h3>
+            <div class="progress-bar"><div class="progress-fill" id="prog-fill"></div></div>
+        </div>
+        <div class="grid" id="challenges"></div>
+    </div>
+
+    <script>
+        const challenges = [];
+        const diffs = ['Beginner', 'Intermediate', 'Advanced'];
+        const cats = ['HTML/CSS Layout', 'JavaScript Logic', 'React Components', 'Full Stack'];
+        
+        for(let i=1; i<=20; i++) {
+            challenges.push({
+                id: i,
+                title: `Challenge #${i}`,
+                desc: `Complete this ${cats[i%4].toLowerCase()} challenge to improve your skills.`,
+                diff: diffs[i%3],
+                cat: cats[i%4],
+                time: `${15 + (i%3)*15} mins`
+            });
+        }
+
+        const container = document.getElementById('challenges');
+        
+        function render() {
+            container.innerHTML = '';
+            let completedCount = 0;
+            
+            challenges.forEach(c => {
+                const isComp = localStorage.getItem(`chal_${c.id}`) === 'true';
+                if(isComp) completedCount++;
+                
+                const diffClass = c.diff === 'Beginner' ? 'beg' : c.diff === 'Intermediate' ? 'int' : 'adv';
+                
+                container.innerHTML += `
+                    <div class="card">
+                        <span class="badge ${diffClass}">${c.diff}</span>
+                        <span class="badge cat">${c.cat}</span>
+                        <h2>${c.title}</h2>
+                        <p style="color: #cbd5e1; font-size: 0.9rem">${c.desc}</p>
+                        <p style="font-size: 0.8rem; color: #94a3b8">⏱️ ${c.time}</p>
+                        <button class="${isComp ? 'completed' : ''}" onclick="toggleStatus(${c.id})">${isComp ? 'Completed ✓' : 'Mark Complete'}</button>
+                        <button onclick="alert('Hint: Break the problem down into smaller steps.')">Hint 💡</button>
+                    </div>
+                `;
+            });
+            
+            const pct = Math.round((completedCount / challenges.length) * 100);
+            document.getElementById('prog-text').innerText = `${pct}%`;
+            document.getElementById('prog-fill').style.width = `${pct}%`;
+        }
+        
+        function toggleStatus(id) {
+            const current = localStorage.getItem(`chal_${id}`) === 'true';
+            localStorage.setItem(`chal_${id}`, !current);
+            render();
+        }
+
+        render();
+    </script>
+</body>
+</html>
