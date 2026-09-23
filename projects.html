@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Dev Projects</title>
+    <link rel="icon" type="image/png" href="splash.png">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0b0f19;
+            --text: #f8fafc;
+            --accent1: #6c63ff;
+            --accent2: #3ecfcf;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --card-border: rgba(255, 255, 255, 0.1);
+            --beginner: #4ade80;
+            --intermediate: #facc15;
+            --advanced: #f87171;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+        }
+        header {
+            padding: 40px 20px;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(11, 15, 25, 0.9), rgba(62, 207, 207, 0.2));
+            border-bottom: 1px solid var(--card-border);
+        }
+        h1 { margin: 0 0 10px 0; color: var(--accent2); }
+        .filters {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 30px 20px;
+            flex-wrap: wrap;
+        }
+        select {
+            padding: 10px 20px;
+            border-radius: 8px;
+            border: 1px solid var(--accent1);
+            background: var(--card-bg);
+            color: var(--text);
+            font-family: inherit;
+            cursor: pointer;
+        }
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .project-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            border-color: var(--accent1);
+        }
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+        .difficulty {
+            font-size: 0.8rem;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+        .diff-Beginner { background: rgba(74, 222, 128, 0.2); color: var(--beginner); }
+        .diff-Intermediate { background: rgba(250, 204, 21, 0.2); color: var(--intermediate); }
+        .diff-Advanced { background: rgba(248, 113, 113, 0.2); color: var(--advanced); }
+        h3 { margin: 0; font-size: 1.2rem; }
+        .desc { font-size: 0.95rem; color: #cbd5e1; flex-grow: 1; margin-bottom: 15px; }
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+        .tag {
+            font-size: 0.75rem;
+            background: rgba(255,255,255,0.1);
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+        .meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            color: #94a3b8;
+            border-top: 1px solid var(--card-border);
+            padding-top: 15px;
+        }
+        a.btn {
+            color: var(--accent1);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        a.btn:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Project Ideas & Templates</h1>
+        <p>Build these 25+ projects to master web development.</p>
+    </header>
+
+    <div class="filters">
+        <select id="diffFilter">
+            <option value="All">All Difficulties</option>
+            <option value="Beginner">Beginner</option>
+            <option value="Intermediate">Intermediate</option>
+            <option value="Advanced">Advanced</option>
+        </select>
+        <select id="techFilter">
+            <option value="All">All Technologies</option>
+            <option value="HTML/CSS">HTML/CSS</option>
+            <option value="JavaScript">JavaScript</option>
+            <option value="React">React</option>
+        </select>
+    </div>
+
+    <div class="projects-grid" id="grid">
+        <!-- populated by JS -->
+    </div>
+
+    <script>
+        const projects = [
+            { title: "Personal Portfolio", diff: "Beginner", desc: "A static portfolio website to showcase your skills and projects.", time: "2-4 hours", tags: ["HTML/CSS"], link: "#" },
+            { title: "Landing Page", diff: "Beginner", desc: "A product landing page with a hero section, features, and CTA.", time: "3 hours", tags: ["HTML/CSS"], link: "#" },
+            { title: "Registration Form", diff: "Beginner", desc: "A styled HTML form with various input types and validation.", time: "2 hours", tags: ["HTML/CSS"], link: "#" },
+            { title: "CSS Grid Gallery", diff: "Beginner", desc: "A responsive image gallery utilizing CSS Grid and Flexbox.", time: "2 hours", tags: ["HTML/CSS"], link: "#" },
+            { title: "Digital Clock", diff: "Beginner", desc: "A real-time clock displaying hours, minutes, and seconds.", time: "1 hour", tags: ["JavaScript"], link: "#" },
+            { title: "To-Do List", diff: "Beginner", desc: "Add, complete, and delete tasks. Store in localStorage.", time: "3 hours", tags: ["JavaScript"], link: "#" },
+            { title: "Random Quote Generator", diff: "Beginner", desc: "Fetch and display random quotes from a free API.", time: "2 hours", tags: ["JavaScript", "API"], link: "#" },
+            { title: "Color Flipper", diff: "Beginner", desc: "Click a button to change background color randomly.", time: "1 hour", tags: ["JavaScript"], link: "#" },
+            { title: "Counter App", diff: "Beginner", desc: "Increment, decrement, and reset a counter value.", time: "1 hour", tags: ["JavaScript"], link: "#" },
+            { title: "Simple Calculator", diff: "Beginner", desc: "Basic arithmetic calculator with UI.", time: "3 hours", tags: ["JavaScript"], link: "#" },
+            
+            { title: "Weather App", diff: "Intermediate", desc: "Fetch real-time weather data based on city input.", time: "5 hours", tags: ["JavaScript", "API"], link: "#" },
+            { title: "Movie Search App", diff: "Intermediate", desc: "Search OMDB API for movies and display results in cards.", time: "6 hours", tags: ["JavaScript", "API"], link: "#" },
+            { title: "Quiz App", diff: "Intermediate", desc: "Multiple choice quiz with score tracking and timer.", time: "5 hours", tags: ["JavaScript"], link: "#" },
+            { title: "Memory Card Game", diff: "Intermediate", desc: "Grid of cards to flip and find matching pairs.", time: "6 hours", tags: ["JavaScript"], link: "#" },
+            { title: "Expense Tracker", diff: "Intermediate", desc: "Track income and expenses, calculate total balance.", time: "5 hours", tags: ["JavaScript"], link: "#" },
+            { title: "Markdown Previewer", diff: "Intermediate", desc: "Type markdown and see HTML preview in real-time.", time: "4 hours", tags: ["React"], link: "#" },
+            { title: "Pomodoro Timer", diff: "Intermediate", desc: "25min work / 5min break timer with sound alerts.", time: "4 hours", tags: ["React"], link: "#" },
+            { title: "Recipe App", diff: "Intermediate", desc: "Search for recipes and view ingredients.", time: "6 hours", tags: ["React", "API"], link: "#" },
+            { title: "Shopping Cart", diff: "Intermediate", desc: "E-commerce cart functionality with state management.", time: "8 hours", tags: ["React"], link: "#" },
+            { title: "Note Taking App", diff: "Intermediate", desc: "Create, edit, delete notes. Save to local storage.", time: "5 hours", tags: ["React"], link: "#" },
+
+            { title: "Social Media Dashboard", diff: "Advanced", desc: "Dashboard displaying stats with dark/light mode toggle.", time: "10 hours", tags: ["React", "CSS"], link: "#" },
+            { title: "E-commerce Storefront", diff: "Advanced", desc: "Full frontend for a store, product pages, cart, checkout.", time: "20+ hours", tags: ["React", "State Mgt"], link: "#" },
+            { title: "Chat Application", diff: "Advanced", desc: "Real-time chat using WebSockets or Firebase.", time: "15 hours", tags: ["React", "Firebase"], link: "#" },
+            { title: "Kanban Board", diff: "Advanced", desc: "Trello clone with drag-and-drop functionality.", time: "15 hours", tags: ["React", "DnD"], link: "#" },
+            { title: "Spotify Clone", diff: "Advanced", desc: "Music player interface consuming the Spotify API.", time: "25+ hours", tags: ["React", "API"], link: "#" }
+        ];
+
+        const grid = document.getElementById('grid');
+        const diffFilter = document.getElementById('diffFilter');
+        const techFilter = document.getElementById('techFilter');
+
+        function renderProjects(data) {
+            grid.innerHTML = '';
+            data.forEach(p => {
+                const card = document.createElement('div');
+                card.className = 'project-card';
+                card.innerHTML = `
+                    <div class="card-header">
+                        <h3>${p.title}</h3>
+                        <span class="difficulty diff-${p.diff}">${p.diff}</span>
+                    </div>
+                    <p class="desc">${p.desc}</p>
+                    <div class="tags">
+                        ${p.tags.map(t => `<span class="tag">${t}</span>`).join('')}
+                    </div>
+                    <div class="meta">
+                        <span>⏱️ ${p.time}</span>
+                        <a href="${p.link}" class="btn">View Template &rarr;</a>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function filter() {
+            let filtered = projects;
+            const diff = diffFilter.value;
+            const tech = techFilter.value;
+
+            if (diff !== 'All') filtered = filtered.filter(p => p.diff === diff);
+            if (tech !== 'All') filtered = filtered.filter(p => p.tags.includes(tech));
+
+            renderProjects(filtered);
+        }
+
+        diffFilter.addEventListener('change', filter);
+        techFilter.addEventListener('change', filter);
+
+        renderProjects(projects);
+    </script>
+</body>
+</html>
