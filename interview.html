@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interview Questions - Web Development Mastery</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="splash.png">
+    <style>
+        :root {
+            --bg: #0b0f19;
+            --text: #f8fafc;
+            --accent1: #6c63ff;
+            --accent2: #3ecfcf;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --easy: #22c55e;
+            --medium: #eab308;
+            --hard: #ef4444;
+        }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 2rem;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            background: linear-gradient(to right, var(--accent1), var(--accent2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .controls {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        input[type="text"], select {
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            border: 1px solid var(--glass-border);
+            background: var(--glass-bg);
+            color: var(--text);
+            font-family: inherit;
+            flex: 1;
+        }
+        .question-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+        .question-header {
+            padding: 1rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+        }
+        .badges {
+            display: flex;
+            gap: 0.5rem;
+        }
+        .badge {
+            font-size: 0.75rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 9999px;
+            font-weight: bold;
+        }
+        .badge.easy { background: rgba(34, 197, 94, 0.2); color: var(--easy); }
+        .badge.medium { background: rgba(234, 179, 8, 0.2); color: var(--medium); }
+        .badge.hard { background: rgba(239, 68, 68, 0.2); color: var(--hard); }
+        .badge.topic { background: rgba(108, 99, 255, 0.2); color: var(--accent1); }
+        
+        .answer {
+            padding: 0 1rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            color: #cbd5e1;
+            line-height: 1.6;
+        }
+        .question-card.active .answer {
+            padding: 1rem;
+            max-height: 500px;
+            border-top: 1px solid var(--glass-border);
+        }
+        #counter {
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: #94a3b8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Interview Questions</h1>
+        <div class="controls">
+            <input type="text" id="search" placeholder="Search questions...">
+            <select id="topic-filter">
+                <option value="All">All Topics</option>
+                <option value="HTML">HTML</option>
+                <option value="CSS">CSS</option>
+                <option value="JavaScript">JavaScript</option>
+                <option value="React">React</option>
+            </select>
+            <select id="diff-filter">
+                <option value="All">All Difficulties</option>
+                <option value="Easy">Easy</option>
+                <option value="Medium">Medium</option>
+                <option value="Hard">Hard</option>
+            </select>
+        </div>
+        <div id="counter">Showing 4 questions</div>
+        <div id="questions-container"></div>
+    </div>
+
+    <script>
+        // Sample questions - expanding to 4 to demonstrate functionality
+        const questions = [
+            { q: "What is semantic HTML?", a: "Semantic HTML uses HTML markup to reinforce the semantics, or meaning, of the information in webpages and web applications rather than merely to define its presentation or look. Examples include <header>, <footer>, <article>.", topic: "HTML", diff: "Easy" },
+            { q: "Explain the CSS box model.", a: "The CSS box model is essentially a box that wraps around every HTML element. It consists of: margins, borders, padding, and the actual content.", topic: "CSS", diff: "Easy" },
+            { q: "What is a closure in JavaScript?", a: "A closure is the combination of a function bundled together (enclosed) with references to its surrounding state (the lexical environment). In other words, a closure gives you access to an outer function's scope from an inner function.", topic: "JavaScript", diff: "Hard" },
+            { q: "What is the Virtual DOM in React?", a: "The Virtual DOM is a programming concept where an ideal, or 'virtual', representation of a UI is kept in memory and synced with the 'real' DOM by a library such as ReactDOM.", topic: "React", diff: "Medium" }
+        ];
+
+        const container = document.getElementById('questions-container');
+        const search = document.getElementById('search');
+        const topicFilter = document.getElementById('topic-filter');
+        const diffFilter = document.getElementById('diff-filter');
+        const counter = document.getElementById('counter');
+
+        function renderQuestions() {
+            const sText = search.value.toLowerCase();
+            const tFilter = topicFilter.value;
+            const dFilter = diffFilter.value;
+
+            const filtered = questions.filter(q => {
+                const matchSearch = q.q.toLowerCase().includes(sText) || q.a.toLowerCase().includes(sText);
+                const matchTopic = tFilter === 'All' || q.topic === tFilter;
+                const matchDiff = dFilter === 'All' || q.diff === dFilter;
+                return matchSearch && matchTopic && matchDiff;
+            });
+
+            counter.innerText = `Showing ${filtered.length} questions`;
+            container.innerHTML = filtered.map((q, i) => `
+                <div class="question-card" onclick="this.classList.toggle('active')">
+                    <div class="question-header">
+                        <span>${q.q}</span>
+                        <div class="badges">
+                            <span class="badge topic">${q.topic}</span>
+                            <span class="badge ${q.diff.toLowerCase()}">${q.diff}</span>
+                        </div>
+                    </div>
+                    <div class="answer">${q.a}</div>
+                </div>
+            `).join('');
+        }
+
+        search.addEventListener('input', renderQuestions);
+        topicFilter.addEventListener('change', renderQuestions);
+        diffFilter.addEventListener('change', renderQuestions);
+
+        renderQuestions();
+    </script>
+</body>
+</html>
