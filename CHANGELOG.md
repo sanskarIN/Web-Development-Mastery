@@ -6,6 +6,30 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [3.2.0] — 2026-09-23
+
+### 🆕 New Feature Pages
+- **Interactive CSS Tools** (`tools.html`) — Color palette generator, gradient builder, box shadow generator, border radius visualizer, font pair suggestions
+- **Interview Questions** (`interview.html`) — 50+ interview questions with collapsible answers, difficulty badges, topic filters
+- **Learning Certificates** (`certificates.html`) — Earn certificates for module completion, download as image, share buttons
+- **Coding Challenges** (`challenges.html`) — 20+ coding challenges with beginner/intermediate/advanced levels, progress tracking
+- **Community Hub** (`community.html`) — Contributor wall of fame, discussion topics, open source stats
+
+### 🎨 Landing Page Enhancements
+- **"What You'll Learn" Section** — 8-card grid of learning outcomes with icons and descriptions
+- **"Built With" Tech Stack Section** — Scrolling technology badges with hover animations
+- **"Open Source Stats" Section** — Animated counters for commits, pages, concepts, themes
+- Updated footer with links to all 5 new pages
+
+### 🐦 SEO — Twitter Cards
+- Added `twitter:card`, `twitter:site`, `twitter:creator` meta tags across all HTML files
+- Twitter handle: `@Sanskar_in`
+
+### 🔧 CI/CD
+- Added production GitHub Pages deployment workflow
+
+---
+
 ## [3.1.0] — 2026-09-21
 
 ### 🔗 Link & Contact Updates
